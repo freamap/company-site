@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import SubPageHeader from '~/components/templates/SubPageHeader.vue'
+import SubPageHeader from '~/components/organisms/SubPageHeader.vue'
 
 export default {
   components: {
