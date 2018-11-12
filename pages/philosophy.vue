@@ -1,6 +1,6 @@
 <template>
   <div>
-    philosophy
+    philosophy page
   </div>
 </template>
 
