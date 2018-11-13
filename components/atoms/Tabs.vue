@@ -32,7 +32,7 @@ export default {
       return {
         width: this.activeTabWidth + 'px',
         left: this.activeTabLeft + 'px',
-        transition: this.clicked ? 'left 0.2s' : 'none 0'
+        transition: this.clicked ? 'left 0.4s ease-in-out' : 'none 0'
       }
     }
   },
@@ -42,6 +42,8 @@ export default {
 
     if (activeTab) {
       this.showActiveBar(activeTab[0].$el)
+    } else {
+      this.activeTabWidth = 0
     }
   },
   methods: {

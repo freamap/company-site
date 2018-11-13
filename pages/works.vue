@@ -6,7 +6,18 @@
 
 <script>
 export default {
-  layout: 'sub'
+  layout: 'sub',
+  asyncData(context) {
+    return { project: 'nuxt' }
+  },
+  data() {
+    return {
+      project: ''
+    }
+  },
+  created() {
+    console.log(this.project)
+  }
 }
 </script>
 

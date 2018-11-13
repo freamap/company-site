@@ -1,11 +1,5 @@
 <template>
   <div>
-    <div>企業理念</div>
-    <div>開発実績</div>
-    <div>ブログ</div>
-    <div>企業情報</div>
-    <div>採用情報</div>
-    <div>お問い合わせ</div>
     <Tabs
       v-model="tabValue"
       @change="onChange"
@@ -18,8 +12,23 @@
         label="開発実績"
         value="works"
       />
+      <Tab
+        label="ブログ"
+        value="blog"
+      />
+      <Tab
+        label="企業情報"
+        value="company"
+      />
+      <Tab
+        label="採用情報"
+        value="recruit"
+      />
+      <Tab
+        label="お問い合わせ"
+        value="contact"
+      />
     </Tabs>
-    {{ tabValue }}
   </div>
 </template>
 
@@ -44,6 +53,18 @@ export default {
         break
       case 'philosophy':
         this.tabValue = 'philosophy'
+        break
+      case 'blog':
+        this.tabValue = 'blog'
+        break
+      case 'company':
+        this.tabValue = 'company'
+        break
+      case 'recruit':
+        this.tabValue = 'recruit'
+        break
+      case 'contact':
+        this.tabValue = 'contact'
         break
       default:
         this.tabValue = ''
