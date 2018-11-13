@@ -16,7 +16,7 @@
       />
       <Tab
         label="開発実績"
-        value="develop"
+        value="works"
       />
     </Tabs>
     {{ tabValue }}
@@ -34,12 +34,12 @@ export default {
   },
   data() {
     return {
-      tabValue: ''
+      tabValue: 'works'
     }
   },
   methods: {
     onChange: function(value) {
-      console.log(value)
+      this.$router.push(value)
     }
   }
 }

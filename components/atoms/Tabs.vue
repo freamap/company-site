@@ -34,16 +34,34 @@ export default {
       }
     }
   },
+  mounted() {
+    let activeTab
+    this.$children.forEach(child => {
+      if (child.value === this.value) {
+        activeTab = child
+        // break
+      }
+    })
+
+    if (activeTab) {
+      this.showActiveBar(activeTab.$el)
+    }
+  },
   methods: {
     click(event) {
-      let tab = event.target
-      let tabs = tab.parentNode
-      this.activeTabWidth = tab.offsetWidth
-      this.activeTabLeft =
-        tab.getBoundingClientRect().left - tabs.getBoundingClientRect().left
+      let activeTab = event.target
 
-      this.$emit('input', event.target.value)
-      this.$emit('change', event.target.value)
+      if (activeTab) {
+        this.showActiveBar(activeTab)
+        this.$emit('input', event.target.value)
+        this.$emit('change', event.target.value)
+      }
+    },
+    showActiveBar(activeTab) {
+      this.activeTabWidth = activeTab.offsetWidth
+      this.activeTabLeft =
+        activeTab.getBoundingClientRect().left -
+        this.$el.getBoundingClientRect().left
     }
   }
 }
