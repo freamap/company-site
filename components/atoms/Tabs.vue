@@ -23,35 +23,33 @@ export default {
   data() {
     return {
       activeTabWidth: 0,
-      activeTabLeft: 0
+      activeTabLeft: 0,
+      clicked: false
     }
   },
   computed: {
     activeStyle() {
       return {
         width: this.activeTabWidth + 'px',
-        left: this.activeTabLeft + 'px'
+        left: this.activeTabLeft + 'px',
+        transition: this.clicked ? 'left 0.2s' : 'none 0'
       }
     }
   },
   mounted() {
     let activeTab
-    this.$children.forEach(child => {
-      if (child.value === this.value) {
-        activeTab = child
-        // break
-      }
-    })
+    activeTab = this.$children.filter(child => child.value === this.value)
 
     if (activeTab) {
-      this.showActiveBar(activeTab.$el)
+      this.showActiveBar(activeTab[0].$el)
     }
   },
   methods: {
     click(event) {
+      this.clicked = true
       let activeTab = event.target
 
-      if (activeTab) {
+      if (activeTab && activeTab.className === 'tab') {
         this.showActiveBar(activeTab)
         this.$emit('input', event.target.value)
         this.$emit('change', event.target.value)
@@ -78,7 +76,6 @@ export default {
     width: 10px;
     background-color: red;
     left: 0;
-    transition: left 0.2s;
   }
 }
 </style>

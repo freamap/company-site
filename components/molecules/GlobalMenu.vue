@@ -34,7 +34,19 @@ export default {
   },
   data() {
     return {
-      tabValue: 'works'
+      tabValue: ''
+    }
+  },
+  created() {
+    switch (this.$router.currentRoute.name) {
+      case 'works':
+        this.tabValue = 'works'
+        break
+      case 'philosophy':
+        this.tabValue = 'philosophy'
+        break
+      default:
+        this.tabValue = ''
     }
   },
   methods: {
