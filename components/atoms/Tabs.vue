@@ -55,7 +55,6 @@ export default {
 
       if (activeTab && activeTab.className === 'tab') {
         this.showActiveBar(activeTab)
-        this.$emit('input', event.target.value)
         this.$emit('change', event.target.value)
       }
     },

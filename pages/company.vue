@@ -5,8 +5,16 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
-  layout: 'sub'
+  layout: 'sub',
+  asyncData(context) {
+    context.store.dispatch('changePage', 'company')
+  },
+  methods: {
+    ...mapActions(['changePage'])
+  }
 }
 </script>
 
