@@ -32,7 +32,9 @@ export default {
       return {
         width: this.activeTabWidth + 'px',
         left: this.activeTabLeft + 'px',
-        transition: this.clicked ? 'left 0.4s ease-in-out' : 'none 0'
+        transition: this.clicked
+          ? 'left 0.4s ease-in-out, width 0.4s ease-in-out'
+          : 'none 0'
       }
     }
   },
@@ -70,13 +72,14 @@ export default {
 <style scoped lang="scss">
 .tabs {
   position: relative;
+  height: 100%;
+  display: flex;
 
   .active {
     position: absolute;
     bottom: 0;
-    height: 2px;
-    width: 10px;
-    background-color: red;
+    height: 3px;
+    background-color: #ffffff;
     left: 0;
   }
 }
