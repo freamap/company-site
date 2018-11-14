@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="global-menu">
     <Tabs
       v-model="tabValue"
       @change="onChange"
@@ -7,26 +7,38 @@
       <Tab
         label="企業理念"
         value="philosophy"
+        label-position="top"
+        padding="9px 15px 0 15px"
       />
       <Tab
         label="開発実績"
         value="works"
+        label-position="top"
+        padding="9px 15px 0 15px"
       />
       <Tab
         label="ブログ"
         value="blog"
+        label-position="top"
+        padding="9px 15px 0 15px"
       />
       <Tab
         label="企業情報"
         value="company"
+        label-position="top"
+        padding="9px 15px 0 15px"
       />
       <Tab
         label="採用情報"
         value="recruit"
+        label-position="top"
+        padding="9px 15px 0 15px"
       />
       <Tab
         label="お問い合わせ"
         value="contact"
+        label-position="top"
+        padding="9px 15px 0 15px"
       />
     </Tabs>
   </div>
@@ -78,5 +90,10 @@ export default {
 }
 </script>
 
-<style>
+<style scoped lang="scss">
+.global-menu {
+  font-size: 15px;
+  font-weight: 'Medium';
+  color: #ffffff;
+}
 </style>
