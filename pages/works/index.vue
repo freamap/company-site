@@ -10,7 +10,7 @@ import { mapActions } from 'vuex'
 export default {
   layout: 'sub',
   asyncData(context) {
-    context.store.dispatch('setPage', '/works')
+    context.store.dispatch('setPage', context.store.state.const.page.works.url)
   }
 }
 </script>

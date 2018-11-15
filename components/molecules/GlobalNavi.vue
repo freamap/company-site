@@ -5,38 +5,38 @@
       @change="onChange"
     >
       <Tab
-        label="企業理念"
-        value="philosophy"
+        :value="page.philosophy.url"
+        :label="page.philosophy.title"
         label-position="top"
         padding="9px 15px 0 15px"
       />
       <Tab
-        label="開発実績"
-        value="works"
+        :value="page.works.url"
+        :label="page.works.title"
         label-position="top"
         padding="9px 15px 0 15px"
       />
       <Tab
-        label="ブログ"
-        value="blog"
+        :value="page.blog.url"
+        :label="page.blog.title"
         label-position="top"
         padding="9px 15px 0 15px"
       />
       <Tab
-        label="企業情報"
-        value="company"
+        :value="page.company.url"
+        :label="page.company.title"
         label-position="top"
         padding="9px 15px 0 15px"
       />
       <Tab
-        label="採用情報"
-        value="recruit"
+        :value="page.recruit.url"
+        :label="page.recruit.title"
         label-position="top"
         padding="9px 15px 0 15px"
       />
       <Tab
-        label="お問い合わせ"
-        value="contact"
+        :value="page.contact.url"
+        :label="page.contact.title"
         label-position="top"
         padding="9px 15px 0 15px"
       />
@@ -56,13 +56,14 @@ export default {
   },
   computed: {
     tabValue() {
-      return this.currentOriginPageName
+      return this.page[this.currentOriginPageName].url
     },
-    ...mapState(['currentOriginPageName'])
+    ...mapState(['currentOriginPageName']),
+    ...mapState('const', ['page'])
   },
   methods: {
     onChange: function(value) {
-      this.changePage('/' + value)
+      this.changePage(value)
     },
     ...mapActions(['changePage'])
   }

@@ -17,16 +17,16 @@
           <img src="~/assets/images/icon-freamap.svg">
         </div>
         <div class="title">
-          {{ title[0] }}
+          {{ pageContents.title }}
         </div>
         <div class="sub-title">
-          {{ title[1] }}
+          {{ pageContents.subTitle }}
         </div>
         <div
-          v-show="title[2]"
+          v-show="pageContents.explain"
           class="explain"
         >
-          {{ title[2] }}
+          {{ pageContents.explain }}
         </div>
       </div>
       <div class="topic-path">
@@ -49,27 +49,8 @@ export default {
     Logo
   },
   computed: {
-    title() {
-      switch (this.currentOriginPageName) {
-        case 'philosophy':
-          return [
-            '企業理念',
-            'philosophy',
-            'フリーマップという社名の由来は、free + dream + map を組み合わせた造語です。テクノロジーの発展が一巡した今、わたしたちが考えること。'
-          ]
-        case 'works':
-          return ['開発実績', 'works', '']
-        case 'blog':
-          return ['ブログ', 'blog', '']
-        case 'company':
-          return ['企業情報', 'company', '']
-        case 'recruit':
-          return ['採用情報', 'recruit', '']
-        case 'contact':
-          return ['お問い合わせ', 'contact', '']
-        default:
-          return ['', '', '']
-      }
+    pageContents() {
+      return this.page[this.currentOriginPageName]
     },
 
     subPageHeaderStyle() {
@@ -78,7 +59,7 @@ export default {
         paddingBottom: '50px'
       }
 
-      if (this.title[2]) {
+      if (this.pageContents.explain) {
         return {
           ...style,
           maxHeight: '660px'
@@ -93,7 +74,8 @@ export default {
       }
       return style
     },
-    ...mapState(['currentOriginPageName'])
+    ...mapState(['currentOriginPageName']),
+    ...mapState('const', ['page'])
   },
   methods: {
     pathClick(event) {

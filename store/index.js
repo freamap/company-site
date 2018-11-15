@@ -1,5 +1,5 @@
 export const state = () => ({
-  currentPageName: '',
+  url: '',
   currentOriginPageName: ''
 })
 
@@ -11,37 +11,14 @@ export const mutations = {
 }
 
 export const actions = {
-  changePage(context, name) {
-    context.dispatch('setPage', name)
-    this.app.router.push(name)
+  changePage(context, url) {
+    context.dispatch('setPage', url)
+    this.app.router.push(url)
   },
 
-  setPage(context, name) {
-    let originName = ''
-    switch (name) {
-      case '/works':
-      case '/works/detail':
-        originName = 'works'
-        break
-      case '/philosophy':
-        originName = 'philosophy'
-        break
-      case '/blog':
-        originName = 'blog'
-        break
-      case '/company':
-        originName = 'company'
-        break
-      case '/recruit':
-        originName = 'recruit'
-        break
-      case '/contact':
-        originName = 'contact'
-        break
-      default:
-        originName = ''
-    }
+  setPage(context, url) {
+    let originName = url.split('/')[1]
 
-    context.commit('change_page', { name: name, originName: originName })
+    context.commit('change_page', { url: url, originName: originName })
   }
 }
