@@ -5,38 +5,38 @@
       @change="onChange"
     >
       <Tab
-        :value="page.philosophy.url"
-        :label="page.philosophy.title"
+        :value="pages.philosophy.url"
+        :label="pages.philosophy.title"
         label-position="top"
         padding="9px 15px 0 15px"
       />
       <Tab
-        :value="page.works.url"
-        :label="page.works.title"
+        :value="pages.works.url"
+        :label="pages.works.title"
         label-position="top"
         padding="9px 15px 0 15px"
       />
       <Tab
-        :value="page.blog.url"
-        :label="page.blog.title"
+        :value="pages.blog.url"
+        :label="pages.blog.title"
         label-position="top"
         padding="9px 15px 0 15px"
       />
       <Tab
-        :value="page.company.url"
-        :label="page.company.title"
+        :value="pages.company.url"
+        :label="pages.company.title"
         label-position="top"
         padding="9px 15px 0 15px"
       />
       <Tab
-        :value="page.recruit.url"
-        :label="page.recruit.title"
+        :value="pages.recruit.url"
+        :label="pages.recruit.title"
         label-position="top"
         padding="9px 15px 0 15px"
       />
       <Tab
-        :value="page.contact.url"
-        :label="page.contact.title"
+        :value="pages.contact.url"
+        :label="pages.contact.title"
         label-position="top"
         padding="9px 15px 0 15px"
       />
@@ -56,10 +56,10 @@ export default {
   },
   computed: {
     tabValue() {
-      return this.page[this.currentOriginPageName].url
+      return this.pages[this.currentOriginPageName].url
     },
     ...mapState(['currentOriginPageName']),
-    ...mapState('const', ['page'])
+    ...mapState('pages', ['pages'])
   },
   methods: {
     onChange: function(value) {

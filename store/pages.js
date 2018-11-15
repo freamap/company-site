@@ -1,5 +1,5 @@
 export const state = () => ({
-  page: {
+  pages: {
     philosophy: {
       url: '/philosophy',
       title: '企業理念',

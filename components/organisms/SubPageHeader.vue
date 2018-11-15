@@ -56,7 +56,7 @@ export default {
   },
   computed: {
     pageContents() {
-      return this.page[this.currentOriginPageName]
+      return this.pages[this.currentOriginPageName]
     },
 
     subPageHeaderStyle() {
@@ -83,11 +83,11 @@ export default {
     topicPath() {
       let path = this.url.split('/').filter(urlPath => urlPath)
       return path.map(name => {
-        return this.page[name].title
+        return this.pages[name].title
       })
     },
     ...mapState(['url', 'currentOriginPageName']),
-    ...mapState('const', ['page'])
+    ...mapState('pages', ['pages'])
   },
   methods: {
     pathClick(event) {
@@ -176,15 +176,15 @@ export default {
       color: #ffffff;
       font-size: 13px;
 
+      a:nth-child(n) {
+        cursor: pointer;
+      }
+
       :first-child {
         font-weight: bold;
       }
 
       .path {
-        a:nth-child(n) {
-          cursor: pointer;
-        }
-
         > :nth-child(n) {
           margin-left: 20px;
         }
