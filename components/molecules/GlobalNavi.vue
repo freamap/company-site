@@ -60,13 +60,9 @@ export default {
     },
     ...mapState(['currentOriginPageName'])
   },
-  created() {
-    this.changePage(this.$router.currentRoute.name)
-  },
   methods: {
     onChange: function(value) {
       this.changePage(value)
-      this.$router.push(value)
     },
     ...mapActions(['changePage'])
   }

@@ -12,6 +12,11 @@ export const mutations = {
 
 export const actions = {
   changePage(context, name) {
+    context.dispatch('setPage', name)
+    this.app.router.push(name)
+  },
+
+  setPage(context, name) {
     let originName = ''
     switch (name) {
       case 'works':
