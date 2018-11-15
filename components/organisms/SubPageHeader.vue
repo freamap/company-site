@@ -30,9 +30,15 @@
         </div>
       </div>
       <div class="topic-path">
-        <span><a @click="pathClick">TOP</a></span>
-        <span>></span>
-        <span><a @click="pathClick">ブログ</a></span>
+        <div><a @click="pathClick">TOP</a></div>
+        <div
+          v-for="topic in topicPath"
+          :key="topic"
+          class="path"
+        >
+          <span>></span>
+          <span><a @click="pathClick">{{ topic }}</a></span>
+        </div>
       </div>
     </div>
   </div>
@@ -74,7 +80,13 @@ export default {
       }
       return style
     },
-    ...mapState(['currentOriginPageName']),
+    topicPath() {
+      let path = this.url.split('/').filter(urlPath => urlPath)
+      return path.map(name => {
+        return this.page[name].title
+      })
+    },
+    ...mapState(['url', 'currentOriginPageName']),
     ...mapState('const', ['page'])
   },
   methods: {
@@ -158,21 +170,24 @@ export default {
 
     .topic-path {
       position: absolute;
+      display: flex;
       bottom: 25px;
       left: 0;
       color: #ffffff;
       font-size: 13px;
 
-      a:nth-child(n) {
-        cursor: pointer;
-      }
-
       :first-child {
         font-weight: bold;
       }
 
-      :nth-child(n + 2) {
-        margin-left: 20px;
+      .path {
+        a:nth-child(n) {
+          cursor: pointer;
+        }
+
+        > :nth-child(n) {
+          margin-left: 20px;
+        }
       }
     }
   }
