@@ -62,7 +62,7 @@ export default {
   },
   methods: {
     onChange: function(value) {
-      this.changePage(value)
+      this.changePage('/' + value)
     },
     ...mapActions(['changePage'])
   }

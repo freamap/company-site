@@ -19,22 +19,23 @@ export const actions = {
   setPage(context, name) {
     let originName = ''
     switch (name) {
-      case 'works':
+      case '/works':
+      case '/works/detail':
         originName = 'works'
         break
-      case 'philosophy':
+      case '/philosophy':
         originName = 'philosophy'
         break
-      case 'blog':
+      case '/blog':
         originName = 'blog'
         break
-      case 'company':
+      case '/company':
         originName = 'company'
         break
-      case 'recruit':
+      case '/recruit':
         originName = 'recruit'
         break
-      case 'contact':
+      case '/contact':
         originName = 'contact'
         break
       default:
