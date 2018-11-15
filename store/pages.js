@@ -1,5 +1,11 @@
 export const state = () => ({
   pages: {
+    top: {
+      url: '/',
+      title: '仮置き',
+      subTitle: 'hoge',
+      explain: 'hogehoge'
+    },
     philosophy: {
       url: '/philosophy',
       title: '企業理念',
@@ -12,8 +18,9 @@ export const state = () => ({
       title: '開発実績',
       subTitle: 'works',
       subPage: {
-        detail: {
-          url: '/works/detail'
+        detail1: {
+          url: '/works/detail1',
+          title: '開発実績１'
         }
       }
     },

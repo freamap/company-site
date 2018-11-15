@@ -1,6 +1,5 @@
 <template>
-  <div>
-    header
+  <div class="header">
     <GlobalNavi />
   </div>
 </template>
@@ -15,5 +14,8 @@ export default {
 }
 </script>
 
-<style>
+<style scoped lang="scss">
+.header {
+  background-color: $primary;
+}
 </style>

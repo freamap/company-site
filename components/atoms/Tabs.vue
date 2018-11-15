@@ -37,7 +37,7 @@ export default {
         let activeTab
         activeTab = this.$children.filter(child => child.value === this.value)
 
-        if (activeTab) {
+        if (activeTab.length > 0) {
           activeTabWidth = activeTab[0].$el.offsetWidth
           activeTabLeft =
             activeTab[0].$el.getBoundingClientRect().left -

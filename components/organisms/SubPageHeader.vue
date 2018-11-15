@@ -8,7 +8,7 @@
         <Logo />
       </div>
       <div class="global-navi">
-        <GlobalNavi />
+        <SubPageGlobalNavi />
       </div>
     </div>
     <div class="contents">
@@ -30,14 +30,14 @@
         </div>
       </div>
       <div class="topic-path">
-        <div><a @click="pathClick">TOP</a></div>
+        <div><a @click="pathClick('/')">TOP</a></div>
         <div
           v-for="topic in topicPath"
-          :key="topic"
+          :key="topic.url"
           class="path"
         >
           <span>></span>
-          <span><a @click="pathClick(topic)">{{ pages[topic].title }}</a></span>
+          <span><a @click="pathClick(topic.url)">{{ topic.title }}</a></span>
         </div>
       </div>
     </div>
@@ -45,13 +45,13 @@
 </template>
 
 <script>
-import GlobalNavi from '~/components/molecules/GlobalNavi.vue'
+import SubPageGlobalNavi from '~/components/molecules/SubPageGlobalNavi.vue'
 import Logo from '~/components/molecules/Logo.vue'
 import { mapState, mapActions } from 'vuex'
 
 export default {
   components: {
-    GlobalNavi,
+    SubPageGlobalNavi,
     Logo
   },
   computed: {
@@ -82,14 +82,23 @@ export default {
     },
     topicPath() {
       let path = this.url.split('/').filter(urlPath => urlPath)
-      return path
+
+      let topics = []
+      path.forEach((topic, index) => {
+        if (topics.length > 0) {
+          topics.push(topics[index - 1].subPage[topic])
+        } else {
+          topics.push(this.pages[topic])
+        }
+      })
+      return topics
     },
     ...mapState(['url', 'currentOriginPageName']),
     ...mapState('pages', ['pages'])
   },
   methods: {
-    pathClick(topic) {
-      this.changePage(this.pages[topic].url)
+    pathClick(url) {
+      this.changePage(url)
     },
     ...mapActions(['changePage'])
   }

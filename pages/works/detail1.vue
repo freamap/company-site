@@ -12,7 +12,7 @@ export default {
   asyncData(context) {
     context.store.dispatch(
       'setPage',
-      context.store.state.pages.pages.works.subPage.detail.url
+      context.store.state.pages.pages.works.subPage.detail1.url
     )
   }
 }

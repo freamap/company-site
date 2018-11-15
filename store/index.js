@@ -17,7 +17,11 @@ export const actions = {
   },
 
   setPage(context, url) {
-    let originName = url.split('/')[1]
+    let originName = 'top'
+
+    if (url !== context.state.pages.pages.top.url) {
+      originName = url.split('/')[1]
+    }
 
     context.commit('change_page', { url: url, originName: originName })
   }
