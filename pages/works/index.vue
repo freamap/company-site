@@ -5,18 +5,12 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   layout: 'sub',
   asyncData(context) {
-    return { project: 'nuxt' }
-  },
-  data() {
-    return {
-      project: ''
-    }
-  },
-  created() {
-    console.log(this.project)
+    context.store.dispatch('setPage', 'works')
   }
 }
 </script>

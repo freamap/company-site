@@ -1,16 +1,16 @@
 <template>
   <div>
     header
-    <GlobalMenu />
+    <GlobalNavi />
   </div>
 </template>
 
 <script>
-import GlobalMenu from '~/components/molecules/GlobalMenu.vue'
+import GlobalNavi from '~/components/molecules/GlobalNavi.vue'
 
 export default {
   components: {
-    GlobalMenu
+    GlobalNavi
   }
 }
 </script>
