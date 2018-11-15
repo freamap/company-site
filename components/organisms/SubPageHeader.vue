@@ -37,7 +37,7 @@
           class="path"
         >
           <span>></span>
-          <span><a @click="pathClick">{{ topic }}</a></span>
+          <span><a @click="pathClick(topic)">{{ pages[topic].title }}</a></span>
         </div>
       </div>
     </div>
@@ -82,16 +82,14 @@ export default {
     },
     topicPath() {
       let path = this.url.split('/').filter(urlPath => urlPath)
-      return path.map(name => {
-        return this.pages[name].title
-      })
+      return path
     },
     ...mapState(['url', 'currentOriginPageName']),
     ...mapState('pages', ['pages'])
   },
   methods: {
-    pathClick(event) {
-      this.changePage('blog')
+    pathClick(topic) {
+      this.changePage(this.pages[topic].url)
     },
     ...mapActions(['changePage'])
   }
