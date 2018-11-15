@@ -1,6 +1,6 @@
 <template>
   <div>
-    recruit page
+    company page
   </div>
 </template>
 
@@ -10,10 +10,7 @@ import { mapActions } from 'vuex'
 export default {
   layout: 'sub',
   asyncData(context) {
-    context.store.dispatch('changePage', 'recruit')
-  },
-  methods: {
-    ...mapActions(['changePage'])
+    context.store.dispatch('setPage', 'company')
   }
 }
 </script>

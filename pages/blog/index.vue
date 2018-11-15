@@ -10,10 +10,7 @@ import { mapActions } from 'vuex'
 export default {
   layout: 'sub',
   asyncData(context) {
-    context.store.dispatch('changePage', 'blog')
-  },
-  methods: {
-    ...mapActions(['changePage'])
+    context.store.dispatch('setPage', 'blog')
   }
 }
 </script>
