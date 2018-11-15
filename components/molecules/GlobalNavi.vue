@@ -55,11 +55,11 @@ export default {
     Tab
   },
   computed: {
+    ...mapState(['currentOriginPageName']),
+    ...mapState('pages', ['pages']),
     tabValue() {
       return this.pages[this.currentOriginPageName].url
-    },
-    ...mapState(['currentOriginPageName']),
-    ...mapState('pages', ['pages'])
+    }
   },
   methods: {
     onChange: function(value) {
