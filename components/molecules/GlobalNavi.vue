@@ -1,7 +1,7 @@
 <template>
-  <div class="global-menu">
+  <div class="global-navi">
     <Tabs
-      v-model="tabValue"
+      :value="tabValue"
       @change="onChange"
     >
       <Tab
@@ -47,51 +47,30 @@
 <script>
 import Tabs from '~/components/atoms/Tabs.vue'
 import Tab from '~/components/atoms/Tab.vue'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   components: {
     Tabs,
     Tab
   },
-  data() {
-    return {
-      tabValue: ''
-    }
-  },
-  created() {
-    switch (this.$router.currentRoute.name) {
-      case 'works':
-        this.tabValue = 'works'
-        break
-      case 'philosophy':
-        this.tabValue = 'philosophy'
-        break
-      case 'blog':
-        this.tabValue = 'blog'
-        break
-      case 'company':
-        this.tabValue = 'company'
-        break
-      case 'recruit':
-        this.tabValue = 'recruit'
-        break
-      case 'contact':
-        this.tabValue = 'contact'
-        break
-      default:
-        this.tabValue = ''
-    }
+  computed: {
+    tabValue() {
+      return this.currentOriginPageName
+    },
+    ...mapState(['currentOriginPageName'])
   },
   methods: {
     onChange: function(value) {
-      this.$router.push(value)
-    }
+      this.changePage(value)
+    },
+    ...mapActions(['changePage'])
   }
 }
 </script>
 
 <style scoped lang="scss">
-.global-menu {
+.global-navi {
   font-size: 15px;
   font-weight: 'Medium';
   color: #ffffff;

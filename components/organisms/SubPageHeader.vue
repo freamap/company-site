@@ -1,11 +1,14 @@
 <template>
-  <div class="sub-page-header container">
+  <div
+    :style="subPageHeaderStyle"
+    class="sub-page-header container"
+  >
     <div class="head">
       <div class="logo">
         <Logo />
       </div>
-      <div class="global-menu">
-        <GlobalMenu />
+      <div class="global-navi">
+        <GlobalNavi />
       </div>
     </div>
     <div class="contents">
@@ -14,40 +17,101 @@
           <img src="~/assets/images/icon-freamap.svg">
         </div>
         <div class="title">
-          ブログ
+          {{ title[0] }}
         </div>
         <div class="sub-title">
-          blog
+          {{ title[1] }}
         </div>
-        <div class="explain">
-          フリーマップという社名の由来は、free + dream + map を組み合わせた造語です。 
-          <br>
-          テクノロジーの発展が一巡した今、わたしたちが考えること。
+        <div
+          v-show="title[2]"
+          class="explain"
+        >
+          {{ title[2] }}
         </div>
+      </div>
+      <div class="topic-path">
+        <span><a @click="pathClick">TOP</a></span>
+        <span>></span>
+        <span><a @click="pathClick">ブログ</a></span>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import GlobalMenu from '~/components/molecules/GlobalMenu.vue'
+import GlobalNavi from '~/components/molecules/GlobalNavi.vue'
 import Logo from '~/components/molecules/Logo.vue'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   components: {
-    GlobalMenu,
+    GlobalNavi,
     Logo
+  },
+  computed: {
+    title() {
+      switch (this.currentOriginPageName) {
+        case 'philosophy':
+          return [
+            '企業理念',
+            'philosophy',
+            'フリーマップという社名の由来は、free + dream + map を組み合わせた造語です。テクノロジーの発展が一巡した今、わたしたちが考えること。'
+          ]
+        case 'works':
+          return ['開発実績', 'works', '']
+        case 'blog':
+          return ['ブログ', 'blog', '']
+        case 'company':
+          return ['企業情報', 'company', '']
+        case 'recruit':
+          return ['採用情報', 'recruit', '']
+        case 'contact':
+          return ['お問い合わせ', 'contact', '']
+        default:
+          return ['', '', '']
+      }
+    },
+
+    subPageHeaderStyle() {
+      let style = {
+        maxHeight: '528px',
+        paddingBottom: '50px'
+      }
+
+      if (this.title[2]) {
+        return {
+          ...style,
+          maxHeight: '660px'
+        }
+      }
+
+      if (this.currentOriginPageName === 'blog') {
+        return {
+          ...style,
+          paddingBottom: '0px'
+        }
+      }
+      return style
+    },
+    ...mapState(['currentOriginPageName'])
+  },
+  methods: {
+    pathClick(event) {
+      this.changePage('blog')
+    },
+    ...mapActions(['changePage'])
   }
 }
 </script>
 
 <style scoped lang="scss">
 .sub-page-header {
+  height: 100vh;
   padding-top: 30px;
-  height: 80vh;
   display: flex;
   flex-direction: column;
   background-color: $primary;
+  transition: max-height 0.4s ease-in-out;
 
   .head {
     height: 72px;
@@ -60,7 +124,7 @@ export default {
       width: 150px;
     }
 
-    > .global-menu {
+    > .global-navi {
       flex-grow: 1;
       height: calc(100% + 2px);
       display: flex;
@@ -73,6 +137,7 @@ export default {
     align-items: center;
     justify-content: center;
     flex-grow: 1;
+    position: relative;
 
     .icon {
       text-align: center;
@@ -107,6 +172,26 @@ export default {
       text-align: center;
       font-size: 13px;
       color: #ffffff;
+    }
+
+    .topic-path {
+      position: absolute;
+      bottom: 25px;
+      left: 0;
+      color: #ffffff;
+      font-size: 13px;
+
+      a:nth-child(n) {
+        cursor: pointer;
+      }
+
+      :first-child {
+        font-weight: bold;
+      }
+
+      :nth-child(n + 2) {
+        margin-left: 20px;
+      }
     }
   }
 }

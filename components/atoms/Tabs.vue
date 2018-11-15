@@ -24,14 +24,30 @@ export default {
     return {
       activeTabWidth: 0,
       activeTabLeft: 0,
-      clicked: false
+      clicked: false,
+      mounted: false
     }
   },
   computed: {
     activeStyle() {
+      let activeTabWidth = 0
+      let activeTabLeft = 0
+
+      if (this.mounted) {
+        let activeTab
+        activeTab = this.$children.filter(child => child.value === this.value)
+
+        if (activeTab) {
+          activeTabWidth = activeTab[0].$el.offsetWidth
+          activeTabLeft =
+            activeTab[0].$el.getBoundingClientRect().left -
+            this.$el.getBoundingClientRect().left
+        }
+      }
+
       return {
-        width: this.activeTabWidth + 'px',
-        left: this.activeTabLeft + 'px',
+        width: activeTabWidth + 'px',
+        left: activeTabLeft + 'px',
         transition: this.clicked
           ? 'left 0.4s ease-in-out, width 0.4s ease-in-out'
           : 'none 0'
@@ -39,14 +55,7 @@ export default {
     }
   },
   mounted() {
-    let activeTab
-    activeTab = this.$children.filter(child => child.value === this.value)
-
-    if (activeTab) {
-      this.showActiveBar(activeTab[0].$el)
-    } else {
-      this.activeTabWidth = 0
-    }
+    this.mounted = true
   },
   methods: {
     click(event) {
@@ -54,16 +63,8 @@ export default {
       let activeTab = event.target
 
       if (activeTab && activeTab.className === 'tab') {
-        this.showActiveBar(activeTab)
-        this.$emit('input', event.target.value)
         this.$emit('change', event.target.value)
       }
-    },
-    showActiveBar(activeTab) {
-      this.activeTabWidth = activeTab.offsetWidth
-      this.activeTabLeft =
-        activeTab.getBoundingClientRect().left -
-        this.$el.getBoundingClientRect().left
     }
   }
 }
