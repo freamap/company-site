@@ -5,7 +5,7 @@ export const state = () => ({
 
 export const mutations = {
   change_page(state, page) {
-    state.currentPageName = page['name']
+    state.url = page['url']
     state.currentOriginPageName = page['originName']
   }
 }
