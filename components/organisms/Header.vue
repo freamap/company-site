@@ -1,7 +1,9 @@
 <template>
   <div class="header container">
     <div class="head">
-      <GlobalNavi />
+      <div>
+        <GlobalNavi />
+      </div>
     </div>
     <div class="contents">
       <div class="logo">
@@ -14,17 +16,21 @@
         株式会社フリーマップのウェブサイトへようこそ！ わたしたちは、”個人の時代”に生きる人々のワーク & ライフに貢献するデジタルテクノロジーが得意な会社です。
       </div>
       <div class="more">
-        ボタン(さらに詳しく)
+        <Button @click="moreButtonOnClick">
+          さらに詳しく
+        </Button>
       </div>
     </div>
     <div class="blog-update update-info">
       <HeaderUpdateInfo
+        :link="pages.blog.url"
         title="BLOG"
         update="2018/05/29"
       />
     </div>
     <div class="works-update update-info">
       <HeaderUpdateInfo
+        :link="pages.works.url"
         title="WORKS"
         update="2018/05/29"
       />
@@ -35,15 +41,23 @@
 <script>
 import GlobalNavi from '~/components/molecules/GlobalNavi.vue'
 import HeaderUpdateInfo from '~/components/molecules/HeaderUpdateInfo.vue'
-import { mapState } from 'vuex'
+import Button from '~/components/atoms/Button.vue'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   components: {
     GlobalNavi,
-    HeaderUpdateInfo
+    HeaderUpdateInfo,
+    Button
   },
   computed: {
     ...mapState('pages', ['pages'])
+  },
+  methods: {
+    moreButtonOnClick: function(event) {
+      this.changePage(this.pages.philosophy.url)
+    },
+    ...mapActions(['changePage'])
   }
 }
 </script>
@@ -52,23 +66,27 @@ export default {
 .header {
   background-color: $primary;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-  position: relative;
+  width: 100%;
   color: #ffffff;
+  box-sizing: border-box;
 
   > .head {
-    height: 92px;
-    border-bottom: solid 1px rgba(255, 255, 255, 0.16);
-    box-sizing: content-box;
+    position: relative;
+
+    > div {
+      position: absolute;
+      width: 100%;
+      height: 92px;
+      border-bottom: solid 1px rgba(255, 255, 255, 0.16);
+    }
   }
 
   > .contents {
-    flex-grow: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    height: 100%;
 
     .logo {
       width: 90px;
@@ -81,16 +99,17 @@ export default {
 
     .title {
       font-family: Poppins;
-      font-size: 5em;
+      font-size: 5rem;
       font-weight: bold;
       margin-top: 90px;
-      letter-spacing: 0.35em;
+      letter-spacing: 1rem;
       text-align: center;
     }
 
     .explain {
       margin-top: 26px;
-      font-size: 1.5em;
+      font-size: 1.5rem;
+      text-align: center;
     }
 
     .more {
@@ -100,9 +119,7 @@ export default {
 
   .blog-update {
     transform: rotate(90deg);
-    position: absolute;
     left: 40px;
-    top: 50%;
   }
 
   .works-update {
