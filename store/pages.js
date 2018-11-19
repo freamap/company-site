@@ -29,7 +29,7 @@ export const state = () => ({
     },
     company: {
       url: '/company',
-      title: '会社情報',
+      title: '企業情報',
       subTitle: 'company'
     },
     recruit: {
