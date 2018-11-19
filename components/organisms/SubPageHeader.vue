@@ -36,10 +36,18 @@
           :key="topic.url"
           class="path"
         >
-          <span>></span>
-          <span><a @click="pathClick(topic.url)">{{ topic.title }}</a></span>
+          <div class="topic-angle">
+            <AngleRight />
+          </div>
+          <div><a @click="pathClick(topic.url)">{{ topic.title }}</a></div>
         </div>
       </div>
+    </div>
+    <div class="gooey left">
+      <img src="~/assets/images/gooey--left.svg">
+    </div>
+    <div class="gooey right">
+      <img src="~/assets/images/gooey--right.svg">
     </div>
   </div>
 </template>
@@ -47,12 +55,14 @@
 <script>
 import SubPageGlobalNavi from '~/components/molecules/SubPageGlobalNavi.vue'
 import Logo from '~/components/molecules/Logo.vue'
+import AngleRight from '~/assets/icons/AngleRight.vue'
 import { mapState, mapActions } from 'vuex'
 
 export default {
   components: {
     SubPageGlobalNavi,
-    Logo
+    Logo,
+    AngleRight
   },
   computed: {
     pageContents() {
@@ -113,6 +123,7 @@ export default {
   flex-direction: column;
   background-color: $primary;
   transition: max-height 0.4s ease-in-out;
+  position: relative;
 
   .head {
     height: 72px;
@@ -192,11 +203,42 @@ export default {
       }
 
       .path {
+        display: flex;
+
         > :nth-child(n) {
           margin-left: 20px;
         }
       }
+
+      .topic-angle {
+        width: 19px;
+
+        svg {
+          fill: currentColor;
+        }
+      }
     }
+  }
+
+  .gooey {
+    position: absolute;
+    pointer-events: none;
+  }
+
+  .left {
+    @extend .gooey;
+    top: 0;
+    left: 0;
+    transform: translate(-47%, 10%);
+    width: 60%;
+  }
+
+  .right {
+    @extend .gooey;
+    top: 0;
+    right: 0;
+    transform: translate(56%, -32%);
+    width: 65%;
   }
 }
 </style>

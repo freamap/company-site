@@ -35,6 +35,17 @@
         update="2018/05/29"
       />
     </div>
+    <div class="gooey left">
+      <img src="~/assets/images/gooey--left.svg">
+    </div>
+    <div class="gooey right">
+      <img src="~/assets/images/gooey--right.svg">
+    </div>
+    <div class="arrow-down">
+      <div>
+        <ArrowDown />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -42,13 +53,15 @@
 import GlobalNavi from '~/components/molecules/GlobalNavi.vue'
 import HeaderUpdateInfo from '~/components/molecules/HeaderUpdateInfo.vue'
 import Button from '~/components/atoms/Button.vue'
+import ArrowDown from '~/assets/icons/ArrowDown.vue'
 import { mapState, mapActions } from 'vuex'
 
 export default {
   components: {
     GlobalNavi,
     HeaderUpdateInfo,
-    Button
+    Button,
+    ArrowDown
   },
   computed: {
     ...mapState('pages', ['pages'])
@@ -136,6 +149,44 @@ export default {
       bottom: 0;
       transform: translate(-50%, 0);
       height: 19px;
+    }
+  }
+
+  .gooey {
+    position: absolute;
+    pointer-events: none;
+  }
+
+  .left {
+    @extend .gooey;
+    top: 50%;
+    left: 0;
+    transform: translate(-47%, -38%);
+    width: 60%;
+  }
+
+  .right {
+    @extend .gooey;
+    top: 50%;
+    right: 0;
+    transform: translate(49%, -77%);
+    width: 70%;
+  }
+
+  .arrow-down {
+    width: 100%;
+    position: relative;
+    > div {
+      width: 100%;
+      position: absolute;
+      bottom: 81px;
+      display: flex;
+      justify-content: center;
+
+      svg {
+        height: 22px;
+        fill: currentColor;
+      }
     }
   }
 }
