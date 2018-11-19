@@ -1,5 +1,8 @@
 <template>
-  <div class="header-update-info">
+  <div
+    class="header-update-info"
+    @click="click"
+  >
     <div class="title">
       {{ title }}
     </div>
@@ -11,22 +14,32 @@
 </template>
 
 <script>
-import Tabs from '~/components/atoms/Tabs.vue'
-import Tab from '~/components/atoms/Tab.vue'
-import { mapState, mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 
 export default {
   props: {
     title: {
       type: String,
       default: '',
-      required: false
+      required: true
     },
     update: {
       type: String,
       default: '',
-      required: false
+      required: true
+    },
+    link: {
+      type: String,
+      default: '',
+      required: true
     }
+  },
+
+  methods: {
+    click: function(event) {
+      this.changePage(this.link)
+    },
+    ...mapActions(['changePage'])
   }
 }
 </script>
@@ -36,8 +49,9 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.3em;
+  font-size: 1.3rem;
   height: 100%;
+  cursor: pointer;
 
   .title {
     font-weight: bold;
