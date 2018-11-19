@@ -5,49 +5,45 @@
     </div>
     <div class="contents">
       <div class="logo">
-        会社ロゴ
+        <img src="~/assets/images/freamap-logo-vert--light.svg">
       </div>
       <div class="title">
-        title
+        BE YOURSELF, BE LIKE YOU.
       </div>
-      <div class="sub-title">
-        subtitle
+      <div class="explain">
+        株式会社フリーマップのウェブサイトへようこそ！ わたしたちは、”個人の時代”に生きる人々のワーク & ライフに貢献するデジタルテクノロジーが得意な会社です。
       </div>
       <div class="more">
         ボタン(さらに詳しく)
       </div>
     </div>
-    <div class="blog-update">
-      <div class="update-info">
-        <div class="title">
-          BROG
-        </div>
-        <hr noshade>
-        <div class="update">
-          2018/05/29更新
-        </div>
-      </div>
+    <div class="blog-update update-info">
+      <HeaderUpdateInfo
+        title="BLOG"
+        update="2018/05/29"
+      />
     </div>
-    <div class="works-update">
-      <div class="update-info">
-        <div class="title">
-          WORKS
-        </div>
-        <hr noshade>
-        <div class="update">
-          2018/05/29更新
-        </div>
-      </div>
+    <div class="works-update update-info">
+      <HeaderUpdateInfo
+        title="WORKS"
+        update="2018/05/29"
+      />
     </div>
   </div>
 </template>
 
 <script>
 import GlobalNavi from '~/components/molecules/GlobalNavi.vue'
+import HeaderUpdateInfo from '~/components/molecules/HeaderUpdateInfo.vue'
+import { mapState } from 'vuex'
 
 export default {
   components: {
-    GlobalNavi
+    GlobalNavi,
+    HeaderUpdateInfo
+  },
+  computed: {
+    ...mapState('pages', ['pages'])
   }
 }
 </script>
@@ -59,6 +55,7 @@ export default {
   display: flex;
   flex-direction: column;
   position: relative;
+  color: #ffffff;
 
   > .head {
     height: 92px;
@@ -75,14 +72,25 @@ export default {
 
     .logo {
       width: 90px;
+
+      img {
+        width: 100%;
+        object-fit: contain;
+      }
     }
 
     .title {
+      font-family: Poppins;
+      font-size: 5em;
+      font-weight: bold;
       margin-top: 90px;
+      letter-spacing: 0.35em;
+      text-align: center;
     }
 
-    .sub-title {
+    .explain {
       margin-top: 26px;
+      font-size: 1.5em;
     }
 
     .more {
@@ -91,44 +99,26 @@ export default {
   }
 
   .blog-update {
+    transform: rotate(90deg);
     position: absolute;
     left: 40px;
     top: 50%;
-    transform: rotate(90deg);
   }
 
   .works-update {
-    position: absolute;
-    right: 40px;
-    top: 50%;
     transform: rotate(-90deg);
+    right: 40px;
   }
 
   .update-info {
     position: absolute;
-    bottom: 0;
-    transform: translate(-50%, 0);
-    height: 19px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ffffff;
-    font-size: 13px;
+    top: 50%;
 
-    .title {
-      font-weight: bold;
-      margin-right: 20px;
-    }
-
-    hr {
-      border: solid #ffffff;
-      border-width: 0 1px 0 0;
-      height: 10px;
-    }
-
-    .update {
-      margin-left: 20px;
-      white-space: nowrap;
+    > div {
+      position: absolute;
+      bottom: 0;
+      transform: translate(-50%, 0);
+      height: 19px;
     }
   }
 }
