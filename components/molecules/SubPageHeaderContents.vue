@@ -60,7 +60,7 @@ export default {
     margin-top: 5px;
     height: 64px;
     font-weight: bold;
-    font-size: 43px;
+    font-size: 4.3rem;
     text-align: center;
     color: #ffffff;
   }
@@ -69,7 +69,7 @@ export default {
     margin-top: 8px;
     height: 25px;
     text-align: center;
-    font-size: 18px;
+    font-size: 1.8rem;
     color: #ffffff;
     font-family: 'Poppins';
   }
@@ -77,7 +77,7 @@ export default {
   .explain {
     margin-top: 29px;
     text-align: center;
-    font-size: 13px;
+    font-size: 1.3rem;
     color: #ffffff;
   }
 }

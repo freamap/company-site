@@ -72,7 +72,7 @@ export default {
 
 <style scoped lang="scss">
 .sub-page-global-navi {
-  font-size: 15px;
+  font-size: 1.5rem;
   font-weight: 'Medium';
   color: #ffffff;
 }
