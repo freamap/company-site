@@ -2,9 +2,7 @@ export const state = () => ({
   pages: {
     top: {
       url: '/',
-      title: '仮置き',
-      subTitle: 'hoge',
-      explain: 'hogehoge'
+      title: 'TOP'
     },
     philosophy: {
       url: '/philosophy',
