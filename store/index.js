@@ -12,7 +12,6 @@ export const mutations = {
 
 export const actions = {
   changePage(context, url) {
-    context.dispatch('setPage', url)
     this.app.router.push(url)
   },
 
