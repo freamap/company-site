@@ -3,6 +3,7 @@
     <div
       v-for="key in globalLinkPage"
       :key="key"
+      @click="click(pages[key].url)"
     >
       {{ pages[key].title }}
     </div>
@@ -29,7 +30,7 @@ export default {
     }
   },
   methods: {
-    onChange: function(value) {
+    click: function(value) {
       this.changePage(value)
     },
     ...mapActions(['changePage'])
@@ -39,7 +40,7 @@ export default {
 
 <style scoped lang="scss">
 .global-navi {
-  font-size: 15px;
+  font-size: 1.5rem;
   font-weight: 'Medium';
   color: #ffffff;
   display: flex;
@@ -51,6 +52,7 @@ export default {
     justify-content: center;
     align-items: center;
     height: 100%;
+    cursor: pointer;
   }
 }
 </style>
