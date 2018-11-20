@@ -65,7 +65,7 @@ export default {
     AngleRight
   },
   props: {
-    contentsBox: {
+    upContents: {
       type: Boolean,
       default: true,
       required: false
@@ -89,7 +89,7 @@ export default {
         }
       }
 
-      if (this.contentsBox === false) {
+      if (this.upContents === false) {
         return {
           ...style,
           paddingBottom: '0px'
