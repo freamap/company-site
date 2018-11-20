@@ -1,65 +1,60 @@
 <template>
-  <section class="container">
-    <div>
-      <logo/>
-      <h1 class="title">
-        freamap-site
-      </h1>
-      <h2 class="subtitle">
-        My incredible Nuxt.js project
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green">Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey">GitHub</a>
+  <div class="top">
+    <div class="title">
+      ニュース
+    </div>
+    <div
+      v-for="detail in news"
+      :key="detail.id"
+      class="contents"
+    >
+      <div class="update">
+        {{ detail.update }}
+      </div>
+      <div class="description">
+        {{ detail.description }}
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import { mapState } from 'vuex'
 
 export default {
-  components: {
-    Logo
+  asyncData(context) {
+    context.store.dispatch('setPage', context.store.state.pages.pages.top.url)
+  },
+  computed: {
+    ...mapState('news', ['news'])
   }
 }
 </script>
 
-<style>
-.container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
+<style scoped lang="scss">
+.top {
+  padding: 90px 140px 120px 140px;
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
+  .title {
+    font-weight: bold;
+    font-size: 1.8rem;
+  }
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
+  .contents {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    font-size: 1.5rem;
+    border-top: 1px solid #e8e9ea;
+    height: 138px;
 
-.links {
-  padding-top: 15px;
+    &:last-of-type {
+      border-bottom: 1px solid #e8e9ea;
+    }
+
+    .update {
+      margin-right: 75px;
+    }
+  }
 }
 </style>

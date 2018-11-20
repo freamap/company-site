@@ -1,46 +1,12 @@
 <template>
   <div class="global-navi">
-    <Tabs
-      :value="tabValue"
-      @change="onChange"
+    <div
+      v-for="key in globalLinkPage"
+      :key="key"
+      @click="click(pages[key].url)"
     >
-      <Tab
-        label="企業理念"
-        value="philosophy"
-        label-position="top"
-        padding="9px 15px 0 15px"
-      />
-      <Tab
-        label="開発実績"
-        value="works"
-        label-position="top"
-        padding="9px 15px 0 15px"
-      />
-      <Tab
-        label="ブログ"
-        value="blog"
-        label-position="top"
-        padding="9px 15px 0 15px"
-      />
-      <Tab
-        label="企業情報"
-        value="company"
-        label-position="top"
-        padding="9px 15px 0 15px"
-      />
-      <Tab
-        label="採用情報"
-        value="recruit"
-        label-position="top"
-        padding="9px 15px 0 15px"
-      />
-      <Tab
-        label="お問い合わせ"
-        value="contact"
-        label-position="top"
-        padding="9px 15px 0 15px"
-      />
-    </Tabs>
+      {{ pages[key].title }}
+    </div>
   </div>
 </template>
 
@@ -55,13 +21,16 @@ export default {
     Tab
   },
   computed: {
-    tabValue() {
-      return this.currentOriginPageName
-    },
-    ...mapState(['currentOriginPageName'])
+    ...mapState(['currentOriginPageName']),
+    ...mapState('pages', ['pages']),
+    globalLinkPage() {
+      return Object.keys(this.pages).filter(key => {
+        return key !== 'top'
+      })
+    }
   },
   methods: {
-    onChange: function(value) {
+    click: function(value) {
       this.changePage(value)
     },
     ...mapActions(['changePage'])
@@ -71,8 +40,19 @@ export default {
 
 <style scoped lang="scss">
 .global-navi {
-  font-size: 15px;
+  font-size: 1.5rem;
   font-weight: 'Medium';
   color: #ffffff;
+  display: flex;
+  height: 100%;
+
+  > div {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    cursor: pointer;
+  }
 }
 </style>
