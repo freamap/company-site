@@ -1,7 +1,7 @@
 <template>
   <button
     :style="buttonStyle"
-    class="button"
+    :class="buttonClass"
     @click="click"
   >
     <slot />
@@ -13,6 +13,16 @@ export default {
   props: {
     height: {
       type: String,
+      default: '46px',
+      required: false
+    },
+    padding: {
+      type: String,
+      default: '',
+      required: false
+    },
+    type: {
+      type: String,
       default: '',
       required: false
     }
@@ -20,7 +30,14 @@ export default {
   computed: {
     buttonStyle() {
       return {
+        padding: this.padding,
         height: this.height
+      }
+    },
+    buttonClass() {
+      return {
+        button: true,
+        line: this.type === 'line'
       }
     }
   },
@@ -37,15 +54,18 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 46px;
   font-size: 1.5rem;
   cursor: pointer;
   outline: 0;
   border-radius: 2px;
   box-sizing: border-box;
-  padding: 0 28px;
+  background: $primary;
   color: #ffffff;
-  background: rgba(0, 0, 0, 0);
-  border: 1px solid #ffffff;
+  border: none;
+
+  &.line {
+    background: rgba(0, 0, 0, 0);
+    border: 1px solid #ffffff;
+  }
 }
 </style>

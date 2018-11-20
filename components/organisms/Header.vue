@@ -16,7 +16,11 @@
         株式会社フリーマップのウェブサイトへようこそ！ わたしたちは、”個人の時代”に生きる人々のワーク & ライフに貢献するデジタルテクノロジーが得意な会社です。
       </div>
       <div class="more">
-        <Button @click="moreButtonOnClick">
+        <Button
+          padding="0 28px"
+          type="line"
+          @click="moreButtonOnClick"
+        >
           さらに詳しく
         </Button>
       </div>

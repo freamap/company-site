@@ -3,30 +3,51 @@
     <div class="title">
       ニュース
     </div>
-    <div
-      v-for="detail in news"
-      :key="detail.id"
-      class="contents"
-    >
-      <div class="update">
-        {{ detail.update }}
+    <div class="contents">
+      <div
+        v-for="detail in news"
+        :key="detail.id"
+        class="content"
+      >
+        <div class="update">
+          {{ detail.update }}
+        </div>
+        <div class="description">
+          {{ detail.description }}
+        </div>
       </div>
-      <div class="description">
-        {{ detail.description }}
-      </div>
+    </div>
+    <div class="more-news-button">
+      <Button
+        padding="0 35px"
+        @click="moreButtonOnClick"
+      >
+        もっと見る
+      </Button>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import Button from '~/components/atoms/Button.vue'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   asyncData(context) {
     context.store.dispatch('setPage', context.store.state.pages.pages.top.url)
   },
+  components: {
+    Button
+  },
   computed: {
+    ...mapState('pages', ['pages']),
     ...mapState('news', ['news'])
+  },
+  methods: {
+    moreButtonOnClick: function(event) {
+      this.changePage(this.pages.philosophy.url)
+    },
+    ...mapActions(['changePage'])
   }
 }
 </script>
@@ -38,23 +59,34 @@ export default {
   .title {
     font-weight: bold;
     font-size: 1.8rem;
+    margin-bottom: 54px;
+    margin-left: -3px;
   }
 
-  .contents {
+  > .contents {
+    .content {
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      font-size: 1.5rem;
+      border-top: 1px solid #e8e9ea;
+      height: 138px;
+
+      .update {
+        margin-right: 75px;
+      }
+
+      &:last-child {
+        border-bottom: 1px solid #e8e9ea;
+      }
+    }
+  }
+
+  .more-news-button {
+    width: 100%;
     display: flex;
-    align-items: center;
-    padding: 0 20px;
-    font-size: 1.5rem;
-    border-top: 1px solid #e8e9ea;
-    height: 138px;
-
-    &:last-of-type {
-      border-bottom: 1px solid #e8e9ea;
-    }
-
-    .update {
-      margin-right: 75px;
-    }
+    justify-content: center;
+    margin-top: 70px;
   }
 }
 </style>
