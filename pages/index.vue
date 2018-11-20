@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="top">
     <div class="title">
       ニュース
     </div>
@@ -32,8 +32,29 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.title {
-  font-weight: bold;
-  font-size: 1.8rem;
+.top {
+  padding: 90px 140px 120px 140px;
+
+  .title {
+    font-weight: bold;
+    font-size: 1.8rem;
+  }
+
+  .contents {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    font-size: 1.5rem;
+    border-top: 1px solid #e8e9ea;
+    height: 138px;
+
+    &:last-of-type {
+      border-bottom: 1px solid #e8e9ea;
+    }
+
+    .update {
+      margin-right: 75px;
+    }
+  }
 }
 </style>
