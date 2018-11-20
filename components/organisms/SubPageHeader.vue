@@ -64,6 +64,13 @@ export default {
     Logo,
     AngleRight
   },
+  props: {
+    contentsBox: {
+      type: Boolean,
+      default: true,
+      required: false
+    }
+  },
   computed: {
     pageContents() {
       return this.pages[this.currentOriginPageName]
@@ -82,7 +89,7 @@ export default {
         }
       }
 
-      if (this.currentOriginPageName === 'blog') {
+      if (this.contentsBox === false) {
         return {
           ...style,
           paddingBottom: '0px'
