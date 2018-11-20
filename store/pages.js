@@ -8,7 +8,7 @@ export const state = () => ({
       url: '/philosophy',
       title: '企業理念',
       subTitle: 'philosophy',
-      explain:
+      description:
         'フリーマップという社名の由来は、free + dream + map を組み合わせた造語です。テクノロジーの発展が一巡した今、わたしたちが考えること。'
     },
     works: {

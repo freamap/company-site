@@ -12,7 +12,7 @@
       <div class="title">
         BE YOURSELF, BE LIKE YOU.
       </div>
-      <div class="explain">
+      <div class="description">
         株式会社フリーマップのウェブサイトへようこそ！ わたしたちは、”個人の時代”に生きる人々のワーク & ライフに貢献するデジタルテクノロジーが得意な会社です。
       </div>
       <div class="more">
@@ -119,7 +119,7 @@ export default {
       text-align: center;
     }
 
-    .explain {
+    .description {
       margin-top: 26px;
       font-size: 1.5rem;
       text-align: center;

@@ -10,8 +10,8 @@
       <div class="sub-title">
         {{ subTitle }}
       </div>
-      <div class="explain">
-        {{ explain }}
+      <div class="description">
+        {{ description }}
       </div>
     </div>
   </div>
@@ -30,7 +30,7 @@ export default {
       default: '',
       required: false
     },
-    explain: {
+    description: {
       type: String,
       default: 'center',
       required: false
@@ -74,7 +74,7 @@ export default {
     font-family: 'Poppins';
   }
 
-  .explain {
+  .description {
     margin-top: 29px;
     text-align: center;
     font-size: 1.3rem;

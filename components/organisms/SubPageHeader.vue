@@ -23,10 +23,10 @@
           {{ pageContents.subTitle }}
         </div>
         <div
-          v-show="pageContents.explain"
-          class="explain"
+          v-show="pageContents.description"
+          class="description"
         >
-          {{ pageContents.explain }}
+          {{ pageContents.description }}
         </div>
       </div>
       <div class="topic-path">
@@ -82,7 +82,7 @@ export default {
         paddingBottom: '50px'
       }
 
-      if (this.pageContents.explain) {
+      if (this.pageContents.description) {
         return {
           ...style,
           maxHeight: '660px'
@@ -186,7 +186,7 @@ export default {
       font-family: 'Poppins';
     }
 
-    .explain {
+    .description {
       margin-top: 29px;
       text-align: center;
       font-size: 13px;
