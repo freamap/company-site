@@ -32,6 +32,11 @@ export const state = () => ({
       title: '企業情報',
       subTitle: 'company'
     },
+    news: {
+      url: '/news',
+      title: 'ニュース',
+      subTitle: 'News'
+    },
     recruit: {
       url: '/recruit',
       title: '採用情報',

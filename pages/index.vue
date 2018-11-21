@@ -20,7 +20,7 @@
     <div class="more-news-button">
       <Button
         padding="0 35px"
-        @click="moreButtonOnClick"
+        @click="moreNewsButtonOnClick"
       >
         もっと見る
       </Button>
@@ -44,8 +44,8 @@ export default {
     ...mapState('news', ['news'])
   },
   methods: {
-    moreButtonOnClick: function(event) {
-      this.changePage(this.pages.philosophy.url)
+    moreNewsButtonOnClick: function(event) {
+      this.changePage(this.pages.news.url)
     },
     ...mapActions(['changePage'])
   }
