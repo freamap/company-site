@@ -4,9 +4,8 @@
       {{ news.update }}
     </div>
     <div class="contents">
-      {{ news.contents }}
+      <div v-html="news.contents" />
     </div>
-    news detail {{ $route.params.id }}
   </div>
 </template>
 
@@ -20,7 +19,9 @@ export default {
     )
 
     return {
-      news: context.store.state.news.news[context.params.id]
+      news: context.store.state.news.news.filter(detail => {
+        return Number(detail.id) === Number(context.params.id)
+      })[0]
     }
   }
 }
