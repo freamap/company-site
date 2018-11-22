@@ -52,6 +52,7 @@ export default {
 <style scoped lang="scss">
 .contents-box {
   position: relative;
+  margin-bottom: 140px;
   // transition: margin 0.4s ease-in-out;
 }
 </style>
