@@ -103,7 +103,7 @@ export default {
       let topics = []
       path.forEach((topic, index) => {
         if (topics.length > 0) {
-          topics.push(topics[index - 1].subPage[topic])
+          topics.push(topics[index - 1].details[topic])
         } else {
           topics.push(this.pages[topic])
         }
