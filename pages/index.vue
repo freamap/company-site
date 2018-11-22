@@ -3,7 +3,7 @@
     <div class="title">
       ニュース
     </div>
-    <News />
+    <News :length="3"/>
     <div class="more-news-button">
       <Button
         padding="0 35px"
