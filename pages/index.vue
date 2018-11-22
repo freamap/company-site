@@ -3,20 +3,7 @@
     <div class="title">
       ニュース
     </div>
-    <div class="contents">
-      <div
-        v-for="detail in news"
-        :key="detail.id"
-        class="content"
-      >
-        <div class="update">
-          {{ detail.update }}
-        </div>
-        <div class="description">
-          {{ detail.description }}
-        </div>
-      </div>
-    </div>
+    <News />
     <div class="more-news-button">
       <Button
         padding="0 35px"
@@ -30,6 +17,7 @@
 
 <script>
 import Button from '~/components/atoms/Button.vue'
+import News from '~/components/organisms/News.vue'
 import { mapState, mapActions } from 'vuex'
 
 export default {
@@ -37,11 +25,11 @@ export default {
     context.store.dispatch('setPage', context.store.state.pages.pages.top.url)
   },
   components: {
-    Button
+    Button,
+    News
   },
   computed: {
-    ...mapState('pages', ['pages']),
-    ...mapState('news', ['news'])
+    ...mapState('pages', ['pages'])
   },
   methods: {
     moreNewsButtonOnClick: function(event) {
@@ -61,25 +49,6 @@ export default {
     font-size: 1.8rem;
     margin-bottom: 54px;
     margin-left: -3px;
-  }
-
-  > .contents {
-    .content {
-      display: flex;
-      align-items: center;
-      padding: 0 20px;
-      font-size: 1.5rem;
-      border-top: 1px solid #e8e9ea;
-      height: 138px;
-
-      .update {
-        margin-right: 75px;
-      }
-
-      &:last-child {
-        border-bottom: 1px solid #e8e9ea;
-      }
-    }
   }
 
   .more-news-button {
