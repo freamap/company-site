@@ -39,7 +39,8 @@ export default {
     contentsBoxPaddingStyle() {
       if (this.box) {
         return {
-          background: '#ffffff'
+          background: '#ffffff',
+          border: 'solid 1px #e8e9ea'
         }
       }
       return {}
