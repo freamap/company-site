@@ -4,15 +4,19 @@ export const state = () => ({
       id: 1,
       update: '2016/01/01',
       title: 'ブログタイトル１',
-      thumbnail: '',
-      description: 'ブログ説明１'
+      thumbnail:
+        'https://freamap.co.jp/wp-content/themes/affinger5/images/no-img.png',
+      description: 'ブログ説明１',
+      category: 'server'
     },
     {
       id: 2,
       update: '2016/01/01',
       title: 'ブログタイトル２',
-      thumbnail: '',
-      description: 'ブログ説明２'
+      thumbnail:
+        'https://freamap.co.jp/wp-content/uploads/2018/10/scratch-eyecatch-150x150.png',
+      description: 'ブログ説明２',
+      category: 'プログラミング'
     },
     {
       id: 3,

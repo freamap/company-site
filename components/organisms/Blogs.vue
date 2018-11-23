@@ -10,6 +10,7 @@
         :description="blog.description"
         :update="blog.update"
         :thumbnail="blog.thumbnail"
+        :category="blog.category"
       />
     </div>
   </div>
