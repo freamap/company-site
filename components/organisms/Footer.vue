@@ -1,21 +1,38 @@
 <template>
   <div class="footer">
     <div class="logo">
-      <img src="~/assets/images/freamap-logo-horiz--color.svg">
+      <img 
+        src="~/assets/images/freamap-logo-horiz--color.svg"
+        @click="moreButtonOnClick" >
     </div>
-    <div class="menu">
-      <div>企業理念</div>
-      <div>開発実績</div>
-      <div>ブログ</div>
-      <div>企業情報</div>
-      <div>採用情報</div>
-      <div>お問い合わせ</div>
+    <div>
+      <FooterGlobalNavi/>
     </div>
     <div class="copyright">
       ©︎ 2018 freamap Inc.
     </div>
   </div>
 </template>
+
+<script>
+import FooterGlobalNavi from '~/components/molecules/FooterGlobalNavi.vue'
+import { mapState, mapActions } from 'vuex'
+
+export default {
+  components: {
+    FooterGlobalNavi
+  },
+  computed: {
+    ...mapState('pages', ['pages'])
+  },
+  methods: {
+    moreButtonOnClick: function(event) {
+      this.changePage(this.pages.top.url)
+    },
+    ...mapActions(['changePage'])
+  }
+}
+</script>
 
 <style scoped lang="scss">
 .footer {
@@ -29,18 +46,6 @@
   height: 43.95px;
   margin-top: 60px;
   margin-bottom: 50.05px;
-}
-
-.menu {
-  color: #191919;
-  font-size: 15px;
-  font-family: Proxima Nova;
-  display: flex;
-
-  > div {
-    margin-left: 25px;
-    margin-right: 25px;
-  }
 }
 
 .copyright {
