@@ -35,13 +35,7 @@ export const state = () => ({
     news: {
       url: '/news',
       title: 'ニュース',
-      subTitle: 'News',
-      details: {
-        1: {
-          url: '/news/1',
-          title: 'ニュース1'
-        }
-      }
+      subTitle: 'News'
     },
     recruit: {
       url: '/recruit',
