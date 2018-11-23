@@ -36,10 +36,11 @@ export default {
   width: 100%;
   flex-wrap: wrap;
   justify-content: flex-start;
+  margin: -10px 0;
 
   .blog {
     flex-basis: calc((100% - 40px) / 3);
-    height: 300px;
+    height: 400px;
     margin-bottom: 20px;
 
     &:nth-of-type(3n + 2) {

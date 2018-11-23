@@ -12,14 +12,16 @@
         {{ category }}
       </div>
     </div>
-    <div class="title">
-      {{ title }}
-    </div>
-    <div class="description">
-      {{ description }}
-    </div>
-    <div class="update">
-      {{ update }}
+    <div class="content">
+      <div class="title">
+        {{ title }}
+      </div>
+      <div class="description">
+        {{ description }}
+      </div>
+      <div class="update">
+        {{ update }}
+      </div>
     </div>
   </div>
 </template>
@@ -83,7 +85,7 @@ export default {
   border: solid 1px #e8e9ea;
 
   .thumbnail {
-    flex-basis: 50%;
+    flex-basis: 60%;
     display: flex;
     justify-content: center;
     align-content: center;
@@ -91,8 +93,8 @@ export default {
 
     img {
       object-fit: contain;
-      width: 100%;
-      height: 100%;
+      max-width: 100%;
+      max-height: 100%;
     }
 
     .category {
@@ -106,17 +108,28 @@ export default {
     }
   }
 
-  .title {
-    flex-basis: 20px;
-  }
+  > .content {
+    display: flex;
+    flex-basis: 40%;
+    flex-direction: column;
+    padding: 30px;
 
-  .description {
-    flex-basis: 20px;
-    flex-grow: 1;
-  }
+    .title {
+      flex-basis: 20px;
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
 
-  .update {
-    flex-basis: 20px;
+    .description {
+      flex-basis: 20px;
+      flex-grow: 1;
+      font-size: 1.3rem;
+    }
+
+    .update {
+      flex-basis: 20px;
+      font-size: 1.3rem;
+    }
   }
 }
 </style>
