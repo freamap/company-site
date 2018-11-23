@@ -1,5 +1,5 @@
 <template>
-  <div class="news">
+  <div class="news-page">
     <News />
   </div>
 </template>
@@ -20,7 +20,7 @@ export default {
 </script>
 
 <style>
-.news {
+.news-page {
   padding: 90px 140px 120px 140px;
 }
 </style>

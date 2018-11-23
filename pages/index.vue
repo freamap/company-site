@@ -1,5 +1,5 @@
 <template>
-  <div class="top">
+  <div class="top-page">
     <div class="title">
       ニュース
     </div>
@@ -41,7 +41,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.top {
+.top-page {
   padding: 90px 140px 120px 140px;
 
   .title {

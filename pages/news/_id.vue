@@ -1,5 +1,5 @@
 <template>
-  <div class="news-detail">
+  <div class="news-detail-page">
     <div class="update">
       {{ news.update }}
     </div>
@@ -33,7 +33,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.news-detail {
+.news-detail-page {
   padding: 90px 140px 120px 140px;
   display: flex;
   font-size: 1.5rem;
