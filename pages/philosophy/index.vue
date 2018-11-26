@@ -1,7 +1,7 @@
 <template>
   <div class="philosophy-page">
     <div class="image">
-      <img src="">
+      <img src="~/assets/images/philosophy-cover.png">
     </div>
     <div class="content">
       <div class="philosophy">
@@ -62,7 +62,7 @@ export default {
 
     img {
       width: 100%;
-      height: 300px;
+      object-fit: contain;
     }
   }
 
