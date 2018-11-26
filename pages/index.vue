@@ -22,8 +22,16 @@ import { mapState, mapActions } from 'vuex'
 
 export default {
   asyncData(context) {
-    let topicPath = []
-    context.store.dispatch('setPage', topicPath)
+    let topicPath = [
+      {
+        url: '',
+        title: context.store.state.pages.pages.top.title
+      }
+    ]
+    context.store.dispatch('setPage', {
+      url: context.route.fullPath,
+      topicPath: topicPath
+    })
   },
   components: {
     Button,

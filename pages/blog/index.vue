@@ -17,7 +17,10 @@ export default {
         title: context.store.state.pages.pages.blog.title
       }
     ]
-    context.store.dispatch('setPage', topicPath)
+    context.store.dispatch('setPage', {
+      url: context.route.fullPath,
+      topicPath: topicPath
+    })
   },
   components: {
     Blogs

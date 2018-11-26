@@ -16,7 +16,10 @@ export default {
         title: context.store.state.pages.pages.recruit.title
       }
     ]
-    context.store.dispatch('setPage', topicPath)
+    context.store.dispatch('setPage', {
+      url: context.route.fullPath,
+      topicPath: topicPath
+    })
   }
 }
 </script>

@@ -15,9 +15,9 @@ export const actions = {
     this.app.router.push(url)
   },
 
-  setPage(context, topicPath) {
+  setPage(context, pageInfo) {
     let originName = 'top'
-    let url = this.app.router.currentRoute.fullPath
+    let url = pageInfo.url
 
     if (url !== context.state.pages.pages.top.url) {
       originName = url.split('/')[1]
@@ -25,7 +25,7 @@ export const actions = {
 
     context.commit('change_page', {
       originName: originName,
-      topicPath: topicPath
+      topicPath: pageInfo.topicPath
     })
   }
 }
