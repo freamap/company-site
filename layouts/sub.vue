@@ -34,7 +34,10 @@ export default {
       return true
     },
     upContents() {
-      if (this.currentOriginPageName === 'blog') {
+      if (
+        this.currentOriginPageName === 'blog' ||
+        this.currentOriginPageName === 'works'
+      ) {
         return false
       }
 

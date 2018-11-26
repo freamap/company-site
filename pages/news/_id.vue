@@ -21,12 +21,24 @@
 export default {
   layout: 'sub',
   asyncData(context) {
-    context.store.dispatch('setPage', context.route.fullPath)
+    let news = context.store.state.news.news.filter(detail => {
+      return Number(detail.id) === Number(context.params.id)
+    })[0]
+
+    let topicPath = [
+      {
+        url: context.store.state.pages.pages.news.url,
+        title: context.store.state.pages.pages.news.title
+      },
+      {
+        url: context.route.fullPath,
+        title: news.title
+      }
+    ]
+    context.store.dispatch('setPage', topicPath)
 
     return {
-      news: context.store.state.news.news.filter(detail => {
-        return Number(detail.id) === Number(context.params.id)
-      })[0]
+      news: news
     }
   }
 }

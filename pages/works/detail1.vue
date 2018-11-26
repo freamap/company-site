@@ -10,10 +10,9 @@ import { mapActions } from 'vuex'
 export default {
   layout: 'sub',
   asyncData(context) {
-    context.store.dispatch(
-      'setPage',
-      context.store.state.pages.pages.works.subPage.detail1.url
-    )
+    let topicPath = []
+    topicPath.push(context.store.state.pages.pages.works.title)
+    context.store.dispatch('setPage', topicPath)
   }
 }
 </script>

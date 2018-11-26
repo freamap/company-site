@@ -10,10 +10,13 @@ import { mapActions } from 'vuex'
 export default {
   layout: 'sub',
   asyncData(context) {
-    context.store.dispatch(
-      'setPage',
-      context.store.state.pages.pages.recruit.url
-    )
+    let topicPath = [
+      {
+        url: context.store.state.pages.pages.recruit.url,
+        title: context.store.state.pages.pages.recruit.title
+      }
+    ]
+    context.store.dispatch('setPage', topicPath)
   }
 }
 </script>

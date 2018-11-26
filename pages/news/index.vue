@@ -11,7 +11,13 @@ import { mapActions } from 'vuex'
 export default {
   layout: 'sub',
   asyncData(context) {
-    context.store.dispatch('setPage', context.store.state.pages.pages.news.url)
+    let topicPath = [
+      {
+        url: context.store.state.pages.pages.news.url,
+        title: context.store.state.pages.pages.news.title
+      }
+    ]
+    context.store.dispatch('setPage', topicPath)
   },
   components: {
     News
