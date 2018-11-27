@@ -9,7 +9,7 @@
       <FooterGlobalNavi/>
     </div>
     <div class="copyright">
-      ©︎ 2018 freamap Inc.
+      ©︎ 2018 freamap Co.,Ltd
     </div>
   </div>
 </template>
@@ -42,11 +42,14 @@ export default {
 }
 
 .logo {
-  width: 44.2px;
-  height: 43.95px;
+  width: 44px;
   margin-top: 60px;
-  margin-bottom: 50.05px;
+  margin-bottom: 50px;
   cursor: pointer;
+
+  > img {
+    object-fit: contain;
+  }
 }
 
 .copyright {
