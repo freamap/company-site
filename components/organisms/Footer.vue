@@ -46,6 +46,7 @@ export default {
   height: 43.95px;
   margin-top: 60px;
   margin-bottom: 50.05px;
+  cursor: pointer;
 }
 
 .copyright {

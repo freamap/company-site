@@ -42,6 +42,7 @@ export default {
   > div {
     margin-left: 25px;
     margin-right: 25px;
+    cursor: pointer;
   }
 }
 </style>
