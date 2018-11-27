@@ -97,21 +97,36 @@ export default {
       }
       return style
     },
-    topicPath() {
-      let path = this.url.split('/').filter(urlPath => urlPath)
+    // topicPath() {
+    //   let path = this.url.split('/').filter(urlPath => urlPath)
 
-      let topics = []
-      path.forEach((topic, index) => {
-        if (topics.length > 0) {
-          topics.push(topics[index - 1].subPage[topic])
-        } else {
-          topics.push(this.pages[topic])
-        }
-      })
-      return topics
-    },
-    ...mapState(['url', 'currentOriginPageName']),
-    ...mapState('pages', ['pages'])
+    //   let topics = []
+    //   topics.push(this.pages[path[0]])
+
+    //   if (path.length > 1) {
+    //     let details
+    //     switch (path[0]) {
+    //       case 'news':
+    //         details = this.news
+    //         break
+    //     }
+    //     let detail = details.filter(detail => {
+    //       return Number(detail.id) === Number(path[1])
+    //     })
+
+    //     if (detail.length > 0) {
+    //       topics.push({
+    //         ...detail[0],
+    //         url: this.url
+    //       })
+    //     }
+    //   }
+
+    //   return topics
+    // },
+    ...mapState(['currentOriginPageName', 'topicPath']),
+    ...mapState('pages', ['pages']),
+    ...mapState('news', ['news'])
   },
   methods: {
     pathClick(url) {

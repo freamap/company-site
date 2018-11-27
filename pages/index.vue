@@ -1,60 +1,70 @@
 <template>
-  <div class="top">
+  <div class="top-page">
     <div class="title">
       ニュース
     </div>
-    <div
-      v-for="detail in news"
-      :key="detail.id"
-      class="contents"
-    >
-      <div class="update">
-        {{ detail.update }}
-      </div>
-      <div class="description">
-        {{ detail.description }}
-      </div>
+    <News :length="3"/>
+    <div class="more-news-button">
+      <Button
+        padding="0 35px"
+        @click="moreNewsButtonOnClick"
+      >
+        もっと見る
+      </Button>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import Button from '~/components/atoms/Button.vue'
+import News from '~/components/organisms/News.vue'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   asyncData(context) {
-    context.store.dispatch('setPage', context.store.state.pages.pages.top.url)
+    let topicPath = [
+      {
+        url: '',
+        title: context.store.state.pages.pages.top.title
+      }
+    ]
+    context.store.dispatch('setPage', {
+      url: context.route.fullPath,
+      topicPath: topicPath
+    })
+  },
+  components: {
+    Button,
+    News
   },
   computed: {
-    ...mapState('news', ['news'])
+    ...mapState('pages', ['pages'])
+  },
+  methods: {
+    moreNewsButtonOnClick: function(event) {
+      this.changePage(this.pages.news.url)
+    },
+    ...mapActions(['changePage'])
   }
 }
 </script>
 
 <style scoped lang="scss">
-.top {
+.top-page {
   padding: 90px 140px 120px 140px;
 
   .title {
     font-weight: bold;
     font-size: 1.8rem;
+    margin-bottom: 54px;
+    margin-left: -3px;
   }
 
-  .contents {
+  .more-news-button {
+    width: 100%;
     display: flex;
-    align-items: center;
-    padding: 0 20px;
-    font-size: 1.5rem;
-    border-top: 1px solid #e8e9ea;
-    height: 138px;
-
-    &:last-of-type {
-      border-bottom: 1px solid #e8e9ea;
-    }
-
-    .update {
-      margin-right: 75px;
-    }
+    justify-content: center;
+    margin-top: 70px;
   }
 }
 </style>

@@ -15,9 +15,9 @@ export const state = () => ({
       url: '/works',
       title: '開発実績',
       subTitle: 'works',
-      subPage: {
-        detail1: {
-          url: '/works/detail1',
+      details: {
+        1: {
+          url: '/works/1',
           title: '開発実績１'
         }
       }
@@ -31,6 +31,11 @@ export const state = () => ({
       url: '/company',
       title: '企業情報',
       subTitle: 'company'
+    },
+    news: {
+      url: '/news',
+      title: 'ニュース',
+      subTitle: 'News'
     },
     recruit: {
       url: '/recruit',

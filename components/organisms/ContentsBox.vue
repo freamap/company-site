@@ -39,7 +39,8 @@ export default {
     contentsBoxPaddingStyle() {
       if (this.box) {
         return {
-          background: '#ffffff'
+          background: '#ffffff',
+          border: 'solid 1px #e8e9ea'
         }
       }
       return {}
@@ -51,6 +52,7 @@ export default {
 <style scoped lang="scss">
 .contents-box {
   position: relative;
+  margin-bottom: 140px;
   // transition: margin 0.4s ease-in-out;
 }
 </style>
