@@ -7,18 +7,21 @@
     >
       <nuxt/>
     </ContentsBox>
+    <Footer/>
   </div>
 </template>
 
 <script>
 import SubPageHeader from '~/components/organisms/SubPageHeader.vue'
 import ContentsBox from '~/components/organisms/ContentsBox.vue'
+import Footer from '~/components/organisms/Footer.vue'
 import { mapState } from 'vuex'
 
 export default {
   components: {
     SubPageHeader,
-    ContentsBox
+    ContentsBox,
+    Footer
   },
   computed: {
     ...mapState(['currentOriginPageName']),
