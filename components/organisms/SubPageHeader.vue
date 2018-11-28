@@ -8,7 +8,7 @@
         <Logo />
       </div>
       <div class="global-navi">
-        <GlobalNavi />
+        <SubPageGlobalNavi />
       </div>
     </div>
     <div class="contents">
@@ -17,59 +17,63 @@
           <img src="~/assets/images/icon-freamap.svg">
         </div>
         <div class="title">
-          {{ title[0] }}
+          {{ pageContents.title }}
         </div>
         <div class="sub-title">
-          {{ title[1] }}
+          {{ pageContents.subTitle }}
         </div>
         <div
-          v-show="title[2]"
-          class="explain"
+          v-show="pageContents.description"
+          class="description"
         >
-          {{ title[2] }}
+          {{ pageContents.description }}
         </div>
       </div>
       <div class="topic-path">
-        <span><a @click="pathClick">TOP</a></span>
-        <span>></span>
-        <span><a @click="pathClick">ブログ</a></span>
+        <div><a @click="pathClick('/')">TOP</a></div>
+        <div
+          v-for="topic in topicPath"
+          :key="topic.url"
+          class="path"
+        >
+          <div class="topic-angle">
+            <AngleRight />
+          </div>
+          <div><a @click="pathClick(topic.url)">{{ topic.title }}</a></div>
+        </div>
       </div>
+    </div>
+    <div class="gooey left">
+      <img src="~/assets/images/gooey--left.svg">
+    </div>
+    <div class="gooey right">
+      <img src="~/assets/images/gooey--right.svg">
     </div>
   </div>
 </template>
 
 <script>
-import GlobalNavi from '~/components/molecules/GlobalNavi.vue'
+import SubPageGlobalNavi from '~/components/molecules/SubPageGlobalNavi.vue'
 import Logo from '~/components/molecules/Logo.vue'
+import AngleRight from '~/assets/icons/AngleRight.vue'
 import { mapState, mapActions } from 'vuex'
 
 export default {
   components: {
-    GlobalNavi,
-    Logo
+    SubPageGlobalNavi,
+    Logo,
+    AngleRight
+  },
+  props: {
+    upContents: {
+      type: Boolean,
+      default: true,
+      required: false
+    }
   },
   computed: {
-    title() {
-      switch (this.currentOriginPageName) {
-        case 'philosophy':
-          return [
-            '企業理念',
-            'philosophy',
-            'フリーマップという社名の由来は、free + dream + map を組み合わせた造語です。テクノロジーの発展が一巡した今、わたしたちが考えること。'
-          ]
-        case 'works':
-          return ['開発実績', 'works', '']
-        case 'blog':
-          return ['ブログ', 'blog', '']
-        case 'company':
-          return ['企業情報', 'company', '']
-        case 'recruit':
-          return ['採用情報', 'recruit', '']
-        case 'contact':
-          return ['お問い合わせ', 'contact', '']
-        default:
-          return ['', '', '']
-      }
+    pageContents() {
+      return this.pages[this.currentOriginPageName]
     },
 
     subPageHeaderStyle() {
@@ -78,14 +82,14 @@ export default {
         paddingBottom: '50px'
       }
 
-      if (this.title[2]) {
+      if (this.pageContents.description) {
         return {
           ...style,
           maxHeight: '660px'
         }
       }
 
-      if (this.currentOriginPageName === 'blog') {
+      if (this.upContents === false) {
         return {
           ...style,
           paddingBottom: '0px'
@@ -93,11 +97,40 @@ export default {
       }
       return style
     },
-    ...mapState(['currentOriginPageName'])
+    // topicPath() {
+    //   let path = this.url.split('/').filter(urlPath => urlPath)
+
+    //   let topics = []
+    //   topics.push(this.pages[path[0]])
+
+    //   if (path.length > 1) {
+    //     let details
+    //     switch (path[0]) {
+    //       case 'news':
+    //         details = this.news
+    //         break
+    //     }
+    //     let detail = details.filter(detail => {
+    //       return Number(detail.id) === Number(path[1])
+    //     })
+
+    //     if (detail.length > 0) {
+    //       topics.push({
+    //         ...detail[0],
+    //         url: this.url
+    //       })
+    //     }
+    //   }
+
+    //   return topics
+    // },
+    ...mapState(['currentOriginPageName', 'topicPath']),
+    ...mapState('pages', ['pages']),
+    ...mapState('news', ['news'])
   },
   methods: {
-    pathClick(event) {
-      this.changePage('blog')
+    pathClick(url) {
+      this.changePage(url)
     },
     ...mapActions(['changePage'])
   }
@@ -112,6 +145,7 @@ export default {
   flex-direction: column;
   background-color: $primary;
   transition: max-height 0.4s ease-in-out;
+  position: relative;
 
   .head {
     height: 72px;
@@ -167,7 +201,7 @@ export default {
       font-family: 'Poppins';
     }
 
-    .explain {
+    .description {
       margin-top: 29px;
       text-align: center;
       font-size: 13px;
@@ -176,6 +210,7 @@ export default {
 
     .topic-path {
       position: absolute;
+      display: flex;
       bottom: 25px;
       left: 0;
       color: #ffffff;
@@ -189,10 +224,43 @@ export default {
         font-weight: bold;
       }
 
-      :nth-child(n + 2) {
-        margin-left: 20px;
+      .path {
+        display: flex;
+
+        > :nth-child(n) {
+          margin-left: 20px;
+        }
+      }
+
+      .topic-angle {
+        width: 19px;
+
+        svg {
+          fill: currentColor;
+        }
       }
     }
+  }
+
+  .gooey {
+    position: absolute;
+    pointer-events: none;
+  }
+
+  .left {
+    @extend .gooey;
+    top: 0;
+    left: 0;
+    transform: translate(-47%, 10%);
+    width: 60%;
+  }
+
+  .right {
+    @extend .gooey;
+    top: 0;
+    right: 0;
+    transform: translate(56%, -32%);
+    width: 65%;
   }
 }
 </style>

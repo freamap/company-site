@@ -1,6 +1,6 @@
 <template>
   <div>
-    recruit page
+    works detail page
   </div>
 </template>
 
@@ -12,8 +12,8 @@ export default {
   asyncData(context) {
     let topicPath = [
       {
-        url: context.store.state.pages.pages.recruit.url,
-        title: context.store.state.pages.pages.recruit.title
+        url: context.store.state.pages.pages.works.url,
+        title: context.store.state.pages.pages.works.title
       }
     ]
     context.store.dispatch('setPage', {

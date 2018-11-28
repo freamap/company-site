@@ -1,65 +1,70 @@
 <template>
-  <section class="container">
-    <div>
-      <logo/>
-      <h1 class="title">
-        freamap-site
-      </h1>
-      <h2 class="subtitle">
-        My incredible Nuxt.js project
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green">Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey">GitHub</a>
-      </div>
+  <div class="top-page">
+    <div class="title">
+      ニュース
     </div>
-  </section>
+    <News :length="3"/>
+    <div class="more-news-button">
+      <Button
+        padding="0 35px"
+        @click="moreNewsButtonOnClick"
+      >
+        もっと見る
+      </Button>
+    </div>
+  </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import Button from '~/components/atoms/Button.vue'
+import News from '~/components/organisms/News.vue'
+import { mapState, mapActions } from 'vuex'
 
 export default {
+  asyncData(context) {
+    let topicPath = [
+      {
+        url: '',
+        title: context.store.state.pages.pages.top.title
+      }
+    ]
+    context.store.dispatch('setPage', {
+      url: context.route.fullPath,
+      topicPath: topicPath
+    })
+  },
   components: {
-    Logo
+    Button,
+    News
+  },
+  computed: {
+    ...mapState('pages', ['pages'])
+  },
+  methods: {
+    moreNewsButtonOnClick: function(event) {
+      this.changePage(this.pages.news.url)
+    },
+    ...mapActions(['changePage'])
   }
 }
 </script>
 
-<style>
-.container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
+<style scoped lang="scss">
+.top-page {
+  padding: 90px 140px 120px 140px;
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
+  .title {
+    font-weight: bold;
+    font-size: 1.8rem;
+    margin-bottom: 54px;
+    margin-left: -3px;
+  }
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+  .more-news-button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 70px;
+  }
 }
 </style>
