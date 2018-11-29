@@ -15,7 +15,7 @@
       <div class="workplace">
         勤務地
       </div>
-      <div>
+      <div class="fee">
         報酬
       </div>
     </div>  
@@ -91,11 +91,15 @@ export default {
 
     .occupation {
       margin-left: 20px;
-      margin-right: 291px;
+      flex-basis: 32%;
     }
 
     .workplace {
-      margin-right: 236px;
+      flex-basis: 28%;
+    }
+
+    .fee {
+      flex-basis: 40%;
     }
   }
 
