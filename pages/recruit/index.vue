@@ -9,10 +9,10 @@
       </div>
     </div>
     <div class="list">
-      <div>
+      <div class="occupation">
         職種
       </div>
-      <div>
+      <div class="workplace">
         勤務地
       </div>
       <div>
@@ -52,8 +52,7 @@ export default {
 <style scoped lang="scss">
 .recruit-page {
   font-family: Noto Sans CJK JP;
-  margin-left: 140px;
-  margin-right: 140px;
+  margin: 90px 140px 120px 140px;
   display: flex;
   flex-direction: column;
 
@@ -88,6 +87,15 @@ export default {
     > div {
       margin-top: 16px;
       margin-bottom: 15px;
+    }
+
+    .occupation {
+      margin-left: 20px;
+      margin-right: 291px;
+    }
+
+    .workplace {
+      margin-right: 236px;
     }
   }
 
