@@ -56,9 +56,12 @@ export default {
   align-items: center;
   box-sizing: content-box;
   font-size: 15px;
+  height: 120px;
+  width: 100%;
 
   .occupation {
-    margin-right: 200px;
+    margin-left: 20px;
+    margin-right: 50px;
   }
 
   .workplace {
@@ -90,10 +93,6 @@ export default {
         fill: currentColor;
       }
     }
-  }
-
-  &:last-child {
-    border-bottom: 1px solid #e8e9ea;
   }
 }
 </style>

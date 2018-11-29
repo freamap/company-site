@@ -102,7 +102,6 @@ export default {
   .contents {
     border-top: 1px solid #e8e9ea;
     border-bottom: 1px solid #e8e9ea;
-    margin-bottom: 121px;
   }
 }
 </style>
