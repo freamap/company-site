@@ -67,13 +67,12 @@ export default {
       font-size: 18px;
       color: #000000;
       font-weight: bold;
-      text-align: left;
     }
 
     .date {
       font-size: 13px;
       color: #767676;
-      text-align: right;
+      margin-left: auto;
     }
   }
 
