@@ -101,8 +101,7 @@ export default {
     }
 
     .fee {
-      margin-right: 55px;
-      flex-basis: 338px;
+      flex-basis: 393px;
       flex-grow: 1;
     }
   }
