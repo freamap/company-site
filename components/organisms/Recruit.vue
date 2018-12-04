@@ -61,19 +61,19 @@ export default {
 
   .occupation {
     margin-left: 20px;
-    flex-basis: 32%;
+    flex-basis: 34%;
   }
 
   .workplace {
-    flex-basis: 28%;
+    flex-basis: 30%;
   }
 
   .fee {
-    flex-basis: 35%;
+    flex-basis: 36%;
   }
 
   .detail-button {
-    flex-basis: 5%;
+    flex-basis: 55px;
     height: 38px;
 
     div {

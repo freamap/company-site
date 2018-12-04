@@ -1,6 +1,6 @@
 <template>
   <div class="recruit-page">
-    <div class="tytle">
+    <div class="title">
       <div class="bold">
         募集職種一覧
       </div>
@@ -56,7 +56,7 @@ export default {
   display: flex;
   flex-direction: column;
 
-  .tytle {
+  .title {
     display: flex;
     margin-top: 55px;
     margin-bottom: 50px;
@@ -91,15 +91,16 @@ export default {
 
     .occupation {
       margin-left: 20px;
-      flex-basis: 32%;
+      flex-basis: 34%;
     }
 
     .workplace {
-      flex-basis: 28%;
+      flex-basis: 30%;
     }
 
     .fee {
-      flex-basis: 40%;
+      margin-right: 55px;
+      flex-basis: 36%;
     }
   }
 
