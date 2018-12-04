@@ -59,8 +59,11 @@ export default {
   height: 120px;
   width: 100%;
 
-  .occupation {
+  :first-child {
     margin-left: 20px;
+  }
+
+  .occupation {
     flex-basis: 317px;
     flex-grow: 1;
   }

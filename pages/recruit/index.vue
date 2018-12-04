@@ -84,13 +84,16 @@ export default {
     width: 100%;
     margin-bottom: 31px;
 
+    :first-child {
+      margin-left: 20px;
+    }
+
     > div {
       margin-top: 16px;
       margin-bottom: 15px;
     }
 
     .occupation {
-      margin-left: 20px;
       flex-basis: 317px;
       flex-grow: 1;
     }
