@@ -84,7 +84,7 @@ export default {
     width: 100%;
     margin-bottom: 31px;
 
-    :first-child {
+    > :first-child {
       margin-left: 20px;
     }
 

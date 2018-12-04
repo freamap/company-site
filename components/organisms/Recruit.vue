@@ -59,7 +59,7 @@ export default {
   height: 120px;
   width: 100%;
 
-  :first-child {
+  > :first-child {
     margin-left: 20px;
   }
 
