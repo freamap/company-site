@@ -11,8 +11,8 @@
       <div class="workplace">
         {{ detail.workplace }}
       </div>
-      <div class="fee">
-        {{ detail.fee }}
+      <div class="payment">
+        {{ detail.payment }}
       </div>
       <div class="detail-button">
         <nuxt-link
@@ -73,7 +73,7 @@ export default {
     flex-grow: 1;
   }
 
-  .fee {
+  .payment {
     flex-basis: 338px;
     flex-grow: 1;
   }

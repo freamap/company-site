@@ -1,7 +1,7 @@
 <template>
   <div class="recruit-page">
-    <div class="title">
-      <div class="bold">
+    <div class="firstLine">
+      <div class="title">
         募集職種一覧
       </div>
       <div class="date">
@@ -15,7 +15,7 @@
       <div class="workplace">
         勤務地
       </div>
-      <div class="fee">
+      <div class="payment">
         報酬
       </div>
     </div>  
@@ -56,13 +56,13 @@ export default {
   display: flex;
   flex-direction: column;
 
-  .title {
+  .firstLine {
     display: flex;
     margin-top: 55px;
     margin-bottom: 50px;
     width: 100%;
 
-    .bold {
+    .title {
       font-size: 18px;
       color: #000000;
       font-weight: bold;
@@ -103,7 +103,7 @@ export default {
       flex-grow: 1;
     }
 
-    .fee {
+    .payment {
       flex-basis: 393px;
       flex-grow: 1;
     }
