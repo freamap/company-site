@@ -91,18 +91,18 @@ export default {
 
     .occupation {
       margin-left: 20px;
-      flex-basis: 317;
+      flex-basis: 317px;
       flex-grow: 1;
     }
 
     .workplace {
-      flex-basis: 275;
+      flex-basis: 275px;
       flex-grow: 1;
     }
 
     .fee {
       margin-right: 55px;
-      flex-basis: 338;
+      flex-basis: 338px;
       flex-grow: 1;
     }
   }
