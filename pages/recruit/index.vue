@@ -50,13 +50,13 @@ export default {
     width: 100%;
 
     .title {
-      font-size: 18px;
+      font-size: 1.8rem;
       color: #000000;
       font-weight: bold;
     }
 
     .date {
-      font-size: 13px;
+      font-size: 1.3rem;
       color: #767676;
       margin-left: auto;
     }

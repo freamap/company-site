@@ -125,6 +125,7 @@ export default {
   background-color: #fafafa;
   min-height: 50px;
   margin-bottom: 30px;
+  font-size: 1.3rem;
 
   > :last-child {
     flex-basis: 393px;
