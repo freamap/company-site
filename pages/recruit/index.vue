@@ -8,20 +8,7 @@
         最終更新日: 2018/06/16
       </div>
     </div>
-    <div class="list">
-      <div class="occupation">
-        職種
-      </div>
-      <div class="workplace">
-        勤務地
-      </div>
-      <div class="payment">
-        報酬
-      </div>
-    </div>  
-    <div class="contents">
-      <Recruit />
-    </div>
+    <Recruit />
   </div>
 </template>
 
@@ -73,45 +60,6 @@ export default {
       color: #767676;
       margin-left: auto;
     }
-  }
-
-  .list {
-    display: flex;
-    color: #191919;
-    font-size: 13px;
-    background-color: #fafafa;
-    height: 50px;
-    width: 100%;
-    margin-bottom: 31px;
-
-    > :first-child {
-      margin-left: 20px;
-    }
-
-    > div {
-      margin-top: 16px;
-      margin-bottom: 15px;
-    }
-
-    .occupation {
-      flex-basis: 317px;
-      flex-grow: 1;
-    }
-
-    .workplace {
-      flex-basis: 275px;
-      flex-grow: 1;
-    }
-
-    .payment {
-      flex-basis: 393px;
-      flex-grow: 1;
-    }
-  }
-
-  .contents {
-    border-top: 1px solid #e8e9ea;
-    border-bottom: 1px solid #e8e9ea;
   }
 }
 </style>
