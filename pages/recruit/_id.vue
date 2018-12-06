@@ -85,7 +85,7 @@ export default {
     flex-wrap: wrap;
 
     > div {
-      height: 102px;
+      min-height: 102px;
       display: flex;
       align-items: center;
       padding: 0 40px;
