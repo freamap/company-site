@@ -28,7 +28,7 @@
         </div>
         <div class="detail-button">
           <nuxt-link
-            :to="{path: '/news/' + detail.id}"
+            :to="{path: '/recruit/' + detail.id}"
             tag="div"
           >
             <ArrowDown />
