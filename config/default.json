@@ -1,5 +1,5 @@
 {
   "db": {
-    "test": "http://localhost"
+    "url": "http://localhost"
   }
 }
