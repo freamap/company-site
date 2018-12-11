@@ -1,5 +1,6 @@
 {
   "db": {
-    "url": "http://localhost2"
+    "url": "http://localhost2",
+    "account": ""
   }
 }
