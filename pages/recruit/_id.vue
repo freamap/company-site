@@ -26,7 +26,7 @@
     </div>
     <div class="apply">
       <Button
-        padding="0 28px"
+        padding="0 43px"
         @click="applyButtonOnClick"
       >
         応募する
