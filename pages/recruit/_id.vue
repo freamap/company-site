@@ -7,28 +7,42 @@
         {{ recruit.occupation }}の募集要件
       </div>
       <div class="date">
-        最終更新日: 2018/06/16
+        最終更新日: {{ recruit.date }}
       </div>
     </div>
     <div class="contents">
       <div>職種</div>
-      <div v-if="recruit.occupation">{{ recruit.occupation }}</div>
+      <div>{{ recruit.occupation }}</div>
       <div>業務内容</div>
-      <div v-if="recruit.businessContent">{{ recruit.businessContent }}</div>
+      <div>{{ recruit.businessContent }}</div>
       <div>勤務地</div>
-      <div v-if="recruit.workplace">{{ recruit.workplace }}</div>
+      <div>{{ recruit.workplace }}</div>
       <div>雇用形態</div>
-      <div v-if="recruit.employmentStatus">{{ recruit.employmentStatus }}</div>
+      <div>{{ recruit.employmentStatus }}</div>
       <div>報酬</div>
-      <div v-if="recruit.payment">{{ recruit.payment }}</div>
+      <div>{{ recruit.payment }}</div>
       <div>求めるスキル</div>
-      <div v-if="recruit.skills">{{ recruit.skills }}</div>
+      <div>{{ recruit.skills? recruit.skills: '-' }}</div>
+    </div>
+    <div class="apply">
+      <Button
+        padding="0 28px"
+        @click="applyButtonOnClick"
+      >
+        応募する
+      </Button>
     </div>
   </div>
 </template>
 
 <script>
+import Button from '~/components/atoms/Button.vue'
+import { mapState, mapActions } from 'vuex'
+
 export default {
+  components: {
+    Button
+  },
   layout: 'sub',
   asyncData(context) {
     let recruit = context.store.state.recruit.recruit.filter(detail => {
@@ -53,6 +67,12 @@ export default {
     return {
       recruit: recruit
     }
+  },
+  methods: {
+    applyButtonOnClick: function(event) {
+      this.changePage(this.pages.contact.url)
+    },
+    ...mapActions(['changePage'])
   }
 }
 </script>
@@ -60,6 +80,10 @@ export default {
 <style lang="scss" scoped>
 .recruit-detail-page {
   padding: 90px 140px 120px 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 
   .firstLine {
     display: flex;
@@ -88,7 +112,7 @@ export default {
       min-height: 102px;
       display: flex;
       align-items: center;
-      padding: 0 40px;
+      padding: 40px;
       border-bottom: solid 1px #e8e9ea;
       font-size: 1.5rem;
 
@@ -122,6 +146,10 @@ export default {
         border-radius: 0 0 0 3px;
       }
     }
+  }
+
+  .apply {
+    margin-top: 70px;
   }
 }
 </style>

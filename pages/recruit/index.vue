@@ -1,13 +1,5 @@
 <template>
   <div class="recruit-page">
-    <div class="firstLine">
-      <div class="title">
-        募集職種一覧
-      </div>
-      <div class="date">
-        最終更新日: 2018/06/16
-      </div>
-    </div>
     <Recruit />
   </div>
 </template>
@@ -42,24 +34,5 @@ export default {
   margin: 90px 140px 120px 140px;
   display: flex;
   flex-direction: column;
-
-  .firstLine {
-    display: flex;
-    margin-top: 55px;
-    margin-bottom: 50px;
-    width: 100%;
-
-    .title {
-      font-size: 1.8rem;
-      color: #000000;
-      font-weight: bold;
-    }
-
-    .date {
-      font-size: 1.3rem;
-      color: #767676;
-      margin-left: auto;
-    }
-  }
 }
 </style>

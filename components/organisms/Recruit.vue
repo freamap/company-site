@@ -1,5 +1,13 @@
 <template>
   <div>
+    <div class="firstLine">
+      <div class="title">
+        募集職種一覧
+      </div>
+      <div class="date">
+        最終更新日: {{ latestUpdate }}
+      </div>
+    </div>
     <div class="content recruit-header">
       <div class="occupation">
         職種
@@ -42,6 +50,7 @@
 <script>
 import { mapState, mapActions } from 'vuex'
 import ArrowDown from '~/assets/icons/ArrowDown.vue'
+import moment from 'moment'
 
 export default {
   components: {
@@ -55,7 +64,16 @@ export default {
     }
   },
   computed: {
-    ...mapState('recruit', ['recruit'])
+    ...mapState('recruit', ['recruit']),
+    latestUpdate() {
+      return this.recruit.reduce(
+        (a, b) =>
+          moment(a.date, 'YYYY/MM/DD').fromNow() <
+          moment(b.date, 'YYYY/MM/DD').fromNow()
+            ? a
+            : b
+      ).date
+    }
   },
   methods: {
     ...mapActions(['changePage'])
@@ -64,6 +82,25 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.firstLine {
+  display: flex;
+  margin-top: 55px;
+  margin-bottom: 50px;
+  width: 100%;
+
+  .title {
+    font-size: 1.8rem;
+    color: #000000;
+    font-weight: bold;
+  }
+
+  .date {
+    font-size: 1.3rem;
+    color: #767676;
+    margin-left: auto;
+  }
+}
+
 .content {
   display: flex;
   box-sizing: content-box;
