@@ -116,11 +116,15 @@ export default {
 
     .title {
       font-family: Poppins;
-      font-size: 5rem;
+      font-size: 3rem;
       font-weight: bold;
       margin-top: 90px;
       letter-spacing: 1rem;
       text-align: center;
+
+      @include mq(lg) {
+        font-size: 5rem;
+      }
     }
 
     .description {
