@@ -88,13 +88,20 @@ export default {
   box-sizing: border-box;
 
   > .head {
-    position: relative;
+    display: none;
+
+    @include mq(md) {
+      display: block;
+      position: relative;
+    }
 
     > div {
-      position: absolute;
-      width: 100%;
-      height: 92px;
-      border-bottom: solid 1px rgba(255, 255, 255, 0.16);
+      @include mq(md) {
+        position: absolute;
+        width: 100%;
+        height: 92px;
+        border-bottom: solid 1px rgba(255, 255, 255, 0.16);
+      }
     }
   }
 
@@ -159,8 +166,10 @@ export default {
   }
 
   .blog-update {
-    transform: rotate(90deg);
-    left: 40px;
+    @include mq(md) {
+      transform: rotate(90deg);
+      left: 40px;
+    }
   }
 
   .works-update {
