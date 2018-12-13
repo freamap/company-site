@@ -118,23 +118,43 @@ export default {
       font-family: Poppins;
       font-size: 3rem;
       font-weight: bold;
-      margin-top: 90px;
+      margin-top: 64px;
       letter-spacing: 1rem;
       text-align: center;
 
+      @include mq(sm) {
+        font-size: 4rem;
+      }
+      @include mq(md) {
+        margin-top: 90px;
+      }
       @include mq(lg) {
         font-size: 5rem;
       }
     }
 
     .description {
-      margin-top: 26px;
-      font-size: 1.5rem;
+      margin-top: 15px;
+      font-size: 1.1rem;
       text-align: center;
+
+      @include mq(sm) {
+        font-size: 1.3rem;
+      }
+      @include mq(md) {
+        margin-top: 26px;
+      }
+      @include mq(lg) {
+        font-size: 1.5rem;
+      }
     }
 
     .more {
-      margin-top: 50px;
+      margin-top: 30px;
+
+      @include mq(md) {
+        margin-top: 50px;
+      }
     }
   }
 
@@ -184,6 +204,7 @@ export default {
   .arrow-down {
     width: 100%;
     position: relative;
+
     > div {
       width: 100%;
       position: absolute;
