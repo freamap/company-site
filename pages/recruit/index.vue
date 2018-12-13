@@ -1,10 +1,11 @@
 <template>
-  <div>
-    recruit page
+  <div class="recruit-page">
+    <Recruit />
   </div>
 </template>
 
 <script>
+import Recruit from '~/components/organisms/Recruit.vue'
 import { mapActions } from 'vuex'
 
 export default {
@@ -20,9 +21,18 @@ export default {
       url: context.route.fullPath,
       topicPath: topicPath
     })
+  },
+  components: {
+    Recruit
   }
 }
 </script>
 
-<style>
+<style scoped lang="scss">
+.recruit-page {
+  font-family: Noto Sans CJK JP;
+  margin: 90px 140px 120px 140px;
+  display: flex;
+  flex-direction: column;
+}
 </style>
