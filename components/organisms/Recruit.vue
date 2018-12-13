@@ -48,20 +48,13 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState } from 'vuex'
 import ArrowDown from '~/assets/icons/ArrowDown.vue'
 import moment from 'moment'
 
 export default {
   components: {
     ArrowDown
-  },
-  props: {
-    length: {
-      type: Number,
-      default: Number.MAX_VALUE,
-      required: false
-    }
   },
   computed: {
     ...mapState('recruit', ['recruit']),
@@ -74,9 +67,6 @@ export default {
             : b
       ).date
     }
-  },
-  methods: {
-    ...mapActions(['changePage'])
   }
 }
 </script>
