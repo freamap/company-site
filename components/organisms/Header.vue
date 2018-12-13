@@ -208,9 +208,13 @@ export default {
     > div {
       width: 100%;
       position: absolute;
-      bottom: 81px;
+      bottom: 61px;
       display: flex;
       justify-content: center;
+
+      @include mq(md) {
+        bottom: 81px;
+      }
 
       svg {
         height: 22px;
