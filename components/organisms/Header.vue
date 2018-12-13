@@ -85,7 +85,14 @@ export default {
   height: 100vh;
   width: 100%;
   color: #ffffff;
-  box-sizing: border-box;
+
+  @include mq(md) {
+    background-color: $primary;
+    height: 100vh;
+    width: 100%;
+    color: #ffffff;
+    box-sizing: border-box;
+  }
 
   > .head {
     display: none;
@@ -166,6 +173,12 @@ export default {
   }
 
   .blog-update {
+    position: absolute;
+    top: 22px;
+    left: 20px;
+    padding-bottom: 22px;
+    border-bottom: solid 1px rgba(255, 255, 255, 0.16);
+
     @include mq(md) {
       transform: rotate(90deg);
       left: 40px;
@@ -183,14 +196,18 @@ export default {
   }
 
   .update-info {
-    position: absolute;
-    top: 50%;
+    @include mq(md) {
+      position: absolute;
+      top: 50%;
+    }
 
     > div {
-      position: absolute;
-      bottom: 0;
-      transform: translate(-50%, 0);
-      height: 19px;
+      @include mq(md) {
+        position: absolute;
+        bottom: 0;
+        transform: translate(-50%, 0);
+        height: 19px;
+      }
     }
   }
 
