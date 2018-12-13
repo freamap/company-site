@@ -164,8 +164,13 @@ export default {
   }
 
   .works-update {
-    transform: rotate(-90deg);
-    right: 40px;
+    display: none;
+
+    @include mq(md) {
+      display: block;
+      transform: rotate(-90deg);
+      right: 40px;
+    }
   }
 
   .update-info {
