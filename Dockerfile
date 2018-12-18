@@ -1,4 +1,7 @@
 FROM node:11.4.0-slim
+ARG DB_URL
+ARG ACCESS_KEY_ID
+ARG SECRET_ACCESS_KEY_ID
 WORKDIR /app
 COPY package*.json ./
 RUN npm install --quiet
@@ -7,4 +10,7 @@ RUN npm rebuild
 RUN npm run build
 EXPOSE 3000
 ENV HOST 0.0.0.0
+ENV DB_URL $DB_URL
+ENV ACCESS_KEY_ID $ACCESS_KEY_ID
+ENV SECRET_ACCESS_KEY_ID $SECRET_ACCESS_KEY_ID
 CMD ["npm", "run", "start"]
