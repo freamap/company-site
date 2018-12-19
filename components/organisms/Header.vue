@@ -2,7 +2,9 @@
   <div class="header container">
     <div class="head">
       <div>
-        <GlobalNavi />
+        <div>
+          <GlobalNavi />
+        </div>
       </div>
     </div>
     <div class="contents">
@@ -91,19 +93,30 @@ export default {
   }
 
   > .head {
-    display: none;
-
     @include mq(md) {
       display: block;
       position: relative;
     }
 
     > div {
+      position: absolute;
+      left: 0;
+      width: 100vw;
+      height: 63px;
+      border-bottom: solid 1px rgba(255, 255, 255, 0.16);
+
+      > div {
+        display: none;
+        height: 100%;
+      }
+
       @include mq(md) {
-        position: absolute;
         width: 100%;
         height: 92px;
-        border-bottom: solid 1px rgba(255, 255, 255, 0.16);
+
+        > div {
+          display: block;
+        }
       }
     }
   }
@@ -173,7 +186,6 @@ export default {
     top: 22px;
     left: 20px;
     padding-bottom: 22px;
-    border-bottom: solid 1px rgba(255, 255, 255, 0.16);
 
     @include mq(md) {
       transform: rotate(90deg);
