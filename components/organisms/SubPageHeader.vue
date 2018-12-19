@@ -157,8 +157,12 @@ export default {
     align-items: top;
     border-bottom: solid 1px rgba(255, 255, 255, 0.16);
     box-sizing: content-box;
+    position: absolute;
+    left: 0;
+    width: 100%;
 
     @include mq(md) {
+      position: static;
       height: 72px;
     }
 
