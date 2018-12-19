@@ -87,10 +87,6 @@ export default {
   color: #ffffff;
 
   @include mq(md) {
-    background-color: $primary;
-    height: 100vh;
-    width: 100%;
-    color: #ffffff;
     box-sizing: border-box;
   }
 
