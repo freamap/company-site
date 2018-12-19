@@ -140,29 +140,45 @@ export default {
 <style scoped lang="scss">
 .sub-page-header {
   height: 100vh;
-  padding-top: 30px;
+  padding-top: 15px;
   display: flex;
   flex-direction: column;
   background-color: $primary;
   transition: max-height 0.4s ease-in-out;
   position: relative;
 
+  @include mq(md) {
+    padding-top: 30px;
+  }
+
   .head {
-    height: 72px;
+    height: 49px;
     display: flex;
     align-items: top;
     border-bottom: solid 1px rgba(255, 255, 255, 0.16);
     box-sizing: content-box;
 
+    @include mq(md) {
+      height: 72px;
+    }
+
     .logo {
-      width: 150px;
+      width: 120px;
+
+      @include mq(md) {
+        width: 150px;
+      }
     }
 
     > .global-navi {
-      flex-grow: 1;
-      height: calc(100% + 2px);
-      display: flex;
-      justify-content: flex-end;
+      display: none;
+
+      @include mq(md) {
+        flex-grow: 1;
+        height: calc(100% + 2px);
+        display: flex;
+        justify-content: flex-end;
+      }
     }
   }
 
