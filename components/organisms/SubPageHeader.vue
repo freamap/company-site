@@ -207,25 +207,37 @@ export default {
       margin-top: 5px;
       height: 64px;
       font-weight: bold;
-      font-size: 43px;
+      font-size: 3.5rem;
       text-align: center;
       color: #ffffff;
+
+      @include mq(md) {
+        font-size: 4.3rem;
+      }
     }
 
     .sub-title {
       margin-top: 8px;
       height: 25px;
       text-align: center;
-      font-size: 18px;
+      font-size: 1.5rem;
       color: #ffffff;
       font-family: 'Poppins';
+
+      @include mq(md) {
+        font-size: 1.8rem;
+      }
     }
 
     .description {
       margin-top: 29px;
       text-align: center;
-      font-size: 13px;
+      font-size: 1.1rem;
       color: #ffffff;
+
+      @include mq(md) {
+        font-size: 1.3rem;
+      }
     }
 
     .topic-path {
@@ -234,7 +246,11 @@ export default {
       bottom: 25px;
       left: 0;
       color: #ffffff;
-      font-size: 13px;
+      font-size: 1.1rem;
+
+      @include mq(md) {
+        font-size: 1.3rem;
+      }
 
       a:nth-child(n) {
         cursor: pointer;
