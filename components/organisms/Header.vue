@@ -87,10 +87,7 @@ export default {
   height: 100vh;
   width: 100%;
   color: #ffffff;
-
-  @include mq(md) {
-    box-sizing: border-box;
-  }
+  box-sizing: border-box;
 
   > .head {
     @include mq(md) {
@@ -106,7 +103,7 @@ export default {
       border-bottom: solid 1px rgba(255, 255, 255, 0.16);
 
       > div {
-        display: none;
+        display: none; //グローバルメニューはハンバーガーメニュー化するが一時的に消しておく
         height: 100%;
       }
 
