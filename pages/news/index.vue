@@ -7,9 +7,23 @@
 <script>
 import News from '~/components/organisms/News.vue'
 import { mapActions } from 'vuex'
+import axios from 'axios'
 
 export default {
   layout: 'sub',
+  head: {
+    title: 'ニュース'
+  },
+  // head() {
+  //   return {
+  //     // vuexからデータをとる
+  //     title: this.title
+  //   }
+  // },
+  async fetch({ store, params }) {
+    let { data } = await axios.get('http://localhost:3000/api/news')
+    store.commit('news/setNews', data)
+  },
   asyncData(context) {
     let topicPath = [
       {
