@@ -8,24 +8,40 @@ AWS.config.update({
   secretAccessKey: process.env.SECRET_ACCESS_KEY_ID || ""
 });
 var docClient = new AWS.DynamoDB.DocumentClient();
+var common = require('../common/common.js');
 
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
   let newsId = Number(req.query.news_id)
-  console.log(newsId)
 
-  getNews(newsId).then(news => {
+  getNewsApi(newsId).then(news => {
     res.json(news)
   }).catch(err => {
-    console.log(err)
-    let common = require('../common/common.js');
-    
+    res.status(500);
     res.json(
-      common.createApiErrorResponse('', '取得に失敗しました。')
+      common.apiErrorResponse('/news/', err, '', '取得に失敗しました。')
     )    
   })
 });
 
-async function getNews(newsId) {
+router.get('/:id', function(req, res) {
+  let page = 1
+  let newsId = Number(req.params.id)
+
+  if (req.query.page) {
+    page = Number(req.query.page)
+  }
+
+  getNewsDetailApi(newsId, page).then(newsDetail => {
+    res.json(newsDetail)
+  }).catch(err => {
+    res.status(500)
+    res.json(
+      common.apiErrorResponse('/news/' + req.params.id, err, '', '取得に失敗しました。')
+    )    
+  })
+});
+
+async function getNewsApi(newsId) {
   let resData = []
   let pickupNews = await scanNewsPickup()
 
@@ -35,13 +51,19 @@ async function getNews(newsId) {
 
   let create = undefined
   if (newsId) {
-    create = await getNewsCreate(newsId)
+    let news = await getNews(newsId, ['create'])
+    create = news.create
   }
 
   let news = await scanNews(create, newsId, pickupNews)
   resData = resData.concat(news)
 
   return resData
+}
+
+async function getNewsDetailApi(newsId, page) {
+  let newsDetail = await getNewsDetail(newsId, page)
+  return newsDetail
 }
 
 function scanNewsPickup() {
@@ -109,25 +131,51 @@ function scanNews(create, newsId, newsPickup) {
   })
 }
 
-function getNewsCreate(newsId) {
+function getNews(newsId, attributes) {
   return new Promise((resolve, reject) => {
     var params = {
       TableName: 'news',
       Key: {
         "news_id": newsId
-      },
-      AttributesToGet: [
-        "create"
-      ]
+      }
     };
+
+    if (attributes) {
+      params['AttributesToGet'] = attributes
+    }
     
     docClient.get(params, function (err, data) {
       if (err) {
         reject(err)
       } else {
-        resolve(data.Item.create)
+        resolve(data.Item)
       }
     });
   })
 }
+
+function getNewsDetail(newsId, page, attributes) {
+  return new Promise((resolve, reject) => {
+    var params = {
+      TableName: 'news_detail',
+      Key: {
+        "news_id": newsId,
+        "page": page
+      }
+    };
+
+    if (attributes) {
+      params['AttributesToGet'] = attributes
+    }
+    
+    docClient.get(params, function (err, data) {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(data.Item)
+      }
+    });
+  })
+}
+
 module.exports = router;
