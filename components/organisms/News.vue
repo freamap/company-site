@@ -1,12 +1,12 @@
 <template>
   <div>
     <div
-      v-for="detail in showNews"
-      :key="detail.id"
+      v-for="detail in news"
+      :key="detail.news_id"
       class="content"
     >
-      <div class="update">
-        {{ detail.update }}
+      <div class="create">
+        {{ detail.create }}
       </div>
       <div class="description">
         {{ detail.description }}
@@ -31,20 +31,8 @@ export default {
   components: {
     ArrowDown
   },
-  props: {
-    length: {
-      type: Number,
-      default: Number.MAX_VALUE,
-      required: false
-    }
-  },
   computed: {
-    ...mapState('news', ['news']),
-    showNews() {
-      return this.news.filter((value, index) => {
-        return index < this.length
-      })
-    }
+    ...mapState('news', ['news'])
   },
   methods: {
     ...mapActions(['changePage'])
@@ -62,7 +50,7 @@ export default {
   min-height: 138px;
   box-sizing: content-box;
 
-  .update {
+  .create {
     margin-right: 75px;
     flex-basis: 78px;
   }
