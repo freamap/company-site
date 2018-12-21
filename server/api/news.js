@@ -26,11 +26,12 @@ router.get('/:id', function(req, res) {
   getNewsDetailApi(newsId, page).then(newsDetail => {
     if (newsDetail) {
       res.json(newsDetail)
+    } else {
+      res.status(404)
+      res.json(
+        common.apiErrorResponse(req.path, '', '', 'ニュースが存在しません')
+      )
     }
-    res.status(404)
-    res.json(
-      common.apiErrorResponse(req.path, '', '', 'ニュースが存在しません')
-    )
   }).catch(err => {
     res.status(500)
     res.json(

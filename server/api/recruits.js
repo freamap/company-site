@@ -20,11 +20,12 @@ router.get('/:id', function(req, res) {
   getRecruitDetailApi(recruitId).then(recruitDetail => {
     if (recruitDetail) {
       res.json(recruitDetail)
+    } else {
+      res.status(404)
+      res.json(
+        common.apiErrorResponse(req.path, '', '', '採用情報が存在しません')
+      )
     }
-    res.status(404)
-    res.json(
-      common.apiErrorResponse(req.path, '', '', '採用情報が存在しません')
-    )
   }).catch(err => {
     res.status(500)
     res.json(
