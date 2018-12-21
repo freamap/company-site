@@ -5,13 +5,12 @@ var awsNews = require('../aws/news.js');
 
 router.get('/', function(req, res) {
   let newsId = Number(req.query.news_id)
-
   getNewsApi(newsId).then(news => {
     res.json(news)
   }).catch(err => {
     res.status(500);
     res.json(
-      common.apiErrorResponse('/news/', err, '', '取得に失敗しました。')
+      common.apiErrorResponse(req.path, err, '', '取得に失敗しました。')
     )    
   })
 });
@@ -29,7 +28,7 @@ router.get('/:id', function(req, res) {
   }).catch(err => {
     res.status(500)
     res.json(
-      common.apiErrorResponse('/news/' + req.params.id, err, '', '取得に失敗しました。')
+      common.apiErrorResponse(req.path, err, '', '取得に失敗しました。')
     )    
   })
 });
