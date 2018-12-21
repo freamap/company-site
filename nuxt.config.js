@@ -51,6 +51,10 @@ module.exports = {
     // See https://github.com/nuxt-community/axios-module#options
   },
 
+  env: {
+    baseURL: process.env.BASE_URL || 'http://localhost:3000'
+  },
+
   serverMiddleware: ['~/server/api'],
 
   /*

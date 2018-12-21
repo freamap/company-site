@@ -21,7 +21,7 @@ export default {
   //   }
   // },
   async fetch({ store, params }) {
-    let { data } = await axios.get('http://localhost:3000/api/news')
+    let { data } = await axios.get(process.env.baseURL + '/api/news')
     store.commit('news/setNews', data)
   },
   asyncData(context) {
