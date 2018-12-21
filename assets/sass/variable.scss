@@ -1,1 +1,14 @@
 $primary: #236af7;
+
+$breakpoints: (
+  'sm': 'screen and (min-width: 600px)',
+  'md': 'screen and (min-width: 960px)',
+  'lg': 'screen and (min-width: 1280px)',
+  'xl': 'screen and (min-width: 1920px)',
+) !default;
+
+@mixin mq($breakpoint: md) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}

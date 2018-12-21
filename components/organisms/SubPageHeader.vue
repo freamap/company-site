@@ -140,29 +140,49 @@ export default {
 <style scoped lang="scss">
 .sub-page-header {
   height: 100vh;
-  padding-top: 30px;
+  padding-top: 15px;
   display: flex;
   flex-direction: column;
   background-color: $primary;
   transition: max-height 0.4s ease-in-out;
   position: relative;
 
+  @include mq(md) {
+    padding-top: 30px;
+  }
+
   .head {
-    height: 72px;
+    height: 49px;
     display: flex;
     align-items: top;
     border-bottom: solid 1px rgba(255, 255, 255, 0.16);
     box-sizing: content-box;
+    position: absolute;
+    left: 0;
+    width: 100%;
+
+    @include mq(md) {
+      position: static;
+      height: 72px;
+    }
 
     .logo {
-      width: 150px;
+      width: 120px;
+
+      @include mq(md) {
+        width: 150px;
+      }
     }
 
     > .global-navi {
-      flex-grow: 1;
-      height: calc(100% + 2px);
-      display: flex;
-      justify-content: flex-end;
+      display: none; //グローバルメニューはハンバーガーメニュー化するが一時的に消しておく
+
+      @include mq(md) {
+        flex-grow: 1;
+        height: calc(100% + 2px);
+        display: flex;
+        justify-content: flex-end;
+      }
     }
   }
 
@@ -187,25 +207,37 @@ export default {
       margin-top: 5px;
       height: 64px;
       font-weight: bold;
-      font-size: 43px;
+      font-size: 3.5rem;
       text-align: center;
       color: #ffffff;
+
+      @include mq(md) {
+        font-size: 4.3rem;
+      }
     }
 
     .sub-title {
       margin-top: 8px;
       height: 25px;
       text-align: center;
-      font-size: 18px;
+      font-size: 1.5rem;
       color: #ffffff;
       font-family: 'Poppins';
+
+      @include mq(md) {
+        font-size: 1.8rem;
+      }
     }
 
     .description {
       margin-top: 29px;
       text-align: center;
-      font-size: 13px;
+      font-size: 1.1rem;
       color: #ffffff;
+
+      @include mq(md) {
+        font-size: 1.3rem;
+      }
     }
 
     .topic-path {
@@ -214,7 +246,11 @@ export default {
       bottom: 25px;
       left: 0;
       color: #ffffff;
-      font-size: 13px;
+      font-size: 1.1rem;
+
+      @include mq(md) {
+        font-size: 1.3rem;
+      }
 
       a:nth-child(n) {
         cursor: pointer;

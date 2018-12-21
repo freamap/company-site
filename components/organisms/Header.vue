@@ -2,7 +2,9 @@
   <div class="header container">
     <div class="head">
       <div>
-        <GlobalNavi />
+        <div>
+          <GlobalNavi />
+        </div>
       </div>
     </div>
     <div class="contents">
@@ -88,13 +90,31 @@ export default {
   box-sizing: border-box;
 
   > .head {
-    position: relative;
+    @include mq(md) {
+      display: block;
+      position: relative;
+    }
 
     > div {
       position: absolute;
-      width: 100%;
-      height: 92px;
+      left: 0;
+      width: 100vw;
+      height: 63px;
       border-bottom: solid 1px rgba(255, 255, 255, 0.16);
+
+      > div {
+        display: none; //グローバルメニューはハンバーガーメニュー化するが一時的に消しておく
+        height: 100%;
+      }
+
+      @include mq(md) {
+        width: 100%;
+        height: 92px;
+
+        > div {
+          display: block;
+        }
+      }
     }
   }
 
@@ -116,43 +136,83 @@ export default {
 
     .title {
       font-family: Poppins;
-      font-size: 5rem;
+      font-size: 3rem;
       font-weight: bold;
-      margin-top: 90px;
+      margin-top: 64px;
       letter-spacing: 1rem;
       text-align: center;
+
+      @include mq(sm) {
+        font-size: 4rem;
+      }
+      @include mq(md) {
+        margin-top: 90px;
+      }
+      @include mq(lg) {
+        font-size: 5rem;
+      }
     }
 
     .description {
-      margin-top: 26px;
-      font-size: 1.5rem;
+      margin-top: 15px;
+      font-size: 1.1rem;
       text-align: center;
+
+      @include mq(sm) {
+        font-size: 1.3rem;
+      }
+      @include mq(md) {
+        margin-top: 26px;
+      }
+      @include mq(lg) {
+        font-size: 1.5rem;
+      }
     }
 
     .more {
-      margin-top: 50px;
+      margin-top: 30px;
+
+      @include mq(md) {
+        margin-top: 50px;
+      }
     }
   }
 
   .blog-update {
-    transform: rotate(90deg);
-    left: 40px;
+    position: absolute;
+    top: 22px;
+    left: 20px;
+    padding-bottom: 22px;
+
+    @include mq(md) {
+      transform: rotate(90deg);
+      left: 40px;
+    }
   }
 
   .works-update {
-    transform: rotate(-90deg);
-    right: 40px;
+    display: none;
+
+    @include mq(md) {
+      display: block;
+      transform: rotate(-90deg);
+      right: 40px;
+    }
   }
 
   .update-info {
-    position: absolute;
-    top: 50%;
+    @include mq(md) {
+      position: absolute;
+      top: 50%;
+    }
 
     > div {
-      position: absolute;
-      bottom: 0;
-      transform: translate(-50%, 0);
-      height: 19px;
+      @include mq(md) {
+        position: absolute;
+        bottom: 0;
+        transform: translate(-50%, 0);
+        height: 19px;
+      }
     }
   }
 
@@ -180,12 +240,17 @@ export default {
   .arrow-down {
     width: 100%;
     position: relative;
+
     > div {
       width: 100%;
       position: absolute;
-      bottom: 81px;
+      bottom: 61px;
       display: flex;
       justify-content: center;
+
+      @include mq(md) {
+        bottom: 81px;
+      }
 
       svg {
         height: 22px;
