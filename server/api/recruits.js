@@ -18,12 +18,18 @@ router.get('/:id', function(req, res) {
   let recruitId = Number(req.params.id)
 
   getRecruitDetailApi(recruitId).then(recruitDetail => {
-    res.json(recruitDetail)
+    if (recruitDetail) {
+      res.json(recruitDetail)
+    }
+    res.status(404)
+    res.json(
+      common.apiErrorResponse(req.path, '', '', '採用情報が存在しません')
+    )
   }).catch(err => {
     res.status(500)
     res.json(
       common.apiErrorResponse(req.path, err, '', '取得に失敗しました。')
-    )    
+    )
   })
 });
 
