@@ -7,14 +7,14 @@
         class="content"
       >
         <div class="create">
-          {{ formatDate(detail.create) }}
+          {{ detail.create | formatDate }}
         </div>
         <div class="description">
           {{ detail.description }}
         </div>
         <div class="detail-button">
           <nuxt-link
-            :to="{path: '/news/' + detail.id}"
+            :to="{path: '/news/' + detail.news_id}"
             tag="div"
           >
             <ArrowDown />
@@ -31,7 +31,6 @@
 <script>
 import { mapState, mapActions } from 'vuex'
 import ArrowDown from '~/assets/icons/ArrowDown.vue'
-import moment from 'moment'
 
 export default {
   components: {
@@ -41,11 +40,6 @@ export default {
     ...mapState('news', ['news']),
     newsLength() {
       return this.news.length
-    },
-    formatDate() {
-      return date => {
-        return moment(date).format('YYYY/MM/DD')
-      }
     }
   },
   methods: {
