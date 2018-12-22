@@ -21,7 +21,10 @@ export default {
   //   }
   // },
   async fetch({ store, params }) {
-    let { data } = await axios.get(process.env.baseURL + '/api/news')
+    let baseUrl = process.server
+      ? process.env.apiBaseURLLocal
+      : process.env.apiBaseURL
+    let { data } = await axios.get(baseUrl + '/api/news')
     store.dispatch('news/setNews', data)
   },
   asyncData(context) {

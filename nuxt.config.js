@@ -52,7 +52,8 @@ module.exports = {
   },
 
   env: {
-    baseURL: process.env.BASE_URL || 'http://localhost:3000'
+    apiBaseURLLocal: 'http://localhost:3000',
+    apiBaseURL: process.env.BASE_URL || 'http://localhost:3000'
   },
 
   serverMiddleware: ['~/server/api'],
