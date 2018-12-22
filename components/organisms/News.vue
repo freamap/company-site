@@ -6,7 +6,7 @@
       class="content"
     >
       <div class="create">
-        {{ detail.create }}
+        {{ formatDate(detail.create) }}
       </div>
       <div class="description">
         {{ detail.description }}
@@ -26,13 +26,19 @@
 <script>
 import { mapState, mapActions } from 'vuex'
 import ArrowDown from '~/assets/icons/ArrowDown.vue'
+import moment from 'moment'
 
 export default {
   components: {
     ArrowDown
   },
   computed: {
-    ...mapState('news', ['news'])
+    ...mapState('news', ['news']),
+    formatDate() {
+      return date => {
+        return moment(date).format('YYYY/MM/DD')
+      }
+    }
   },
   methods: {
     ...mapActions(['changePage'])
