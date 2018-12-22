@@ -6,7 +6,6 @@
 
 <script>
 import News from '~/components/organisms/News.vue'
-import { mapActions } from 'vuex'
 import axios from 'axios'
 
 export default {
@@ -20,22 +19,21 @@ export default {
   //     title: this.title
   //   }
   // },
-  async fetch({ store, params }) {
+  async fetch({ route, store, params }) {
     let baseUrl = process.server
       ? process.env.apiBaseURLLocal
       : process.env.apiBaseURL
     let { data } = await axios.get(baseUrl + '/api/news')
     store.dispatch('news/setNews', data)
-  },
-  asyncData(context) {
+
     let topicPath = [
       {
-        url: context.store.state.pages.pages.news.url,
-        title: context.store.state.pages.pages.news.title
+        url: store.state.pages.pages.news.url,
+        title: store.state.pages.pages.news.title
       }
     ]
-    context.store.dispatch('setPage', {
-      url: context.route.fullPath,
+    store.dispatch('setPage', {
+      url: route.fullPath,
       topicPath: topicPath
     })
   },
