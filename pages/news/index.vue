@@ -13,12 +13,6 @@ export default {
   head: {
     title: 'ニュース'
   },
-  // head() {
-  //   return {
-  //     // vuexからデータをとる
-  //     title: this.title
-  //   }
-  // },
   async fetch({ route, store, params }) {
     let baseUrl = process.server
       ? process.env.apiBaseURLLocal

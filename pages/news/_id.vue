@@ -24,6 +24,12 @@ import moment from 'moment'
 
 export default {
   layout: 'sub',
+  head() {
+    return {
+      // vuexからデータをとる
+      title: this.newsDetail.title ? this.newsDetail.title : 'ニュース詳細'
+    }
+  },
   async fetch({ route, store, params }) {
     let baseUrl = process.server
       ? process.env.apiBaseURLLocal
@@ -38,7 +44,7 @@ export default {
       },
       {
         url: route.fullPath,
-        title: data.title
+        title: data.title ? data.title : 'ニュース詳細'
       }
     ]
     store.dispatch('setPage', {
