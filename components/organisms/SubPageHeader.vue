@@ -97,33 +97,6 @@ export default {
       }
       return style
     },
-    // topicPath() {
-    //   let path = this.url.split('/').filter(urlPath => urlPath)
-
-    //   let topics = []
-    //   topics.push(this.pages[path[0]])
-
-    //   if (path.length > 1) {
-    //     let details
-    //     switch (path[0]) {
-    //       case 'news':
-    //         details = this.news
-    //         break
-    //     }
-    //     let detail = details.filter(detail => {
-    //       return Number(detail.id) === Number(path[1])
-    //     })
-
-    //     if (detail.length > 0) {
-    //       topics.push({
-    //         ...detail[0],
-    //         url: this.url
-    //       })
-    //     }
-    //   }
-
-    //   return topics
-    // },
     ...mapState(['currentOriginPageName', 'topicPath']),
     ...mapState('pages', ['pages']),
     ...mapState('news', ['news'])
