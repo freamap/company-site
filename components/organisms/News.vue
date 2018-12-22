@@ -1,24 +1,29 @@
 <template>
   <div>
-    <div
-      v-for="detail in news"
-      :key="detail.news_id"
-      class="content"
-    >
-      <div class="create">
-        {{ formatDate(detail.create) }}
+    <div v-if="news">
+      <div
+        v-for="detail in news"
+        :key="detail.news_id"
+        class="content"
+      >
+        <div class="create">
+          {{ formatDate(detail.create) }}
+        </div>
+        <div class="description">
+          {{ detail.description }}
+        </div>
+        <div class="detail-button">
+          <nuxt-link
+            :to="{path: '/news/' + detail.id}"
+            tag="div"
+          >
+            <ArrowDown />
+          </nuxt-link>
+        </div>
       </div>
-      <div class="description">
-        {{ detail.description }}
-      </div>
-      <div class="detail-button">
-        <nuxt-link
-          :to="{path: '/news/' + detail.id}"
-          tag="div"
-        >
-          <ArrowDown />
-        </nuxt-link>
-      </div>
+    </div>
+    <div v-else>
+      取得中
     </div>
   </div>
 </template>
@@ -34,6 +39,9 @@ export default {
   },
   computed: {
     ...mapState('news', ['news']),
+    newsLength() {
+      return this.news.length
+    },
     formatDate() {
       return date => {
         return moment(date).format('YYYY/MM/DD')
