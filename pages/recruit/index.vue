@@ -1,29 +1,39 @@
 <template>
   <div class="recruit-page">
-    <Recruit />
+    <Recruits />
   </div>
 </template>
 
 <script>
-import Recruit from '~/components/organisms/Recruit.vue'
+import Recruits from '~/components/organisms/Recruits.vue'
+import axios from 'axios'
 import { mapActions } from 'vuex'
 
 export default {
   layout: 'sub',
-  asyncData(context) {
+  head: {
+    title: '採用情報'
+  },
+  async fetch({ route, store, params }) {
+    let baseUrl = process.server
+      ? process.env.apiBaseURLLocal
+      : process.env.apiBaseURL
+    let { data } = await axios.get(baseUrl + '/api/recruits')
+    store.dispatch('recruit/setRecruits', data)
+
     let topicPath = [
       {
-        url: context.store.state.pages.pages.recruit.url,
-        title: context.store.state.pages.pages.recruit.title
+        url: store.state.pages.pages.recruit.url,
+        title: store.state.pages.pages.recruit.title
       }
     ]
-    context.store.dispatch('setPage', {
-      url: context.route.fullPath,
+    store.dispatch('setPage', {
+      url: route.fullPath,
       topicPath: topicPath
     })
   },
   components: {
-    Recruit
+    Recruits
   }
 }
 </script>

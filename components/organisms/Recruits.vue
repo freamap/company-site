@@ -8,7 +8,7 @@
         最終更新日: {{ latestUpdate }}
       </div>
     </div>
-    <div class="content recruit-header">
+    <div class="content recruits-header">
       <div class="occupation">
         職種
       </div>
@@ -19,24 +19,24 @@
         報酬
       </div>
     </div>
-    <div class="recruit-content">
+    <div class="recruits-content">
       <div
-        v-for="detail in recruit"
-        :key="detail.id"
+        v-for="recruit in recruits"
+        :key="recruit.recruit_id"
         class="content"
       >
         <div class="occupation">
-          {{ detail.occupation }}
+          {{ recruit.occupation }}
         </div>
         <div class="workplace">
-          {{ detail.workplace }}
+          {{ recruit.workplace }}
         </div>
         <div class="payment">
-          {{ detail.payment }}
+          {{ recruit.payment }}
         </div>
-        <div class="detail-button">
+        <div class="recruit-button">
           <nuxt-link
-            :to="{path: '/recruit/' + detail.id}"
+            :to="{path: '/recruit/' + recruit.recruit_id}"
             tag="div"
           >
             <ArrowDown />
@@ -57,12 +57,12 @@ export default {
     ArrowDown
   },
   computed: {
-    ...mapState('recruit', ['recruit']),
+    ...mapState('recruit', ['recruits']),
     latestUpdate() {
-      return this.recruit.reduce(
+      return this.recruits.reduce(
         (a, b) =>
-          moment(a.date, 'YYYY/MM/DD').fromNow() <
-          moment(b.date, 'YYYY/MM/DD').fromNow()
+          moment(a.update, 'YYYY/MM/DD').fromNow() <
+          moment(b.update, 'YYYY/MM/DD').fromNow()
             ? a
             : b
       ).date
@@ -123,7 +123,7 @@ export default {
     flex-grow: 1;
   }
 
-  .detail-button {
+  .recruit-button {
     flex-basis: 55px;
     flex-grow: 0;
     height: 38px;
@@ -148,7 +148,7 @@ export default {
   }
 }
 
-.recruit-header {
+.recruits-header {
   background-color: #fafafa;
   min-height: 50px;
   margin-bottom: 30px;
@@ -159,7 +159,7 @@ export default {
   }
 }
 
-.recruit-content {
+.recruits-content {
   > div {
     border-top: 1px solid #e8e9ea;
   }
