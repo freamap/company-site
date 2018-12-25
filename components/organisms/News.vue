@@ -2,7 +2,7 @@
   <div>
     <div v-if="news">
       <div
-        v-for="detail in news"
+        v-for="detail in showNews"
         :key="detail.news_id"
         class="content"
       >
@@ -36,10 +36,20 @@ export default {
   components: {
     ArrowDown
   },
+  props: {
+    length: {
+      type: Number,
+      default: -1,
+      required: false
+    }
+  },
   computed: {
     ...mapState('news', ['news']),
-    newsLength() {
-      return this.news.length
+    showNews() {
+      if (this.length === -1) {
+        return this.news
+      }
+      return this.news.slice(0, this.length)
     }
   },
   methods: {
