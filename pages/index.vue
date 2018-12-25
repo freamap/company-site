@@ -19,17 +19,24 @@
 import Button from '~/components/atoms/Button.vue'
 import News from '~/components/organisms/News.vue'
 import { mapState, mapActions } from 'vuex'
+import axios from 'axios'
 
 export default {
-  asyncData(context) {
+  async fetch({ route, store, params }) {
+    let baseUrl = process.server
+      ? process.env.apiBaseURLLocal
+      : process.env.apiBaseURL
+    let { data } = await axios.get(baseUrl + '/api/news')
+    store.dispatch('news/setNews', data)
+
     let topicPath = [
       {
         url: '',
-        title: context.store.state.pages.pages.top.title
+        title: store.state.pages.pages.top.title
       }
     ]
-    context.store.dispatch('setPage', {
-      url: context.route.fullPath,
+    store.dispatch('setPage', {
+      url: route.fullPath,
       topicPath: topicPath
     })
   },
