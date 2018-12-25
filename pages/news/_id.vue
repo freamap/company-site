@@ -1,17 +1,17 @@
 <template>
   <div class="news-detail-page">
     <div class="create">
-      {{ newsDetail.create | formatDate }}
+      {{ currentNews.create | formatDate }}
     </div>
     <div class="contents">
       <div
-        v-if="newsDetail.title"
+        v-if="currentNews.title"
         class="title"
       >
-        {{ newsDetail.title }}
+        {{ currentNews.title }}
       </div>
       <div
-        v-html="newsDetail.contents"
+        v-html="currentNews.contents"
       />
     </div>
   </div>
@@ -26,8 +26,7 @@ export default {
   layout: 'sub',
   head() {
     return {
-      // vuexからデータをとる
-      title: this.newsDetail.title ? this.newsDetail.title : 'ニュース詳細'
+      title: this.currentNews.title ? this.currentNews.title : 'ニュース詳細'
     }
   },
   async fetch({ route, store, params }) {
@@ -35,7 +34,7 @@ export default {
       ? process.env.apiBaseURLLocal
       : process.env.apiBaseURL
     let { data } = await axios.get(baseUrl + '/api/news/' + params.id)
-    store.dispatch('newsDetail/setNewsDetail', data)
+    store.dispatch('news/setCurrentNews', data)
 
     let topicPath = [
       {
@@ -53,7 +52,7 @@ export default {
     })
   },
   computed: {
-    ...mapState('newsDetail', ['newsDetail'])
+    ...mapState('news', ['currentNews'])
   }
 }
 </script>
