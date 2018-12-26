@@ -26,7 +26,7 @@ export default {
     },
     globalLinkPage() {
       return Object.keys(this.pages).filter(key => {
-        return key !== 'top'
+        return key !== 'top' && key !== 'news'
       })
     }
   },
