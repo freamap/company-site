@@ -5,10 +5,15 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
   layout: 'sub',
+  head() {
+    return {
+      title: this.pages.title
+    }
+  },
   asyncData(context) {
     let topicPath = [
       {
@@ -17,8 +22,9 @@ export default {
       }
     ]
     context.store.dispatch('setPage', {
-      url: context.route.fullPath,
-      topicPath: topicPath
+      topicPath: topicPath,
+      originPage: page,
+      url: route.fullPath
     })
   }
 }

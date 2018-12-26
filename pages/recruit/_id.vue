@@ -45,17 +45,23 @@ export default {
     Button
   },
   layout: 'sub',
-  async fetch({ route, store, params }) {
+  head() {
+    return {
+      title: this.title
+    }
+  },
+  async fetch({ app, route, store, params }) {
     let baseUrl = process.server
       ? process.env.apiBaseURLLocal
       : process.env.apiBaseURL
     let { data } = await axios.get(baseUrl + '/api/recruits/' + params.id)
     store.dispatch('recruit/setCurrentRecruit', data)
 
+    let page = app.getPage('recruit')
     let topicPath = [
       {
-        url: store.state.pages.pages.recruit.url,
-        title: store.state.pages.pages.recruit.title
+        url: page.url,
+        title: page.title
       },
       {
         url: route.fullPath,
@@ -63,16 +69,18 @@ export default {
       }
     ]
     store.dispatch('setPage', {
-      url: route.fullPath,
-      topicPath: topicPath
+      topicPath: topicPath,
+      originPage: page,
+      url: route.fullPath
     })
   },
   computed: {
-    ...mapState('recruit', ['currentRecruit'])
+    ...mapState('recruit', ['currentRecruit']),
+    ...mapState(['title'])
   },
   methods: {
     applyButtonOnClick: function(event) {
-      this.changePage(this.pages.contact.url)
+      this.changePage(this.$store.app.getPages('contact').url)
     },
     ...mapActions(['changePage'])
   }

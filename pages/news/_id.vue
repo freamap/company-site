@@ -26,20 +26,21 @@ export default {
   layout: 'sub',
   head() {
     return {
-      title: this.currentNews.title ? this.currentNews.title : 'ニュース詳細'
+      title: this.title
     }
   },
-  async fetch({ route, store, params }) {
+  async fetch({ app, route, store, params }) {
     let baseUrl = process.server
       ? process.env.apiBaseURLLocal
       : process.env.apiBaseURL
     let { data } = await axios.get(baseUrl + '/api/news/' + params.id)
     store.dispatch('news/setCurrentNews', data)
 
+    let page = app.getPage('news')
     let topicPath = [
       {
-        url: store.state.pages.pages.news.url,
-        title: store.state.pages.pages.news.title
+        url: page.url,
+        title: page.title
       },
       {
         url: route.fullPath,
@@ -47,12 +48,14 @@ export default {
       }
     ]
     store.dispatch('setPage', {
-      url: route.fullPath,
-      topicPath: topicPath
+      topicPath: topicPath,
+      originPage: page,
+      url: route.fullPath
     })
   },
   computed: {
-    ...mapState('news', ['currentNews'])
+    ...mapState('news', ['currentNews']),
+    ...mapState(['title'])
   }
 }
 </script>

@@ -70,7 +70,9 @@ export default {
     ArrowDown
   },
   computed: {
-    ...mapState('pages', ['pages'])
+    pages() {
+      return this.$store.app.getPages()
+    }
   },
   methods: {
     moreButtonOnClick: function(event) {

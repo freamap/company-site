@@ -7,32 +7,40 @@
 <script>
 import News from '~/components/organisms/News.vue'
 import axios from 'axios'
+import { mapState } from 'vuex'
 
 export default {
   layout: 'sub',
-  head: {
-    title: 'ニュース'
+  head() {
+    return {
+      title: this.title
+    }
   },
-  async fetch({ route, store, params }) {
+  async fetch({ app, route, store, params }) {
     let baseUrl = process.server
       ? process.env.apiBaseURLLocal
       : process.env.apiBaseURL
     let { data } = await axios.get(baseUrl + '/api/news')
     store.dispatch('news/setNews', data)
 
+    let page = app.getPage('news')
     let topicPath = [
       {
-        url: store.state.pages.pages.news.url,
-        title: store.state.pages.pages.news.title
+        url: page.url,
+        title: page.title
       }
     ]
     store.dispatch('setPage', {
-      url: route.fullPath,
-      topicPath: topicPath
+      topicPath: topicPath,
+      originPage: page,
+      url: route.fullPath
     })
   },
   components: {
     News
+  },
+  computed: {
+    ...mapState(['title'])
   }
 }
 </script>

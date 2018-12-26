@@ -5,21 +5,38 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapState } from 'vuex'
+import axios from 'axios'
 
 export default {
   layout: 'sub',
-  asyncData(context) {
+  head() {
+    return {
+      title: this.title
+    }
+  },
+  async fetch({ app, route, store, params }) {
+    let baseUrl = process.server
+      ? process.env.apiBaseURLLocal
+      : process.env.apiBaseURL
+    let { data } = await axios.get(baseUrl + '/api/works')
+    store.dispatch('work/setWorks', data)
+
+    let page = app.getPage('works')
     let topicPath = [
       {
-        url: context.store.state.pages.pages.works.url,
-        title: context.store.state.pages.pages.works.title
+        url: page.url,
+        title: page.title
       }
     ]
-    context.store.dispatch('setPage', {
-      url: context.route.fullPath,
-      topicPath: topicPath
+    store.dispatch('setPage', {
+      topicPath: topicPath,
+      originPage: page,
+      url: route.fullPath
     })
+  },
+  computed: {
+    ...mapState(['title'])
   }
 }
 </script>

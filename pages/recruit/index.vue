@@ -7,33 +7,40 @@
 <script>
 import Recruits from '~/components/organisms/Recruits.vue'
 import axios from 'axios'
-import { mapActions } from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
   layout: 'sub',
-  head: {
-    title: '採用情報'
+  head() {
+    return {
+      title: this.title
+    }
   },
-  async fetch({ route, store, params }) {
+  async fetch({ app, route, store, params }) {
     let baseUrl = process.server
       ? process.env.apiBaseURLLocal
       : process.env.apiBaseURL
     let { data } = await axios.get(baseUrl + '/api/recruits')
     store.dispatch('recruit/setRecruits', data)
 
+    let page = app.getPage('recruit')
     let topicPath = [
       {
-        url: store.state.pages.pages.recruit.url,
-        title: store.state.pages.pages.recruit.title
+        url: page.url,
+        title: page.title
       }
     ]
     store.dispatch('setPage', {
-      url: route.fullPath,
-      topicPath: topicPath
+      topicPath: topicPath,
+      originPage: page,
+      url: route.fullPath
     })
   },
   components: {
     Recruits
+  },
+  computed: {
+    ...mapState(['title'])
   }
 }
 </script>

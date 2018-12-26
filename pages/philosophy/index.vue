@@ -34,21 +34,31 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
   layout: 'sub',
-  asyncData(context) {
+  head() {
+    return {
+      title: this.title
+    }
+  },
+  async fetch({ app, route, store, params }) {
+    let page = app.getPage('philosophy')
     let topicPath = [
       {
-        url: context.store.state.pages.pages.philosophy.url,
-        title: context.store.state.pages.pages.philosophy.title
+        url: page.url,
+        title: page.title
       }
     ]
-    context.store.dispatch('setPage', {
-      url: context.route.fullPath,
-      topicPath: topicPath
+    store.dispatch('setPage', {
+      topicPath: topicPath,
+      originPage: page,
+      url: route.fullPath
     })
+  },
+  computed: {
+    ...mapState(['title'])
   }
 }
 </script>

@@ -22,21 +22,28 @@ import { mapState, mapActions } from 'vuex'
 import axios from 'axios'
 
 export default {
-  async fetch({ route, store, params }) {
+  head() {
+    return {
+      title: this.title
+    }
+  },
+  async fetch({ app, route, store, params }) {
     let baseUrl = process.server
       ? process.env.apiBaseURLLocal
       : process.env.apiBaseURL
     let { data } = await axios.get(baseUrl + '/api/news')
     store.dispatch('news/setNews', data)
 
+    let page = app.getPage('top')
     let topicPath = [
       {
-        url: '',
-        title: store.state.pages.pages.top.title
+        url: page.url,
+        title: page.title
       }
     ]
     store.dispatch('setPage', {
       url: route.fullPath,
+      originPage: page,
       topicPath: topicPath
     })
   },
@@ -45,11 +52,11 @@ export default {
     News
   },
   computed: {
-    ...mapState('pages', ['pages'])
+    ...mapState(['title'])
   },
   methods: {
     moreNewsButtonOnClick: function(event) {
-      this.changePage(this.pages.news.url)
+      this.changePage(this.$store.app.getPages('news').url)
     },
     ...mapActions(['changePage'])
   }

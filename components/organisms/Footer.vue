@@ -3,7 +3,7 @@
     <div class="logo">
       <img 
         src="~/assets/images/freamap-logo-horiz--color.svg"
-        @click="moreButtonOnClick" >
+        @click="topButtonOnClick" >
     </div>
     <div>
       <FooterGlobalNavi/>
@@ -23,10 +23,12 @@ export default {
     FooterGlobalNavi
   },
   computed: {
-    ...mapState('pages', ['pages'])
+    pages() {
+      return this.$store.app.getPages()
+    }
   },
   methods: {
-    moreButtonOnClick: function(event) {
+    topButtonOnClick: function(event) {
       this.changePage(this.pages.top.url)
     },
     ...mapActions(['changePage'])

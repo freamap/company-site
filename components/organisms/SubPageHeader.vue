@@ -17,16 +17,16 @@
           <img src="~/assets/images/icon-freamap.svg">
         </div>
         <div class="title">
-          {{ pageContents.title }}
+          {{ originPage.title }}
         </div>
         <div class="sub-title">
-          {{ pageContents.subTitle }}
+          {{ originPage.subTitle }}
         </div>
         <div
-          v-show="pageContents.description"
+          v-if="originPage.description"
           class="description"
         >
-          {{ pageContents.description }}
+          {{ originPage.description }}
         </div>
       </div>
       <div class="topic-path">
@@ -72,17 +72,13 @@ export default {
     }
   },
   computed: {
-    pageContents() {
-      return this.pages[this.currentOriginPageName]
-    },
-
     subPageHeaderStyle() {
       let style = {
         maxHeight: '528px',
         paddingBottom: '50px'
       }
 
-      if (this.pageContents.description) {
+      if (this.originPage.description) {
         return {
           ...style,
           maxHeight: '660px'
@@ -97,8 +93,7 @@ export default {
       }
       return style
     },
-    ...mapState(['currentOriginPageName', 'topicPath']),
-    ...mapState('pages', ['pages']),
+    ...mapState(['url', 'topicPath', 'originPage']),
     ...mapState('news', ['news'])
   },
   methods: {
