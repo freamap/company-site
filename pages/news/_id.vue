@@ -37,6 +37,7 @@ export default {
     store.dispatch('news/setCurrentNews', data)
 
     let page = app.getPage('news')
+    let title = data.title ? data.title : 'ニュース詳細'
     let topicPath = [
       {
         url: page.url,
@@ -50,7 +51,7 @@ export default {
     store.dispatch('setPage', {
       topicPath: topicPath,
       originPage: page,
-      url: route.fullPath
+      title: title
     })
   },
   computed: {

@@ -42,9 +42,9 @@ export default {
       }
     ]
     store.dispatch('setPage', {
-      url: route.fullPath,
       originPage: page,
-      topicPath: topicPath
+      topicPath: topicPath,
+      title: page.title
     })
   },
   components: {

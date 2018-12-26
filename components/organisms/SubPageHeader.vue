@@ -93,7 +93,7 @@ export default {
       }
       return style
     },
-    ...mapState(['url', 'topicPath', 'originPage']),
+    ...mapState(['topicPath', 'originPage']),
     ...mapState('news', ['news'])
   },
   methods: {

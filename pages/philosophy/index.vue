@@ -54,7 +54,7 @@ export default {
     store.dispatch('setPage', {
       topicPath: topicPath,
       originPage: page,
-      url: route.fullPath
+      title: page.title
     })
   },
   computed: {
