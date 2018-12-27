@@ -1,17 +1,19 @@
 <template>
   <div class="top-page">
-    <div class="title">
-      ニュース
-    </div>
-    <News :length="3"/>
-    <div class="more-news-button">
-      <Button
-        padding="0 35px"
-        @click="moreNewsButtonOnClick"
-      >
-        もっと見る
-      </Button>
-    </div>
+    <section>
+      <h1 class="title">
+        ニュース
+      </h1>
+      <News :length="3"/>
+      <div class="more-news-button">
+        <Button
+          padding="0 35px"
+          @click="moreNewsButtonOnClick"
+        >
+          もっと見る
+        </Button>
+      </div>
+    </section>
   </div>
 </template>
 
