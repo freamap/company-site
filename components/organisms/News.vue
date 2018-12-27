@@ -1,29 +1,24 @@
 <template>
   <div>
-    <div v-if="news">
-      <div
-        v-for="detail in showNews"
-        :key="detail.news_id"
-        class="content"
-      >
-        <div class="create">
-          {{ detail.create | formatDate }}
-        </div>
-        <div class="description">
-          {{ detail.description }}
-        </div>
-        <div class="detail-button">
-          <nuxt-link
-            :to="{path: '/news/' + detail.news_id}"
-            tag="div"
-          >
-            <ArrowDown />
-          </nuxt-link>
-        </div>
+    <div
+      v-for="detail in showNews"
+      :key="detail.news_id"
+      class="content"
+    >
+      <div class="create">
+        {{ detail.create | formatDate }}
       </div>
-    </div>
-    <div v-else>
-      取得中
+      <div class="description">
+        {{ detail.description }}
+      </div>
+      <div class="detail-button">
+        <nuxt-link
+          :to="{path: '/news/' + detail.news_id}"
+          tag="div"
+        >
+          <ArrowDown />
+        </nuxt-link>
+      </div>
     </div>
   </div>
 </template>
