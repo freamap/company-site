@@ -39,17 +39,16 @@ export default {
   props: {
     length: {
       type: Number,
-      default: -1,
+      default: Number.MAX_VALUE,
       required: false
     }
   },
   computed: {
     ...mapState('news', ['news']),
     showNews() {
-      if (this.length === -1) {
-        return this.news
-      }
-      return this.news.slice(0, this.length)
+      return this.news.filter((value, index) => {
+        return index < this.length
+      })
     }
   },
   methods: {
