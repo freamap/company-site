@@ -14,11 +14,16 @@
           alt="freamap"
         >
       </h1>
-      <div class="title">
-        BE YOURSELF, BE LIKE YOU.
-      </div>
+      <h2 class="title">
+        <nobr>
+          BE YOURSELF, <wbr>BE LIKE YOU.
+        </nobr>
+      </h2>
       <div class="description">
-        株式会社フリーマップのウェブサイトへようこそ！ わたしたちは、”個人の時代”に生きる人々のワーク & ライフに貢献するデジタルテクノロジーが得意な会社です。
+        株式会社フリーマップのウェブサイトへようこそ！
+        <br>
+        わたしたちは、”個人の時代”に生きる人々のワーク & ライフに貢献する
+        デジタルテクノロジーが得意な会社です。
       </div>
       <div class="more">
         <Button
@@ -155,6 +160,7 @@ export default {
       }
       @include mq(lg) {
         font-size: 5rem;
+        line-height: 64px;
       }
     }
 
@@ -162,6 +168,8 @@ export default {
       margin-top: 15px;
       font-size: 1.1rem;
       text-align: center;
+      line-height: 32px;
+      max-width: 485px;
 
       @include mq(sm) {
         font-size: 1.3rem;
