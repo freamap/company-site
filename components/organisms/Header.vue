@@ -39,14 +39,14 @@
       <HeaderUpdateInfo
         :link="pages.blog.url"
         title="BLOG"
-        update="2018/05/29"
+        update="2018-05-29"
       />
     </div>
     <div class="works-update update-info">
       <HeaderUpdateInfo
         :link="pages.works.url"
         title="WORKS"
-        update="2018/05/29"
+        update="2018-05-29"
       />
     </div>
     <div class="gooey left">
@@ -98,6 +98,10 @@ export default {
   width: 100%;
   color: #ffffff;
   box-sizing: border-box;
+
+  @include mq(md) {
+    min-height: 900px;
+  }
 
   > .head {
     @include mq(md) {
