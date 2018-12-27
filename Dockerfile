@@ -9,7 +9,7 @@ RUN npm install --quiet
 COPY . .
 RUN npm rebuild
 RUN npm run build
-EXPOSE 80
+EXPOSE 3000
 ENV HOST 0.0.0.0
 ENV BASE_URL $BASE_URL
 ENV DB_URL $DB_URL
