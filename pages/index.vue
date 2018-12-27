@@ -56,7 +56,7 @@ export default {
   },
   methods: {
     moreNewsButtonOnClick: function(event) {
-      this.changePage(this.$store.app.getPages('news').url)
+      this.changePage(this.$store.app.getPage('news').url)
     },
     ...mapActions(['changePage'])
   }
