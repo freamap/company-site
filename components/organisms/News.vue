@@ -11,9 +11,9 @@
       >
         {{ detail.create | formatDate }}
       </time>
-      <h2 class="description">
+      <h1 class="description">
         {{ detail.title ? detail.title : detail.description }}
-      </h2>
+      </h1>
       <div class="detail-button">
         <nuxt-link
           :to="{path: '/news/' + detail.news_id}"
