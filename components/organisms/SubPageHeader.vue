@@ -16,9 +16,9 @@
         <div class="icon">
           <img src="~/assets/images/icon-freamap.svg">
         </div>
-        <div class="title">
+        <h1 class="title">
           {{ originPage.title }}
-        </div>
+        </h1>
         <div class="sub-title">
           {{ originPage.subTitle }}
         </div>

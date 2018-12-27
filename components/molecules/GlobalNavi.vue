@@ -1,5 +1,5 @@
 <template>
-  <div class="global-navi">
+  <nav class="global-navi">
     <div
       v-for="key in globalLinkPage"
       :key="key"
@@ -7,7 +7,7 @@
     >
       {{ pages[key].title }}
     </div>
-  </div>
+  </nav>
 </template>
 
 <script>

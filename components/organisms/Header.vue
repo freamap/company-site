@@ -1,5 +1,5 @@
 <template>
-  <div class="header container">
+  <header class="header container">
     <div class="head">
       <div>
         <div>
@@ -52,7 +52,7 @@
         <ArrowDown />
       </div>
     </div>
-  </div>
+  </header>
 </template>
 
 <script>
