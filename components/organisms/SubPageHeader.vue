@@ -25,9 +25,8 @@
         <div
           v-if="originPage.description"
           class="description"
-        >
-          {{ originPage.description }}
-        </div>
+          v-html="originPage.description"
+        />
       </div>
       <div class="topic-path">
         <div><a @click="pathClick('/')">TOP</a></div>
