@@ -14,11 +14,11 @@
           alt="freamap"
         >
       </h1>
-      <h2 class="title">
+      <div class="title">
         <nobr>
           BE YOURSELF, <wbr>BE LIKE YOU.
         </nobr>
-      </h2>
+      </div>
       <div class="description">
         株式会社フリーマップのウェブサイトへようこそ！
         <br>
