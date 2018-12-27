@@ -8,9 +8,12 @@
       </div>
     </div>
     <div class="contents">
-      <div class="logo">
-        <img src="~/assets/images/freamap-logo-vert--light.svg">
-      </div>
+      <h1 class="logo">
+        <img
+          src="~/assets/images/freamap-logo-vert--light.svg"
+          alt="freamap"
+        >
+      </h1>
       <div class="title">
         BE YOURSELF, BE LIKE YOU.
       </div>

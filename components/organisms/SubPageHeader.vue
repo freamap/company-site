@@ -4,9 +4,9 @@
     class="sub-page-header container"
   >
     <div class="head">
-      <div class="logo">
+      <h1 class="logo">
         <Logo />
-      </div>
+      </h1>
       <div class="global-navi">
         <SubPageGlobalNavi />
       </div>
@@ -16,9 +16,9 @@
         <div class="icon">
           <img src="~/assets/images/icon-freamap.svg">
         </div>
-        <h1 class="title">
+        <h2 class="title">
           {{ originPage.title }}
-        </h1>
+        </h2>
         <div class="sub-title">
           {{ originPage.subTitle }}
         </div>
