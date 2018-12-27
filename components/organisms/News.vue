@@ -2,18 +2,18 @@
   <div>
     <div
       v-for="detail in showNews"
-      :key="detail.id"
+      :key="detail.news_id"
       class="content"
     >
-      <div class="update">
-        {{ detail.update }}
+      <div class="create">
+        {{ detail.create | formatDate }}
       </div>
       <div class="description">
         {{ detail.description }}
       </div>
       <div class="detail-button">
         <nuxt-link
-          :to="{path: '/news/' + detail.id}"
+          :to="{path: '/news/' + detail.news_id}"
           tag="div"
         >
           <ArrowDown />
@@ -62,7 +62,7 @@ export default {
   min-height: 138px;
   box-sizing: content-box;
 
-  .update {
+  .create {
     margin-right: 75px;
     flex-basis: 78px;
   }

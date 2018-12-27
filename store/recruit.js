@@ -1,28 +1,22 @@
 export const state = () => ({
-  recruit: [
-    {
-      id: 1,
-      date: '2018/06/16',
-      occupation: 'UI/UXデザイナー',
-      businessContent:
-        'この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。この文章はダミーです。',
-      workplace: 'リモート',
-      employmentStatus: '業務委託',
-      payment: '応相談(前職を考慮)',
-      skills:
-        'この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。この文章はダミーです。'
-    },
-    {
-      id: 2,
-      date: '2018/07/12',
-      occupation: 'フルスタックエンジニア',
-      businessContent:
-        'この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。この文章はダミーです。',
-      workplace: 'リモート',
-      employmentStatus: '業務委託',
-      payment: '応相談(前職を考慮)',
-      skills:
-        'この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。この文章はダミーです。'
-    }
-  ]
+  recruits: null,
+  currentRecruit: null
 })
+
+export const mutations = {
+  set_recruits(state, recruits) {
+    state.recruits = recruits
+  },
+  set_current_recruit(state, recruit) {
+    state.currentRecruit = recruit
+  }
+}
+
+export const actions = {
+  setRecruits(context, data) {
+    context.commit('set_recruits', data)
+  },
+  setCurrentRecruit(context, data) {
+    context.commit('set_current_recruit', data)
+  }
+}

@@ -55,10 +55,12 @@ export default {
     Tab
   },
   computed: {
-    ...mapState(['currentOriginPageName']),
-    ...mapState('pages', ['pages']),
+    ...mapState(['originPage']),
+    pages() {
+      return this.$store.app.getPages()
+    },
     tabValue() {
-      return this.pages[this.currentOriginPageName].url
+      return this.originPage.url
     }
   },
   methods: {

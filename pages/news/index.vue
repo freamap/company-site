@@ -6,38 +6,41 @@
 
 <script>
 import News from '~/components/organisms/News.vue'
-import { mapActions } from 'vuex'
 import axios from 'axios'
+import { mapState } from 'vuex'
 
 export default {
   layout: 'sub',
-  head: {
-    title: 'ニュース'
+  head() {
+    return {
+      title: this.title
+    }
   },
-  // head() {
-  //   return {
-  //     // vuexからデータをとる
-  //     title: this.title
-  //   }
-  // },
-  async fetch({ store, params }) {
-    let { data } = await axios.get('http://localhost:3000/api/news')
-    store.commit('news/setNews', data)
-  },
-  asyncData(context) {
+  async fetch({ app, route, store, params }) {
+    let baseUrl = process.server
+      ? process.env.apiBaseURLLocal
+      : process.env.apiBaseURL
+    let { data } = await axios.get(baseUrl + '/api/news')
+    store.dispatch('news/setNews', data)
+
+    let page = app.getPage('news')
     let topicPath = [
       {
-        url: context.store.state.pages.pages.news.url,
-        title: context.store.state.pages.pages.news.title
+        url: page.url,
+        title: page.title
       }
     ]
-    context.store.dispatch('setPage', {
-      url: context.route.fullPath,
-      topicPath: topicPath
+    store.dispatch('setPage', {
+      topicPath: topicPath,
+      originPage: page,
+      title: page.title
     })
   },
   components: {
     News
+  },
+  computed: {
+    ...mapState(['title'])
   }
 }
 </script>

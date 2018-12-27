@@ -5,21 +5,31 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
   layout: 'sub',
-  asyncData(context) {
+  head() {
+    return {
+      title: this.title
+    }
+  },
+  async fetch({ app, store, route }) {
+    let page = app.getPage('contact')
     let topicPath = [
       {
-        url: context.store.state.pages.pages.contact.url,
-        title: context.store.state.pages.pages.contact.title
+        url: page.url,
+        title: page.title
       }
     ]
-    context.store.dispatch('setPage', {
-      url: context.route.fullPath,
-      topicPath: topicPath
+    store.dispatch('setPage', {
+      topicPath: topicPath,
+      originPage: page,
+      title: page.title
     })
+  },
+  computed: {
+    ...mapState(['title'])
   }
 }
 </script>

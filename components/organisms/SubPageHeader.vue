@@ -17,16 +17,16 @@
           <img src="~/assets/images/icon-freamap.svg">
         </div>
         <div class="title">
-          {{ pageContents.title }}
+          {{ originPage.title }}
         </div>
         <div class="sub-title">
-          {{ pageContents.subTitle }}
+          {{ originPage.subTitle }}
         </div>
         <div
-          v-show="pageContents.description"
+          v-if="originPage.description"
           class="description"
         >
-          {{ pageContents.description }}
+          {{ originPage.description }}
         </div>
       </div>
       <div class="topic-path">
@@ -72,17 +72,13 @@ export default {
     }
   },
   computed: {
-    pageContents() {
-      return this.pages[this.currentOriginPageName]
-    },
-
     subPageHeaderStyle() {
       let style = {
         maxHeight: '528px',
         paddingBottom: '50px'
       }
 
-      if (this.pageContents.description) {
+      if (this.originPage.description) {
         return {
           ...style,
           maxHeight: '660px'
@@ -97,35 +93,7 @@ export default {
       }
       return style
     },
-    // topicPath() {
-    //   let path = this.url.split('/').filter(urlPath => urlPath)
-
-    //   let topics = []
-    //   topics.push(this.pages[path[0]])
-
-    //   if (path.length > 1) {
-    //     let details
-    //     switch (path[0]) {
-    //       case 'news':
-    //         details = this.news
-    //         break
-    //     }
-    //     let detail = details.filter(detail => {
-    //       return Number(detail.id) === Number(path[1])
-    //     })
-
-    //     if (detail.length > 0) {
-    //       topics.push({
-    //         ...detail[0],
-    //         url: this.url
-    //       })
-    //     }
-    //   }
-
-    //   return topics
-    // },
-    ...mapState(['currentOriginPageName', 'topicPath']),
-    ...mapState('pages', ['pages']),
+    ...mapState(['topicPath', 'originPage']),
     ...mapState('news', ['news'])
   },
   methods: {

@@ -15,11 +15,12 @@ import { mapState, mapActions } from 'vuex'
 
 export default {
   computed: {
-    ...mapState(['currentOriginPageName']),
-    ...mapState('pages', ['pages']),
+    pages() {
+      return this.$store.app.getPages()
+    },
     globalLinkPage() {
       return Object.keys(this.pages).filter(key => {
-        return key !== 'top'
+        return this.pages[key].globalMenu === true
       })
     }
   },

@@ -1,12 +1,14 @@
 export const state = () => ({
-  currentOriginPageName: '',
-  topicPath: []
+  topicPath: [],
+  originPage: null,
+  title: ''
 })
 
 export const mutations = {
-  change_page(state, page) {
-    state.currentOriginPageName = page['originName']
-    state.topicPath = page['topicPath']
+  set_page(state, pageInfo) {
+    state.topicPath = pageInfo['topicPath']
+    state.originPage = pageInfo['originPage']
+    state.title = pageInfo['title']
   }
 }
 
@@ -16,16 +18,6 @@ export const actions = {
   },
 
   setPage(context, pageInfo) {
-    let originName = 'top'
-    let url = pageInfo.url
-
-    if (url !== context.state.pages.pages.top.url) {
-      originName = url.split('/')[1]
-    }
-
-    context.commit('change_page', {
-      originName: originName,
-      topicPath: pageInfo.topicPath
-    })
+    context.commit('set_page', pageInfo)
   }
 }

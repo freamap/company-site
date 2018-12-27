@@ -1,48 +1,62 @@
 <template>
   <div class="news-detail-page">
-    <div class="update">
-      {{ news.update }}
+    <div class="create">
+      {{ currentNews.create | formatDate }}
     </div>
     <div class="contents">
       <div
-        v-if="news.title"
+        v-if="currentNews.title"
         class="title"
       >
-        {{ news.title }}
+        {{ currentNews.title }}
       </div>
       <div
-        v-html="news.contents"
+        v-html="currentNews.contents"
       />
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+import axios from 'axios'
+import moment from 'moment'
+
 export default {
   layout: 'sub',
-  asyncData(context) {
-    let news = context.store.state.news.news.filter(detail => {
-      return Number(detail.id) === Number(context.params.id)
-    })[0]
+  head() {
+    return {
+      title: this.title
+    }
+  },
+  async fetch({ app, route, store, params }) {
+    let baseUrl = process.server
+      ? process.env.apiBaseURLLocal
+      : process.env.apiBaseURL
+    let { data } = await axios.get(baseUrl + '/api/news/' + params.id)
+    store.dispatch('news/setCurrentNews', data)
 
+    let page = app.getPage('news')
+    let title = data.title ? data.title : 'ニュース詳細'
     let topicPath = [
       {
-        url: context.store.state.pages.pages.news.url,
-        title: context.store.state.pages.pages.news.title
+        url: page.url,
+        title: page.title
       },
       {
-        url: context.route.fullPath,
-        title: news.title
+        url: route.fullPath,
+        title: data.title ? data.title : 'ニュース詳細'
       }
     ]
-    context.store.dispatch('setPage', {
-      url: context.route.fullPath,
-      topicPath: topicPath
+    store.dispatch('setPage', {
+      topicPath: topicPath,
+      originPage: page,
+      title: title
     })
-
-    return {
-      news: news
-    }
+  },
+  computed: {
+    ...mapState('news', ['currentNews']),
+    ...mapState(['title'])
   }
 }
 </script>
@@ -53,7 +67,7 @@ export default {
   display: flex;
   font-size: 1.5rem;
 
-  .update {
+  .create {
     margin-right: 160px;
   }
 

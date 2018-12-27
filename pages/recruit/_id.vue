@@ -2,27 +2,27 @@
   <div class="recruit-detail-page">
     <div class="firstLine">
       <div 
-        v-if="recruit.occupation"
+        v-if="currentRecruit.occupation"
         class="title">
-        {{ recruit.occupation }}の募集要件
+        {{ currentRecruit.occupation }}の募集要件
       </div>
-      <div class="date">
-        最終更新日: {{ recruit.date }}
+      <div class="update">
+        最終更新日: {{ currentRecruit.update | formatDate }}
       </div>
     </div>
     <div class="contents">
       <div>職種</div>
-      <div>{{ recruit.occupation }}</div>
+      <div>{{ currentRecruit.occupation }}</div>
       <div>業務内容</div>
-      <div>{{ recruit.businessContent }}</div>
+      <div>{{ currentRecruit.businessContent }}</div>
       <div>勤務地</div>
-      <div>{{ recruit.workplace }}</div>
+      <div>{{ currentRecruit.workplace }}</div>
       <div>雇用形態</div>
-      <div>{{ recruit.employmentStatus }}</div>
+      <div>{{ currentRecruit.employmentStatus }}</div>
       <div>報酬</div>
-      <div>{{ recruit.payment }}</div>
+      <div>{{ currentRecruit.payment }}</div>
       <div>求めるスキル</div>
-      <div>{{ recruit.skills? recruit.skills: '-' }}</div>
+      <div>{{ currentRecruit.skills? currentRecruit.skills: '-' }}</div>
     </div>
     <div class="apply">
       <Button
@@ -37,6 +37,7 @@
 
 <script>
 import Button from '~/components/atoms/Button.vue'
+import axios from 'axios'
 import { mapState, mapActions } from 'vuex'
 
 export default {
@@ -44,33 +45,42 @@ export default {
     Button
   },
   layout: 'sub',
-  asyncData(context) {
-    let recruit = context.store.state.recruit.recruit.filter(detail => {
-      return Number(detail.id) === Number(context.params.id)
-    })[0]
+  head() {
+    return {
+      title: this.title
+    }
+  },
+  async fetch({ app, route, store, params }) {
+    let baseUrl = process.server
+      ? process.env.apiBaseURLLocal
+      : process.env.apiBaseURL
+    let { data } = await axios.get(baseUrl + '/api/recruits/' + params.id)
+    store.dispatch('recruit/setCurrentRecruit', data)
 
+    let page = app.getPage('recruit')
     let topicPath = [
       {
-        url: context.store.state.pages.pages.recruit.url,
-        title: context.store.state.pages.pages.recruit.title
+        url: page.url,
+        title: page.title
       },
       {
-        url: context.route.fullPath,
-        title: recruit.occupation
+        url: route.fullPath,
+        title: data.occupation
       }
     ]
-    context.store.dispatch('setPage', {
-      url: context.route.fullPath,
-      topicPath: topicPath
+    store.dispatch('setPage', {
+      topicPath: topicPath,
+      originPage: page,
+      title: data.occupation
     })
-
-    return {
-      recruit: recruit
-    }
+  },
+  computed: {
+    ...mapState('recruit', ['currentRecruit']),
+    ...mapState(['title'])
   },
   methods: {
     applyButtonOnClick: function(event) {
-      this.changePage(this.pages.contact.url)
+      this.changePage(this.$store.app.getPages('contact').url)
     },
     ...mapActions(['changePage'])
   }
@@ -97,7 +107,7 @@ export default {
       font-weight: bold;
     }
 
-    .date {
+    .update {
       font-size: 1.3rem;
       color: #767676;
       margin-left: auto;

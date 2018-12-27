@@ -1,9 +1,9 @@
 <template>
   <div>
-    <SubPageHeader :up-contents="upContents"/>
+    <SubPageHeader :up-contents="originPage.upContents"/>
     <ContentsBox
-      :box="box"
-      :up-contents="upContents"
+      :box="originPage.box"
+      :up-contents="originPage.upContents"
     >
       <nuxt/>
     </ContentsBox>
@@ -24,28 +24,7 @@ export default {
     Footer
   },
   computed: {
-    ...mapState(['currentOriginPageName']),
-    ...mapState('pages', ['pages']),
-    box() {
-      if (
-        this.currentOriginPageName === 'blog' ||
-        this.currentOriginPageName === 'works'
-      ) {
-        return false
-      }
-
-      return true
-    },
-    upContents() {
-      if (
-        this.currentOriginPageName === 'blog' ||
-        this.currentOriginPageName === 'works'
-      ) {
-        return false
-      }
-
-      return true
-    }
+    ...mapState(['originPage'])
   }
 }
 </script>
