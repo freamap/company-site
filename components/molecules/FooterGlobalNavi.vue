@@ -20,7 +20,7 @@ export default {
     },
     globalLinkPage() {
       return Object.keys(this.pages).filter(key => {
-        return key !== 'top' && key !== 'news'
+        return this.pages[key].globalMenu === true
       })
     }
   },
