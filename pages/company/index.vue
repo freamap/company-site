@@ -79,7 +79,7 @@ export default {
     > * {
       display: flex;
       align-items: center;
-      padding: 40px 40px;
+      padding: 40px;
       font-size: 1.5rem;
     }
 

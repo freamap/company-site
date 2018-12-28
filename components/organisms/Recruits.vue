@@ -74,6 +74,8 @@ export default {
   .occupation {
     flex-basis: 317px;
     flex-grow: 1;
+    font-size: inherit;
+    font-weight: inherit;
   }
 
   .workplace {

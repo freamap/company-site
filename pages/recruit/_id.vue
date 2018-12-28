@@ -1,37 +1,51 @@
 <template>
   <div class="recruit-detail-page">
-    <div class="firstLine">
-      <div 
-        v-if="currentRecruit.occupation"
-        class="title">
-        {{ currentRecruit.occupation }}の募集要件
+    <section>
+      <div class="firstLine">
+        <h2 
+          v-if="currentRecruit.occupation"
+          class="title">
+          {{ currentRecruit.occupation }}の募集要件
+        </h2>
+        <div class="update">
+          最終更新日: {{ currentRecruit.update | formatDate }}
+        </div>
       </div>
-      <div class="update">
-        最終更新日: {{ currentRecruit.update | formatDate }}
+      <div class="contents">
+        <section>
+          <h3>職種</h3>
+          <div>{{ currentRecruit.occupation }}</div>
+        </section>
+        <section>
+          <h3>業務内容</h3>
+          <div>{{ currentRecruit.businessContent }}</div>
+        </section>
+        <section>
+          <h3>勤務地</h3>
+          <div>{{ currentRecruit.workplace }}</div>
+        </section>
+        <section>
+          <h3>雇用形態</h3>
+          <div>{{ currentRecruit.employmentStatus }}</div>
+        </section>
+        <section>
+          <h3>報酬</h3>
+          <div>{{ currentRecruit.payment }}</div>
+        </section>
+        <section>
+          <h3>求めるスキル</h3>
+          <div>{{ currentRecruit.skills? currentRecruit.skills: '-' }}</div>
+        </section>
       </div>
-    </div>
-    <div class="contents">
-      <div>職種</div>
-      <div>{{ currentRecruit.occupation }}</div>
-      <div>業務内容</div>
-      <div>{{ currentRecruit.businessContent }}</div>
-      <div>勤務地</div>
-      <div>{{ currentRecruit.workplace }}</div>
-      <div>雇用形態</div>
-      <div>{{ currentRecruit.employmentStatus }}</div>
-      <div>報酬</div>
-      <div>{{ currentRecruit.payment }}</div>
-      <div>求めるスキル</div>
-      <div>{{ currentRecruit.skills? currentRecruit.skills: '-' }}</div>
-    </div>
-    <div class="apply">
-      <Button
-        padding="0 43px"
-        @click="applyButtonOnClick"
-      >
-        応募する
-      </Button>
-    </div>
+      <div class="apply">
+        <Button
+          padding="0 43px"
+          @click="applyButtonOnClick"
+        >
+          応募する
+        </Button>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -118,42 +132,39 @@ export default {
     display: flex;
     flex-wrap: wrap;
 
-    > div {
+    > section {
+      width: 100%;
       min-height: 102px;
       display: flex;
-      align-items: center;
-      padding: 40px;
       border-bottom: solid 1px #e8e9ea;
+      border-left: solid 1px #e8e9ea;
+      border-right: solid 1px #e8e9ea;
       font-size: 1.5rem;
 
-      &:nth-of-type(2n + 1) {
+      > * {
+        display: flex;
+        align-items: center;
+        padding: 40px;
+      }
+
+      > h3 {
         flex-basis: 230px;
-        border-left: solid 1px #e8e9ea;
         border-right: solid 1px #e8e9ea;
         font-weight: bold;
       }
 
-      &:nth-of-type(2n) {
-        flex-basis: calc(100% - 230px);
-        border-right: solid 1px #e8e9ea;
+      > div {
+        flex-basis: 0;
+        flex-grow: 1;
       }
 
       &:first-of-type {
-        border-radius: 3px 0 0 0;
-        border-top: solid 1px #e8e9ea;
-      }
-
-      &:nth-of-type(2) {
-        border-radius: 0 3px 0 0;
+        border-radius: 3px 3px 0 0;
         border-top: solid 1px #e8e9ea;
       }
 
       &:last-of-type {
-        border-radius: 0 0 3px 0;
-      }
-
-      &:nth-last-of-type(2) {
-        border-radius: 0 0 0 3px;
+        border-radius: 0 0 3px 3px;
       }
     }
   }
