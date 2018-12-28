@@ -1,9 +1,6 @@
 <template>
   <div class="news-page">
-    <section>
-      <h1 class="news-title">ニュース</h1>
-      <News />
-    </section>
+    <News />
   </div>
 </template>
 
@@ -51,9 +48,5 @@ export default {
 <style lang="scss" scoped>
 .news-page {
   padding: 90px 140px 120px 140px;
-
-  .news-title {
-    display: none;
-  }
 }
 </style>

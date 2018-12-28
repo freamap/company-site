@@ -1,9 +1,6 @@
 <template>
   <div class="blog-page">
-    <section>
-      <h1 class="blog-title">ブログ</h1>
-      <Blogs />
-    </section>
+    <Blogs />
   </div>
 </template>
 
@@ -44,9 +41,5 @@ export default {
 <style lang="scss" scoped>
 .blog-page {
   padding: 70px 0px 140px 0px;
-
-  .blog-title {
-    display: none;
-  }
 }
 </style>
