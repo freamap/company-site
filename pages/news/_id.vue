@@ -7,18 +7,18 @@
       {{ currentNews.create | formatDate }}
     </time>
     <div class="contents">
-      <h1
+      <h2
         v-if="currentNews.title"
         class="title"
       >
         {{ currentNews.title }}
-      </h1>
-      <h1
+      </h2>
+      <h2
         v-else
         class="title-none"
       >
         ニュース詳細
-      </h1>
+      </h2>
       <div
         v-html="currentNews.contents"
       />

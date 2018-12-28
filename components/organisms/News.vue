@@ -11,9 +11,12 @@
       >
         {{ detail.create | formatDate }}
       </time>
-      <h1 class="description">
+      <compnent
+        :is="tag"
+        class="description"
+      >
         {{ detail.title ? detail.title : detail.description }}
-      </h1>
+      </compnent>
       <div class="detail-button">
         <nuxt-link
           :to="{path: '/news/' + detail.news_id}"
@@ -39,6 +42,11 @@ export default {
       type: Number,
       default: Number.MAX_VALUE,
       required: false
+    },
+    headLineLevel: {
+      type: Number,
+      default: 3,
+      required: false
     }
   },
   computed: {
@@ -47,6 +55,9 @@ export default {
       return this.news.filter((value, index) => {
         return index < this.length
       })
+    },
+    tag() {
+      return `h${this.headLineLevel}`
     }
   },
   methods: {

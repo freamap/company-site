@@ -5,9 +5,9 @@
     </div>
     <div class="content">
       <section class="philosophy">
-        <h1 class="sub-title">
+        <h2 class="sub-title">
           <span class="title-en">PHILOSOPHY</span>
-        </h1>
+        </h2>
         <div class="title">自由と夢への地図を描く。</div>
         <div class="text">
           <p>
@@ -19,9 +19,9 @@
         </div>
       </section>
       <section class="tagline">
-        <h1 class="sub-title">
+        <h2 class="sub-title">
           <span class="title-en">TAGLINE</span>
-        </h1>
+        </h2>
         <div class="title">Be yourself, be like you ─ 自分らしく、あなたらしく</div>
         <div class="text">
           <p>

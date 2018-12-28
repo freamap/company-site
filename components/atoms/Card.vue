@@ -16,9 +16,12 @@
       </div>
     </div>
     <div class="content">
-      <h1 class="title">
+      <compnent
+        :is="tag"
+        class="title"
+      >
         {{ title }}
-      </h1>
+      </compnent>
       <div class="description">
         {{ description }}
       </div>
@@ -74,9 +77,17 @@ export default {
       type: String,
       default: '100%',
       required: false
+    },
+    headLineLevel: {
+      type: Number,
+      default: 3,
+      required: false
     }
   },
   computed: {
+    tag() {
+      return `h${this.headLineLevel}`
+    },
     cardStyle() {
       return {
         height: this.width,

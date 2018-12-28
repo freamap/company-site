@@ -1,6 +1,8 @@
 <template>
   <div class="news-page">
-    <News />
+    <News
+      :head-line-level="2"
+    />
   </div>
 </template>
 

@@ -1,9 +1,9 @@
 <template>
   <div class="top-page">
     <section>
-      <h1 class="title">
+      <h2 class="title">
         ニュース
-      </h1>
+      </h2>
       <News :length="3"/>
       <div class="more-news-button">
         <Button

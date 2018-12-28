@@ -5,9 +5,9 @@
     <nav
       class="header-update-info"
     >
-      <h1 class="title">
+      <div class="title">
         {{ title }}
-      </h1>
+      </div>
       <hr noshade>
       <time
         :datetime="update | formatDateTimeTag"

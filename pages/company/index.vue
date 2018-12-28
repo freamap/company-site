@@ -1,23 +1,23 @@
 <template>
   <div class="company-page">
     <section>
-      <h1>会社名</h1>
+      <h2>会社名</h2>
       <div>株式会社freamap(読み方: フリーマップ / 英語表記: freamap Co.,Ltd)</div>
     </section>
     <section>
-      <h1>創業日</h1>
+      <h2>創業日</h2>
       <div>2018年5月28日</div>
     </section>
     <section>
-      <h1>事業内容</h1>
+      <h2>事業内容</h2>
       <div>ウェブサービス及びアプリケーションソフトウェアの企画、開発、販売、保守及びメンテナンス</div>
     </section>
     <section>
-      <h1>資本金</h1>
+      <h2>資本金</h2>
       <div>1,000,000円</div>
     </section>
     <section>
-      <h1>代表取締役</h1>
+      <h2>代表取締役</h2>
       <div>中藤 恭平</div>
     </section>
   </div>
@@ -83,7 +83,7 @@ export default {
       font-size: 1.5rem;
     }
 
-    > h1 {
+    > h2 {
       flex-basis: 230px;
       border-right: solid 1px #e8e9ea;
       font-weight: bold;
