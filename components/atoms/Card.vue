@@ -1,10 +1,13 @@
 <template>
-  <div
+  <article
     :style="cardStyle"
     class="card"
   >
     <div class="thumbnail">
-      <img :src="thumbnail">
+      <img
+        :src="thumbnail"
+        :alt="thumbnailAlt"
+      >
       <div
         v-if="category"
         class="category"
@@ -13,17 +16,20 @@
       </div>
     </div>
     <div class="content">
-      <div class="title">
+      <h1 class="title">
         {{ title }}
-      </div>
+      </h1>
       <div class="description">
         {{ description }}
       </div>
-      <div class="update">
-        {{ update }}
-      </div>
+      <time
+        :datetime="update | formatDateTimeTag"
+        class="update"
+      >
+        {{ update | formatDate }}
+      </time>
     </div>
-  </div>
+  </article>
 </template>
 
 <script>
@@ -35,6 +41,11 @@ export default {
       required: false
     },
     thumbnail: {
+      type: String,
+      default: '',
+      required: false
+    },
+    thumbnailAlt: {
       type: String,
       default: '',
       required: false

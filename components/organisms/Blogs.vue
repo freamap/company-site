@@ -10,6 +10,7 @@
         :description="blog.description"
         :update="blog.update"
         :thumbnail="blog.thumbnail"
+        :thumbnail-alt="blog.thumbnailAlt"
         :category="blog.category"
       />
     </div>
