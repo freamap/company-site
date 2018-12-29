@@ -88,6 +88,7 @@ export default {
     margin-right: 100px;
     font-size: inherit;
     font-weight: inherit;
+    word-break: break-all;
   }
 
   .detail-button {
