@@ -268,7 +268,7 @@ export default {
     > div {
       width: 100%;
       position: absolute;
-      bottom: 61px;
+      bottom: 21px;
       display: flex;
       justify-content: center;
 
