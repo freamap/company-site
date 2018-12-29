@@ -6,7 +6,14 @@
     </section>
     <section>
       <h2>創業日</h2>
-      <div>2018年5月28日</div>
+      <div>
+        <time
+          :datetime="'2018-5-28' | formatDateTimeTag"
+          class="create"
+        >
+          2018年5月28日
+        </time>
+      </div>
     </section>
     <section>
       <h2>事業内容</h2>
