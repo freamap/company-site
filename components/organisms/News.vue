@@ -107,26 +107,27 @@ export default {
   .detail-button {
     height: 38px;
     margin-top: 15px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 
     @include mq(sm) {
       flex-basis: 38px;
       margin-top: 0px;
+      justify-content: center;
     }
 
     div {
-      width: 100%;
+      width: 38px;
       height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
       cursor: pointer;
       outline: 0;
       border: none;
       padding: 0;
-
-      @include mq(sm) {
-        justify-content: center;
-      }
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       svg {
         transform: rotate(-90deg);
