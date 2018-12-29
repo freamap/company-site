@@ -49,4 +49,12 @@ export default {
     display: inline;
   }
 }
+
+.container {
+  padding: 0px 44px;
+
+  @include mq(md) {
+    padding: 0px 100px;
+  }
+}
 </style>

@@ -67,13 +67,23 @@ export default {
 
 <style scoped lang="scss">
 .top-page {
-  padding: 90px 140px 120px 140px;
+  padding: 25px 20px 70px 20px;
+
+  @include mq(md) {
+    padding: 90px 140px 120px 140px;
+  }
 
   .title {
     font-weight: bold;
     font-size: 1.8rem;
-    margin-bottom: 54px;
-    margin-left: -3px;
+    text-align: center;
+    margin-bottom: 25px;
+
+    @include mq(md) {
+      text-align: left;
+      margin-bottom: 54px;
+      margin-left: -3px;
+    }
   }
 
   .more-news-button {

@@ -27,11 +27,19 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 *,
 *:before,
 *:after {
   box-sizing: border-box;
   margin: 0;
+}
+
+.container {
+  padding: 0px 44px;
+
+  @include mq(md) {
+    padding: 0px 100px;
+  }
 }
 </style>
