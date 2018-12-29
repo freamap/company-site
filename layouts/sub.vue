@@ -1,9 +1,14 @@
 <template>
   <div>
-    <SubPageHeader :up-contents="originPage.upContents"/>
+    <SubPageHeader
+      :up-contents="originPage.upContents"
+      :up-contents-mobile="originPage.upContentsMobile"
+    />
     <ContentsBox
       :box="originPage.box"
+      :box-mobile="originPage.boxMobile"
       :up-contents="originPage.upContents"
+      :up-contents-mobile="originPage.upContentsMobile"
     >
       <nuxt/>
     </ContentsBox>

@@ -25,6 +25,8 @@ const pages = {
       'フリーマップという社名の由来は、free + dream + map を組み合わせた造語です。<br class="br-sm">テクノロジーの発展が一巡した今、わたしたちが考えること。',
     upContents: true,
     box: true,
+    upContentsMobile: true,
+    boxMobile: true,
     globalMenu: true
   },
   works: {
@@ -33,6 +35,8 @@ const pages = {
     subTitle: 'works',
     upContents: false,
     box: false,
+    upContentsMobile: false,
+    boxMobile: false,
     globalMenu: true
   },
   blog: {
@@ -41,6 +45,8 @@ const pages = {
     subTitle: 'blog',
     upContents: false,
     box: false,
+    upContentsMobile: false,
+    boxMobile: false,
     globalMenu: true
   },
   company: {
@@ -49,6 +55,8 @@ const pages = {
     subTitle: 'company',
     upContents: true,
     box: true,
+    upContentsMobile: true,
+    boxMobile: true,
     globalMenu: true
   },
   news: {
@@ -57,6 +65,8 @@ const pages = {
     subTitle: 'News',
     upContents: true,
     box: true,
+    upContentsMobile: true,
+    boxMobile: true,
     globalMenu: false
   },
   recruit: {
@@ -65,6 +75,8 @@ const pages = {
     subTitle: 'recruit',
     upContents: true,
     box: true,
+    upContentsMobile: true,
+    boxMobile: true,
     globalMenu: true
   },
   contact: {
@@ -73,6 +85,8 @@ const pages = {
     subTitle: 'contact',
     upContents: true,
     box: true,
+    upContentsMobile: true,
+    boxMobile: true,
     globalMenu: true
   }
 }

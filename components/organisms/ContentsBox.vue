@@ -1,10 +1,10 @@
 <template>
   <div
-    :style="contentsBoxStyle"
+    :class="contentsClass"
     class="container contents-box"
   >
     <div
-      :style="contentsBoxPaddingStyle"
+      class="box"
     >
       <slot />
     </div>
@@ -23,27 +23,42 @@ export default {
       type: Boolean,
       default: true,
       required: false
+    },
+    boxMobile: {
+      type: Boolean,
+      default: true,
+      required: false
+    },
+    upContentsMobile: {
+      type: Boolean,
+      default: true,
+      required: false
     }
   },
   computed: {
-    contentsBoxStyle() {
-      if (this.upContents) {
-        return {
-          marginTop: '-50px'
+    contentsClass() {
+      let classes = {}
+      if (this.boxMobile) {
+        if (this.upContentsMobile) {
+          classes['upContentsBoxMobile'] = true
+        } else {
+          classes['downContentsBoxMobile'] = true
         }
+      } else {
+        classes['contentsNoBoxMobile'] = true
       }
-      return {
-        marginTop: '0'
-      }
-    },
-    contentsBoxPaddingStyle() {
+
       if (this.box) {
-        return {
-          background: '#ffffff',
-          border: 'solid 1px #e8e9ea'
+        if (this.upContents) {
+          classes['upContentsBox'] = true
+        } else {
+          classes['downContentsBox'] = true
         }
+      } else {
+        classes['contentsNoBox'] = true
       }
-      return {}
+
+      return classes
     }
   }
 }
@@ -54,5 +69,45 @@ export default {
   position: relative;
   margin-bottom: 140px;
   // transition: margin 0.4s ease-in-out;
+}
+
+.upContentsBoxMobile {
+  margin-top: -50px;
+
+  .box {
+    background: #ffffff;
+    border: solid 1px #e8e9ea;
+  }
+}
+
+.downContentsBoxMobile {
+  margin-top: 40px;
+
+  .box {
+    background: #ffffff;
+    border: solid 1px #e8e9ea;
+  }
+}
+
+.upContentsBox {
+  @include mq(md) {
+    margin-top: -50px;
+
+    .box {
+      background: #ffffff;
+      border: solid 1px #e8e9ea;
+    }
+  }
+}
+
+.downContentsBox {
+  @include mq(md) {
+    margin-top: 40px;
+
+    .box {
+      background: #ffffff;
+      border: solid 1px #e8e9ea;
+    }
+  }
 }
 </style>

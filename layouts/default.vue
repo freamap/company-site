@@ -4,6 +4,8 @@
     <ContentsBox
       :box="true"
       :up-contents="true"
+      :box-mobile="true"
+      :up-contents-mobile="false"
     >
       <nuxt/>
     </ContentsBox>

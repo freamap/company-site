@@ -1,6 +1,7 @@
 <template>
   <div
     :style="subPageHeaderStyle"
+    :class="upcontentsClass"
     class="sub-page-header container"
   >
     <div class="head">
@@ -68,13 +69,17 @@ export default {
       type: Boolean,
       default: true,
       required: false
+    },
+    upContentsMobile: {
+      type: Boolean,
+      default: true,
+      required: false
     }
   },
   computed: {
     subPageHeaderStyle() {
       let style = {
-        maxHeight: '528px',
-        paddingBottom: '50px'
+        maxHeight: '528px'
       }
 
       if (this.originPage.description) {
@@ -84,13 +89,24 @@ export default {
         }
       }
 
-      if (this.upContents === false) {
+      return style
+    },
+    upcontentsClass() {
+      if (this.upContents && this.upContentsMobile) {
         return {
-          ...style,
-          paddingBottom: '0px'
+          upcontents: true
+        }
+      } else if (this.upContents) {
+        return {
+          'upcontents-pc': true
+        }
+      } else if (this.upContentsMobile) {
+        return {
+          'upcontents-mobile': true
         }
       }
-      return style
+
+      return {}
     },
     ...mapState(['topicPath', 'originPage']),
     ...mapState('news', ['news'])
@@ -265,5 +281,25 @@ export default {
     transform: translate(56%, -32%);
     width: 65%;
   }
+}
+
+.upcontents-mobile {
+  padding-bottom: 50px;
+
+  @include mq(md) {
+    padding-bottom: 0px;
+  }
+}
+
+.upcontents-pc {
+  padding-bottom: 0px;
+
+  @include mq(md) {
+    padding-bottom: 50px;
+  }
+}
+
+.upcontents {
+  padding-bottom: 50px;
 }
 </style>
