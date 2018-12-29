@@ -76,6 +76,9 @@ export default {
 .sub-page-global-navi {
   font-size: 1.5rem;
   font-weight: 'Medium';
-  color: #ffffff;
+
+  div {
+    color: #ffffff;
+  }
 }
 </style>

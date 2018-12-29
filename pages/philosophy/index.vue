@@ -65,7 +65,11 @@ export default {
 
 <style lang="scss" scoped>
 .philosophy-page {
-  padding: 40px 70px 120px 70px;
+  padding: 25px 20px 70px 20px;
+
+  @include mq(md) {
+    padding: 40px 70px 120px 70px;
+  }
 
   .image {
     width: 100%;
@@ -77,7 +81,11 @@ export default {
   }
 
   .content {
-    padding: 50px 70px 0 70px;
+    padding: 30px 0 0 0;
+
+    @include mq(md) {
+      padding: 50px 70px 0 70px;
+    }
   }
 
   .sub-title {
@@ -88,7 +96,6 @@ export default {
       color: $primary;
       font-family: Poppins;
       font-weight: bold;
-      font-size: 1.5rem;
       position: relative;
 
       &::after {
@@ -105,23 +112,33 @@ export default {
   }
 
   .title {
-    margin-top: 20px;
-    margin-bottom: 40px;
-    font-size: 2.8rem;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
     font-weight: bold;
+
+    @include mq(md) {
+      font-size: 2.8rem;
+      margin-top: 20px;
+      margin-bottom: 40px;
+    }
   }
 
   .text {
-    p {
-      font-size: 1.5rem;
-    }
-
     p:nth-of-type(n + 2) {
-      margin-top: 35px;
+      margin-top: 30px;
+
+      @include mq(md) {
+        margin-top: 35px;
+      }
     }
   }
   .tagline {
-    margin-top: 90px;
+    margin-top: 60px;
+
+    @include mq(md) {
+      margin-top: 90px;
+    }
   }
 }
 </style>

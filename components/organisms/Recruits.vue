@@ -57,7 +57,6 @@ export default {
 .content {
   display: flex;
   box-sizing: content-box;
-  font-size: 1.5rem;
   min-height: 120px;
   width: 100%;
   align-items: center;

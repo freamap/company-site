@@ -41,9 +41,7 @@ export default {
 
 <style scoped lang="scss">
 .global-navi {
-  font-size: 1.5rem;
   font-weight: 'Medium';
-  color: #ffffff;
   display: flex;
   height: 100%;
 
@@ -54,6 +52,7 @@ export default {
     align-items: center;
     height: 100%;
     cursor: pointer;
+    color: #ffffff;
   }
 }
 </style>

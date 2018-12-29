@@ -96,9 +96,12 @@ export default {
   background-color: $primary;
   height: 100vh;
   width: 100%;
-  color: #ffffff;
   box-sizing: border-box;
   min-height: 667px;
+
+  * {
+    color: #ffffff;
+  }
 
   @include mq(md) {
     min-height: 900px;
@@ -170,6 +173,10 @@ export default {
       @include mq(lg) {
         font-size: 5rem;
         line-height: 64px;
+      }
+
+      nobr {
+        font-size: inherit;
       }
     }
 

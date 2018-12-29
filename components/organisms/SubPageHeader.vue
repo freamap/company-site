@@ -130,6 +130,10 @@ export default {
   transition: max-height 0.4s ease-in-out;
   position: relative;
 
+  * {
+    color: #ffffff;
+  }
+
   @include mq(md) {
     padding-top: 30px;
   }
@@ -192,7 +196,6 @@ export default {
       font-weight: bold;
       font-size: 3.5rem;
       text-align: center;
-      color: #ffffff;
 
       @include mq(md) {
         font-size: 4.3rem;
@@ -204,7 +207,6 @@ export default {
       height: 25px;
       text-align: center;
       font-size: 1.5rem;
-      color: #ffffff;
       font-family: 'Poppins';
 
       @include mq(md) {
@@ -216,7 +218,6 @@ export default {
       margin-top: 29px;
       text-align: center;
       font-size: 1.1rem;
-      color: #ffffff;
 
       @include mq(md) {
         font-size: 1.3rem;
@@ -228,15 +229,16 @@ export default {
       display: flex;
       bottom: 25px;
       left: 0;
-      color: #ffffff;
-      font-size: 1.1rem;
-
-      @include mq(md) {
-        font-size: 1.3rem;
-      }
 
       a:nth-child(n) {
         cursor: pointer;
+        font-weight: 400;
+
+        font-size: 1.1rem;
+
+        @include mq(md) {
+          font-size: 1.3rem;
+        }
       }
 
       :first-child {
@@ -255,7 +257,7 @@ export default {
         width: 19px;
 
         svg {
-          fill: currentColor;
+          fill: #ffffff;
         }
       }
     }

@@ -70,7 +70,6 @@ export default {
 <style scoped lang="scss">
 .content {
   display: flex;
-  font-size: 1.3rem;
   border-top: 1px solid #e8e9ea;
   box-sizing: border-box;
   flex-direction: column;
@@ -81,7 +80,6 @@ export default {
     flex-direction: row;
     padding: 50px 20px;
     min-height: 138px;
-    font-size: 1.5rem;
   }
 
   .create {

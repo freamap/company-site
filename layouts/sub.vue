@@ -40,6 +40,12 @@ export default {
 *:after {
   box-sizing: border-box;
   margin: 0;
+  font-size: 1.3rem;
+  color: #191919;
+
+  @include mq(md) {
+    font-size: 1.5rem;
+  }
 }
 
 .br-sm {

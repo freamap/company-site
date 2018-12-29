@@ -75,13 +75,11 @@ export default {
 .news-detail-page {
   padding: 27px 20px 60px 20px;
   display: flex;
-  font-size: 1.3rem;
   flex-direction: column;
 
   @include mq(md) {
     padding: 90px 140px 120px 140px;
     flex-direction: row;
-    font-size: 1.5rem;
   }
 
   .create {
