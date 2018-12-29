@@ -1,5 +1,5 @@
 <template>
-  <div class="header container">
+  <header class="header container">
     <div class="head">
       <div>
         <div>
@@ -8,14 +8,22 @@
       </div>
     </div>
     <div class="contents">
-      <div class="logo">
-        <img src="~/assets/images/freamap-logo-vert--light.svg">
-      </div>
+      <h1 class="logo">
+        <img
+          src="~/assets/images/freamap-logo-vert--light.svg"
+          alt="freamap"
+        >
+      </h1>
       <div class="title">
-        BE YOURSELF, BE LIKE YOU.
+        <nobr>
+          BE YOURSELF, <wbr>BE LIKE YOU.
+        </nobr>
       </div>
       <div class="description">
-        株式会社フリーマップのウェブサイトへようこそ！ わたしたちは、”個人の時代”に生きる人々のワーク & ライフに貢献するデジタルテクノロジーが得意な会社です。
+        株式会社フリーマップのウェブサイトへようこそ！
+        <br>
+        わたしたちは、”個人の時代”に生きる人々のワーク & ライフに貢献する
+        デジタルテクノロジーが得意な会社です。
       </div>
       <div class="more">
         <Button
@@ -31,14 +39,14 @@
       <HeaderUpdateInfo
         :link="pages.blog.url"
         title="BLOG"
-        update="2018/05/29"
+        update="2018-05-29"
       />
     </div>
     <div class="works-update update-info">
       <HeaderUpdateInfo
         :link="pages.works.url"
         title="WORKS"
-        update="2018/05/29"
+        update="2018-05-29"
       />
     </div>
     <div class="gooey left">
@@ -52,7 +60,7 @@
         <ArrowDown />
       </div>
     </div>
-  </div>
+  </header>
 </template>
 
 <script>
@@ -90,6 +98,10 @@ export default {
   width: 100%;
   color: #ffffff;
   box-sizing: border-box;
+
+  @include mq(md) {
+    min-height: 900px;
+  }
 
   > .head {
     @include mq(md) {
@@ -152,6 +164,7 @@ export default {
       }
       @include mq(lg) {
         font-size: 5rem;
+        line-height: 64px;
       }
     }
 
@@ -159,6 +172,8 @@ export default {
       margin-top: 15px;
       font-size: 1.1rem;
       text-align: center;
+      line-height: 32px;
+      max-width: 485px;
 
       @include mq(sm) {
         font-size: 1.3rem;

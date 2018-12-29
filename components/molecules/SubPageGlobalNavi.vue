@@ -1,5 +1,5 @@
 <template>
-  <div class="sub-page-global-navi">
+  <nav class="sub-page-global-navi">
     <Tabs
       :value="tabValue"
       @change="onChange"
@@ -41,7 +41,7 @@
         padding="9px 15px 0 15px"
       />
     </Tabs>
-  </div>
+  </nav>
 </template>
 
 <script>

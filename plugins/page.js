@@ -22,7 +22,7 @@ const pages = {
     title: '企業理念',
     subTitle: 'philosophy',
     description:
-      'フリーマップという社名の由来は、free + dream + map を組み合わせた造語です。テクノロジーの発展が一巡した今、わたしたちが考えること。',
+      'フリーマップという社名の由来は、free + dream + map を組み合わせた造語です。<br class="br-sm">テクノロジーの発展が一巡した今、わたしたちが考えること。',
     upContents: true,
     box: true,
     globalMenu: true

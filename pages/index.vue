@@ -1,17 +1,19 @@
 <template>
   <div class="top-page">
-    <div class="title">
-      ニュース
-    </div>
-    <News :length="3"/>
-    <div class="more-news-button">
-      <Button
-        padding="0 35px"
-        @click="moreNewsButtonOnClick"
-      >
-        もっと見る
-      </Button>
-    </div>
+    <section>
+      <h2 class="title">
+        ニュース
+      </h2>
+      <News :length="3"/>
+      <div class="more-news-button">
+        <Button
+          padding="0 35px"
+          @click="moreNewsButtonOnClick"
+        >
+          もっと見る
+        </Button>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -56,7 +58,7 @@ export default {
   },
   methods: {
     moreNewsButtonOnClick: function(event) {
-      this.changePage(this.$store.app.getPages('news').url)
+      this.changePage(this.$store.app.getPage('news').url)
     },
     ...mapActions(['changePage'])
   }

@@ -28,3 +28,20 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.br-sm {
+  display: none;
+
+  @include mq(sm) {
+    display: inline;
+  }
+}
+</style>

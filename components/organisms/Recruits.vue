@@ -1,13 +1,5 @@
 <template>
   <div>
-    <div class="firstLine">
-      <div class="title">
-        募集職種一覧
-      </div>
-      <div class="date">
-        最終更新日: {{ latestUpdate }}
-      </div>
-    </div>
     <div class="content recruits-header">
       <div class="occupation">
         職種
@@ -20,14 +12,14 @@
       </div>
     </div>
     <div class="recruits-content">
-      <div
+      <section
         v-for="recruit in recruits"
         :key="recruit.recruit_id"
         class="content"
       >
-        <div class="occupation">
+        <h3 class="occupation">
           {{ recruit.occupation }}
-        </div>
+        </h3>
         <div class="workplace">
           {{ recruit.workplace }}
         </div>
@@ -42,7 +34,7 @@
             <ArrowDown />
           </nuxt-link>
         </div>
-      </div>
+      </section>
     </div>
   </div>
 </template>
@@ -50,47 +42,18 @@
 <script>
 import { mapState } from 'vuex'
 import ArrowDown from '~/assets/icons/ArrowDown.vue'
-import moment from 'moment'
 
 export default {
   components: {
     ArrowDown
   },
   computed: {
-    ...mapState('recruit', ['recruits']),
-    latestUpdate() {
-      return this.recruits.reduce(
-        (a, b) =>
-          moment(a.update, 'YYYY/MM/DD').fromNow() <
-          moment(b.update, 'YYYY/MM/DD').fromNow()
-            ? a
-            : b
-      ).date
-    }
+    ...mapState('recruit', ['recruits'])
   }
 }
 </script>
 
 <style scoped lang="scss">
-.firstLine {
-  display: flex;
-  margin-top: 55px;
-  margin-bottom: 50px;
-  width: 100%;
-
-  .title {
-    font-size: 1.8rem;
-    color: #000000;
-    font-weight: bold;
-  }
-
-  .date {
-    font-size: 1.3rem;
-    color: #767676;
-    margin-left: auto;
-  }
-}
-
 .content {
   display: flex;
   box-sizing: content-box;
@@ -111,6 +74,8 @@ export default {
   .occupation {
     flex-basis: 317px;
     flex-grow: 1;
+    font-size: inherit;
+    font-weight: inherit;
   }
 
   .workplace {

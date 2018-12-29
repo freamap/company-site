@@ -16,18 +16,17 @@
         <div class="icon">
           <img src="~/assets/images/icon-freamap.svg">
         </div>
-        <div class="title">
+        <h1 class="title">
           {{ originPage.title }}
-        </div>
+        </h1>
         <div class="sub-title">
           {{ originPage.subTitle }}
         </div>
         <div
           v-if="originPage.description"
           class="description"
-        >
-          {{ originPage.description }}
-        </div>
+          v-html="originPage.description"
+        />
       </div>
       <div class="topic-path">
         <div><a @click="pathClick('/')">TOP</a></div>

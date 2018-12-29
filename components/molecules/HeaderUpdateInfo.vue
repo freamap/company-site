@@ -1,15 +1,23 @@
 <template>
   <div
-    class="header-update-info"
     @click="click"
   >
-    <div class="title">
-      {{ title }}
-    </div>
-    <hr noshade>
-    <div class="update">
-      {{ update }}更新
-    </div>
+    <nav
+      class="header-update-info"
+    >
+      <div class="title">
+        {{ title }}
+      </div>
+      <hr noshade>
+      <div class="update">
+        <time
+          :datetime="update | formatDateTimeTag"
+        >
+          {{ update | formatDate }}
+        </time>
+        更新
+      </div>
+    </nav>
   </div>
 </template>
 
@@ -54,6 +62,7 @@ export default {
   cursor: pointer;
 
   .title {
+    font-size: inherit;
     font-weight: bold;
     margin-right: 20px;
   }

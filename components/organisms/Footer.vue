@@ -1,5 +1,5 @@
 <template>
-  <div class="footer">
+  <footer class="footer">
     <div class="logo">
       <img 
         src="~/assets/images/freamap-logo-horiz--color.svg"
@@ -11,7 +11,7 @@
     <div class="copyright">
       ©︎ 2018 freamap Co.,Ltd
     </div>
-  </div>
+  </footer>
 </template>
 
 <script>

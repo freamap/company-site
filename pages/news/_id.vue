@@ -1,20 +1,30 @@
 <template>
-  <div class="news-detail-page">
+  <article class="news-detail-page">
     <div class="create">
-      {{ currentNews.create | formatDate }}
+      <time
+        :datetime="currentNews.create | formatDateTimeTag"
+      >
+        {{ currentNews.create | formatDate }}
+      </time>
     </div>
     <div class="contents">
-      <div
+      <h2
         v-if="currentNews.title"
         class="title"
       >
         {{ currentNews.title }}
-      </div>
+      </h2>
+      <h2
+        v-else
+        class="title-none"
+      >
+        ニュース詳細
+      </h2>
       <div
         v-html="currentNews.contents"
       />
     </div>
-  </div>
+  </article>
 </template>
 
 <script>
@@ -76,6 +86,10 @@ export default {
       margin-bottom: 50px;
       font-size: 1.8rem;
       font-weight: bold;
+    }
+
+    .title-none {
+      display: none;
     }
   }
 }

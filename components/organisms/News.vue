@@ -1,16 +1,23 @@
 <template>
   <div>
-    <div
+    <article
       v-for="detail in showNews"
       :key="detail.news_id"
       class="content"
     >
       <div class="create">
-        {{ detail.create | formatDate }}
+        <time
+          :datetime="detail.create | formatDateTimeTag"
+        >
+          {{ detail.create | formatDate }}
+        </time>
       </div>
-      <div class="description">
-        {{ detail.description }}
-      </div>
+      <compnent
+        :is="tag"
+        class="description"
+      >
+        {{ detail.title ? detail.title : detail.description }}
+      </compnent>
       <div class="detail-button">
         <nuxt-link
           :to="{path: '/news/' + detail.news_id}"
@@ -19,7 +26,7 @@
           <ArrowDown />
         </nuxt-link>
       </div>
-    </div>
+    </article>
   </div>
 </template>
 
@@ -36,6 +43,11 @@ export default {
       type: Number,
       default: Number.MAX_VALUE,
       required: false
+    },
+    headLineLevel: {
+      type: Number,
+      default: 3,
+      required: false
     }
   },
   computed: {
@@ -44,6 +56,9 @@ export default {
       return this.news.filter((value, index) => {
         return index < this.length
       })
+    },
+    tag() {
+      return `h${this.headLineLevel}`
     }
   },
   methods: {
@@ -71,6 +86,8 @@ export default {
     flex-basis: 0;
     flex-grow: 1;
     margin-right: 100px;
+    font-size: inherit;
+    font-weight: inherit;
   }
 
   .detail-button {
