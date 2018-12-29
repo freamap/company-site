@@ -9,7 +9,6 @@
       <div>
         <time
           :datetime="'2018-5-28' | formatDateTimeTag"
-          class="create"
         >
           2018年5月28日
         </time>

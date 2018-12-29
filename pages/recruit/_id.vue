@@ -8,7 +8,12 @@
           {{ currentRecruit.occupation }}の募集要件
         </h2>
         <div class="update">
-          最終更新日: {{ currentRecruit.update | formatDate }}
+          最終更新日: 
+          <time
+            :datetime="currentRecruit.update | formatDateTimeTag"
+          >
+            {{ currentRecruit.update | formatDate }}
+          </time>
         </div>
       </div>
       <div class="contents">

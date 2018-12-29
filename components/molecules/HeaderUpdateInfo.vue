@@ -9,12 +9,14 @@
         {{ title }}
       </div>
       <hr noshade>
-      <time
-        :datetime="update | formatDateTimeTag"
-        class="update"
-      >
-        {{ update | formatDate }}更新
-      </time>
+      <div class="update">
+        <time
+          :datetime="update | formatDateTimeTag"
+        >
+          {{ update | formatDate }}
+        </time>
+        更新
+      </div>
     </nav>
   </div>
 </template>

@@ -5,12 +5,13 @@
       :key="detail.news_id"
       class="content"
     >
-      <time
-        :datetime="detail.create | formatDateTimeTag"
-        class="create"
-      >
-        {{ detail.create | formatDate }}
-      </time>
+      <div class="create">
+        <time
+          :datetime="detail.create | formatDateTimeTag"
+        >
+          {{ detail.create | formatDate }}
+        </time>
+      </div>
       <compnent
         :is="tag"
         class="description"

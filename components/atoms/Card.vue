@@ -25,12 +25,13 @@
       <div class="description">
         {{ description }}
       </div>
-      <time
-        :datetime="update | formatDateTimeTag"
-        class="update"
-      >
-        {{ update | formatDate }}
-      </time>
+      <div class="update">
+        <time
+          :datetime="update | formatDateTimeTag"
+        >
+          {{ update | formatDate }}
+        </time>
+      </div>
     </div>
   </article>
 </template>

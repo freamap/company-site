@@ -1,11 +1,12 @@
 <template>
   <article class="news-detail-page">
-    <time
-      :datetime="currentNews.create | formatDateTimeTag"
-      class="create"
-    >
-      {{ currentNews.create | formatDate }}
-    </time>
+    <div class="create">
+      <time
+        :datetime="currentNews.create | formatDateTimeTag"
+      >
+        {{ currentNews.create | formatDate }}
+      </time>
+    </div>
     <div class="contents">
       <h2
         v-if="currentNews.title"

@@ -5,12 +5,13 @@
         <h2 class="title">
           募集職種一覧
         </h2>
-        <time
-          :datetime="latestUpdate | formatDateTimeTag"
-          class="update"
-        >
-          {{ latestUpdate | formatDate }}
-        </time>
+        <div class="update">
+          <time
+            :datetime="latestUpdate | formatDateTimeTag"
+          >
+            {{ latestUpdate | formatDate }}
+          </time>
+        </div>
       </div>
       <Recruits />
     </section>
