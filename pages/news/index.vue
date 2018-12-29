@@ -49,6 +49,10 @@ export default {
 
 <style lang="scss" scoped>
 .news-page {
-  padding: 90px 140px 120px 140px;
+  padding: 27px 20px 70px 20px;
+
+  @include mq(md) {
+    padding: 90px 140px 120px 140px;
+  }
 }
 </style>
