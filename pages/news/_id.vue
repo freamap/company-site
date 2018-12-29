@@ -73,19 +73,36 @@ export default {
 
 <style lang="scss" scoped>
 .news-detail-page {
-  padding: 90px 140px 120px 140px;
+  padding: 27px 20px 60px 20px;
   display: flex;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
+  flex-direction: column;
+
+  @include mq(md) {
+    padding: 90px 140px 120px 140px;
+    flex-direction: row;
+    font-size: 1.5rem;
+  }
 
   .create {
-    margin-right: 160px;
+    margin-right: 0px;
+    margin-bottom: 25px;
+
+    @include mq(md) {
+      margin-right: 160px;
+      margin-bottom: 0px;
+    }
   }
 
   .contents {
     .title {
-      margin-bottom: 50px;
+      margin-bottom: 20px;
       font-size: 1.8rem;
       font-weight: bold;
+
+      @include mq(md) {
+        margin-bottom: 50px;
+      }
     }
 
     .title-none {
