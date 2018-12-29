@@ -76,7 +76,7 @@ export default {
   flex-direction: column;
   padding: 20px 0px;
 
-  @include mq(md) {
+  @include mq(sm) {
     align-items: center;
     flex-direction: row;
     padding: 50px 20px;
@@ -84,7 +84,7 @@ export default {
   }
 
   .create {
-    @include mq(md) {
+    @include mq(sm) {
       margin-right: 75px;
       flex-basis: 78px;
     }
@@ -96,7 +96,7 @@ export default {
     word-break: break-all;
     margin-top: 25px;
 
-    @include mq(md) {
+    @include mq(sm) {
       flex-basis: 0;
       flex-grow: 1;
       margin-top: 0px;
@@ -108,7 +108,7 @@ export default {
     height: 38px;
     margin-top: 15px;
 
-    @include mq(md) {
+    @include mq(sm) {
       flex-basis: 38px;
       margin-top: 0px;
     }
@@ -124,7 +124,7 @@ export default {
       border: none;
       padding: 0;
 
-      @include mq(md) {
+      @include mq(sm) {
         justify-content: center;
       }
 
