@@ -58,7 +58,6 @@ export default {
     ...mapState(['title']),
     ...mapState('recruit', ['recruits']),
     latestUpdate() {
-      console.log(this.recruits)
       return this.recruits.reduce(
         (a, b) =>
           moment(a.update, 'YYYY-MM-DD').fromNow() <
