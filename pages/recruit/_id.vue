@@ -156,6 +156,7 @@ export default {
         flex-basis: 230px;
         border-right: solid 1px #e8e9ea;
         font-weight: bold;
+        font-size: 1.5rem;
       }
 
       > div {
@@ -176,6 +177,8 @@ export default {
 
   .apply {
     margin-top: 70px;
+    display: flex;
+    justify-content: center;
   }
 }
 </style>
