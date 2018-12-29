@@ -8,7 +8,7 @@
       <h2>創業日</h2>
       <div>
         <time
-          :datetime="'2018-5-28' | formatDateTimeTag"
+          :datetime="'2018-05-28' | formatDateTimeTag"
         >
           2018年5月28日
         </time>
@@ -61,9 +61,13 @@ export default {
 
 <style lang="scss" scoped>
 .company-page {
-  padding: 90px 140px 120px 140px;
+  padding: 25px 20px 70px 20px;
   display: flex;
   flex-wrap: wrap;
+
+  @include mq(md) {
+    padding: 90px 140px 120px 140px;
+  }
 
   > section {
     min-height: 102px;
@@ -72,6 +76,11 @@ export default {
     border-bottom: solid 1px #e8e9ea;
     border-left: solid 1px #e8e9ea;
     border-right: solid 1px #e8e9ea;
+    flex-direction: column;
+
+    @include mq(md) {
+      flex-direction: row;
+    }
 
     &:first-of-type {
       border-radius: 3px 3px 0 0;
@@ -85,14 +94,25 @@ export default {
     > * {
       display: flex;
       align-items: center;
-      padding: 40px;
-      font-size: 1.5rem;
+      padding: 15px;
+
+      @include mq(md) {
+        padding: 40px;
+      }
     }
 
     > h2 {
-      flex-basis: 230px;
-      border-right: solid 1px #e8e9ea;
+      border-right: none;
+      border-bottom: solid 1px #e8e9ea;
       font-weight: bold;
+      justify-content: center;
+
+      @include mq(md) {
+        flex-basis: 230px;
+        border-right: solid 1px #e8e9ea;
+        border-bottom: none;
+        justify-content: flex-start;
+      }
     }
 
     > div {
