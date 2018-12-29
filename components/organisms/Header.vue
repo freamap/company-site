@@ -98,6 +98,7 @@ export default {
   width: 100%;
   color: #ffffff;
   box-sizing: border-box;
+  min-height: 667px;
 
   @include mq(md) {
     min-height: 900px;
@@ -140,7 +141,11 @@ export default {
     height: 100%;
 
     .logo {
-      width: 90px;
+      width: 80px;
+
+      @include mq(md) {
+        width: 90px;
+      }
 
       img {
         width: 100%;
@@ -172,17 +177,19 @@ export default {
       margin-top: 15px;
       font-size: 1.1rem;
       text-align: center;
-      line-height: 32px;
+      line-height: 22px;
       max-width: 485px;
 
       @include mq(sm) {
         font-size: 1.3rem;
+        line-height: 26px;
       }
       @include mq(md) {
         margin-top: 26px;
       }
       @include mq(lg) {
         font-size: 1.5rem;
+        line-height: 32px;
       }
     }
 
