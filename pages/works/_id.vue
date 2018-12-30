@@ -14,14 +14,14 @@ export default {
       title: this.pages.title
     }
   },
-  asyncData(context) {
+  async fetch({ app, route, store, params }) {
     let topicPath = [
       {
-        url: context.store.state.pages.pages.works.url,
-        title: context.store.state.pages.pages.works.title
+        url: store.state.pages.pages.works.url,
+        title: store.state.pages.pages.works.title
       }
     ]
-    context.store.dispatch('setPage', {
+    await store.dispatch('setPage', {
       topicPath: topicPath,
       originPage: page,
       url: route.fullPath

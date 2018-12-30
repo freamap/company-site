@@ -1,10 +1,11 @@
 <template>
-  <div>
-    works page
+  <div class="news-page">
+    <Works/>
   </div>
 </template>
 
 <script>
+import Works from '~/components/organisms/Works.vue'
 import { mapState } from 'vuex'
 import axios from 'axios'
 
@@ -20,7 +21,7 @@ export default {
       ? process.env.apiBaseURLLocal
       : process.env.apiBaseURL
     let { data } = await axios.get(baseUrl + '/api/works')
-    store.dispatch('work/setWorks', data)
+    await store.dispatch('work/setWorks', data)
 
     let page = app.getPage('works')
     let topicPath = [
@@ -29,11 +30,14 @@ export default {
         title: page.title
       }
     ]
-    store.dispatch('setPage', {
+    await store.dispatch('setPage', {
       topicPath: topicPath,
       originPage: page,
       title: page.title
     })
+  },
+  components: {
+    Works
   },
   computed: {
     ...mapState(['title'])
