@@ -1,5 +1,5 @@
 <template>
-  <div class="news-page">
+  <div class="works-page">
     <Works/>
   </div>
 </template>
@@ -45,5 +45,12 @@ export default {
 }
 </script>
 
-<style>
+<style scoped lang="scss">
+.works-page {
+  padding: 40px 0px 80px 0px;
+
+  @include mq(md) {
+    padding: 100px 0px 140px 0px;
+  }
+}
 </style>
