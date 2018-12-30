@@ -44,7 +44,7 @@ export default {
       ? process.env.apiBaseURLLocal
       : process.env.apiBaseURL
     let { data } = await axios.get(baseUrl + '/api/news/' + params.id)
-    store.dispatch('news/setCurrentNews', data)
+    await store.dispatch('news/setCurrentNews', data)
 
     let page = app.getPage('news')
     let title = data.title ? data.title : 'ニュース詳細'
@@ -58,7 +58,7 @@ export default {
         title: data.title ? data.title : 'ニュース詳細'
       }
     ]
-    store.dispatch('setPage', {
+    await store.dispatch('setPage', {
       topicPath: topicPath,
       originPage: page,
       title: title

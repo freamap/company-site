@@ -37,7 +37,7 @@ export default {
       ? process.env.apiBaseURLLocal
       : process.env.apiBaseURL
     let { data } = await axios.get(baseUrl + '/api/recruits')
-    store.dispatch('recruit/setRecruits', data)
+    await store.dispatch('recruit/setRecruits', data)
 
     let page = app.getPage('recruit')
     let topicPath = [

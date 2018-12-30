@@ -34,7 +34,7 @@ export default {
       ? process.env.apiBaseURLLocal
       : process.env.apiBaseURL
     let { data } = await axios.get(baseUrl + '/api/news')
-    store.dispatch('news/setNews', data)
+    await store.dispatch('news/setNews', data)
 
     let page = app.getPage('top')
     let topicPath = [
@@ -43,7 +43,7 @@ export default {
         title: page.title
       }
     ]
-    store.dispatch('setPage', {
+    await store.dispatch('setPage', {
       originPage: page,
       topicPath: topicPath,
       title: page.title
