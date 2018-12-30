@@ -194,7 +194,6 @@ export default {
 
       > h3 {
         font-weight: bold;
-        font-size: 1.5rem;
         border-bottom: solid 1px #e8e9ea;
         justify-content: center;
 
