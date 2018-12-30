@@ -1,72 +1,20 @@
 <template>
   <article
+    :class="cardClass"
     :style="cardStyle"
     class="card"
   >
-    <div class="thumbnail">
-      <img
-        :src="thumbnail"
-        :alt="thumbnailAlt"
-      >
-      <div
-        v-if="category"
-        class="category"
-      >
-        {{ category }}
-      </div>
-    </div>
-    <div class="content">
-      <compnent
-        :is="tag"
-        class="title"
-      >
-        {{ title }}
-      </compnent>
-      <div class="description">
-        {{ description }}
-      </div>
-      <div class="update">
-        <time
-          :datetime="update | formatDateTimeTag"
-        >
-          {{ update | formatDate }}
-        </time>
-      </div>
-    </div>
+    <slot name="thumnail"/>
+    <slot name="contents"/>
   </article>
 </template>
 
 <script>
 export default {
   props: {
-    title: {
-      type: String,
-      default: '',
-      required: false
-    },
-    thumbnail: {
-      type: String,
-      default: '',
-      required: false
-    },
-    thumbnailAlt: {
-      type: String,
-      default: '',
-      required: false
-    },
-    description: {
-      type: String,
-      default: '',
-      required: false
-    },
-    update: {
-      type: String,
-      default: '',
-      required: false
-    },
-    category: {
-      type: String,
-      default: '',
+    horizontal: {
+      type: Boolean,
+      default: true,
       required: false
     },
     width: {
@@ -78,21 +26,23 @@ export default {
       type: String,
       default: '100%',
       required: false
-    },
-    headLineLevel: {
-      type: Number,
-      default: 3,
-      required: false
     }
   },
   computed: {
-    tag() {
-      return `h${this.headLineLevel}`
+    cardClass() {
+      if (this.horizontal) {
+        return {
+          horizontal: true
+        }
+      }
+      return {
+        vertical: true
+      }
     },
     cardStyle() {
       return {
-        height: this.width,
-        width: this.width
+        width: this.width,
+        height: this.height
       }
     }
   }
@@ -102,57 +52,20 @@ export default {
 <style lang="scss" scoped>
 .card {
   display: flex;
-  flex-direction: column;
   border-radius: 2px;
   background-color: #ffffff;
   border: solid 1px #e8e9ea;
+}
 
-  .thumbnail {
-    flex-basis: 60%;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    position: relative;
+.horizontal {
+  flex-direction: column;
+}
 
-    img {
-      object-fit: contain;
-      max-width: 100%;
-      max-height: 100%;
-    }
+.vertical {
+  flex-direction: column;
 
-    .category {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      font-size: 1.3rem;
-      padding: 5px 9px;
-      background-color: $primary;
-      color: #ffffff;
-    }
-  }
-
-  > .content {
-    display: flex;
-    flex-basis: 40%;
-    flex-direction: column;
-    padding: 30px;
-
-    .title {
-      flex-basis: 20px;
-      font-size: 1.8rem;
-      font-weight: bold;
-    }
-
-    .description {
-      flex-basis: 20px;
-      flex-grow: 1;
-      font-size: 1.3rem;
-    }
-
-    .update {
-      flex-basis: 20px;
-      font-size: 1.3rem;
-    }
+  @include mq(md) {
+    flex-direction: row;
   }
 }
 </style>
