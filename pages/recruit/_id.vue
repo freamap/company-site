@@ -108,34 +108,64 @@ export default {
 
 <style lang="scss" scoped>
 .recruit-detail-page {
-  padding: 90px 140px 120px 140px;
+  padding: 25px 20px 70px 20px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+
+  @include mq(md) {
+    padding: 90px 140px 120px 140px;
+  }
 
   .firstLine {
     display: flex;
-    margin-top: 55px;
-    margin-bottom: 50px;
+    margin-bottom: 0px;
     width: 100%;
+    flex-direction: column;
+
+    @include mq(md) {
+      margin-top: 55px;
+      margin-bottom: 50px;
+      flex-direction: row;
+    }
 
     .title {
       font-size: 1.8rem;
       color: #000000;
       font-weight: bold;
+      text-align: center;
+
+      @include mq(md) {
+        text-align: left;
+      }
     }
 
     .update {
+      display: flex;
+      align-items: center;
       font-size: 1.3rem;
       color: #767676;
-      margin-left: auto;
+      justify-content: center;
+      margin-top: 10px;
+
+      @include mq(md) {
+        justify-content: end;
+        margin-top: 0px;
+      }
+
+      > * {
+        color: inherit;
+        font-size: inherit;
+      }
     }
   }
 
   .contents {
     display: flex;
     flex-wrap: wrap;
+    margin-top: 25px;
+
+    @include mq(md) {
+      margin-top: 0px;
+    }
 
     > section {
       width: 100%;
@@ -145,18 +175,35 @@ export default {
       border-left: solid 1px #e8e9ea;
       border-right: solid 1px #e8e9ea;
       font-size: 1.5rem;
+      flex-direction: column;
+      box-sizing: border-box;
+
+      @include mq(sm) {
+        flex-direction: row;
+      }
 
       > * {
         display: flex;
         align-items: center;
-        padding: 40px;
+        padding: 15px;
+
+        @include mq(sm) {
+          padding: 40px;
+        }
       }
 
       > h3 {
-        flex-basis: 230px;
-        border-right: solid 1px #e8e9ea;
         font-weight: bold;
         font-size: 1.5rem;
+        border-bottom: solid 1px #e8e9ea;
+        justify-content: center;
+
+        @include mq(sm) {
+          border-bottom: none;
+          border-right: solid 1px #e8e9ea;
+          flex-basis: 230px;
+          justify-content: start;
+        }
       }
 
       > div {
