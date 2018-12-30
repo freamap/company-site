@@ -285,7 +285,7 @@ export default {
 
       svg {
         height: 22px;
-        fill: currentColor;
+        fill: #ffffff;
       }
     }
   }
