@@ -67,11 +67,11 @@ export default {
 <style scoped lang="scss">
 .contents-box {
   position: relative;
-  margin-bottom: 140px;
   // transition: margin 0.4s ease-in-out;
 }
 
 .upContentsBoxMobile {
+  margin-bottom: 140px;
   margin-top: -50px;
 
   .box {
@@ -90,6 +90,7 @@ export default {
 }
 
 .upContentsBox {
+  margin-bottom: 140px;
   @include mq(md) {
     margin-top: -50px;
 
