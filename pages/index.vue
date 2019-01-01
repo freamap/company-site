@@ -26,7 +26,7 @@ import axios from 'axios'
 export default {
   head() {
     return {
-      title: this.title
+      title: this.currentPage.title
     }
   },
   async fetch({ app, route, store, params }) {
@@ -46,7 +46,7 @@ export default {
     await store.dispatch('setPage', {
       originPage: page,
       topicPath: topicPath,
-      title: page.title
+      currentPage: page
     })
   },
   components: {
@@ -54,7 +54,7 @@ export default {
     News
   },
   computed: {
-    ...mapState(['title'])
+    ...mapState(['currentPage'])
   },
   methods: {
     moreNewsButtonOnClick: function(event) {

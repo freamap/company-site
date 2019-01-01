@@ -1,14 +1,14 @@
 <template>
   <div>
     <SubPageHeader
-      :up-contents="originPage.upContents"
-      :up-contents-mobile="originPage.upContentsMobile"
+      :up-contents="currentPage.upContents"
+      :up-contents-mobile="currentPage.upContentsMobile"
     />
     <ContentsBox
-      :box="originPage.box"
-      :box-mobile="originPage.boxMobile"
-      :up-contents="originPage.upContents"
-      :up-contents-mobile="originPage.upContentsMobile"
+      :box="currentPage.box"
+      :box-mobile="currentPage.boxMobile"
+      :up-contents="currentPage.upContents"
+      :up-contents-mobile="currentPage.upContentsMobile"
     >
       <nuxt/>
     </ContentsBox>
@@ -29,7 +29,7 @@ export default {
     Footer
   },
   computed: {
-    ...mapState(['originPage'])
+    ...mapState(['currentPage'])
   }
 }
 </script>

@@ -29,7 +29,7 @@ export default {
   layout: 'sub',
   head() {
     return {
-      title: this.title
+      title: this.currentPage.title
     }
   },
   async fetch({ app, route, store, params }) {
@@ -49,14 +49,14 @@ export default {
     store.dispatch('setPage', {
       topicPath: topicPath,
       originPage: page,
-      title: page.title
+      currentPage: page
     })
   },
   components: {
     Recruits
   },
   computed: {
-    ...mapState(['title']),
+    ...mapState(['currentPage']),
     ...mapState('recruits', ['recruits']),
     latestUpdate() {
       return this.recruits.reduce(

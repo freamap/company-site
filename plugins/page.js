@@ -39,7 +39,16 @@ const pages = {
     boxMobile: false,
     globalMenu: true
   },
-  blog: {
+  worksDetail: {
+    url: '/works/:id',
+    title: '開発実績詳細',
+    upContents: true,
+    box: true,
+    upContentsMobile: true,
+    boxMobile: true,
+    globalMenu: false
+  },
+  blogs: {
     url: '/blogs',
     title: 'ブログ',
     subTitle: 'Blog',
@@ -69,6 +78,15 @@ const pages = {
     boxMobile: true,
     globalMenu: false
   },
+  newsDetail: {
+    url: '/news/:id',
+    title: 'ニュース詳細',
+    upContents: true,
+    box: true,
+    upContentsMobile: true,
+    boxMobile: true,
+    globalMenu: false
+  },
   recruits: {
     url: '/recruits',
     title: '採用情報',
@@ -78,6 +96,15 @@ const pages = {
     upContentsMobile: true,
     boxMobile: true,
     globalMenu: true
+  },
+  recruitsDetail: {
+    url: '/recruits/:id',
+    title: '採用情報詳細',
+    upContents: true,
+    box: true,
+    upContentsMobile: true,
+    boxMobile: true,
+    globalMenu: false
   },
   contact: {
     url: '/contact',

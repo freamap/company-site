@@ -17,8 +17,8 @@
         padding="9px 15px 0 15px"
       />
       <Tab
-        :value="pages.blog.url"
-        :label="pages.blog.title"
+        :value="pages.blogs.url"
+        :label="pages.blogs.title"
         label-position="top"
         padding="9px 15px 0 15px"
       />

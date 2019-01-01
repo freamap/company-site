@@ -12,7 +12,7 @@ export default {
   layout: 'sub',
   head() {
     return {
-      title: this.title
+      title: this.currentPage.title
     }
   },
   async fetch({ app, route, store, params }) {
@@ -23,7 +23,12 @@ export default {
     await store.dispatch('works/setCurrentWork', data)
 
     let page = app.getPage('works')
-    let title = data.title ? data.title : '開発実績詳細'
+    let currentPage = app.getPage('worksDetail')
+
+    if (data.title) {
+      currentPage['title'] = data.title
+    }
+
     let topicPath = [
       {
         url: page.url,
@@ -31,20 +36,27 @@ export default {
       },
       {
         url: route.fullPath,
-        title: title
+        title: currentPage.title
       }
     ]
     await store.dispatch('setPage', {
       topicPath: topicPath,
       originPage: page,
-      title: title
+      currentPage: currentPage
     })
   },
   computed: {
-    ...mapState(['title'])
+    ...mapState(['currentPage'])
   }
 }
 </script>
 
-<style>
+<style scoped lang="scss">
+.works-page {
+  padding: 40px 0px 80px 0px;
+
+  @include mq(md) {
+    padding: 50px 0px 140px 0px;
+  }
+}
 </style>

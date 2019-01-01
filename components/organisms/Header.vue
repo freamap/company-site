@@ -37,7 +37,7 @@
     </div>
     <div class="blog-update update-info">
       <HeaderUpdateInfo
-        :link="pages.blog.url"
+        :link="pages.blogs.url"
         title="BLOG"
         update="2018-05-29"
       />

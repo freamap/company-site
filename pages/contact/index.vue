@@ -11,7 +11,7 @@ export default {
   layout: 'sub',
   head() {
     return {
-      title: this.title
+      title: this.currentPage.title
     }
   },
   async fetch({ app, store, route }) {
@@ -25,11 +25,11 @@ export default {
     await store.dispatch('setPage', {
       topicPath: topicPath,
       originPage: page,
-      title: page.title
+      currentPage: page
     })
   },
   computed: {
-    ...mapState(['title'])
+    ...mapState(['currentPage'])
   }
 }
 </script>

@@ -36,7 +36,7 @@ export default {
   layout: 'sub',
   head() {
     return {
-      title: this.title
+      title: this.currentPage.title
     }
   },
   async fetch({ app, route, store, params }) {
@@ -47,7 +47,10 @@ export default {
     await store.dispatch('news/setCurrentNews', data)
 
     let page = app.getPage('news')
-    let title = data.title ? data.title : 'ニュース詳細'
+    let currentPage = app.getPage('newsDetail')
+    if (data.title) {
+      currentPage['title'] = data.title
+    }
     let topicPath = [
       {
         url: page.url,
@@ -55,18 +58,18 @@ export default {
       },
       {
         url: route.fullPath,
-        title: title
+        title: currentPage.title
       }
     ]
     await store.dispatch('setPage', {
       topicPath: topicPath,
       originPage: page,
-      title: title
+      currentPage: currentPage
     })
   },
   computed: {
     ...mapState('news', ['currentNews']),
-    ...mapState(['title'])
+    ...mapState(['currentPage'])
   }
 }
 </script>

@@ -66,7 +66,7 @@ export default {
   layout: 'sub',
   head() {
     return {
-      title: this.title
+      title: this.currentPage.dtitle
     }
   },
   async fetch({ app, route, store, params }) {
@@ -77,6 +77,12 @@ export default {
     await store.dispatch('recruits/setCurrentRecruit', data)
 
     let page = app.getPage('recruits')
+    let currentPage = app.getPage('recruitsDetail')
+
+    if (data.occupation) {
+      currentPage['title'] = data.occupation
+    }
+
     let topicPath = [
       {
         url: page.url,
@@ -84,18 +90,18 @@ export default {
       },
       {
         url: route.fullPath,
-        title: data.occupation
+        title: currentPage.title
       }
     ]
     await store.dispatch('setPage', {
       topicPath: topicPath,
       originPage: page,
-      title: data.occupation
+      currentPage: currentPage
     })
   },
   computed: {
     ...mapState('recruits', ['currentRecruit']),
-    ...mapState(['title'])
+    ...mapState(['currentPage'])
   },
   methods: {
     applyButtonOnClick: function(event) {
