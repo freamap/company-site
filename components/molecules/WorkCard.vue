@@ -22,7 +22,7 @@
         <div class="more-button">
           <Button
             padding="0 28px"
-            @click="cardOnClick"
+            @click="moreButtonOnClick"
           >
             さらに詳しく
           </Button>
@@ -70,8 +70,8 @@ export default {
     }
   },
   methods: {
-    cardOnClick() {
-      return true
+    moreButtonOnClick: function(event) {
+      this.$emit('click', event)
     }
   }
 }

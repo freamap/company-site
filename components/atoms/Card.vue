@@ -57,6 +57,11 @@ export default {
         height: this.height
       }
     }
+  },
+  methods: {
+    click: function(event) {
+      this.$emit('click', event)
+    }
   }
 }
 </script>

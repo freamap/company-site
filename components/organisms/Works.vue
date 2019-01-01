@@ -1,20 +1,17 @@
 <template>
   <div class="works">
-    <div class="work">
+    <div
+      v-for="(work, index) in works"
+      :key="work.work_id"
+      class="work"
+    >
       <WorkCard
-        title="タイトル１"
+        :title="work.title"
+        :description="work.description"
+        :img-right="index % 2 === 1"
         img="/img/philosophy-cover.png"
         img-alt="サムネイル１"
-        description="説明文１説明文１説明文１説明文１説明文１説明文１"
-      />
-    </div>
-    <div class="work">
-      <WorkCard
-        :img-right="true"
-        title="タイトル２"
-        img="/img/philosophy-cover.png"
-        img-alt="サムネイル2"
-        description="説明文２説明文２説明文２説明文２説明文２"
+        @click="moreButtonOnClick(work.work_id)"
       />
     </div>
   </div>
@@ -29,12 +26,15 @@ export default {
     WorkCard
   },
   computed: {
-    ...mapState('work', ['works'])
+    ...mapState('works', ['works']),
+    pages() {
+      return this.$store.app.getPages()
+    }
   },
   methods: {
     ...mapActions(['changePage']),
-    moreNewsButtonOnClick() {
-      return true
+    moreButtonOnClick: function(workId) {
+      this.changePage(this.pages.works.url + '/' + workId)
     }
   }
 }
