@@ -50,7 +50,7 @@ export default {
   padding: 40px 0px 80px 0px;
 
   @include mq(md) {
-    padding: 100px 0px 140px 0px;
+    padding: 50px 0px 140px 0px;
   }
 }
 </style>

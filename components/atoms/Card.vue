@@ -26,6 +26,11 @@ export default {
       type: String,
       default: '100%',
       required: false
+    },
+    reverse: {
+      type: Boolean,
+      default: false,
+      required: false
     }
   },
   computed: {
@@ -35,6 +40,13 @@ export default {
           horizontal: true
         }
       }
+
+      if (this.reverse) {
+        return {
+          reverse: true
+        }
+      }
+
       return {
         vertical: true
       }
@@ -66,6 +78,14 @@ export default {
 
   @include mq(md) {
     flex-direction: row;
+  }
+}
+
+.reverse {
+  flex-direction: column;
+
+  @include mq(md) {
+    flex-direction: row-reverse;
   }
 }
 </style>
