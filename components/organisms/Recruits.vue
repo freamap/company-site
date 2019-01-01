@@ -31,7 +31,7 @@
         </div>
         <div class="recruit-button">
           <nuxt-link
-            :to="{path: '/recruit/' + recruit.recruit_id}"
+            :to="{path: pages.recruits.url + '/' + recruit.recruit_id}"
             tag="div"
           >
             <ArrowDown />
@@ -51,7 +51,10 @@ export default {
     ArrowDown
   },
   computed: {
-    ...mapState('recruit', ['recruits'])
+    ...mapState('recruits', ['recruits']),
+    pages() {
+      return this.$store.app.getPages()
+    }
   }
 }
 </script>

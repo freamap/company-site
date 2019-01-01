@@ -20,7 +20,7 @@ const pages = {
   philosophy: {
     url: '/philosophy',
     title: '企業理念',
-    subTitle: 'philosophy',
+    subTitle: 'Philosophy',
     description:
       'フリーマップという社名の由来は、free + dream + map を組み合わせた造語です。<br class="br-sm">テクノロジーの発展が一巡した今、わたしたちが考えること。',
     upContents: true,
@@ -32,7 +32,7 @@ const pages = {
   works: {
     url: '/works',
     title: '開発実績',
-    subTitle: 'works',
+    subTitle: 'Works',
     upContents: false,
     box: false,
     upContentsMobile: false,
@@ -40,9 +40,9 @@ const pages = {
     globalMenu: true
   },
   blog: {
-    url: '/blog',
+    url: '/blogs',
     title: 'ブログ',
-    subTitle: 'blog',
+    subTitle: 'Blog',
     upContents: false,
     box: false,
     upContentsMobile: false,
@@ -52,7 +52,7 @@ const pages = {
   company: {
     url: '/company',
     title: '企業情報',
-    subTitle: 'company',
+    subTitle: 'Company',
     upContents: true,
     box: true,
     upContentsMobile: true,
@@ -69,10 +69,10 @@ const pages = {
     boxMobile: true,
     globalMenu: false
   },
-  recruit: {
-    url: '/recruit',
+  recruits: {
+    url: '/recruits',
     title: '採用情報',
-    subTitle: 'recruit',
+    subTitle: 'Recruit',
     upContents: true,
     box: true,
     upContentsMobile: true,
@@ -82,7 +82,7 @@ const pages = {
   contact: {
     url: '/contact',
     title: 'お問い合わせ',
-    subTitle: 'contact',
+    subTitle: 'Contact',
     upContents: true,
     box: true,
     upContentsMobile: true,

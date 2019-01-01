@@ -29,8 +29,8 @@
         padding="9px 15px 0 15px"
       />
       <Tab
-        :value="pages.recruit.url"
-        :label="pages.recruit.title"
+        :value="pages.recruits.url"
+        :label="pages.recruits.title"
         label-position="top"
         padding="9px 15px 0 15px"
       />

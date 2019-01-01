@@ -74,9 +74,9 @@ export default {
       ? process.env.apiBaseURLLocal
       : process.env.apiBaseURL
     let { data } = await axios.get(baseUrl + '/api/recruits/' + params.id)
-    await store.dispatch('recruit/setCurrentRecruit', data)
+    await store.dispatch('recruits/setCurrentRecruit', data)
 
-    let page = app.getPage('recruit')
+    let page = app.getPage('recruits')
     let topicPath = [
       {
         url: page.url,
@@ -94,7 +94,7 @@ export default {
     })
   },
   computed: {
-    ...mapState('recruit', ['currentRecruit']),
+    ...mapState('recruits', ['currentRecruit']),
     ...mapState(['title'])
   },
   methods: {

@@ -37,9 +37,9 @@ export default {
       ? process.env.apiBaseURLLocal
       : process.env.apiBaseURL
     let { data } = await axios.get(baseUrl + '/api/recruits')
-    await store.dispatch('recruit/setRecruits', data)
+    await store.dispatch('recruits/setRecruits', data)
 
-    let page = app.getPage('recruit')
+    let page = app.getPage('recruits')
     let topicPath = [
       {
         url: page.url,
@@ -57,7 +57,7 @@ export default {
   },
   computed: {
     ...mapState(['title']),
-    ...mapState('recruit', ['recruits']),
+    ...mapState('recruits', ['recruits']),
     latestUpdate() {
       return this.recruits.reduce(
         (a, b) =>

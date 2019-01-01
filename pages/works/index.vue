@@ -21,7 +21,7 @@ export default {
       ? process.env.apiBaseURLLocal
       : process.env.apiBaseURL
     let { data } = await axios.get(baseUrl + '/api/works')
-    await store.dispatch('work/setWorks', data)
+    await store.dispatch('works/setWorks', data)
 
     let page = app.getPage('works')
     let topicPath = [

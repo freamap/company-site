@@ -55,7 +55,7 @@ export default {
       },
       {
         url: route.fullPath,
-        title: data.title ? data.title : 'ニュース詳細'
+        title: title
       }
     ]
     await store.dispatch('setPage', {
