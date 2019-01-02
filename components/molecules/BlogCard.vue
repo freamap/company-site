@@ -4,12 +4,10 @@
   >
     <template slot="thumnail">
       <div class="thumnail">
-        <div class="img">
-          <img
-            :src="thumnail"
-            :alt="thumnailAlt"
-          >
-        </div>
+        <img
+          :src="thumnail"
+          :alt="thumnailAlt"
+        >
         <div
           v-if="category"
           class="category"
@@ -84,26 +82,20 @@ export default {
 
 <style scoped lang="scss">
 .thumnail {
-  height: 0;
+  height: 230px;
   display: flex;
   align-items: center;
+  justify-content: center;
   position: relative;
-  padding-bottom: 100%;
 
-  .img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  @include mq(sm) {
+    height: 300px;
+  }
 
-    img {
-      max-width: 100%;
-      object-fit: contain;
-    }
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
   }
 
   .category {

@@ -46,16 +46,33 @@ export default {
   display: flex;
   width: 100%;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: space-between;
   margin: -10px 0;
 
   .blog {
-    flex-basis: calc((100% - 40px) / 3);
+    flex-basis: 100%;
     margin-bottom: 20px;
 
-    &:nth-of-type(3n + 2) {
-      margin-right: 20px;
-      margin-left: 20px;
+    @include mq(sm) {
+      flex-basis: calc((100% - 20px) / 2);
+      max-width: 400px;
+
+      &:nth-of-type(2n) {
+        margin-left: 20px;
+      }
+    }
+
+    @include mq(md) {
+      flex-basis: calc((100% - 40px) / 3);
+
+      &:nth-of-type(2n) {
+        margin-left: 0px;
+      }
+
+      &:nth-of-type(3n + 2) {
+        margin-right: 20px;
+        margin-left: 20px;
+      }
     }
   }
 }
