@@ -1,14 +1,21 @@
 <template>
   <Card
-    :horizontal="false"
-    :reverse="thumnailRight"
+    :horizontal="true"
   >
     <template slot="thumnail">
       <div class="thumnail">
-        <img
-          :src="thumnail"
-          :alt="thumnailAlt"
+        <div class="img">
+          <img
+            :src="thumnail"
+            :alt="thumnailAlt"
+          >
+        </div>
+        <div
+          v-if="category"
+          class="category"
         >
+          {{ category }}
+        </div>
       </div>
     </template>
     <template slot="contents">
@@ -19,13 +26,8 @@
         <div class="description">
           {{ description }}
         </div>
-        <div class="more-button">
-          <Button
-            padding="0 28px"
-            @click="moreButtonOnClick"
-          >
-            さらに詳しく
-          </Button>
+        <div class="update">
+          {{ update }}
         </div>
       </div>
     </template>
@@ -35,15 +37,18 @@
 <script>
 import { mapState, mapActions } from 'vuex'
 import Card from '~/components/atoms/Card.vue'
-import Button from '~/components/atoms/Button.vue'
 
 export default {
   components: {
-    Card,
-    Button
+    Card
   },
   props: {
     title: {
+      type: String,
+      default: '',
+      required: false
+    },
+    update: {
       type: String,
       default: '',
       required: false
@@ -63,9 +68,9 @@ export default {
       default: '',
       required: false
     },
-    thumnailRight: {
-      type: Boolean,
-      default: false,
+    category: {
+      type: String,
+      default: '',
       required: false
     }
   },
@@ -79,34 +84,45 @@ export default {
 
 <style scoped lang="scss">
 .thumnail {
-  flex-basis: 100%;
+  height: 0;
   display: flex;
   align-items: center;
+  position: relative;
+  padding-bottom: 100%;
 
-  @include mq(md) {
-    flex-basis: calc(760 / 1240 * 100%);
+  .img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    img {
+      width: 100%;
+      object-fit: contain;
+    }
   }
 
-  img {
-    width: 100%;
-    object-fit: contain;
+  .category {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 1.3rem;
+    background-color: #236af7;
+    padding: 5px 9px;
+    color: #ffffff;
   }
 }
 
 .contents {
-  flex-basis: auto;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  padding: 30px 20px;
+  padding: 30px;
 
   @include mq(md) {
-    flex-basis: calc(480 / 1240 * 100%);
-    padding: 60px;
+    padding: 30px;
   }
 
   .title {
-    font-size: 3rem;
+    font-size: 1.8rem;
     font-weight: bold;
     width: 100%;
 
@@ -116,22 +132,18 @@ export default {
   }
 
   .description {
-    margin-top: 20px;
+    margin-top: 15px;
     width: 100%;
     font-size: 1.3rem;
 
     @include mq(sm) {
-      margin-top: 30px;
+      margin-top: 15px;
     }
   }
 
-  .more-button {
-    margin-top: 40px;
-    width: 100%;
-
-    @include mq(sm) {
-      margin-top: 50px;
-    }
+  .update {
+    margin-top: 25px;
+    font-size: 1.3rem;
   }
 }
 </style>

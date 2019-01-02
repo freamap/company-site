@@ -5,7 +5,15 @@
       :key="blog.id"
       class="blog"
     >
-      <Card
+      <BlogCard
+        :title="blog.title"
+        :description="blog.description"
+        :update="blog.update"
+        :thumnail="blog.thumbnail"
+        :thumnail-alt="blog.thumbnailAlt"
+        :category="blog.category"
+      />
+      <!-- <Card
         :title="blog.title"
         :description="blog.description"
         :update="blog.update"
@@ -13,7 +21,7 @@
         :thumbnail-alt="blog.thumbnailAlt"
         :category="blog.category"
         :head-line-level="2"
-      />
+      /> -->
     </div>
   </div>
 </template>
@@ -21,10 +29,11 @@
 <script>
 import Card from '~/components/atoms/Card.vue'
 import { mapState } from 'vuex'
+import BlogCard from '~/components/molecules/BlogCard.vue'
 
 export default {
   components: {
-    Card
+    BlogCard
   },
   computed: {
     ...mapState('blogs', ['blogs'])
@@ -42,11 +51,11 @@ export default {
 
   .blog {
     flex-basis: calc((100% - 40px) / 3);
-    height: 400px;
     margin-bottom: 20px;
 
     &:nth-of-type(3n + 2) {
-      margin: 0 20px;
+      margin-right: 20px;
+      margin-left: 20px;
     }
   }
 }
