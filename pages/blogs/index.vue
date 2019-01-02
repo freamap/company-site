@@ -16,7 +16,7 @@ export default {
     }
   },
   async fetch({ app, store, route }) {
-    let page = app.getPage('blog')
+    let page = app.getPage('blogs')
     let topicPath = [
       {
         url: page.url,
