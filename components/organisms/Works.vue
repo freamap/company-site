@@ -8,9 +8,9 @@
       <WorkCard
         :title="work.title"
         :description="work.description"
-        :img-right="index % 2 === 1"
-        img="/img/philosophy-cover.png"
-        img-alt="サムネイル１"
+        :thumnail-right="index % 2 === 1"
+        thumnail="/img/philosophy-cover.png"
+        thumnail-alt="サムネイル１"
         @click="moreButtonOnClick(work.work_id)"
       />
     </div>

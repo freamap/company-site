@@ -1,13 +1,13 @@
 <template>
   <Card
     :horizontal="false"
-    :reverse="imgRight"
+    :reverse="thumnailRight"
   >
     <template slot="thumnail">
       <div class="thumnail">
         <img
-          :src="img"
-          :alt="imgAlt"
+          :src="thumnail"
+          :alt="thumnailAlt"
         >
       </div>
     </template>
@@ -48,12 +48,12 @@ export default {
       default: '',
       required: false
     },
-    img: {
+    thumnail: {
       type: String,
       default: '',
       required: false
     },
-    imgAlt: {
+    thumnailAlt: {
       type: String,
       default: '',
       required: false
@@ -63,7 +63,7 @@ export default {
       default: '',
       required: false
     },
-    imgRight: {
+    thumnailRight: {
       type: Boolean,
       default: false,
       required: false

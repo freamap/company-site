@@ -1,6 +1,36 @@
 <template>
-  <div>
-    works detail page
+  <div class="works-detail-page">
+    <article>
+      <div class="head">
+        <div>
+          <h2 class="title">
+            {{ currentWork.title }}
+          </h2>
+        </div>
+        <div>
+          <div class="description">{{ currentWork.description }}</div>
+          <div class="url">
+            <a
+              href="http://localhost/aaaaa.com"
+
+            >
+              http://localhost/aaaaa.com
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="thumnail">
+        <img
+          :alt="currentWork.thumnailAlt"
+          src="/img/philosophy-cover.png"
+        >
+      </div>
+      <div class="contents">
+        <div>
+          {{ currentWork.contents }}
+        </div>
+      </div>
+    </article>
   </div>
 </template>
 
@@ -46,17 +76,113 @@ export default {
     })
   },
   computed: {
+    ...mapState('works', ['currentWork']),
     ...mapState(['currentPage'])
   }
 }
 </script>
 
 <style scoped lang="scss">
-.works-page {
+.works-detail-page {
   padding: 40px 0px 80px 0px;
 
   @include mq(md) {
-    padding: 50px 0px 140px 0px;
+    padding: 90px 0px 140px 0px;
+  }
+
+  .head {
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px;
+
+    @include mq(md) {
+      padding: 0px 100px;
+    }
+
+    @include mq(lg) {
+      flex-direction: row;
+    }
+
+    > div {
+      &:first-child {
+        font-family: Noto Sans CJK JP;
+        flex-basis: content;
+        margin-right: 0px;
+
+        @include mq(lg) {
+          margin-right: 50px;
+          flex: 1 1 440px;
+        }
+
+        .title {
+          font-size: 1.8rem;
+          font-weight: bold;
+          line-height: 42px;
+
+          @include mq(md) {
+            font-size: 3rem;
+          }
+        }
+      }
+
+      &:last-child {
+        flex-basis: content;
+        font-size: 1.1rem;
+        font-family: Poppins;
+        margin-top: 20px;
+
+        @include mq(lg) {
+          margin-top: 0px;
+          flex: 1 2 600px;
+          font-size: 1.3rem;
+        }
+
+        .description {
+          font-size: inherit;
+          font-family: inherit;
+        }
+
+        .url {
+          margin-top: 30px;
+          font-size: inherit;
+          font-family: inherit;
+
+          > a {
+            font-size: inherit;
+            font-family: inherit;
+          }
+        }
+      }
+    }
+  }
+
+  .thumnail {
+    margin-top: 50px;
+
+    @include mq(md) {
+      margin-top: 100px;
+    }
+
+    img {
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+
+  .contents {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+
+    @include mq(md) {
+      margin-top: 100px;
+      padding: 0px 100px;
+    }
+
+    div {
+      max-width: 600px;
+    }
   }
 }
 </style>
