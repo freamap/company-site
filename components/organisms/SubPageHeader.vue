@@ -243,7 +243,9 @@ export default {
       }
 
       :first-child {
-        font-weight: bold;
+        a {
+          font-weight: bold;
+        }
       }
 
       .path {
@@ -256,8 +258,11 @@ export default {
 
       .topic-angle {
         width: 19px;
+        display: flex;
+        align-items: center;
 
         svg {
+          width: 100%;
           fill: #ffffff;
         }
       }
