@@ -207,7 +207,7 @@ export default {
       height: 25px;
       text-align: center;
       font-size: 1.5rem;
-      font-family: 'Poppins';
+      font-family: Poppins;
 
       @include mq(md) {
         font-size: 1.8rem;
@@ -235,6 +235,7 @@ export default {
         font-weight: 400;
 
         font-size: 1.1rem;
+        font-family: Noto Sans CJK JP;
 
         @include mq(md) {
           font-size: 1.3rem;
