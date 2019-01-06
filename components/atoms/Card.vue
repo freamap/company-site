@@ -4,7 +4,7 @@
     :style="cardStyle"
     class="card"
   >
-    <slot name="thumnail"/>
+    <slot name="thumbnail"/>
     <slot name="contents"/>
   </article>
 </template>

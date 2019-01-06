@@ -19,9 +19,9 @@
           </div>
         </div>
       </div>
-      <div class="thumnail">
+      <div class="thumbnail">
         <img
-          :alt="currentWork.thumnailAlt"
+          :alt="currentWork.thumbnailAlt"
           src="/img/philosophy-cover.png"
         >
       </div>
@@ -156,7 +156,7 @@ export default {
     }
   }
 
-  .thumnail {
+  .thumbnail {
     margin-top: 50px;
 
     @include mq(md) {

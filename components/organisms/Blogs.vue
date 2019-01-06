@@ -6,22 +6,9 @@
       class="blog"
     >
       <BlogCard
-        :title="blog.title"
-        :description="blog.description"
-        :update="blog.update"
-        :thumnail="blog.thumbnail"
-        :thumnail-alt="blog.thumbnailAlt"
-        :category="blog.category"
+        :blog="blog"
+        @click="blogCardOnClick"
       />
-      <!-- <Card
-        :title="blog.title"
-        :description="blog.description"
-        :update="blog.update"
-        :thumbnail="blog.thumbnail"
-        :thumbnail-alt="blog.thumbnailAlt"
-        :category="blog.category"
-        :head-line-level="2"
-      /> -->
     </div>
   </div>
 </template>
@@ -37,6 +24,11 @@ export default {
   },
   computed: {
     ...mapState('blogs', ['blogs'])
+  },
+  methods: {
+    blogCardOnClick: function(event) {
+      location.href = event.value.url
+    }
   }
 }
 </script>

@@ -7,7 +7,8 @@ export const state = () => ({
       thumbnail:
         'https://freamap.co.jp/wp-content/themes/affinger5/images/no-img.png',
       description: 'ブログ説明１',
-      category: 'server'
+      category: 'server',
+      url: 'https://freamap.co.jp/vue-cli-3-gui/'
     },
     {
       id: 2,
@@ -16,7 +17,8 @@ export const state = () => ({
       thumbnail:
         'https://freamap.co.jp/wp-content/uploads/2018/10/scratch-eyecatch-150x150.png',
       description: 'ブログ説明２',
-      category: 'プログラミング'
+      category: 'プログラミング',
+      url: 'https://freamap.co.jp/vue-cli-3-gui/'
     },
     {
       id: 3,

@@ -1,13 +1,13 @@
 <template>
   <Card
     :horizontal="false"
-    :reverse="thumnailRight"
+    :reverse="thumbnailRight"
   >
-    <template slot="thumnail">
-      <div class="thumnail">
+    <template slot="thumbnail">
+      <div class="thumbnail">
         <img
-          :src="thumnail"
-          :alt="thumnailAlt"
+          :src="thumbnail"
+          :alt="thumbnailAlt"
         >
       </div>
     </template>
@@ -48,12 +48,12 @@ export default {
       default: '',
       required: false
     },
-    thumnail: {
+    thumbnail: {
       type: String,
       default: '',
       required: false
     },
-    thumnailAlt: {
+    thumbnailAlt: {
       type: String,
       default: '',
       required: false
@@ -63,7 +63,7 @@ export default {
       default: '',
       required: false
     },
-    thumnailRight: {
+    thumbnailRight: {
       type: Boolean,
       default: false,
       required: false
@@ -78,7 +78,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.thumnail {
+.thumbnail {
   flex-basis: 100%;
   display: flex;
   align-items: center;
