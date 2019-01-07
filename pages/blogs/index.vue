@@ -7,6 +7,7 @@
 <script>
 import Blogs from '~/components/organisms/Blogs'
 import { mapState } from 'vuex'
+import axios from 'axios'
 
 export default {
   layout: 'sub',
@@ -16,6 +17,11 @@ export default {
     }
   },
   async fetch({ app, store, route }) {
+    let { data } = await axios.get(
+      'https://freamap.co.jp/wp-json/wp/v2/posts/?context=embed'
+    )
+    await store.dispatch('blogs/setBlogs', data)
+
     let page = app.getPage('blogs')
     let topicPath = [
       {

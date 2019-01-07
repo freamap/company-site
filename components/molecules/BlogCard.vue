@@ -9,8 +9,8 @@
       <template slot="thumbnail">
         <div class="thumbnail">
           <img
-            :src="blog.thumbnail"
-            :alt="blog.thumbnailAlt"
+            :src="thumbnailUrl"
+            :style="thumbnailStyle"
           >
           <div
             v-if="blog.category"
@@ -25,11 +25,15 @@
           <h2 class="title">
             {{ blog.title }}
           </h2>
-          <div class="description">
+          <!-- <div class="description">
             {{ blog.description }}
-          </div>
+          </div> -->
+          <div
+            class="description"
+            v-html="blog.description"
+          />
           <div class="update">
-            {{ blog.update }}
+            {{ blog.update | formatDate }}
           </div>
         </div>
       </template>
@@ -52,6 +56,25 @@ export default {
       required: true
     }
   },
+  computed: {
+    thumbnailUrl() {
+      if (this.blog.thumbnail) {
+        return this.blog.thumbnail
+      }
+      return 'https://freamap.co.jp/wp-content/themes/affinger5/images/no-img.png'
+    },
+    thumbnailStyle() {
+      if (this.blog.thumbnail) {
+        return {}
+      }
+
+      return {
+        objectFit: 'cover',
+        height: '100%',
+        width: '100%'
+      }
+    }
+  },
   methods: {
     onClick: function(event) {
       event.value = this.blog
@@ -64,16 +87,19 @@ export default {
 <style scoped lang="scss">
 .blog-card {
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 
   .thumbnail {
-    height: 230px;
+    flex-basis: 230px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
 
-    @include mq(sm) {
-      height: 300px;
+    @include mq(md) {
+      flex-basis: 300px;
     }
 
     img {
@@ -94,6 +120,9 @@ export default {
   }
 
   .contents {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
     padding: 30px;
 
     @include mq(md) {
@@ -104,16 +133,22 @@ export default {
       font-size: 1.8rem;
       font-weight: bold;
       width: 100%;
+      max-height: 5.4rem;
+      overflow: hidden;
 
       @include mq(sm) {
         font-size: 1.8rem;
       }
     }
 
-    .description {
+    .description /deep/ {
       margin-top: 15px;
       width: 100%;
-      font-size: 1.3rem;
+      flex: 1 1 auto;
+
+      p {
+        font-size: 1.3rem;
+      }
 
       @include mq(sm) {
         margin-top: 15px;

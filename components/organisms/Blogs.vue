@@ -38,16 +38,20 @@ export default {
   display: flex;
   width: 100%;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   margin: -10px 0;
+
+  @include mq(sm) {
+    justify-content: start;
+  }
 
   .blog {
     flex-basis: 100%;
     margin-bottom: 20px;
+    align-self: stretch;
 
     @include mq(sm) {
       flex-basis: calc((100% - 20px) / 2);
-      max-width: 400px;
 
       &:nth-of-type(2n) {
         margin-left: 20px;
@@ -63,6 +67,27 @@ export default {
 
       &:nth-of-type(3n + 2) {
         margin-right: 20px;
+        margin-left: 20px;
+      }
+    }
+
+    @include mq(lg) {
+      flex-basis: calc((100% - 60px) / 4);
+
+      &:nth-of-type(3n + 2) {
+        margin-right: 0px;
+        margin-left: 0px;
+      }
+
+      &:nth-of-type(4n + 2) {
+        margin-left: 20px;
+      }
+
+      &:nth-of-type(4n + 3) {
+        margin-left: 20px;
+      }
+
+      &:nth-of-type(4n) {
         margin-left: 20px;
       }
     }
