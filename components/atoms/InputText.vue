@@ -20,6 +20,12 @@
         @input="changeText"
       >
     </div>
+    <div
+      v-if="error"
+      class="error"
+    >
+      {{ error }}
+    </div>
   </div>
 </template>
 
@@ -39,6 +45,11 @@ export default {
     textarea: {
       type: Boolean,
       default: false,
+      required: false
+    },
+    error: {
+      type: String,
+      default: '',
       required: false
     }
   },
@@ -94,6 +105,12 @@ export default {
 
   .input-textarea {
     height: 250px;
+  }
+
+  .error {
+    font-size: 1.3rem;
+    margin-top: 4px;
+    color: #ff0000;
   }
 }
 </style>

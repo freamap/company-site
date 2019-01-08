@@ -13,6 +13,12 @@
         <slot/>
       </select>
     </div>
+    <div
+      v-if="error"
+      class="error"
+    >
+      {{ error }}
+    </div>
   </div>
 </template>
 
@@ -30,6 +36,11 @@ export default {
       required: false
     },
     value: {
+      type: String,
+      default: '',
+      required: false
+    },
+    error: {
       type: String,
       default: '',
       required: false
@@ -67,6 +78,12 @@ export default {
       background: transparent;
       resize: none;
     }
+  }
+
+  .error {
+    font-size: 1.3rem;
+    margin-top: 4px;
+    color: #ff0000;
   }
 }
 </style>

@@ -2,6 +2,7 @@
   <div class="contact-form">
     <div class="title">
       <InputSelect
+        :error="errorTitleMessage"
         v-model="title"
         label="件名*"
       >
@@ -13,6 +14,7 @@
     </div>
     <div class="mail-address">
       <InputText
+        :error="errorMailAddressMessage"
         v-model="mailAddress"
         label="連絡先メールアドレス*"
         placeholder="メールアドレスを入力"
@@ -21,6 +23,7 @@
     <div class="body">
       <InputText
         :textarea="true"
+        :error="errorBodyMessage"
         v-model="body"
         label="本文*"
         placeholder="本文を入力"
@@ -53,15 +56,40 @@ export default {
     return {
       title: '',
       mailAddress: '',
-      body: ''
+      body: '',
+      errorTitleMessage: '',
+      errorMailAddressMessage: '',
+      errorBodyMessage: ''
     }
   },
   methods: {
     submitButtonOnClick() {
-      console.log(this.title)
-      console.log(this.mailAddress)
-      console.log(this.body)
-      console.log('submit')
+      let error = false
+
+      if (!this.title) {
+        this.errorTitleMessage = '件名を選択してください。'
+        error = true
+      } else {
+        this.errorTitleMessage = ''
+      }
+
+      if (!this.mailAddress) {
+        this.errorMailAddressMessage = 'メールアドレスを入力してください。'
+        error = true
+      } else {
+        this.errorMailAddressMessage = ''
+      }
+
+      if (!this.body) {
+        this.errorBodyMessage = '本文を入力してください。'
+        error = true
+      } else {
+        this.errorBodyMessage = ''
+      }
+
+      if (!error) {
+        console.log('submit')
+      }
     }
   }
 }
