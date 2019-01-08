@@ -1,24 +1,17 @@
 <template>
-  <div class="input-text">
+  <div class="input-select">
     <label>
       {{ label }}
     </label>
     <div
-      :class="inputClass"
-      class="input"
+      class="select"
     >
-      <textarea
-        v-if="textarea"
-        :placeholder="placeholder"
-        class="inputClass"
-        @input="changeText"
-      />
-      <input
-        v-else
-        :placeholder="placeholder"
-        class="inputClass"
-        @input="changeText"
+      <select
+        class="selectClass"
+        @change="selectChange"
       >
+        <slot/>
+      </select>
     </div>
   </div>
 </template>
@@ -31,31 +24,19 @@ export default {
       default: '',
       required: false
     },
-    placeholder: {
+    defaultValue: {
       type: String,
       default: '',
       required: false
     },
-    textarea: {
-      type: Boolean,
-      default: false,
+    value: {
+      type: String,
+      default: '',
       required: false
     }
   },
-  computed: {
-    inputClass() {
-      if (this.textarea) {
-        return {
-          'input-textarea': true
-        }
-      }
-      return {
-        'input-text': true
-      }
-    }
-  },
   methods: {
-    changeText(event) {
+    selectChange(event) {
       this.$emit('input', event.target.value)
       this.$emit('change', event.target.value)
     }
@@ -64,7 +45,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.input-text {
+.input-select {
   display: flex;
   flex-direction: column;
 
@@ -73,7 +54,7 @@ export default {
     margin-bottom: 6px;
   }
 
-  .input {
+  .select {
     border-radius: 3px;
     border: solid 1px #e8e9ea;
     padding: 13px 14px;
@@ -86,14 +67,6 @@ export default {
       background: transparent;
       resize: none;
     }
-  }
-
-  .input-text {
-    height: 50px;
-  }
-
-  .input-textarea {
-    height: 250px;
   }
 }
 </style>
