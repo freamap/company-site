@@ -3,8 +3,17 @@
     <label>
       {{ label }}
     </label>
-    <div class="input">
+    <div
+      :class="inputClass"
+      class="input"
+    >
+      <textarea
+        v-if="textarea"
+        :placeholder="placeholder"
+        class="inputClass"
+      />
       <input
+        v-else
         :placeholder="placeholder"
         class="inputClass"
       >
@@ -24,6 +33,23 @@ export default {
       type: String,
       default: '',
       required: false
+    },
+    textarea: {
+      type: Boolean,
+      default: false,
+      required: false
+    }
+  },
+  computed: {
+    inputClass() {
+      if (this.textarea) {
+        return {
+          'input-textarea': true
+        }
+      }
+      return {
+        'input-text': true
+      }
     }
   }
 }
@@ -42,16 +68,24 @@ export default {
   .input {
     border-radius: 3px;
     border: solid 1px #e8e9ea;
-    height: 50px;
     padding: 13px 14px;
 
-    input {
+    * {
       width: 100%;
       height: 100%;
       outline: 0;
       border: 0px;
       background: transparent;
+      resize: none;
     }
+  }
+
+  .input-text {
+    height: 50px;
+  }
+
+  .input-textarea {
+    height: 250px;
   }
 }
 </style>

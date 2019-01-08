@@ -14,6 +14,7 @@
     </div>
     <div class="body">
       <InputText
+        :textarea="true"
         label="本文*"
         placeholder="本文を入力"
       />
