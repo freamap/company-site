@@ -123,6 +123,6 @@ const pages = {
     box: true,
     upContentsMobile: true,
     boxMobile: true,
-    globalMenu: true
+    globalMenu: false
   }
 }
