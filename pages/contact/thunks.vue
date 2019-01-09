@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import Button from '~/components/atoms/Button.vue'
 import axios from 'axios'
 
@@ -46,11 +46,15 @@ export default {
     Button
   },
   computed: {
-    ...mapState(['currentPage'])
+    ...mapState(['currentPage']),
+    pages() {
+      return this.$store.app.getPages()
+    }
   },
   methods: {
+    ...mapActions(['changePage']),
     backButtonOnClick() {
-      console.log('backTOP')
+      this.changePage(this.pages.top.url)
     }
   }
 }
