@@ -4,13 +4,15 @@
       <div class="description">
         お仕事のご相談やその他のお問い合わせはこちらのフォームよりお願いします。通常2営業日以内に返信いたします。お気軽にお問い合わせください。「*」マークのついた項目は入力必須です。
       </div>
-      <ContactForm />
+      <ContactForm
+        @submit="submitContactForm"
+      />
     </div>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import ContactForm from '~/components/organisms/ContactForm'
 import axios from 'axios'
 
@@ -39,7 +41,26 @@ export default {
     ContactForm
   },
   computed: {
-    ...mapState(['currentPage'])
+    ...mapState(['currentPage']),
+    pages() {
+      return this.$store.app.getPages()
+    }
+  },
+  methods: {
+    ...mapActions(['changePage']),
+    submitContactForm(request) {
+      let baseUrl = process.server
+        ? process.env.apiBaseURLLocal
+        : process.env.apiBaseURL
+      axios
+        .post(baseUrl + '/api/contact', request)
+        .then(response => {
+          this.changePage(this.pages.contactThunks.url)
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    }
   }
 }
 </script>

@@ -115,5 +115,14 @@ const pages = {
     upContentsMobile: true,
     boxMobile: true,
     globalMenu: true
+  },
+  contactThunks: {
+    url: '/contact/thunks',
+    title: 'お問い合わせ',
+    upContents: true,
+    box: true,
+    upContentsMobile: true,
+    boxMobile: true,
+    globalMenu: true
   }
 }
