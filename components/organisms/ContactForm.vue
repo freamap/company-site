@@ -1,15 +1,15 @@
 <template>
-  <div class="contact-form">
+  <form class="contact-form">
     <div class="title">
       <InputSelect
         :error="errorTitleMessage"
         v-model="title"
         label="件名*"
       >
-        <option value="0">ご用件を選択してください</option>
-        <option value="1">仕事の依頼に関するお問い合わせ</option>
-        <option value="2">採用に関するお問い合わせ</option>
-        <option value="3">その他のお問い合わせ</option>
+        <option value="">ご用件を選択してください</option>
+        <option>仕事の依頼に関するお問い合わせ</option>
+        <option>採用に関するお問い合わせ</option>
+        <option>その他のお問い合わせ</option>
       </InputSelect>
     </div>
     <div class="mail-address">
@@ -37,7 +37,7 @@
         送信
       </Button>
     </div>
-  </div>
+  </form>
 </template>
 
 <script>
@@ -88,7 +88,12 @@ export default {
       }
 
       if (!error) {
-        console.log('submit')
+        let request = {
+          title: this.title,
+          mailAddress: this.mailAddress,
+          body: this.body
+        }
+        this.$emit('submit', request)
       }
     }
   }
