@@ -1,10 +1,11 @@
 <template>
-  <div>
-    works page
+  <div class="works-page">
+    <Works/>
   </div>
 </template>
 
 <script>
+import Works from '~/components/organisms/Works.vue'
 import { mapState } from 'vuex'
 import axios from 'axios'
 
@@ -12,7 +13,7 @@ export default {
   layout: 'sub',
   head() {
     return {
-      title: this.title
+      title: this.currentPage.title
     }
   },
   async fetch({ app, route, store, params }) {
@@ -20,7 +21,7 @@ export default {
       ? process.env.apiBaseURLLocal
       : process.env.apiBaseURL
     let { data } = await axios.get(baseUrl + '/api/works')
-    store.dispatch('work/setWorks', data)
+    await store.dispatch('works/setWorks', data)
 
     let page = app.getPage('works')
     let topicPath = [
@@ -29,17 +30,27 @@ export default {
         title: page.title
       }
     ]
-    store.dispatch('setPage', {
+    await store.dispatch('setPage', {
       topicPath: topicPath,
       originPage: page,
-      title: page.title
+      currentPage: page
     })
   },
+  components: {
+    Works
+  },
   computed: {
-    ...mapState(['title'])
+    ...mapState(['currentPage'])
   }
 }
 </script>
 
-<style>
+<style scoped lang="scss">
+.works-page {
+  padding: 40px 0px 80px 0px;
+
+  @include mq(md) {
+    padding: 50px 0px 140px 0px;
+  }
+}
 </style>

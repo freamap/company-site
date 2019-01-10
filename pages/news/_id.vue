@@ -36,7 +36,7 @@ export default {
   layout: 'sub',
   head() {
     return {
-      title: this.title
+      title: this.currentPage.title
     }
   },
   async fetch({ app, route, store, params }) {
@@ -44,10 +44,13 @@ export default {
       ? process.env.apiBaseURLLocal
       : process.env.apiBaseURL
     let { data } = await axios.get(baseUrl + '/api/news/' + params.id)
-    store.dispatch('news/setCurrentNews', data)
+    await store.dispatch('news/setCurrentNews', data)
 
     let page = app.getPage('news')
-    let title = data.title ? data.title : 'ニュース詳細'
+    let currentPage = app.getPage('newsDetail')
+    if (data.title) {
+      currentPage['title'] = data.title
+    }
     let topicPath = [
       {
         url: page.url,
@@ -55,37 +58,52 @@ export default {
       },
       {
         url: route.fullPath,
-        title: data.title ? data.title : 'ニュース詳細'
+        title: currentPage.title
       }
     ]
-    store.dispatch('setPage', {
+    await store.dispatch('setPage', {
       topicPath: topicPath,
       originPage: page,
-      title: title
+      currentPage: currentPage
     })
   },
   computed: {
     ...mapState('news', ['currentNews']),
-    ...mapState(['title'])
+    ...mapState(['currentPage'])
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .news-detail-page {
-  padding: 90px 140px 120px 140px;
+  padding: 27px 20px 60px 20px;
   display: flex;
-  font-size: 1.5rem;
+  flex-direction: column;
+
+  @include mq(md) {
+    padding: 90px 140px 120px 140px;
+    flex-direction: row;
+  }
 
   .create {
-    margin-right: 160px;
+    margin-right: 0px;
+    margin-bottom: 25px;
+
+    @include mq(md) {
+      margin-right: 160px;
+      margin-bottom: 0px;
+    }
   }
 
   .contents {
     .title {
-      margin-bottom: 50px;
+      margin-bottom: 20px;
       font-size: 1.8rem;
       font-weight: bold;
+
+      @include mq(md) {
+        margin-bottom: 50px;
+      }
     }
 
     .title-none {

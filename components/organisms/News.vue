@@ -70,40 +70,63 @@ export default {
 <style scoped lang="scss">
 .content {
   display: flex;
-  align-items: center;
-  padding: 0 20px;
-  font-size: 1.5rem;
   border-top: 1px solid #e8e9ea;
-  min-height: 138px;
-  box-sizing: content-box;
+  box-sizing: border-box;
+  flex-direction: column;
+  padding: 20px 0px;
+
+  @include mq(sm) {
+    align-items: center;
+    flex-direction: row;
+    padding: 50px 20px;
+    min-height: 138px;
+  }
 
   .create {
-    margin-right: 75px;
-    flex-basis: 78px;
+    @include mq(sm) {
+      margin-right: 75px;
+      flex-basis: 78px;
+    }
   }
 
   .description {
-    flex-basis: 0;
-    flex-grow: 1;
-    margin-right: 100px;
     font-size: inherit;
     font-weight: inherit;
+    word-break: break-all;
+    margin-top: 25px;
+
+    @include mq(sm) {
+      flex-basis: 0;
+      flex-grow: 1;
+      margin-top: 0px;
+      margin-right: 100px;
+    }
   }
 
   .detail-button {
-    flex-basis: 38px;
     height: 38px;
+    margin-top: 15px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    @include mq(sm) {
+      flex-basis: 38px;
+      margin-top: 0px;
+      justify-content: center;
+    }
 
     div {
-      width: 100%;
+      width: 38px;
       height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       cursor: pointer;
       outline: 0;
       border: none;
       padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       svg {
         transform: rotate(-90deg);

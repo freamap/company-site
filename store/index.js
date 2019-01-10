@@ -1,14 +1,14 @@
 export const state = () => ({
   topicPath: [],
   originPage: null,
-  title: ''
+  currentPage: null
 })
 
 export const mutations = {
   set_page(state, pageInfo) {
     state.topicPath = pageInfo['topicPath']
     state.originPage = pageInfo['originPage']
-    state.title = pageInfo['title']
+    state.currentPage = pageInfo['currentPage']
   }
 }
 

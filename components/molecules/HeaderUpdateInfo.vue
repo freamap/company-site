@@ -60,8 +60,10 @@ export default {
   font-size: 1.3rem;
   height: 100%;
   cursor: pointer;
+  color: #ffffff;
 
   .title {
+    color: inherit;
     font-size: inherit;
     font-weight: bold;
     margin-right: 20px;
@@ -74,8 +76,13 @@ export default {
   }
 
   .update {
+    color: inherit;
     margin-left: 20px;
     white-space: nowrap;
+
+    * {
+      color: inherit;
+    }
   }
 }
 </style>

@@ -15,7 +15,7 @@ export default {
   layout: 'sub',
   head() {
     return {
-      title: this.title
+      title: this.currentPage.title
     }
   },
   async fetch({ app, route, store, params }) {
@@ -23,7 +23,7 @@ export default {
       ? process.env.apiBaseURLLocal
       : process.env.apiBaseURL
     let { data } = await axios.get(baseUrl + '/api/news')
-    store.dispatch('news/setNews', data)
+    await store.dispatch('news/setNews', data)
 
     let page = app.getPage('news')
     let topicPath = [
@@ -32,23 +32,27 @@ export default {
         title: page.title
       }
     ]
-    store.dispatch('setPage', {
+    await store.dispatch('setPage', {
       topicPath: topicPath,
       originPage: page,
-      title: page.title
+      currentPage: page
     })
   },
   components: {
     News
   },
   computed: {
-    ...mapState(['title'])
+    ...mapState(['currentPage'])
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .news-page {
-  padding: 90px 140px 120px 140px;
+  padding: 27px 20px 70px 20px;
+
+  @include mq(md) {
+    padding: 90px 140px 120px 140px;
+  }
 }
 </style>

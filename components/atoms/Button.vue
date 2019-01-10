@@ -2,6 +2,7 @@
   <button
     :style="buttonStyle"
     :class="buttonClass"
+    type="button"
     @click="click"
   >
     <slot />
@@ -25,14 +26,36 @@ export default {
       type: String,
       default: '',
       required: false
+    },
+    color: {
+      type: String,
+      default: '',
+      required: false
     }
   },
   computed: {
     buttonStyle() {
-      return {
+      let style = {
         padding: this.padding,
         height: this.height
       }
+
+      if (this.color) {
+        if (this.type === 'line') {
+          return {
+            ...style,
+            borderColor: this.color,
+            color: this.color
+          }
+        }
+
+        return {
+          ...style,
+          background: this.color
+        }
+      }
+
+      return style
     },
     buttonClass() {
       return {

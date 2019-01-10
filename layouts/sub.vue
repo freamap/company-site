@@ -1,9 +1,14 @@
 <template>
   <div>
-    <SubPageHeader :up-contents="originPage.upContents"/>
+    <SubPageHeader
+      :up-contents="currentPage.upContents"
+      :up-contents-mobile="currentPage.upContentsMobile"
+    />
     <ContentsBox
-      :box="originPage.box"
-      :up-contents="originPage.upContents"
+      :box="currentPage.box"
+      :box-mobile="currentPage.boxMobile"
+      :up-contents="currentPage.upContents"
+      :up-contents-mobile="currentPage.upContentsMobile"
     >
       <nuxt/>
     </ContentsBox>
@@ -24,7 +29,7 @@ export default {
     Footer
   },
   computed: {
-    ...mapState(['originPage'])
+    ...mapState(['currentPage'])
   }
 }
 </script>
@@ -35,6 +40,12 @@ export default {
 *:after {
   box-sizing: border-box;
   margin: 0;
+  font-size: 1.3rem;
+  color: #191919;
+
+  @include mq(md) {
+    font-size: 1.5rem;
+  }
 }
 
 .br-sm {
@@ -42,6 +53,14 @@ export default {
 
   @include mq(sm) {
     display: inline;
+  }
+}
+
+.container {
+  padding: 0px 44px;
+
+  @include mq(md) {
+    padding: 0px 100px;
   }
 }
 </style>

@@ -11,15 +11,9 @@
 </template>
 
 <script>
-import Tabs from '~/components/atoms/Tabs.vue'
-import Tab from '~/components/atoms/Tab.vue'
 import { mapState, mapActions } from 'vuex'
 
 export default {
-  components: {
-    Tabs,
-    Tab
-  },
   computed: {
     pages() {
       return this.$store.app.getPages()
@@ -41,9 +35,7 @@ export default {
 
 <style scoped lang="scss">
 .global-navi {
-  font-size: 1.5rem;
   font-weight: 'Medium';
-  color: #ffffff;
   display: flex;
   height: 100%;
 
@@ -54,6 +46,7 @@ export default {
     align-items: center;
     height: 100%;
     cursor: pointer;
+    color: #ffffff;
   }
 }
 </style>

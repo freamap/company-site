@@ -26,7 +26,7 @@ import axios from 'axios'
 export default {
   head() {
     return {
-      title: this.title
+      title: this.currentPage.title
     }
   },
   async fetch({ app, route, store, params }) {
@@ -34,7 +34,7 @@ export default {
       ? process.env.apiBaseURLLocal
       : process.env.apiBaseURL
     let { data } = await axios.get(baseUrl + '/api/news')
-    store.dispatch('news/setNews', data)
+    await store.dispatch('news/setNews', data)
 
     let page = app.getPage('top')
     let topicPath = [
@@ -43,10 +43,10 @@ export default {
         title: page.title
       }
     ]
-    store.dispatch('setPage', {
+    await store.dispatch('setPage', {
       originPage: page,
       topicPath: topicPath,
-      title: page.title
+      currentPage: page
     })
   },
   components: {
@@ -54,7 +54,7 @@ export default {
     News
   },
   computed: {
-    ...mapState(['title'])
+    ...mapState(['currentPage'])
   },
   methods: {
     moreNewsButtonOnClick: function(event) {
@@ -67,13 +67,23 @@ export default {
 
 <style scoped lang="scss">
 .top-page {
-  padding: 90px 140px 120px 140px;
+  padding: 25px 20px 70px 20px;
+
+  @include mq(md) {
+    padding: 90px 140px 120px 140px;
+  }
 
   .title {
     font-weight: bold;
     font-size: 1.8rem;
-    margin-bottom: 54px;
-    margin-left: -3px;
+    text-align: center;
+    margin-bottom: 25px;
+
+    @include mq(md) {
+      text-align: left;
+      margin-bottom: 54px;
+      margin-left: -3px;
+    }
   }
 
   .more-news-button {

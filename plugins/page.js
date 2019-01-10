@@ -20,35 +20,52 @@ const pages = {
   philosophy: {
     url: '/philosophy',
     title: '企業理念',
-    subTitle: 'philosophy',
+    subTitle: 'Philosophy',
     description:
       'フリーマップという社名の由来は、free + dream + map を組み合わせた造語です。<br class="br-sm">テクノロジーの発展が一巡した今、わたしたちが考えること。',
     upContents: true,
     box: true,
+    upContentsMobile: true,
+    boxMobile: true,
     globalMenu: true
   },
   works: {
     url: '/works',
     title: '開発実績',
-    subTitle: 'works',
+    subTitle: 'Works',
     upContents: false,
     box: false,
+    upContentsMobile: false,
+    boxMobile: false,
     globalMenu: true
   },
-  blog: {
-    url: '/blog',
+  worksDetail: {
+    url: '/works/:id',
+    title: '開発実績詳細',
+    upContents: true,
+    box: true,
+    upContentsMobile: true,
+    boxMobile: true,
+    globalMenu: false
+  },
+  blogs: {
+    url: '/blogs',
     title: 'ブログ',
-    subTitle: 'blog',
+    subTitle: 'Blog',
     upContents: false,
     box: false,
+    upContentsMobile: false,
+    boxMobile: false,
     globalMenu: true
   },
   company: {
     url: '/company',
     title: '企業情報',
-    subTitle: 'company',
+    subTitle: 'Company',
     upContents: true,
     box: true,
+    upContentsMobile: true,
+    boxMobile: true,
     globalMenu: true
   },
   news: {
@@ -57,22 +74,55 @@ const pages = {
     subTitle: 'News',
     upContents: true,
     box: true,
+    upContentsMobile: true,
+    boxMobile: true,
     globalMenu: false
   },
-  recruit: {
-    url: '/recruit',
-    title: '採用情報',
-    subTitle: 'recruit',
+  newsDetail: {
+    url: '/news/:id',
+    title: 'ニュース詳細',
     upContents: true,
     box: true,
+    upContentsMobile: true,
+    boxMobile: true,
+    globalMenu: false
+  },
+  recruits: {
+    url: '/recruits',
+    title: '採用情報',
+    subTitle: 'Recruit',
+    upContents: true,
+    box: true,
+    upContentsMobile: true,
+    boxMobile: true,
     globalMenu: true
+  },
+  recruitsDetail: {
+    url: '/recruits/:id',
+    title: '採用情報詳細',
+    upContents: true,
+    box: true,
+    upContentsMobile: true,
+    boxMobile: true,
+    globalMenu: false
   },
   contact: {
     url: '/contact',
     title: 'お問い合わせ',
-    subTitle: 'contact',
+    subTitle: 'Contact',
     upContents: true,
     box: true,
+    upContentsMobile: true,
+    boxMobile: true,
     globalMenu: true
+  },
+  contactThunks: {
+    url: '/contact/thunks',
+    title: 'お問い合わせ',
+    upContents: true,
+    box: true,
+    upContentsMobile: true,
+    boxMobile: true,
+    globalMenu: false
   }
 }

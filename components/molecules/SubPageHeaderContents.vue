@@ -71,7 +71,7 @@ export default {
     text-align: center;
     font-size: 1.8rem;
     color: #ffffff;
-    font-family: 'Poppins';
+    font-family: Poppins;
   }
 
   .description {
