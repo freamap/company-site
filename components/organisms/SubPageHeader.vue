@@ -2,17 +2,24 @@
   <div
     :style="subPageHeaderStyle"
     :class="upcontentsClass"
-    class="sub-page-header container"
+    class="sub-page-header"
   >
     <div class="head">
-      <div class="logo">
-        <Logo />
-      </div>
-      <div class="global-navi">
-        <SubPageGlobalNavi />
+      <div class="container">
+        <div>
+          <div class="logo">
+            <Logo />
+          </div>
+          <div class="global-navi">
+            <SubPageGlobalNavi />
+          </div>
+          <div class="hum-global-navi">
+            <HumGlobalNavi />
+          </div>
+        </div>
       </div>
     </div>
-    <div class="contents">
+    <div class="contents container">
       <div>
         <div class="icon">
           <img src="~/assets/images/icon-freamap.svg">
@@ -29,7 +36,7 @@
           v-html="originPage.description"
         />
       </div>
-      <div class="topic-path">
+      <div class="topic-path container">
         <div><a @click="pathClick('/')">TOP</a></div>
         <div
           v-for="topic in topicPath"
@@ -54,6 +61,7 @@
 
 <script>
 import SubPageGlobalNavi from '~/components/molecules/SubPageGlobalNavi.vue'
+import HumGlobalNavi from '~/components/molecules/HumGlobalNavi.vue'
 import Logo from '~/components/molecules/Logo.vue'
 import AngleRight from '~/assets/icons/AngleRight.vue'
 import { mapState, mapActions } from 'vuex'
@@ -61,6 +69,7 @@ import { mapState, mapActions } from 'vuex'
 export default {
   components: {
     SubPageGlobalNavi,
+    HumGlobalNavi,
     Logo,
     AngleRight
   },
@@ -140,35 +149,57 @@ export default {
 
   .head {
     height: 49px;
-    display: flex;
-    align-items: top;
     border-bottom: solid 1px rgba(255, 255, 255, 0.16);
     box-sizing: content-box;
-    position: absolute;
-    left: 0;
-    width: 100%;
 
     @include mq(md) {
-      position: static;
       height: 72px;
+      border-bottom: none;
     }
 
-    .logo {
-      width: 120px;
+    > div {
+      height: 100%;
+      width: 100%;
 
-      @include mq(md) {
-        width: 150px;
-      }
-    }
-
-    > .global-navi {
-      display: none; //グローバルメニューはハンバーガーメニュー化するが一時的に消しておく
-
-      @include mq(md) {
-        flex-grow: 1;
-        height: calc(100% + 2px);
+      > div {
         display: flex;
-        justify-content: flex-end;
+        align-items: top;
+        height: 100%;
+        width: 100%;
+        border-bottom: none;
+
+        @include mq(md) {
+          border-bottom: solid 1px rgba(255, 255, 255, 0.16);
+        }
+
+        .logo {
+          width: 120px;
+
+          @include mq(md) {
+            width: 150px;
+          }
+        }
+
+        > .global-navi {
+          display: none; //グローバルメニューはハンバーガーメニュー化するが一時的に消しておく
+
+          @include mq(md) {
+            flex-grow: 1;
+            height: calc(100% + 2px);
+            display: flex;
+            justify-content: flex-end;
+          }
+        }
+
+        > .hum-global-navi {
+          flex-grow: 1;
+          display: flex;
+          justify-content: flex-end;
+
+          @include mq(md) {
+            display: none;
+          }
+        }
       }
     }
   }

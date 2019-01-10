@@ -11,15 +11,9 @@
 </template>
 
 <script>
-import Tabs from '~/components/atoms/Tabs.vue'
-import Tab from '~/components/atoms/Tab.vue'
 import { mapState, mapActions } from 'vuex'
 
 export default {
-  components: {
-    Tabs,
-    Tab
-  },
   computed: {
     pages() {
       return this.$store.app.getPages()
