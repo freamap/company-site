@@ -2,8 +2,11 @@
   <header class="header container">
     <div class="head">
       <div>
-        <div>
+        <div class="global-navi">
           <GlobalNavi />
+        </div>
+        <div class="hum-global-navi">
+          <HumGlobalNavi />
         </div>
       </div>
     </div>
@@ -65,6 +68,7 @@
 
 <script>
 import GlobalNavi from '~/components/molecules/GlobalNavi.vue'
+import HumGlobalNavi from '~/components/molecules/HumGlobalNavi.vue'
 import HeaderUpdateInfo from '~/components/molecules/HeaderUpdateInfo.vue'
 import Button from '~/components/atoms/Button.vue'
 import ArrowDown from '~/assets/icons/ArrowDown.vue'
@@ -73,6 +77,7 @@ import { mapState, mapActions } from 'vuex'
 export default {
   components: {
     GlobalNavi,
+    HumGlobalNavi,
     HeaderUpdateInfo,
     Button,
     ArrowDown
@@ -120,17 +125,30 @@ export default {
       height: 63px;
       border-bottom: solid 1px rgba(255, 255, 255, 0.16);
 
-      > div {
-        display: none; //グローバルメニューはハンバーガーメニュー化するが一時的に消しておく
-        height: 100%;
-      }
-
       @include mq(md) {
         width: 100%;
         height: 92px;
+      }
 
-        > div {
+      > .global-navi {
+        display: none;
+        height: 100%;
+
+        @include mq(md) {
           display: block;
+        }
+      }
+
+      > .hum-global-navi {
+        padding-right: 14px;
+        height: 100%;
+        flex-grow: 1;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        @include mq(md) {
+          display: none;
         }
       }
     }
