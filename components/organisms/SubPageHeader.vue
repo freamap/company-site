@@ -181,7 +181,7 @@ export default {
         }
 
         > .global-navi {
-          display: none; //グローバルメニューはハンバーガーメニュー化するが一時的に消しておく
+          display: none;
 
           @include mq(md) {
             flex-grow: 1;
