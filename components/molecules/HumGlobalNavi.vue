@@ -51,10 +51,26 @@ export default {
       return this.show ? { display: 'block' } : { display: 'none' }
     }
   },
+  mounted() {
+    window.addEventListener('click', e => {
+      this.windowCick(e)
+    })
+  },
+  mounted() {
+    window.addEventListener('click', this.windowCick)
+  },
+  beforeDestroy() {
+    window.removeEventListener('click', this.windowCick)
+  },
   methods: {
     click: function(value) {
       this.show = false
       this.changePage(value)
+    },
+    windowCick: function(e) {
+      if (!this.$el.contains(e.target)) {
+        this.show = false
+      }
     },
     humMarkClick: function() {
       this.show = !this.show
