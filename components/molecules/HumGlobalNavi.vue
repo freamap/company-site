@@ -84,6 +84,7 @@ export default {
 .hum-global-navi {
   > div {
     position: relative;
+    margin-right: -3px;
 
     > .hum-mark {
       width: 40px;
@@ -120,7 +121,7 @@ export default {
         content: '';
         position: absolute;
         top: -24px;
-        right: 6px;
+        right: 8px;
         border: 12px solid transparent;
         z-index: 99;
         border-bottom-color: #236af7;
@@ -132,7 +133,7 @@ export default {
         color: #ffffff;
         padding: 10px 20px;
         border-radius: 3px;
-        box-shadow: 0px 10px 30pt #000000;
+        box-shadow: 0px 10px 30pt rgba(0, 0, 0, 0.16);
 
         > div {
           font-size: 1.5rem;

@@ -1,7 +1,7 @@
 <template>
-  <header class="header container">
+  <header class="header">
     <div class="head">
-      <div>
+      <div class="container">
         <div class="global-navi">
           <GlobalNavi />
         </div>
@@ -10,7 +10,7 @@
         </div>
       </div>
     </div>
-    <div class="contents">
+    <div class="contents container">
       <h1 class="logo">
         <img
           src="~/assets/images/freamap-logo-vert--light.svg"
@@ -128,19 +128,21 @@ export default {
       @include mq(md) {
         width: 100%;
         height: 92px;
+        border: none;
       }
 
       > .global-navi {
         display: none;
         height: 100%;
+        border: none;
 
         @include mq(md) {
           display: block;
+          border-bottom: solid 1px rgba(255, 255, 255, 0.16);
         }
       }
 
       > .hum-global-navi {
-        padding-right: 14px;
         height: 100%;
         flex-grow: 1;
         display: flex;

@@ -42,7 +42,7 @@ export default {
 }
 
 .container {
-  padding: 0px 44px;
+  padding: 0px 20px;
 
   @include mq(md) {
     padding: 0px 100px;
