@@ -14,7 +14,7 @@ const getPages = function() {
 const pages = {
   top: {
     url: '/',
-    title: 'TOP',
+    title: 'freamap',
     globalMenu: false
   },
   philosophy: {
