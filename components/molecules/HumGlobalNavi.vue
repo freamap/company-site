@@ -53,6 +53,7 @@ export default {
   },
   methods: {
     click: function(value) {
+      this.show = false
       this.changePage(value)
     },
     humMarkClick: function() {
@@ -115,7 +116,7 @@ export default {
         color: #ffffff;
         padding: 10px 20px;
         border-radius: 3px;
-        box-shadow: 10px 0px 30pt #000000;
+        box-shadow: 0px 10px 30pt #000000;
 
         > div {
           font-size: 1.5rem;
