@@ -26,6 +26,7 @@ import axios from 'axios'
 export default {
   head() {
     return {
+      titleTemplate: null,
       title: this.currentPage.title
     }
   },

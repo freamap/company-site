@@ -7,11 +7,24 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: "freamap",
+    htmlAttrs: {
+      prefix: 'og: http://ogp.me/ns#'
+    },
+    titleTemplate: '%s - freamap',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'freamapの企業サイトです。わたしたちは、”個人の時代”に生きる人々のワーク & ライフに貢献するデジタルテクノロジーが得意な会社です。' }
+      { hid: 'description', name: 'description', content: 'freamapの企業サイトです。わたしたちは、”個人の時代”に生きる人々のワーク & ライフに貢献するデジタルテクノロジーが得意な会社です。' },
+      { hid: 'og:site_name', property: 'og:site_name', content: 'freamap' },
+      { hid: 'og:type', property: 'og:type', content: 'website' },
+      { hid: 'og:url', property: 'og:url', content: 'https://freamap.co.jp' },
+      { hid: 'og:title', property: 'og:title', content: 'freamap' },
+      { hid: 'og:description', property: 'og:description', content: 'freamapの企業サイトです。わたしたちは、”個人の時代”に生きる人々のワーク & ライフに貢献するデジタルテクノロジーが得意な会社です。' },
+      { hid: 'og:image', property: 'og:image', content: 'https://freamap.co.jp/img/ogp/common.jpg' },
+      // { property: 'article:publisher', content: 'FacebookURL' },
+      // { property: 'fb:app_id', content: 'FacebookAppID' },
+      // { name: 'twitter:card', content: 'summary' },
+      // { name: 'twitter:site', content: '@Twitter' },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
