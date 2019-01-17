@@ -80,6 +80,7 @@ export default {
     display: flex;
     justify-content: center;
     pointer-events: none;
+    color: inherit;
   }
 }
 </style>

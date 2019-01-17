@@ -2,7 +2,10 @@
 
   <div class="logo">
     <nuxt-link to="/">
-      <img src="~/assets/images/freamap-logo-horiz--light.svg">
+      <img
+        src="~/assets/images/freamap-logo-horiz--light.svg"
+        alt="freamap"
+      >
     </nuxt-link>
   </div>
 </template>

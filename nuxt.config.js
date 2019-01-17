@@ -34,6 +34,8 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    {src:'@/plugins/utils.js'},
+    {src:'@/plugins/page.js'}
   ],
 
   /*
@@ -49,6 +51,11 @@ module.exports = {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+  },
+
+  env: {
+    apiBaseURLLocal: 'http://localhost:3000',
+    apiBaseURL: process.env.BASE_URL || 'http://localhost:3000'
   },
 
   serverMiddleware: ['~/server/api'],

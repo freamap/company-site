@@ -5,12 +5,9 @@
       :key="blog.id"
       class="blog"
     >
-      <Card
-        :title="blog.title"
-        :description="blog.description"
-        :update="blog.update"
-        :thumbnail="blog.thumbnail"
-        :category="blog.category"
+      <BlogCard
+        :blog="blog"
+        @click="blogCardOnClick"
       />
     </div>
   </div>
@@ -19,13 +16,19 @@
 <script>
 import Card from '~/components/atoms/Card.vue'
 import { mapState } from 'vuex'
+import BlogCard from '~/components/molecules/BlogCard.vue'
 
 export default {
   components: {
-    Card
+    BlogCard
   },
   computed: {
     ...mapState('blogs', ['blogs'])
+  },
+  methods: {
+    blogCardOnClick: function(event) {
+      location.href = event.value.url
+    }
   }
 }
 </script>
@@ -35,16 +38,58 @@ export default {
   display: flex;
   width: 100%;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
   margin: -10px 0;
 
-  .blog {
-    flex-basis: calc((100% - 40px) / 3);
-    height: 400px;
-    margin-bottom: 20px;
+  @include mq(sm) {
+    justify-content: start;
+  }
 
-    &:nth-of-type(3n + 2) {
-      margin: 0 20px;
+  .blog {
+    flex-basis: 100%;
+    margin-bottom: 20px;
+    align-self: stretch;
+
+    @include mq(sm) {
+      flex-basis: calc((100% - 20px) / 2);
+
+      &:nth-of-type(2n) {
+        margin-left: 20px;
+      }
+    }
+
+    @include mq(md) {
+      flex-basis: calc((100% - 40px) / 3);
+
+      &:nth-of-type(2n) {
+        margin-left: 0px;
+      }
+
+      &:nth-of-type(3n + 2) {
+        margin-right: 20px;
+        margin-left: 20px;
+      }
+    }
+
+    @include mq(lg) {
+      flex-basis: calc((100% - 60px) / 4);
+
+      &:nth-of-type(3n + 2) {
+        margin-right: 0px;
+        margin-left: 0px;
+      }
+
+      &:nth-of-type(4n + 2) {
+        margin-left: 20px;
+      }
+
+      &:nth-of-type(4n + 3) {
+        margin-left: 20px;
+      }
+
+      &:nth-of-type(4n) {
+        margin-left: 20px;
+      }
     }
   }
 }

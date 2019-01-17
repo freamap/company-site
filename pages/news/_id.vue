@@ -1,67 +1,113 @@
 <template>
-  <div class="news-detail-page">
-    <div class="update">
-      {{ news.update }}
+  <article class="news-detail-page">
+    <div class="create">
+      <time
+        :datetime="currentNews.create | formatDateTimeTag"
+      >
+        {{ currentNews.create | formatDate }}
+      </time>
     </div>
     <div class="contents">
-      <div
-        v-if="news.title"
+      <h2
+        v-if="currentNews.title"
         class="title"
       >
-        {{ news.title }}
-      </div>
+        {{ currentNews.title }}
+      </h2>
+      <h2
+        v-else
+        class="title-none"
+      >
+        ニュース詳細
+      </h2>
       <div
-        v-html="news.contents"
+        v-html="currentNews.contents"
       />
     </div>
-  </div>
+  </article>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+import axios from 'axios'
+import moment from 'moment'
+
 export default {
   layout: 'sub',
-  asyncData(context) {
-    let news = context.store.state.news.news.filter(detail => {
-      return Number(detail.id) === Number(context.params.id)
-    })[0]
+  head() {
+    return {
+      title: this.currentPage.title
+    }
+  },
+  async fetch({ app, route, store, params }) {
+    let baseUrl = process.server
+      ? process.env.apiBaseURLLocal
+      : process.env.apiBaseURL
+    let { data } = await axios.get(baseUrl + '/api/news/' + params.id)
+    await store.dispatch('news/setCurrentNews', data)
 
+    let page = app.getPage('news')
+    let currentPage = app.getPage('newsDetail')
+    if (data.title) {
+      currentPage['title'] = data.title
+    }
     let topicPath = [
       {
-        url: context.store.state.pages.pages.news.url,
-        title: context.store.state.pages.pages.news.title
+        url: page.url,
+        title: page.title
       },
       {
-        url: context.route.fullPath,
-        title: news.title
+        url: route.fullPath,
+        title: currentPage.title
       }
     ]
-    context.store.dispatch('setPage', {
-      url: context.route.fullPath,
-      topicPath: topicPath
+    await store.dispatch('setPage', {
+      topicPath: topicPath,
+      originPage: page,
+      currentPage: currentPage
     })
-
-    return {
-      news: news
-    }
+  },
+  computed: {
+    ...mapState('news', ['currentNews']),
+    ...mapState(['currentPage'])
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .news-detail-page {
-  padding: 90px 140px 120px 140px;
+  padding: 27px 20px 60px 20px;
   display: flex;
-  font-size: 1.5rem;
+  flex-direction: column;
 
-  .update {
-    margin-right: 160px;
+  @include mq(md) {
+    padding: 90px 140px 120px 140px;
+    flex-direction: row;
+  }
+
+  .create {
+    margin-right: 0px;
+    margin-bottom: 25px;
+
+    @include mq(md) {
+      margin-right: 160px;
+      margin-bottom: 0px;
+    }
   }
 
   .contents {
     .title {
-      margin-bottom: 50px;
+      margin-bottom: 20px;
       font-size: 1.8rem;
       font-weight: bold;
+
+      @include mq(md) {
+        margin-bottom: 50px;
+      }
+    }
+
+    .title-none {
+      display: none;
     }
   }
 }

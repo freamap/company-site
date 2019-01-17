@@ -1,28 +1,56 @@
 <template>
-  <div>
-    works page
+  <div class="works-page">
+    <Works/>
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import Works from '~/components/organisms/Works.vue'
+import { mapState } from 'vuex'
+import axios from 'axios'
 
 export default {
   layout: 'sub',
-  asyncData(context) {
+  head() {
+    return {
+      title: this.currentPage.title
+    }
+  },
+  async fetch({ app, route, store, params }) {
+    let baseUrl = process.server
+      ? process.env.apiBaseURLLocal
+      : process.env.apiBaseURL
+    let { data } = await axios.get(baseUrl + '/api/works')
+    await store.dispatch('works/setWorks', data)
+
+    let page = app.getPage('works')
     let topicPath = [
       {
-        url: context.store.state.pages.pages.works.url,
-        title: context.store.state.pages.pages.works.title
+        url: page.url,
+        title: page.title
       }
     ]
-    context.store.dispatch('setPage', {
-      url: context.route.fullPath,
-      topicPath: topicPath
+    await store.dispatch('setPage', {
+      topicPath: topicPath,
+      originPage: page,
+      currentPage: page
     })
+  },
+  components: {
+    Works
+  },
+  computed: {
+    ...mapState(['currentPage'])
   }
 }
 </script>
 
-<style>
+<style scoped lang="scss">
+.works-page {
+  padding: 40px 0px 80px 0px;
+
+  @include mq(md) {
+    padding: 50px 0px 140px 0px;
+  }
+}
 </style>

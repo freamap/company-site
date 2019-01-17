@@ -4,6 +4,8 @@
     <ContentsBox
       :box="true"
       :up-contents="true"
+      :box-mobile="true"
+      :up-contents-mobile="false"
     >
       <nuxt/>
     </ContentsBox>
@@ -25,11 +27,25 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 *,
 *:before,
 *:after {
   box-sizing: border-box;
   margin: 0;
+  font-size: 1.3rem;
+  color: #191919;
+
+  @include mq(md) {
+    font-size: 1.5rem;
+  }
+}
+
+.container {
+  padding: 0px 44px;
+
+  @include mq(md) {
+    padding: 0px 100px;
+  }
 }
 </style>

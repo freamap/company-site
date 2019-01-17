@@ -1,9 +1,9 @@
 <template>
-  <div class="footer">
+  <footer class="footer">
     <div class="logo">
       <img 
         src="~/assets/images/freamap-logo-horiz--color.svg"
-        @click="moreButtonOnClick" >
+        @click="topButtonOnClick" >
     </div>
     <div>
       <FooterGlobalNavi/>
@@ -11,7 +11,7 @@
     <div class="copyright">
       ©︎ 2018 freamap Co.,Ltd
     </div>
-  </div>
+  </footer>
 </template>
 
 <script>
@@ -23,10 +23,12 @@ export default {
     FooterGlobalNavi
   },
   computed: {
-    ...mapState('pages', ['pages'])
+    pages() {
+      return this.$store.app.getPages()
+    }
   },
   methods: {
-    moreButtonOnClick: function(event) {
+    topButtonOnClick: function(event) {
       this.changePage(this.pages.top.url)
     },
     ...mapActions(['changePage'])
@@ -39,13 +41,20 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: #ffffff;
+  border-top: solid 1px #e8e9ea;
 }
 
 .logo {
   width: 44px;
-  margin-top: 60px;
-  margin-bottom: 50px;
+  margin-top: 50px;
+  margin-bottom: 45px;
   cursor: pointer;
+
+  @include mq(md) {
+    margin-top: 60px;
+    margin-bottom: 50px;
+  }
 
   > img {
     object-fit: contain;
@@ -54,9 +63,13 @@ export default {
 
 .copyright {
   color: #767676;
-  font-size: 13px;
-  font-family: Noto Sans CJK JP;
-  margin-top: 60px;
-  margin-bottom: 55px;
+  font-size: 1.3rem;
+  margin-top: 40px;
+  margin-bottom: 50px;
+
+  @include mq(md) {
+    margin-top: 60px;
+    margin-bottom: 55px;
+  }
 }
 </style>

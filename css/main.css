@@ -1,57 +1,64 @@
 @charset "UTF-8";
-@import url('https://fonts.googleapis.com/css?family=Poppins');
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,700');
 
 @font-face {
   font-family: 'Noto Sans Japanese';
   font-style: normal;
   font-weight: 100;
-  src: url('./fonts/NotoSansJP-Thin.otf');
+  src: url('/fonts/NotoSansJP-Thin.otf');
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'Noto Sans Japanese';
   font-style: normal;
   font-weight: 200;
-  src: url('./fonts/NotoSansJP-Light.otf');
+  src: url('/fonts/NotoSansJP-Light.otf');
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'Noto Sans Japanese';
   font-style: normal;
   font-weight: 300;
-  src: url('./fonts/NotoSansJP-DemiLight.otf');
+  src: url('/fonts/NotoSansJP-DemiLight.otf');
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'Noto Sans Japanese';
   font-style: normal;
   font-weight: 400;
-  src: url('./fonts/NotoSansJP-Regular.otf');
+  src: url('/fonts/NotoSansJP-Regular.otf');
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'Noto Sans Japanese';
   font-style: normal;
   font-weight: 500;
-  src: url('./fonts/NotoSansJP-Medium.otf');
+  src: url('/fonts/NotoSansJP-Medium.otf');
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'Noto Sans Japanese';
   font-style: normal;
   font-weight: 700;
-  src: url('./fonts/NotoSansJP-Bold.otf');
+  src: url('/fonts/NotoSansJP-Bold.otf');
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'Noto Sans Japanese';
   font-style: normal;
   font-weight: 900;
-  src: url('./fonts/NotoSansJP-Black.otf');
+  src: url('/fonts/NotoSansJP-Black.otf');
+  font-display: swap;
 }
 
 html {
-  font-family: 'Noto Sans Japanese', -apple-system, BlinkMacSystemFont,
+  font-family: 'Noto Sans CJK JP', 'Noto Sans Japanese', -apple-system, BlinkMacSystemFont,
     'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
   font-size: 16px;
   word-spacing: 1px;
@@ -63,8 +70,4 @@ html {
   font-size: 62.5%;
   overflow-x: hidden;
   background-color: #fafafa;
-}
-
-.container {
-  padding: 0px 100px;
 }

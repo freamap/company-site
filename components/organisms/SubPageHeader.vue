@@ -1,35 +1,42 @@
 <template>
   <div
     :style="subPageHeaderStyle"
-    class="sub-page-header container"
+    :class="upcontentsClass"
+    class="sub-page-header"
   >
     <div class="head">
-      <div class="logo">
-        <Logo />
-      </div>
-      <div class="global-navi">
-        <SubPageGlobalNavi />
+      <div class="container">
+        <div>
+          <div class="logo">
+            <Logo />
+          </div>
+          <div class="global-navi">
+            <SubPageGlobalNavi />
+          </div>
+          <div class="hum-global-navi">
+            <HumGlobalNavi />
+          </div>
+        </div>
       </div>
     </div>
-    <div class="contents">
+    <div class="contents container">
       <div>
         <div class="icon">
           <img src="~/assets/images/icon-freamap.svg">
         </div>
-        <div class="title">
-          {{ pageContents.title }}
-        </div>
+        <h1 class="title">
+          {{ originPage.title }}
+        </h1>
         <div class="sub-title">
-          {{ pageContents.subTitle }}
+          {{ originPage.subTitle }}
         </div>
         <div
-          v-show="pageContents.description"
+          v-if="originPage.description"
           class="description"
-        >
-          {{ pageContents.description }}
-        </div>
+          v-html="originPage.description"
+        />
       </div>
-      <div class="topic-path">
+      <div class="topic-path container">
         <div><a @click="pathClick('/')">TOP</a></div>
         <div
           v-for="topic in topicPath"
@@ -54,6 +61,7 @@
 
 <script>
 import SubPageGlobalNavi from '~/components/molecules/SubPageGlobalNavi.vue'
+import HumGlobalNavi from '~/components/molecules/HumGlobalNavi.vue'
 import Logo from '~/components/molecules/Logo.vue'
 import AngleRight from '~/assets/icons/AngleRight.vue'
 import { mapState, mapActions } from 'vuex'
@@ -61,6 +69,7 @@ import { mapState, mapActions } from 'vuex'
 export default {
   components: {
     SubPageGlobalNavi,
+    HumGlobalNavi,
     Logo,
     AngleRight
   },
@@ -69,63 +78,46 @@ export default {
       type: Boolean,
       default: true,
       required: false
+    },
+    upContentsMobile: {
+      type: Boolean,
+      default: true,
+      required: false
     }
   },
   computed: {
-    pageContents() {
-      return this.pages[this.currentOriginPageName]
-    },
-
     subPageHeaderStyle() {
       let style = {
-        maxHeight: '528px',
-        paddingBottom: '50px'
+        maxHeight: '528px'
       }
 
-      if (this.pageContents.description) {
+      if (this.originPage.description) {
         return {
           ...style,
           maxHeight: '660px'
         }
       }
 
-      if (this.upContents === false) {
-        return {
-          ...style,
-          paddingBottom: '0px'
-        }
-      }
       return style
     },
-    // topicPath() {
-    //   let path = this.url.split('/').filter(urlPath => urlPath)
+    upcontentsClass() {
+      if (this.upContents && this.upContentsMobile) {
+        return {
+          upcontents: true
+        }
+      } else if (this.upContents) {
+        return {
+          'upcontents-pc': true
+        }
+      } else if (this.upContentsMobile) {
+        return {
+          'upcontents-mobile': true
+        }
+      }
 
-    //   let topics = []
-    //   topics.push(this.pages[path[0]])
-
-    //   if (path.length > 1) {
-    //     let details
-    //     switch (path[0]) {
-    //       case 'news':
-    //         details = this.news
-    //         break
-    //     }
-    //     let detail = details.filter(detail => {
-    //       return Number(detail.id) === Number(path[1])
-    //     })
-
-    //     if (detail.length > 0) {
-    //       topics.push({
-    //         ...detail[0],
-    //         url: this.url
-    //       })
-    //     }
-    //   }
-
-    //   return topics
-    // },
-    ...mapState(['currentOriginPageName', 'topicPath']),
-    ...mapState('pages', ['pages']),
+      return {}
+    },
+    ...mapState(['topicPath', 'originPage']),
     ...mapState('news', ['news'])
   },
   methods: {
@@ -140,29 +132,75 @@ export default {
 <style scoped lang="scss">
 .sub-page-header {
   height: 100vh;
-  padding-top: 30px;
+  padding-top: 15px;
   display: flex;
   flex-direction: column;
   background-color: $primary;
   transition: max-height 0.4s ease-in-out;
   position: relative;
 
+  * {
+    color: #ffffff;
+  }
+
+  @include mq(md) {
+    padding-top: 30px;
+  }
+
   .head {
-    height: 72px;
-    display: flex;
-    align-items: top;
+    height: 49px;
     border-bottom: solid 1px rgba(255, 255, 255, 0.16);
     box-sizing: content-box;
 
-    .logo {
-      width: 150px;
+    @include mq(md) {
+      height: 72px;
+      border-bottom: none;
     }
 
-    > .global-navi {
-      flex-grow: 1;
-      height: calc(100% + 2px);
-      display: flex;
-      justify-content: flex-end;
+    > div {
+      height: 100%;
+      width: 100%;
+
+      > div {
+        display: flex;
+        align-items: top;
+        height: 100%;
+        width: 100%;
+        border-bottom: none;
+
+        @include mq(md) {
+          border-bottom: solid 1px rgba(255, 255, 255, 0.16);
+        }
+
+        .logo {
+          width: 120px;
+
+          @include mq(md) {
+            width: 150px;
+          }
+        }
+
+        > .global-navi {
+          display: none; //グローバルメニューはハンバーガーメニュー化するが一時的に消しておく
+
+          @include mq(md) {
+            flex-grow: 1;
+            height: calc(100% + 2px);
+            display: flex;
+            justify-content: flex-end;
+          }
+        }
+
+        > .hum-global-navi {
+          flex-grow: 1;
+          display: flex;
+          justify-content: flex-end;
+
+          @include mq(md) {
+            display: none;
+          }
+        }
+      }
     }
   }
 
@@ -187,25 +225,34 @@ export default {
       margin-top: 5px;
       height: 64px;
       font-weight: bold;
-      font-size: 43px;
+      font-size: 3.5rem;
       text-align: center;
-      color: #ffffff;
+
+      @include mq(md) {
+        font-size: 4.3rem;
+      }
     }
 
     .sub-title {
       margin-top: 8px;
       height: 25px;
       text-align: center;
-      font-size: 18px;
-      color: #ffffff;
-      font-family: 'Poppins';
+      font-size: 1.5rem;
+      font-family: Poppins;
+
+      @include mq(md) {
+        font-size: 1.8rem;
+      }
     }
 
     .description {
       margin-top: 29px;
       text-align: center;
-      font-size: 13px;
-      color: #ffffff;
+      font-size: 1.1rem;
+
+      @include mq(md) {
+        font-size: 1.3rem;
+      }
     }
 
     .topic-path {
@@ -213,15 +260,23 @@ export default {
       display: flex;
       bottom: 25px;
       left: 0;
-      color: #ffffff;
-      font-size: 13px;
 
       a:nth-child(n) {
         cursor: pointer;
+        font-weight: 400;
+
+        font-size: 1.1rem;
+        font-family: Noto Sans CJK JP;
+
+        @include mq(md) {
+          font-size: 1.3rem;
+        }
       }
 
       :first-child {
-        font-weight: bold;
+        a {
+          font-weight: bold;
+        }
       }
 
       .path {
@@ -234,9 +289,12 @@ export default {
 
       .topic-angle {
         width: 19px;
+        display: flex;
+        align-items: center;
 
         svg {
-          fill: currentColor;
+          width: 100%;
+          fill: #ffffff;
         }
       }
     }
@@ -262,5 +320,25 @@ export default {
     transform: translate(56%, -32%);
     width: 65%;
   }
+}
+
+.upcontents-mobile {
+  padding-bottom: 50px;
+
+  @include mq(md) {
+    padding-bottom: 0px;
+  }
+}
+
+.upcontents-pc {
+  padding-bottom: 0px;
+
+  @include mq(md) {
+    padding-bottom: 50px;
+  }
+}
+
+.upcontents {
+  padding-bottom: 50px;
 }
 </style>

@@ -1,80 +1,123 @@
 <template>
   <div class="company-page">
-    <div>会社名</div>
-    <div>株式会社freamap(読み方: フリーマップ / 英語表記: freamap Co.,Ltd)</div>
-    <div>創業日</div>
-    <div>2018年5月28日</div>
-    <div>事業内容</div>
-    <div>ウェブサービス及びアプリケーションソフトウェアの企画、開発、販売、保守及びメンテナンス</div>
-    <div>資本金</div>
-    <div>1,000,000円</div>
-    <div>代表取締役</div>
-    <div>中藤 恭平</div>
+    <section>
+      <h2>会社名</h2>
+      <div>株式会社freamap(読み方: フリーマップ / 英語表記: freamap Co.,Ltd)</div>
+    </section>
+    <section>
+      <h2>創業日</h2>
+      <div>
+        <time
+          :datetime="'2018-05-28' | formatDateTimeTag"
+        >
+          2018年5月28日
+        </time>
+      </div>
+    </section>
+    <section>
+      <h2>事業内容</h2>
+      <div>ウェブサービス及びアプリケーションソフトウェアの企画、開発、販売、保守及びメンテナンス</div>
+    </section>
+    <section>
+      <h2>資本金</h2>
+      <div>1,000,000円</div>
+    </section>
+    <section>
+      <h2>代表取締役</h2>
+      <div>中藤 恭平</div>
+    </section>
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
   layout: 'sub',
-  asyncData(context) {
+  head() {
+    return {
+      title: this.currentPage.title
+    }
+  },
+  async fetch({ app, store, route }) {
+    let page = app.getPage('company')
     let topicPath = [
       {
-        url: context.store.state.pages.pages.company.url,
-        title: context.store.state.pages.pages.company.title
+        url: page.url,
+        title: page.title
       }
     ]
-    context.store.dispatch('setPage', {
-      url: context.route.fullPath,
-      topicPath: topicPath
+    await store.dispatch('setPage', {
+      topicPath: topicPath,
+      originPage: page,
+      currentPage: page
     })
+  },
+  computed: {
+    ...mapState(['currentPage'])
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .company-page {
-  padding: 90px 140px 120px 140px;
+  padding: 25px 20px 70px 20px;
   display: flex;
   flex-wrap: wrap;
 
-  > div {
-    height: 102px;
+  @include mq(md) {
+    padding: 90px 140px 120px 140px;
+  }
+
+  > section {
+    min-height: 102px;
+    width: 100%;
     display: flex;
-    align-items: center;
-    padding: 0 40px;
     border-bottom: solid 1px #e8e9ea;
-    font-size: 1.5rem;
+    border-left: solid 1px #e8e9ea;
+    border-right: solid 1px #e8e9ea;
+    flex-direction: column;
 
-    &:nth-of-type(2n + 1) {
-      flex-basis: 230px;
-      border-left: solid 1px #e8e9ea;
-      border-right: solid 1px #e8e9ea;
-      font-weight: bold;
-    }
-
-    &:nth-of-type(2n) {
-      flex-basis: calc(100% - 230px);
-      border-right: solid 1px #e8e9ea;
+    @include mq(md) {
+      flex-direction: row;
     }
 
     &:first-of-type {
-      border-radius: 3px 0 0 0;
-      border-top: solid 1px #e8e9ea;
-    }
-
-    &:nth-of-type(2) {
-      border-radius: 0 3px 0 0;
+      border-radius: 3px 3px 0 0;
       border-top: solid 1px #e8e9ea;
     }
 
     &:last-of-type {
-      border-radius: 0 0 3px 0;
+      border-radius: 0 0 3px 3px;
     }
 
-    &:nth-last-of-type(2) {
-      border-radius: 0 0 0 3px;
+    > * {
+      display: flex;
+      align-items: center;
+      padding: 15px;
+
+      @include mq(md) {
+        padding: 40px;
+      }
+    }
+
+    > h2 {
+      border-right: none;
+      border-bottom: solid 1px #e8e9ea;
+      font-weight: bold;
+      justify-content: center;
+
+      @include mq(md) {
+        flex-basis: 230px;
+        border-right: solid 1px #e8e9ea;
+        border-bottom: none;
+        justify-content: flex-start;
+      }
+    }
+
+    > div {
+      flex-basis: 0;
+      flex-grow: 1;
     }
   }
 }

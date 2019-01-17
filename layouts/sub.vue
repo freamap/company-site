@@ -1,9 +1,14 @@
 <template>
   <div>
-    <SubPageHeader :up-contents="upContents"/>
+    <SubPageHeader
+      :up-contents="currentPage.upContents"
+      :up-contents-mobile="currentPage.upContentsMobile"
+    />
     <ContentsBox
-      :box="box"
-      :up-contents="upContents"
+      :box="currentPage.box"
+      :box-mobile="currentPage.boxMobile"
+      :up-contents="currentPage.upContents"
+      :up-contents-mobile="currentPage.upContentsMobile"
     >
       <nuxt/>
     </ContentsBox>
@@ -24,28 +29,38 @@ export default {
     Footer
   },
   computed: {
-    ...mapState(['currentOriginPageName']),
-    ...mapState('pages', ['pages']),
-    box() {
-      if (
-        this.currentOriginPageName === 'blog' ||
-        this.currentOriginPageName === 'works'
-      ) {
-        return false
-      }
-
-      return true
-    },
-    upContents() {
-      if (
-        this.currentOriginPageName === 'blog' ||
-        this.currentOriginPageName === 'works'
-      ) {
-        return false
-      }
-
-      return true
-    }
+    ...mapState(['currentPage'])
   }
 }
 </script>
+
+<style lang="scss">
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  font-size: 1.3rem;
+  color: #191919;
+
+  @include mq(md) {
+    font-size: 1.5rem;
+  }
+}
+
+.br-sm {
+  display: none;
+
+  @include mq(sm) {
+    display: inline;
+  }
+}
+
+.container {
+  padding: 0px 44px;
+
+  @include mq(md) {
+    padding: 0px 100px;
+  }
+}
+</style>

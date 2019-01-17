@@ -5,7 +5,11 @@
       :key="key"
       @click="click(pages[key].url)"
     >
-      {{ pages[key].title }}
+      <a
+        @click="click(pages[key].url)"
+      >
+        {{ pages[key].title }}
+      </a>
     </div>
   </div>
 </template>
@@ -15,11 +19,12 @@ import { mapState, mapActions } from 'vuex'
 
 export default {
   computed: {
-    ...mapState(['currentOriginPageName']),
-    ...mapState('pages', ['pages']),
+    pages() {
+      return this.$store.app.getPages()
+    },
     globalLinkPage() {
       return Object.keys(this.pages).filter(key => {
-        return key !== 'top'
+        return this.pages[key].globalMenu === true
       })
     }
   },
@@ -35,14 +40,43 @@ export default {
 <style scoped lang="scss">
 .footer-global-navi {
   color: #191919;
-  font-size: 15px;
   font-family: Proxima Nova;
+  width: 315px;
   display: flex;
+  flex-wrap: wrap;
+
+  @include mq(md) {
+    flex-wrap: nowrap;
+    width: auto;
+    height: auto;
+  }
 
   > div {
-    margin-left: 25px;
-    margin-right: 25px;
-    cursor: pointer;
+    flex-basis: calc(100% / 3);
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 100%;
+
+    @include mq(md) {
+      flex-basis: auto;
+
+      &:nth-of-type(n + 2) {
+        margin-left: 50px;
+      }
+    }
+
+    &:nth-of-type(n + 4) {
+      margin-top: 24px;
+
+      @include mq(md) {
+        margin-top: 0px;
+      }
+    }
+
+    > a {
+      font-size: inherit;
+      cursor: pointer;
+    }
   }
 }
 </style>

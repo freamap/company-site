@@ -1,19 +1,29 @@
 <template>
-  <div class="header container">
+  <header class="header container">
     <div class="head">
       <div>
-        <GlobalNavi />
+        <div>
+          <GlobalNavi />
+        </div>
       </div>
     </div>
     <div class="contents">
-      <div class="logo">
-        <img src="~/assets/images/freamap-logo-vert--light.svg">
-      </div>
+      <h1 class="logo">
+        <img
+          src="~/assets/images/freamap-logo-vert--light.svg"
+          alt="freamap"
+        >
+      </h1>
       <div class="title">
-        BE YOURSELF, BE LIKE YOU.
+        <nobr>
+          BE YOURSELF, <wbr>BE LIKE YOU.
+        </nobr>
       </div>
       <div class="description">
-        株式会社フリーマップのウェブサイトへようこそ！ わたしたちは、”個人の時代”に生きる人々のワーク & ライフに貢献するデジタルテクノロジーが得意な会社です。
+        株式会社フリーマップのウェブサイトへようこそ！
+        <br>
+        わたしたちは、”個人の時代”に生きる人々のワーク & ライフに貢献する
+        デジタルテクノロジーが得意な会社です。
       </div>
       <div class="more">
         <Button
@@ -27,16 +37,16 @@
     </div>
     <div class="blog-update update-info">
       <HeaderUpdateInfo
-        :link="pages.blog.url"
+        :link="pages.blogs.url"
         title="BLOG"
-        update="2018/05/29"
+        update="2018-05-29"
       />
     </div>
     <div class="works-update update-info">
       <HeaderUpdateInfo
         :link="pages.works.url"
         title="WORKS"
-        update="2018/05/29"
+        update="2018-05-29"
       />
     </div>
     <div class="gooey left">
@@ -50,7 +60,7 @@
         <ArrowDown />
       </div>
     </div>
-  </div>
+  </header>
 </template>
 
 <script>
@@ -68,7 +78,9 @@ export default {
     ArrowDown
   },
   computed: {
-    ...mapState('pages', ['pages'])
+    pages() {
+      return this.$store.app.getPages()
+    }
   },
   methods: {
     moreButtonOnClick: function(event) {
@@ -84,17 +96,43 @@ export default {
   background-color: $primary;
   height: 100vh;
   width: 100%;
-  color: #ffffff;
   box-sizing: border-box;
+  min-height: 667px;
+
+  * {
+    color: #ffffff;
+  }
+
+  @include mq(md) {
+    min-height: 900px;
+  }
 
   > .head {
-    position: relative;
+    @include mq(md) {
+      display: block;
+      position: relative;
+    }
 
     > div {
       position: absolute;
-      width: 100%;
-      height: 92px;
+      left: 0;
+      width: 100vw;
+      height: 63px;
       border-bottom: solid 1px rgba(255, 255, 255, 0.16);
+
+      > div {
+        display: none; //グローバルメニューはハンバーガーメニュー化するが一時的に消しておく
+        height: 100%;
+      }
+
+      @include mq(md) {
+        width: 100%;
+        height: 92px;
+
+        > div {
+          display: block;
+        }
+      }
     }
   }
 
@@ -106,7 +144,11 @@ export default {
     height: 100%;
 
     .logo {
-      width: 90px;
+      width: 80px;
+
+      @include mq(md) {
+        width: 90px;
+      }
 
       img {
         width: 100%;
@@ -116,43 +158,92 @@ export default {
 
     .title {
       font-family: Poppins;
-      font-size: 5rem;
+      font-size: 3rem;
       font-weight: bold;
-      margin-top: 90px;
+      margin-top: 64px;
       letter-spacing: 1rem;
       text-align: center;
+
+      @include mq(sm) {
+        font-size: 4rem;
+      }
+      @include mq(md) {
+        margin-top: 90px;
+      }
+      @include mq(lg) {
+        font-size: 5rem;
+        line-height: 64px;
+      }
+
+      nobr {
+        font-size: inherit;
+      }
     }
 
     .description {
-      margin-top: 26px;
-      font-size: 1.5rem;
+      margin-top: 15px;
+      font-size: 1.1rem;
       text-align: center;
+      line-height: 22px;
+      max-width: 485px;
+
+      @include mq(sm) {
+        font-size: 1.3rem;
+        line-height: 26px;
+      }
+      @include mq(md) {
+        margin-top: 26px;
+      }
+      @include mq(lg) {
+        font-size: 1.5rem;
+        line-height: 32px;
+      }
     }
 
     .more {
-      margin-top: 50px;
+      margin-top: 30px;
+
+      @include mq(md) {
+        margin-top: 50px;
+      }
     }
   }
 
   .blog-update {
-    transform: rotate(90deg);
-    left: 40px;
+    position: absolute;
+    top: 22px;
+    left: 20px;
+    padding-bottom: 22px;
+
+    @include mq(md) {
+      transform: rotate(90deg);
+      left: 40px;
+    }
   }
 
   .works-update {
-    transform: rotate(-90deg);
-    right: 40px;
+    display: none;
+
+    @include mq(md) {
+      display: block;
+      transform: rotate(-90deg);
+      right: 40px;
+    }
   }
 
   .update-info {
-    position: absolute;
-    top: 50%;
+    @include mq(md) {
+      position: absolute;
+      top: 50%;
+    }
 
     > div {
-      position: absolute;
-      bottom: 0;
-      transform: translate(-50%, 0);
-      height: 19px;
+      @include mq(md) {
+        position: absolute;
+        bottom: 0;
+        transform: translate(-50%, 0);
+        height: 19px;
+      }
     }
   }
 
@@ -180,16 +271,21 @@ export default {
   .arrow-down {
     width: 100%;
     position: relative;
+
     > div {
       width: 100%;
       position: absolute;
-      bottom: 81px;
+      bottom: 21px;
       display: flex;
       justify-content: center;
 
+      @include mq(md) {
+        bottom: 81px;
+      }
+
       svg {
         height: 22px;
-        fill: currentColor;
+        fill: #ffffff;
       }
     }
   }

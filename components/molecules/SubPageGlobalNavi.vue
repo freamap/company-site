@@ -1,5 +1,5 @@
 <template>
-  <div class="sub-page-global-navi">
+  <nav class="sub-page-global-navi">
     <Tabs
       :value="tabValue"
       @change="onChange"
@@ -17,8 +17,8 @@
         padding="9px 15px 0 15px"
       />
       <Tab
-        :value="pages.blog.url"
-        :label="pages.blog.title"
+        :value="pages.blogs.url"
+        :label="pages.blogs.title"
         label-position="top"
         padding="9px 15px 0 15px"
       />
@@ -29,8 +29,8 @@
         padding="9px 15px 0 15px"
       />
       <Tab
-        :value="pages.recruit.url"
-        :label="pages.recruit.title"
+        :value="pages.recruits.url"
+        :label="pages.recruits.title"
         label-position="top"
         padding="9px 15px 0 15px"
       />
@@ -41,7 +41,7 @@
         padding="9px 15px 0 15px"
       />
     </Tabs>
-  </div>
+  </nav>
 </template>
 
 <script>
@@ -55,10 +55,12 @@ export default {
     Tab
   },
   computed: {
-    ...mapState(['currentOriginPageName']),
-    ...mapState('pages', ['pages']),
+    ...mapState(['originPage']),
+    pages() {
+      return this.$store.app.getPages()
+    },
     tabValue() {
-      return this.pages[this.currentOriginPageName].url
+      return this.originPage.url
     }
   },
   methods: {
@@ -74,6 +76,9 @@ export default {
 .sub-page-global-navi {
   font-size: 1.5rem;
   font-weight: 'Medium';
-  color: #ffffff;
+
+  div {
+    color: #ffffff;
+  }
 }
 </style>

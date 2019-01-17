@@ -1,35 +1,58 @@
 <template>
   <div class="news-page">
-    <News />
+    <News
+      :head-line-level="2"
+    />
   </div>
 </template>
 
 <script>
 import News from '~/components/organisms/News.vue'
-import { mapActions } from 'vuex'
+import axios from 'axios'
+import { mapState } from 'vuex'
 
 export default {
   layout: 'sub',
-  asyncData(context) {
+  head() {
+    return {
+      title: this.currentPage.title
+    }
+  },
+  async fetch({ app, route, store, params }) {
+    let baseUrl = process.server
+      ? process.env.apiBaseURLLocal
+      : process.env.apiBaseURL
+    let { data } = await axios.get(baseUrl + '/api/news')
+    await store.dispatch('news/setNews', data)
+
+    let page = app.getPage('news')
     let topicPath = [
       {
-        url: context.store.state.pages.pages.news.url,
-        title: context.store.state.pages.pages.news.title
+        url: page.url,
+        title: page.title
       }
     ]
-    context.store.dispatch('setPage', {
-      url: context.route.fullPath,
-      topicPath: topicPath
+    await store.dispatch('setPage', {
+      topicPath: topicPath,
+      originPage: page,
+      currentPage: page
     })
   },
   components: {
     News
+  },
+  computed: {
+    ...mapState(['currentPage'])
   }
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 .news-page {
-  padding: 90px 140px 120px 140px;
+  padding: 27px 20px 70px 20px;
+
+  @include mq(md) {
+    padding: 90px 140px 120px 140px;
+  }
 }
 </style>
