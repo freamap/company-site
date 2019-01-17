@@ -18,7 +18,7 @@ export default {
   },
   async fetch({ app, store, route }) {
     let { data } = await axios.get(
-      'https://freamap.co.jp/wp-json/wp/v2/posts/?context=embed'
+      'https://blog.freamap.co.jp/wp-json/wp/v2/posts/?context=embed'
     )
     await store.dispatch('blogs/setBlogs', data)
 
