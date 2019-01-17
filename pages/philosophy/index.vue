@@ -40,7 +40,8 @@ export default {
   layout: 'sub',
   head() {
     return {
-      title: this.currentPage.title
+      title: this.currentPage.title,
+      meta: this.metaData
     }
   },
   async fetch({ app, route, store, params }) {
@@ -58,7 +59,10 @@ export default {
     })
   },
   computed: {
-    ...mapState(['currentPage'])
+    ...mapState(['currentPage']),
+    metaData() {
+      return this.$store.app.getMetaData('philosophy')
+    }
   }
 }
 </script>

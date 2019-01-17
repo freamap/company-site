@@ -1,13 +1,16 @@
 <template>
-  <header class="header container">
+  <header class="header">
     <div class="head">
-      <div>
-        <div>
+      <div class="container">
+        <div class="global-navi">
           <GlobalNavi />
+        </div>
+        <div class="hum-global-navi">
+          <HumGlobalNavi />
         </div>
       </div>
     </div>
-    <div class="contents">
+    <div class="contents container">
       <h1 class="logo">
         <img
           src="~/assets/images/freamap-logo-vert--light.svg"
@@ -65,6 +68,7 @@
 
 <script>
 import GlobalNavi from '~/components/molecules/GlobalNavi.vue'
+import HumGlobalNavi from '~/components/molecules/HumGlobalNavi.vue'
 import HeaderUpdateInfo from '~/components/molecules/HeaderUpdateInfo.vue'
 import Button from '~/components/atoms/Button.vue'
 import ArrowDown from '~/assets/icons/ArrowDown.vue'
@@ -73,6 +77,7 @@ import { mapState, mapActions } from 'vuex'
 export default {
   components: {
     GlobalNavi,
+    HumGlobalNavi,
     HeaderUpdateInfo,
     Button,
     ArrowDown
@@ -120,17 +125,32 @@ export default {
       height: 63px;
       border-bottom: solid 1px rgba(255, 255, 255, 0.16);
 
-      > div {
-        display: none; //グローバルメニューはハンバーガーメニュー化するが一時的に消しておく
-        height: 100%;
-      }
-
       @include mq(md) {
         width: 100%;
         height: 92px;
+        border: none;
+      }
 
-        > div {
+      > .global-navi {
+        display: none;
+        height: 100%;
+        border: none;
+
+        @include mq(md) {
           display: block;
+          border-bottom: solid 1px rgba(255, 255, 255, 0.16);
+        }
+      }
+
+      > .hum-global-navi {
+        height: 100%;
+        flex-grow: 1;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        @include mq(md) {
+          display: none;
         }
       }
     }
