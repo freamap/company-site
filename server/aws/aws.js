@@ -9,6 +9,9 @@ let awsConfig = {
 
 if (awsConfig.secretAccessKey === "") {
   awsConfig = {...awsConfig, endpoint: "http://localhost:8000" }
+  console.log("ローカル実行")
+} else {
+  console.log("本番実行")
 }
 
 AWS.config.update(awsConfig);
