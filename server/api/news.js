@@ -13,6 +13,7 @@ router.get('/', function(req, res) {
     //   common.apiErrorResponse(req.path, err, '', '取得に失敗しました。')
     // )
     console.log('取得に失敗しました。')
+    console.log(err)
     res.json([])
   })
 });
