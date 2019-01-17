@@ -8,10 +8,12 @@ router.get('/', function(req, res) {
   getNewsApi(newsId).then(news => {
     res.json(news)
   }).catch(err => {
-    res.status(500);
-    res.json(
-      common.apiErrorResponse(req.path, err, '', '取得に失敗しました。')
-    )    
+    // res.status(500);
+    // res.json(
+    //   common.apiErrorResponse(req.path, err, '', '取得に失敗しました。')
+    // )
+    console.log('取得に失敗しました。')
+    res.json([])
   })
 });
 
