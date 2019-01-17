@@ -59,6 +59,14 @@ const getMetaData = function(pageName) {
     })
   }
 
+  if (page.meta.type) {
+    meta.push({
+      hid: 'og:type',
+      name: 'og:type',
+      content: page.meta.type
+    })
+  }
+
   return meta
 }
 
