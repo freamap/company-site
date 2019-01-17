@@ -11,7 +11,7 @@ router.get('/', function(req, res) {
     res.status(500);
     res.json(
       common.apiErrorResponse(req.path, err, '', '取得に失敗しました。')
-    )    
+    )
   })
 });
 
