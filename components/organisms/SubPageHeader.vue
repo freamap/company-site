@@ -138,6 +138,7 @@ export default {
   background-color: $primary;
   transition: max-height 0.4s ease-in-out;
   position: relative;
+  overflow-x: hidden;
 
   * {
     color: #ffffff;
