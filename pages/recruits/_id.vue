@@ -123,7 +123,7 @@ export default {
   },
   methods: {
     applyButtonOnClick: function(event) {
-      this.changePage(this.$store.app.getPages('contact').url)
+      this.changePage(this.$store.app.getPage('contact').url)
     },
     ...mapActions(['changePage'])
   }
