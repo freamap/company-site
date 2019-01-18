@@ -151,9 +151,10 @@ export default {
       color: #767676;
       justify-content: center;
       margin-top: 10px;
+      flex: 1;
 
       @include mq(md) {
-        justify-content: end;
+        justify-content: flex-end;
         margin-top: 0px;
       }
 
@@ -184,7 +185,7 @@ export default {
       flex-direction: column;
       box-sizing: border-box;
 
-      @include mq(sm) {
+      @include mq(md) {
         flex-direction: row;
       }
 
@@ -193,7 +194,7 @@ export default {
         align-items: center;
         padding: 15px;
 
-        @include mq(sm) {
+        @include mq(md) {
           padding: 40px;
         }
       }
@@ -203,7 +204,7 @@ export default {
         border-bottom: solid 1px #e8e9ea;
         justify-content: center;
 
-        @include mq(sm) {
+        @include mq(md) {
           border-bottom: none;
           border-right: solid 1px #e8e9ea;
           flex-basis: 230px;
