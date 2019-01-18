@@ -26,7 +26,7 @@ const getMetaData = function(pageName, metaData = {}) {
     meta.push({
       hid: 'og:title',
       property: 'og:title',
-      content: metaData.title? metaData.title: page.meta.title
+      content: metaData.title ? metaData.title : page.meta.title
     })
   }
 
@@ -34,12 +34,16 @@ const getMetaData = function(pageName, metaData = {}) {
     meta.push({
       hid: 'description',
       name: 'description',
-      content: metaData.description? metaData.description: page.meta.description
+      content: metaData.description
+        ? metaData.description
+        : page.meta.description
     })
     meta.push({
       hid: 'og:description',
       name: 'og:description',
-      content: metaData.description? metaData.description: page.meta.description
+      content: metaData.description
+        ? metaData.description
+        : page.meta.description
     })
   }
 
@@ -47,7 +51,7 @@ const getMetaData = function(pageName, metaData = {}) {
     meta.push({
       hid: 'og:image',
       name: 'og:image',
-      content: metaData.image? metaData.image: page.meta.image
+      content: metaData.image ? metaData.image : page.meta.image
     })
   }
 
@@ -55,7 +59,7 @@ const getMetaData = function(pageName, metaData = {}) {
     meta.push({
       hid: 'og:type',
       name: 'og:type',
-      content: metaData.type? metaData.type: page.meta.type
+      content: metaData.type ? metaData.type : page.meta.type
     })
   }
 
