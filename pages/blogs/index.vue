@@ -43,9 +43,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.blog-page {
-  padding: 70px 0px 140px 0px;
-}
-</style>

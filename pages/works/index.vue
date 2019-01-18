@@ -44,13 +44,3 @@ export default {
   }
 }
 </script>
-
-<style scoped lang="scss">
-.works-page {
-  padding: 40px 0px 80px 0px;
-
-  @include mq(md) {
-    padding: 50px 0px 140px 0px;
-  }
-}
-</style>
