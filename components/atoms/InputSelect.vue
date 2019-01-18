@@ -7,6 +7,7 @@
       class="select"
     >
       <select
+        v-model="selected"
         class="selectClass"
         @change="selectChange"
       >
@@ -32,18 +33,18 @@ export default {
     },
     defaultValue: {
       type: String,
-      default: '',
-      required: false
-    },
-    value: {
-      type: String,
-      default: '',
+      default: '0',
       required: false
     },
     error: {
       type: String,
       default: '',
       required: false
+    }
+  },
+  data() {
+    return {
+      selected: this.defaultValue
     }
   },
   methods: {
