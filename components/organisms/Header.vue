@@ -103,7 +103,7 @@ export default {
   width: 100%;
   box-sizing: border-box;
   min-height: 667px;
-  overflow-x: hidden;
+  overflow: hidden;
   position: relative;
 
   * {
@@ -279,7 +279,7 @@ export default {
     top: 50%;
     left: 0;
     transform: translate(-47%, -38%);
-    width: 60%;
+    width: 70%;
   }
 
   .right {
