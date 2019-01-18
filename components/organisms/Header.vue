@@ -41,15 +41,15 @@
     <div class="blog-update update-info">
       <HeaderUpdateInfo
         :link="pages.blogs.url"
+        :update="blogLatestUpdateDate"
         title="BLOG"
-        update="2018-05-29"
       />
     </div>
     <div class="works-update update-info">
       <HeaderUpdateInfo
         :link="pages.works.url"
+        :update="worksLatestUpdateDate"
         title="WORKS"
-        update="2018-05-29"
       />
     </div>
     <div class="gooey left">
@@ -83,6 +83,8 @@ export default {
     ArrowDown
   },
   computed: {
+    ...mapState('works', ['worksLatestUpdateDate']),
+    ...mapState('blogs', ['blogLatestUpdateDate']),
     pages() {
       return this.$store.app.getPages()
     }

@@ -114,4 +114,14 @@ export default {
     }
   }
 }
+
+.contentsNoBoxMobile {
+  margin-top: 40px;
+}
+
+.contentsNoBox {
+  @include mq(md) {
+    margin-top: 70px;
+  }
+}
 </style>
