@@ -106,16 +106,12 @@ export default {
     metaData() {
       let meta = {}
 
-      if (this.currentRecruit.title) {
-        meta = { ...meta, title: this.currentRecruit.title }
+      if (this.currentRecruit.occupation) {
+        meta = { ...meta, title: this.currentRecruit.occupation + 'の募集' }
       }
 
       if (this.currentRecruit.description) {
         meta = { ...meta, description: this.currentRecruit.description }
-      }
-
-      if (this.currentRecruit.image) {
-        meta = { ...meta, image: this.currentRecruit.image }
       }
 
       return this.$store.app.getMetaData('recruitsDetail', meta)
