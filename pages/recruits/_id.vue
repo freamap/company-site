@@ -66,7 +66,8 @@ export default {
   layout: 'sub',
   head() {
     return {
-      title: this.currentPage.dtitle
+      title: this.currentPage.dtitle,
+      meta: this.metaData
     }
   },
   async fetch({ app, route, store, params }) {
@@ -101,7 +102,24 @@ export default {
   },
   computed: {
     ...mapState('recruits', ['currentRecruit']),
-    ...mapState(['currentPage'])
+    ...mapState(['currentPage']),
+    metaData() {
+      let meta = {}
+
+      if (this.currentRecruit.title) {
+        meta = { ...meta, title: this.currentRecruit.title }
+      }
+
+      if (this.currentRecruit.description) {
+        meta = { ...meta, description: this.currentRecruit.description }
+      }
+
+      if (this.currentRecruit.image) {
+        meta = { ...meta, image: this.currentRecruit.image }
+      }
+
+      return this.$store.app.getMetaData('recruitsDetail', meta)
+    }
   },
   methods: {
     applyButtonOnClick: function(event) {

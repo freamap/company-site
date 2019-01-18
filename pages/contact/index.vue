@@ -20,7 +20,8 @@ export default {
   layout: 'sub',
   head() {
     return {
-      title: this.currentPage.title
+      title: this.currentPage.title,
+      meta: this.metaData
     }
   },
   async fetch({ app, store, route }) {
@@ -44,6 +45,9 @@ export default {
     ...mapState(['currentPage']),
     pages() {
       return this.$store.app.getPages()
+    },
+    metaData() {
+      return this.$store.app.getMetaData('contact')
     }
   },
   methods: {

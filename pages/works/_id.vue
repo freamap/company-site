@@ -42,7 +42,8 @@ export default {
   layout: 'sub',
   head() {
     return {
-      title: this.currentPage.title
+      title: this.currentPage.title,
+      meta: this.metaData
     }
   },
   async fetch({ app, route, store, params }) {
@@ -77,7 +78,24 @@ export default {
   },
   computed: {
     ...mapState('works', ['currentWork']),
-    ...mapState(['currentPage'])
+    ...mapState(['currentPage']),
+    metaData() {
+      let meta = {}
+
+      if (this.currentWork.title) {
+        meta = { ...meta, title: this.currentWork.title }
+      }
+
+      if (this.currentWork.description) {
+        meta = { ...meta, description: this.currentWork.description }
+      }
+
+      if (this.currentWork.image) {
+        meta = { ...meta, image: this.currentWork.image }
+      }
+
+      return this.$store.app.getMetaData('worksDetail', meta)
+    }
   }
 }
 </script>

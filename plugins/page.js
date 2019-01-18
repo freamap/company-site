@@ -113,6 +113,7 @@ const pages = {
     boxMobile: true,
     globalMenu: false,
     meta: {
+      title: '開発実績詳細',
       type: 'article'
     }
   },
@@ -170,6 +171,7 @@ const pages = {
     boxMobile: true,
     globalMenu: false,
     meta: {
+      title: 'ニュース詳細',
       type: 'article'
     }
   },
@@ -197,6 +199,7 @@ const pages = {
     boxMobile: true,
     globalMenu: false,
     meta: {
+      title: '採用情報詳細',
       type: 'article'
     }
   },
