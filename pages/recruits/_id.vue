@@ -23,7 +23,9 @@
         </section>
         <section>
           <h3>業務内容</h3>
-          <div>{{ currentRecruit.businessContent }}</div>
+          <div
+            v-html="currentRecruit.businessContent"
+          />
         </section>
         <section>
           <h3>勤務地</h3>
@@ -39,7 +41,11 @@
         </section>
         <section>
           <h3>求めるスキル</h3>
-          <div>{{ currentRecruit.skills? currentRecruit.skills: '-' }}</div>
+          <div
+            v-if="currentRecruit.skills"
+            v-html="currentRecruit.skills"
+          />
+          <div v-else>-</div>
         </section>
       </div>
       <div class="apply">

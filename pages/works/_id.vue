@@ -11,24 +11,24 @@
           <div class="description">{{ currentWork.description }}</div>
           <div class="url">
             <a
-              href="http://localhost/aaaaa.com"
+              :href="currentWork.url"
 
             >
-              http://localhost/aaaaa.com
+              {{ currentWork.url }}
             </a>
           </div>
         </div>
       </div>
       <div class="thumbnail">
         <img
-          :alt="currentWork.thumbnailAlt"
+          :alt="currentWork.thumbnail_alt"
           src="/img/philosophy-cover.png"
         >
       </div>
       <div class="contents">
-        <div>
-          {{ currentWork.contents }}
-        </div>
+        <div
+          v-html="currentWork.contents"
+        />
       </div>
     </article>
   </div>
