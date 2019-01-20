@@ -14,9 +14,9 @@
       </div>
       <compnent
         :is="tag"
-        class="description"
+        class="title"
       >
-        {{ detail.title ? detail.title : detail.description }}
+        {{ detail.title }}
       </compnent>
       <div class="detail-button">
         <nuxt-link
@@ -89,7 +89,7 @@ export default {
     }
   }
 
-  .description {
+  .title {
     font-size: inherit;
     font-weight: inherit;
     word-break: break-all;
