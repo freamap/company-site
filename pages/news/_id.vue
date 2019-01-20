@@ -78,8 +78,8 @@ export default {
         meta = { ...meta, title: this.currentNews.title }
       }
 
-      if (this.currentNews.description) {
-        meta = { ...meta, description: this.currentNews.description }
+      if (this.currentNews.og_description) {
+        meta = { ...meta, description: this.currentNews.og_description }
       }
 
       if (this.currentNews.image) {

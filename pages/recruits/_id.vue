@@ -110,8 +110,8 @@ export default {
         meta = { ...meta, title: this.currentRecruit.occupation + 'の募集' }
       }
 
-      if (this.currentRecruit.description) {
-        meta = { ...meta, description: this.currentRecruit.description }
+      if (this.currentRecruit.og_description) {
+        meta = { ...meta, description: this.currentRecruit.og_description }
       }
 
       return this.$store.app.getMetaData('recruitsDetail', meta)

@@ -86,8 +86,8 @@ export default {
         meta = { ...meta, title: this.currentWork.title }
       }
 
-      if (this.currentWork.description) {
-        meta = { ...meta, description: this.currentWork.description }
+      if (this.currentWork.og_description) {
+        meta = { ...meta, description: this.currentWork.og_description }
       }
 
       if (this.currentWork.image) {
