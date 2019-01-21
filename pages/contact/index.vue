@@ -5,6 +5,7 @@
         お仕事のご相談やその他のお問い合わせはこちらのフォームよりお願いします。通常2営業日以内に返信いたします。お気軽にお問い合わせください。「*」マークのついた項目は入力必須です。
       </div>
       <ContactForm
+        :select-title="selectTitle"
         @submit="submitContactForm"
       />
     </div>
@@ -20,7 +21,8 @@ export default {
   layout: 'sub',
   head() {
     return {
-      title: this.currentPage.title
+      title: this.currentPage.title,
+      meta: this.metaData
     }
   },
   async fetch({ app, store, route }) {
@@ -37,13 +39,26 @@ export default {
       currentPage: page
     })
   },
+  asyncData(context) {
+    return {
+      selectTitle: context.query['title']
+    }
+  },
   components: {
     ContactForm
+  },
+  data() {
+    return {
+      selectTitle: '0'
+    }
   },
   computed: {
     ...mapState(['currentPage']),
     pages() {
       return this.$store.app.getPages()
+    },
+    metaData() {
+      return this.$store.app.getMetaData('contact')
     }
   },
   methods: {
