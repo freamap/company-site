@@ -8,17 +8,24 @@ const port = process.env.PORT || 3000
 
 app.set('port', port)
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "https://freamap.co.jp https://blog.freamap.co.jp");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
-
 // Import and Set Nuxt.js options
 let config = require('../nuxt.config.js')
 config.dev = !(process.env.NODE_ENV === 'production')
 
 async function start() {
+  // CORS setting
+  let allowOrigin = "https://blog.freamap.co.jp"
+
+  if (process.env.NODE_ENV !== 'production') {
+    allowOrigin = allowOrigin + " https://freamap.co.jp"
+  }
+  
+  app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", allowOrigin);
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+
   // Init Nuxt.js
   const nuxt = new Nuxt(config)
 
