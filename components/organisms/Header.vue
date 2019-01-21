@@ -18,9 +18,7 @@
         >
       </h1>
       <div class="title">
-        <nobr>
-          BE YOURSELF, <wbr>BE LIKE YOU.
-        </nobr>
+        BE&nbsp;YOURSELF,<span>&nbsp;</span><br>BE&nbsp;LIKE&nbsp;YOU.
       </div>
       <div class="description">
         株式会社フリーマップのウェブサイトへようこそ！
@@ -188,6 +186,23 @@ export default {
       letter-spacing: 1rem;
       text-align: center;
 
+      > span {
+        font-size: inherit;
+        display: none;
+
+        @include mq(md) {
+          display: inline;
+        }
+      }
+
+      > br {
+        display: inline;
+
+        @include mq(md) {
+          display: none;
+        }
+      }
+
       @include mq(sm) {
         font-size: 4rem;
       }
@@ -258,7 +273,7 @@ export default {
   .update-info {
     @include mq(md) {
       position: absolute;
-      top: 50%;
+      top: calc(100vh / 2);
     }
 
     > div {
