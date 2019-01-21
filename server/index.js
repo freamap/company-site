@@ -8,6 +8,12 @@ const port = process.env.PORT || 3000
 
 app.set('port', port)
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "https://blog.freamap.co.jp");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 // Import and Set Nuxt.js options
 let config = require('../nuxt.config.js')
 config.dev = !(process.env.NODE_ENV === 'production')
