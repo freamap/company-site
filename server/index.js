@@ -17,7 +17,7 @@ async function start() {
   let allowOrigin = "https://blog.freamap.co.jp"
 
   if (process.env.NODE_ENV !== 'production') {
-    allowOrigin = allowOrigin + " https://freamap.co.jp"
+    allowOrigin += " https://freamap.co.jp"
   }
   
   app.use(function(req, res, next) {
