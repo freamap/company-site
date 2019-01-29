@@ -9,7 +9,7 @@
         :title="work.title"
         :description="work.description"
         :thumbnail-right="index % 2 === 1"
-        thumbnail="/img/philosophy-cover.png"
+        :thumbnail="$store.app.getStaticImage('/freamap-color.png')"
         thumbnail-alt="サムネイル１"
         @click="moreButtonOnClick(work.work_id)"
       />

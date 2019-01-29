@@ -12,3 +12,11 @@ Vue.filter('formatDateTimeTag', function(value) {
     return moment(value).format('YYYY-MM-DD HH:mm:ss')
   }
 })
+
+export default ({ app }, inject) => {
+  app.getStaticImage = getStaticImage
+}
+
+const getStaticImage = function(url) {
+  return 'https://freamap.co.jp/images' + url
+}

@@ -22,7 +22,7 @@
       <div class="thumbnail">
         <img
           :alt="currentWork.thumbnail_alt"
-          src="/img/philosophy-cover.png"
+          :src="$store.app.getStaticImage('/freamap-color.png')"
         >
       </div>
       <div class="contents">
