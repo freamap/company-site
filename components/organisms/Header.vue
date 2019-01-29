@@ -1,13 +1,16 @@
 <template>
-  <header class="header container">
+  <header class="header">
     <div class="head">
-      <div>
-        <div>
+      <div class="container">
+        <div class="global-navi">
           <GlobalNavi />
+        </div>
+        <div class="hum-global-navi">
+          <HumGlobalNavi />
         </div>
       </div>
     </div>
-    <div class="contents">
+    <div class="contents container">
       <h1 class="logo">
         <img
           src="~/assets/images/freamap-logo-vert--light.svg"
@@ -15,9 +18,7 @@
         >
       </h1>
       <div class="title">
-        <nobr>
-          BE YOURSELF, <wbr>BE LIKE YOU.
-        </nobr>
+        BE&nbsp;YOURSELF,<span>&nbsp;</span><br>BE&nbsp;LIKE&nbsp;YOU.
       </div>
       <div class="description">
         株式会社フリーマップのウェブサイトへようこそ！
@@ -38,15 +39,15 @@
     <div class="blog-update update-info">
       <HeaderUpdateInfo
         :link="pages.blogs.url"
+        :update="blogLatestUpdateDate"
         title="BLOG"
-        update="2018-05-29"
       />
     </div>
     <div class="works-update update-info">
       <HeaderUpdateInfo
         :link="pages.works.url"
+        :update="worksLatestUpdateDate"
         title="WORKS"
-        update="2018-05-29"
       />
     </div>
     <div class="gooey left">
@@ -65,6 +66,7 @@
 
 <script>
 import GlobalNavi from '~/components/molecules/GlobalNavi.vue'
+import HumGlobalNavi from '~/components/molecules/HumGlobalNavi.vue'
 import HeaderUpdateInfo from '~/components/molecules/HeaderUpdateInfo.vue'
 import Button from '~/components/atoms/Button.vue'
 import ArrowDown from '~/assets/icons/ArrowDown.vue'
@@ -73,11 +75,14 @@ import { mapState, mapActions } from 'vuex'
 export default {
   components: {
     GlobalNavi,
+    HumGlobalNavi,
     HeaderUpdateInfo,
     Button,
     ArrowDown
   },
   computed: {
+    ...mapState('works', ['worksLatestUpdateDate']),
+    ...mapState('blogs', ['blogLatestUpdateDate']),
     pages() {
       return this.$store.app.getPages()
     }
@@ -98,6 +103,8 @@ export default {
   width: 100%;
   box-sizing: border-box;
   min-height: 667px;
+  overflow: hidden;
+  position: relative;
 
   * {
     color: #ffffff;
@@ -120,17 +127,32 @@ export default {
       height: 63px;
       border-bottom: solid 1px rgba(255, 255, 255, 0.16);
 
-      > div {
-        display: none; //グローバルメニューはハンバーガーメニュー化するが一時的に消しておく
-        height: 100%;
-      }
-
       @include mq(md) {
         width: 100%;
         height: 92px;
+        border: none;
+      }
 
-        > div {
+      > .global-navi {
+        display: none;
+        height: 100%;
+        border: none;
+
+        @include mq(md) {
           display: block;
+          border-bottom: solid 1px rgba(255, 255, 255, 0.16);
+        }
+      }
+
+      > .hum-global-navi {
+        height: 100%;
+        flex-grow: 1;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        @include mq(md) {
+          display: none;
         }
       }
     }
@@ -163,6 +185,23 @@ export default {
       margin-top: 64px;
       letter-spacing: 1rem;
       text-align: center;
+
+      > span {
+        font-size: inherit;
+        display: none;
+
+        @include mq(md) {
+          display: inline;
+        }
+      }
+
+      > br {
+        display: inline;
+
+        @include mq(md) {
+          display: none;
+        }
+      }
 
       @include mq(sm) {
         font-size: 4rem;
@@ -234,7 +273,7 @@ export default {
   .update-info {
     @include mq(md) {
       position: absolute;
-      top: 50%;
+      top: calc(100vh / 2);
     }
 
     > div {
@@ -257,7 +296,7 @@ export default {
     top: 50%;
     left: 0;
     transform: translate(-47%, -38%);
-    width: 60%;
+    width: 70%;
   }
 
   .right {

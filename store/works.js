@@ -1,11 +1,21 @@
+import moment from 'moment'
+
 export const state = () => ({
   works: null,
-  currentWork: null
+  currentWork: null,
+  worksLatestUpdateDate: null
 })
 
 export const mutations = {
   set_works(state, works) {
     state.works = works
+    state.worksLatestUpdateDate = works.reduce(
+      (latestWork, currentWork) =>
+        moment(latestWork.update, 'YYYY-MM-DD').fromNow() <
+        moment(currentWork.update, 'YYYY-MM-DD').fromNow()
+          ? latestWork
+          : currentWork
+    ).update
   },
   set_current_work(state, works) {
     state.currentWork = works

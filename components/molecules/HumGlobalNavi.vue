@@ -51,9 +51,26 @@ export default {
       return this.show ? { display: 'block' } : { display: 'none' }
     }
   },
+  mounted() {
+    window.addEventListener('click', e => {
+      this.windowCick(e)
+    })
+  },
+  mounted() {
+    window.addEventListener('click', this.windowCick)
+  },
+  beforeDestroy() {
+    window.removeEventListener('click', this.windowCick)
+  },
   methods: {
     click: function(value) {
+      this.show = false
       this.changePage(value)
+    },
+    windowCick: function(e) {
+      if (!this.$el.contains(e.target)) {
+        this.show = false
+      }
     },
     humMarkClick: function() {
       this.show = !this.show
@@ -67,6 +84,7 @@ export default {
 .hum-global-navi {
   > div {
     position: relative;
+    margin-right: -3px;
 
     > .hum-mark {
       width: 40px;
@@ -103,7 +121,7 @@ export default {
         content: '';
         position: absolute;
         top: -24px;
-        right: 6px;
+        right: 8px;
         border: 12px solid transparent;
         z-index: 99;
         border-bottom-color: #236af7;
@@ -115,7 +133,7 @@ export default {
         color: #ffffff;
         padding: 10px 20px;
         border-radius: 3px;
-        box-shadow: 10px 0px 30pt #000000;
+        box-shadow: 0px 10px 30pt rgba(0, 0, 0, 0.16);
 
         > div {
           font-size: 1.5rem;

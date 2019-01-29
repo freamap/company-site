@@ -3,13 +3,17 @@
     <div class="title">
       <InputSelect
         :error="errorTitleMessage"
+        :default-value="selectTitle"
         v-model="title"
         label="件名*"
       >
-        <option value="">ご用件を選択してください</option>
-        <option>仕事の依頼に関するお問い合わせ</option>
-        <option>採用に関するお問い合わせ</option>
-        <option>その他のお問い合わせ</option>
+        <option
+          v-for="option in options"
+          :key="option.value"
+          :value="option.value"
+        >
+          {{ option.text }}
+        </option>
       </InputSelect>
     </div>
     <div class="mail-address">
@@ -52,10 +56,35 @@ export default {
     InputText,
     InputSelect
   },
+  props: {
+    selectTitle: {
+      type: String,
+      default: '0',
+      required: false
+    }
+  },
   data() {
     return {
-      title: '',
+      title: this.selectTitle,
       mailAddress: '',
+      options: [
+        {
+          value: '0',
+          text: 'ご用件を選択してください'
+        },
+        {
+          value: '1',
+          text: '仕事の依頼に関するお問い合わせ'
+        },
+        {
+          value: '2',
+          text: '採用に関するお問い合わせ'
+        },
+        {
+          value: '3',
+          text: 'その他のお問い合わせ'
+        }
+      ],
       body: '',
       errorTitleMessage: '',
       errorMailAddressMessage: '',
@@ -66,7 +95,7 @@ export default {
     submitButtonOnClick() {
       let error = false
 
-      if (!this.title) {
+      if (this.title === '0') {
         this.errorTitleMessage = '件名を選択してください。'
         error = true
       } else {
@@ -89,7 +118,9 @@ export default {
 
       if (!error) {
         let request = {
-          title: this.title,
+          title: this.options.filter(option => {
+            return option.value === this.title
+          })[0].text,
           mailAddress: this.mailAddress,
           body: this.body
         }

@@ -26,6 +26,7 @@ import axios from 'axios'
 export default {
   head() {
     return {
+      titleTemplate: null,
       title: this.currentPage.title
     }
   },
@@ -55,6 +56,20 @@ export default {
   },
   computed: {
     ...mapState(['currentPage'])
+  },
+  mounted() {
+    axios
+      .get('https://blog.freamap.co.jp/wp-json/wp/v2/posts/?context=embed')
+      .then(response => {
+        this.$store.dispatch('blogs/setBlogs', response.data)
+      })
+
+    let baseUrl = process.server
+      ? process.env.apiBaseURLLocal
+      : process.env.apiBaseURL
+    axios.get(baseUrl + '/api/works').then(response => {
+      this.$store.dispatch('works/setWorks', response.data)
+    })
   },
   methods: {
     moreNewsButtonOnClick: function(event) {

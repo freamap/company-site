@@ -10,12 +10,21 @@
       </div>
       <hr noshade>
       <div class="update">
-        <time
-          :datetime="update | formatDateTimeTag"
+        <span
+          v-if="update"
         >
-          {{ update | formatDate }}
-        </time>
-        更新
+          <time
+            :datetime="update | formatDateTimeTag"
+          >
+            {{ update | formatDate }}
+          </time>
+          更新
+        </span>
+        <span
+          v-else
+        >
+          取得中
+        </span>
       </div>
     </nav>
   </div>
@@ -34,7 +43,7 @@ export default {
     update: {
       type: String,
       default: '',
-      required: true
+      required: false
     },
     link: {
       type: String,

@@ -61,7 +61,7 @@ export default {
       if (this.blog.thumbnail) {
         return this.blog.thumbnail
       }
-      return 'https://freamap.co.jp/wp-content/themes/affinger5/images/no-img.png'
+      return 'https://blog.freamap.co.jp/wp-content/themes/affinger5/images/no-img.png'
     },
     thumbnailStyle() {
       if (this.blog.thumbnail) {

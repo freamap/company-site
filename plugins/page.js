@@ -1,6 +1,7 @@
 export default ({ app }, inject) => {
   app.getPage = getPage
   app.getPages = getPages
+  app.getMetaData = getMetaData
 }
 
 const getPage = function(pageName) {
@@ -11,10 +12,64 @@ const getPages = function() {
   return pages
 }
 
+const getMetaData = function(pageName, metaData = {}) {
+  let page = pages[pageName]
+  let meta = [
+    {
+      hid: 'og:url',
+      property: 'og:url',
+      content: 'https://freamap.co.jp' + page.url
+    }
+  ]
+
+  if (page.meta.title || metaData.title) {
+    meta.push({
+      hid: 'og:title',
+      property: 'og:title',
+      content: metaData.title ? metaData.title : page.meta.title
+    })
+  }
+
+  if (page.meta.description || metaData.description) {
+    meta.push({
+      hid: 'description',
+      name: 'description',
+      content: metaData.description
+        ? metaData.description
+        : page.meta.description
+    })
+    meta.push({
+      hid: 'og:description',
+      name: 'og:description',
+      content: metaData.description
+        ? metaData.description
+        : page.meta.description
+    })
+  }
+
+  if (page.meta.image || metaData.image) {
+    meta.push({
+      hid: 'og:image',
+      name: 'og:image',
+      content: metaData.image ? metaData.image : page.meta.image
+    })
+  }
+
+  if (page.meta.type || metaData.type) {
+    meta.push({
+      hid: 'og:type',
+      name: 'og:type',
+      content: metaData.type ? metaData.type : page.meta.type
+    })
+  }
+
+  return meta
+}
+
 const pages = {
   top: {
     url: '/',
-    title: 'TOP',
+    title: 'freamap',
     globalMenu: false
   },
   philosophy: {
@@ -27,7 +82,12 @@ const pages = {
     box: true,
     upContentsMobile: true,
     boxMobile: true,
-    globalMenu: true
+    globalMenu: true,
+    meta: {
+      title: '企業理念',
+      description: 'freamapの企業理念ページです。',
+      type: 'article'
+    }
   },
   works: {
     url: '/works',
@@ -37,7 +97,12 @@ const pages = {
     box: false,
     upContentsMobile: false,
     boxMobile: false,
-    globalMenu: true
+    globalMenu: true,
+    meta: {
+      title: '開発実績',
+      description: 'freamapの開発実績ページです。',
+      type: 'article'
+    }
   },
   worksDetail: {
     url: '/works/:id',
@@ -46,7 +111,11 @@ const pages = {
     box: true,
     upContentsMobile: true,
     boxMobile: true,
-    globalMenu: false
+    globalMenu: false,
+    meta: {
+      title: '開発実績詳細',
+      type: 'article'
+    }
   },
   blogs: {
     url: '/blogs',
@@ -56,7 +125,12 @@ const pages = {
     box: false,
     upContentsMobile: false,
     boxMobile: false,
-    globalMenu: true
+    globalMenu: true,
+    meta: {
+      title: 'ブログ',
+      description: 'freamapのブログ一覧ページです。',
+      type: 'article'
+    }
   },
   company: {
     url: '/company',
@@ -66,7 +140,12 @@ const pages = {
     box: true,
     upContentsMobile: true,
     boxMobile: true,
-    globalMenu: true
+    globalMenu: true,
+    meta: {
+      title: '企業情報',
+      description: 'freamapの企業情報ページです。',
+      type: 'article'
+    }
   },
   news: {
     url: '/news',
@@ -76,7 +155,12 @@ const pages = {
     box: true,
     upContentsMobile: true,
     boxMobile: true,
-    globalMenu: false
+    globalMenu: false,
+    meta: {
+      title: 'ニュース',
+      description: 'freamapのニュースページです。',
+      type: 'article'
+    }
   },
   newsDetail: {
     url: '/news/:id',
@@ -85,7 +169,11 @@ const pages = {
     box: true,
     upContentsMobile: true,
     boxMobile: true,
-    globalMenu: false
+    globalMenu: false,
+    meta: {
+      title: 'ニュース詳細',
+      type: 'article'
+    }
   },
   recruits: {
     url: '/recruits',
@@ -95,7 +183,12 @@ const pages = {
     box: true,
     upContentsMobile: true,
     boxMobile: true,
-    globalMenu: true
+    globalMenu: true,
+    meta: {
+      title: '採用情報',
+      description: 'freamapの採用情報ページです。',
+      type: 'article'
+    }
   },
   recruitsDetail: {
     url: '/recruits/:id',
@@ -104,7 +197,11 @@ const pages = {
     box: true,
     upContentsMobile: true,
     boxMobile: true,
-    globalMenu: false
+    globalMenu: false,
+    meta: {
+      title: '採用情報詳細',
+      type: 'article'
+    }
   },
   contact: {
     url: '/contact',
@@ -114,7 +211,12 @@ const pages = {
     box: true,
     upContentsMobile: true,
     boxMobile: true,
-    globalMenu: true
+    globalMenu: true,
+    meta: {
+      title: 'お問い合わせ',
+      description: 'freamapのお問い合わせページです。',
+      type: 'article'
+    }
   },
   contactThunks: {
     url: '/contact/thunks',
@@ -123,6 +225,10 @@ const pages = {
     box: true,
     upContentsMobile: true,
     boxMobile: true,
-    globalMenu: false
+    globalMenu: false,
+    meta: {
+      title: 'お問い合わせ',
+      type: 'article'
+    }
   }
 }

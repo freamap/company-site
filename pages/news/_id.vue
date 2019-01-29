@@ -36,7 +36,8 @@ export default {
   layout: 'sub',
   head() {
     return {
-      title: this.currentPage.title
+      title: this.currentPage.title,
+      meta: this.metaData
     }
   },
   async fetch({ app, route, store, params }) {
@@ -69,7 +70,24 @@ export default {
   },
   computed: {
     ...mapState('news', ['currentNews']),
-    ...mapState(['currentPage'])
+    ...mapState(['currentPage']),
+    metaData() {
+      let meta = {}
+
+      if (this.currentNews.title) {
+        meta = { ...meta, title: this.currentNews.title }
+      }
+
+      if (this.currentNews.og_description) {
+        meta = { ...meta, description: this.currentNews.og_description }
+      }
+
+      if (this.currentNews.image) {
+        meta = { ...meta, image: this.currentNews.image }
+      }
+
+      return this.$store.app.getMetaData('newsDetail', meta)
+    }
   }
 }
 </script>

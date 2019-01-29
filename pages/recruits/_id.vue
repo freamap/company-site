@@ -23,7 +23,9 @@
         </section>
         <section>
           <h3>業務内容</h3>
-          <div>{{ currentRecruit.businessContent }}</div>
+          <div
+            v-html="currentRecruit.businessContent"
+          />
         </section>
         <section>
           <h3>勤務地</h3>
@@ -39,7 +41,11 @@
         </section>
         <section>
           <h3>求めるスキル</h3>
-          <div>{{ currentRecruit.skills? currentRecruit.skills: '-' }}</div>
+          <div
+            v-if="currentRecruit.skills"
+            v-html="currentRecruit.skills"
+          />
+          <div v-else>-</div>
         </section>
       </div>
       <div class="apply">
@@ -66,7 +72,8 @@ export default {
   layout: 'sub',
   head() {
     return {
-      title: this.currentPage.dtitle
+      title: this.currentPage.dtitle,
+      meta: this.metaData
     }
   },
   async fetch({ app, route, store, params }) {
@@ -101,11 +108,24 @@ export default {
   },
   computed: {
     ...mapState('recruits', ['currentRecruit']),
-    ...mapState(['currentPage'])
+    ...mapState(['currentPage']),
+    metaData() {
+      let meta = {}
+
+      if (this.currentRecruit.occupation) {
+        meta = { ...meta, title: this.currentRecruit.occupation + 'の募集' }
+      }
+
+      if (this.currentRecruit.og_description) {
+        meta = { ...meta, description: this.currentRecruit.og_description }
+      }
+
+      return this.$store.app.getMetaData('recruitsDetail', meta)
+    }
   },
   methods: {
     applyButtonOnClick: function(event) {
-      this.changePage(this.$store.app.getPages('contact').url)
+      this.changePage(this.$store.app.getPage('contact').url + '?title=2')
     },
     ...mapActions(['changePage'])
   }
@@ -151,9 +171,10 @@ export default {
       color: #767676;
       justify-content: center;
       margin-top: 10px;
+      flex: 1;
 
       @include mq(md) {
-        justify-content: end;
+        justify-content: flex-end;
         margin-top: 0px;
       }
 
@@ -184,7 +205,7 @@ export default {
       flex-direction: column;
       box-sizing: border-box;
 
-      @include mq(sm) {
+      @include mq(md) {
         flex-direction: row;
       }
 
@@ -193,7 +214,7 @@ export default {
         align-items: center;
         padding: 15px;
 
-        @include mq(sm) {
+        @include mq(md) {
           padding: 40px;
         }
       }
@@ -203,7 +224,7 @@ export default {
         border-bottom: solid 1px #e8e9ea;
         justify-content: center;
 
-        @include mq(sm) {
+        @include mq(md) {
           border-bottom: none;
           border-right: solid 1px #e8e9ea;
           flex-basis: 230px;

@@ -13,7 +13,8 @@ export default {
   layout: 'sub',
   head() {
     return {
-      title: this.currentPage.title
+      title: this.currentPage.title,
+      meta: this.metaData
     }
   },
   async fetch({ app, route, store, params }) {
@@ -40,17 +41,10 @@ export default {
     Works
   },
   computed: {
-    ...mapState(['currentPage'])
+    ...mapState(['currentPage']),
+    metaData() {
+      return this.$store.app.getMetaData('works')
+    }
   }
 }
 </script>
-
-<style scoped lang="scss">
-.works-page {
-  padding: 40px 0px 80px 0px;
-
-  @include mq(md) {
-    padding: 50px 0px 140px 0px;
-  }
-}
-</style>

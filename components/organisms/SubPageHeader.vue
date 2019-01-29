@@ -138,6 +138,7 @@ export default {
   background-color: $primary;
   transition: max-height 0.4s ease-in-out;
   position: relative;
+  overflow: hidden;
 
   * {
     color: #ffffff;
@@ -181,7 +182,7 @@ export default {
         }
 
         > .global-navi {
-          display: none; //グローバルメニューはハンバーガーメニュー化するが一時的に消しておく
+          display: none;
 
           @include mq(md) {
             flex-grow: 1;
@@ -307,18 +308,18 @@ export default {
 
   .left {
     @extend .gooey;
-    top: 0;
+    top: 50%;
     left: 0;
-    transform: translate(-47%, 10%);
-    width: 60%;
+    transform: translate(-47%, -38%);
+    width: 70%;
   }
 
   .right {
     @extend .gooey;
-    top: 0;
+    top: 50%;
     right: 0;
-    transform: translate(56%, -32%);
-    width: 65%;
+    transform: translate(49%, -77%);
+    width: 70%;
   }
 }
 

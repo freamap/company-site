@@ -13,12 +13,13 @@ export default {
   layout: 'sub',
   head() {
     return {
-      title: this.currentPage.title
+      title: this.currentPage.title,
+      meta: this.metaData
     }
   },
   async fetch({ app, store, route }) {
     let { data } = await axios.get(
-      'https://freamap.co.jp/wp-json/wp/v2/posts/?context=embed'
+      'https://blog.freamap.co.jp/wp-json/wp/v2/posts/?context=embed'
     )
     await store.dispatch('blogs/setBlogs', data)
 
@@ -39,13 +40,10 @@ export default {
     Blogs
   },
   computed: {
-    ...mapState(['currentPage'])
+    ...mapState(['currentPage']),
+    metaData() {
+      return this.$store.app.getMetaData('blogs')
+    }
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.blog-page {
-  padding: 70px 0px 140px 0px;
-}
-</style>

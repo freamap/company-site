@@ -11,24 +11,24 @@
           <div class="description">{{ currentWork.description }}</div>
           <div class="url">
             <a
-              href="http://localhost/aaaaa.com"
+              :href="currentWork.url"
 
             >
-              http://localhost/aaaaa.com
+              {{ currentWork.url }}
             </a>
           </div>
         </div>
       </div>
       <div class="thumbnail">
         <img
-          :alt="currentWork.thumbnailAlt"
+          :alt="currentWork.thumbnail_alt"
           src="/img/philosophy-cover.png"
         >
       </div>
       <div class="contents">
-        <div>
-          {{ currentWork.contents }}
-        </div>
+        <div
+          v-html="currentWork.contents"
+        />
       </div>
     </article>
   </div>
@@ -42,7 +42,8 @@ export default {
   layout: 'sub',
   head() {
     return {
-      title: this.currentPage.title
+      title: this.currentPage.title,
+      meta: this.metaData
     }
   },
   async fetch({ app, route, store, params }) {
@@ -77,7 +78,24 @@ export default {
   },
   computed: {
     ...mapState('works', ['currentWork']),
-    ...mapState(['currentPage'])
+    ...mapState(['currentPage']),
+    metaData() {
+      let meta = {}
+
+      if (this.currentWork.title) {
+        meta = { ...meta, title: this.currentWork.title }
+      }
+
+      if (this.currentWork.og_description) {
+        meta = { ...meta, description: this.currentWork.og_description }
+      }
+
+      if (this.currentWork.image) {
+        meta = { ...meta, image: this.currentWork.image }
+      }
+
+      return this.$store.app.getMetaData('worksDetail', meta)
+    }
   }
 }
 </script>
