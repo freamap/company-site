@@ -97,6 +97,7 @@ export default {
 
     > * {
       display: flex;
+      flex-basis: 0;
       align-items: center;
       padding: 15px;
 
