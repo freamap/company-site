@@ -22,7 +22,7 @@
       <div class="thumbnail">
         <img
           :alt="currentWork.thumbnail_alt"
-          :src="$store.app.getStaticImage('/freamap-color.png')"
+          :src="$store.app.getStaticImage('/works/' + currentWork.work_id + '/' + currentWork.thumbnail)"
         >
       </div>
       <div class="contents">
@@ -198,8 +198,52 @@ export default {
       padding: 0px 100px;
     }
 
-    div {
+    div /deep/ {
       max-width: 600px;
+
+      h3 {
+        font-size: 2.1rem;
+        font-weight: bold;
+        width: 100%;
+      }
+
+      .contents {
+        margin: 12px 0;
+      }
+
+      .table {
+        padding: 12px 0;
+
+        > section {
+          display: flex;
+          min-height: 52px;
+          border-left: solid 1px #e8e9ea;
+          border-top: solid 1px #e8e9ea;
+          border-right: solid 1px #e8e9ea;
+
+          &:last-of-type {
+            border-bottom: solid 1px #e8e9ea;
+          }
+
+          > * {
+            padding-left: 15px;
+          }
+
+          > .title {
+            flex-basis: 230px;
+            flex-grow: 0;
+            border-right: 1px solid #e8e9ea;
+            display: flex;
+            align-items: center;
+          }
+
+          > .body {
+            flex: 1;
+            display: flex;
+            align-items: center;
+          }
+        }
+      }
     }
   }
 }
