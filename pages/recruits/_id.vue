@@ -211,7 +211,6 @@ export default {
 
       > * {
         display: flex;
-        flex-basis: 0;
         align-items: center;
         padding: 15px;
 
@@ -234,8 +233,11 @@ export default {
       }
 
       > div {
-        flex-basis: 0;
         flex-grow: 1;
+
+        @include mq(md) {
+          flex-basis: 0;
+        }
       }
 
       &:first-of-type {
