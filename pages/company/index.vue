@@ -120,8 +120,11 @@ export default {
     }
 
     > div {
-      flex-basis: 0;
       flex-grow: 1;
+
+      @include mq(md) {
+        flex-basis: 0;
+      }
     }
   }
 }
