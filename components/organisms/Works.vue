@@ -9,8 +9,8 @@
         :title="work.title"
         :description="work.description"
         :thumbnail-right="index % 2 === 1"
-        thumbnail="/img/philosophy-cover.png"
-        thumbnail-alt="サムネイル１"
+        :thumbnail="$store.app.getStaticImage('/works/' + work.work_id + '/' + work.thumbnail)"
+        :thumbnail-alt="work.thumbnail_alt"
         @click="moreButtonOnClick(work.work_id)"
       />
     </div>

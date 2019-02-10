@@ -129,7 +129,7 @@ export default {
 
       @include mq(md) {
         width: 100%;
-        height: 92px;
+        height: 102px;
         border: none;
       }
 

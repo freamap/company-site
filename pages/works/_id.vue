@@ -22,7 +22,7 @@
       <div class="thumbnail">
         <img
           :alt="currentWork.thumbnail_alt"
-          src="/img/philosophy-cover.png"
+          :src="$store.app.getStaticImage('/works/' + currentWork.work_id + '/' + currentWork.thumbnail)"
         >
       </div>
       <div class="contents">
@@ -198,8 +198,75 @@ export default {
       padding: 0px 100px;
     }
 
-    div {
+    div /deep/ {
       max-width: 600px;
+
+      h3 {
+        font-size: 2.1rem;
+        font-weight: bold;
+        width: 100%;
+        margin-bottom: 24px;
+      }
+
+      h4 {
+        font-size: 1.8rem;
+        font-weight: bold;
+        width: 100%;
+        margin-bottom: 12px;
+      }
+
+      img {
+        width: 100%;
+        object-fit: contain;
+      }
+
+      .contents {
+        margin-bottom: 36px;
+      }
+
+      .margin-bottom-s {
+        margin-bottom: 12px;
+      }
+
+      .margin-bottom-m {
+        margin-bottom: 24px;
+      }
+
+      .margin-bottom-l {
+        margin-bottom: 36px;
+      }
+
+      .table {
+        > div {
+          display: flex;
+          min-height: 52px;
+          border-left: solid 1px #e8e9ea;
+          border-top: solid 1px #e8e9ea;
+          border-right: solid 1px #e8e9ea;
+
+          &:last-of-type {
+            border-bottom: solid 1px #e8e9ea;
+          }
+
+          > * {
+            padding-left: 15px;
+          }
+
+          > .title {
+            flex-basis: 230px;
+            flex-grow: 0;
+            border-right: 1px solid #e8e9ea;
+            display: flex;
+            align-items: center;
+          }
+
+          > .body {
+            flex: 1;
+            display: flex;
+            align-items: center;
+          }
+        }
+      }
     }
   }
 }
