@@ -72,7 +72,7 @@ export default {
   layout: 'sub',
   head() {
     return {
-      title: this.currentPage.dtitle,
+      title: this.currentPage.title,
       meta: this.metaData
     }
   },

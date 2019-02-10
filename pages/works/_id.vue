@@ -205,16 +205,39 @@ export default {
         font-size: 2.1rem;
         font-weight: bold;
         width: 100%;
+        margin-bottom: 24px;
+      }
+
+      h4 {
+        font-size: 1.8rem;
+        font-weight: bold;
+        width: 100%;
+        margin-bottom: 12px;
+      }
+
+      img {
+        width: 100%;
+        object-fit: contain;
       }
 
       .contents {
-        margin: 12px 0;
+        margin-bottom: 36px;
+      }
+
+      .margin-bottom-s {
+        margin-bottom: 12px;
+      }
+
+      .margin-bottom-m {
+        margin-bottom: 24px;
+      }
+
+      .margin-bottom-l {
+        margin-bottom: 36px;
       }
 
       .table {
-        padding: 12px 0;
-
-        > section {
+        > div {
           display: flex;
           min-height: 52px;
           border-left: solid 1px #e8e9ea;
