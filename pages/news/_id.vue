@@ -83,7 +83,9 @@ export default {
       }
 
       if (this.currentNews.thumbnail) {
-        let image = $store.app.getStaticImage('/news/' + this.currentNews.news_id + '/' + this.currentNews.thumbnail)
+        let image = this.$store.app.getStaticImage(
+          '/news/' + this.currentNews.news_id + '/' + this.currentNews.thumbnail
+        )
         meta = { ...meta, image: image }
       }
 
