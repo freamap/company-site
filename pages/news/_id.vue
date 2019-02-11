@@ -82,8 +82,8 @@ export default {
         meta = { ...meta, description: this.currentNews.og_description }
       }
 
-      if (this.currentNews.thumbnail) {
-        meta = { ...meta, image: this.currentNews.thumbnail }
+      if (this.currentNews.image) {
+        meta = { ...meta, image: this.currentNews.image }
       }
 
       return this.$store.app.getMetaData('newsDetail', meta)
