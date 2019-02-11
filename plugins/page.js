@@ -70,7 +70,8 @@ const pages = {
   top: {
     url: '/',
     title: 'freamap',
-    globalMenu: false
+    globalMenu: false,
+    footerMenu: false
   },
   philosophy: {
     url: '/philosophy',
@@ -83,6 +84,7 @@ const pages = {
     upContentsMobile: true,
     boxMobile: true,
     globalMenu: true,
+    footerMenu: true,
     meta: {
       title: '企業理念',
       description: 'freamapの企業理念ページです。',
@@ -98,6 +100,7 @@ const pages = {
     upContentsMobile: false,
     boxMobile: false,
     globalMenu: true,
+    footerMenu: true,
     meta: {
       title: '開発実績',
       description: 'freamapの開発実績ページです。',
@@ -112,6 +115,7 @@ const pages = {
     upContentsMobile: true,
     boxMobile: true,
     globalMenu: false,
+    footerMenu: false,
     meta: {
       title: '開発実績詳細',
       type: 'article'
@@ -126,6 +130,7 @@ const pages = {
     upContentsMobile: false,
     boxMobile: false,
     globalMenu: true,
+    footerMenu: true,
     meta: {
       title: 'ブログ',
       description: 'freamapのブログ一覧ページです。',
@@ -141,6 +146,7 @@ const pages = {
     upContentsMobile: true,
     boxMobile: true,
     globalMenu: true,
+    footerMenu: true,
     meta: {
       title: '企業情報',
       description: 'freamapの企業情報ページです。',
@@ -156,6 +162,7 @@ const pages = {
     upContentsMobile: true,
     boxMobile: true,
     globalMenu: false,
+    footerMenu: false,
     meta: {
       title: 'ニュース',
       description: 'freamapのニュースページです。',
@@ -170,6 +177,7 @@ const pages = {
     upContentsMobile: true,
     boxMobile: true,
     globalMenu: false,
+    footerMenu: false,
     meta: {
       title: 'ニュース詳細',
       type: 'article'
@@ -184,6 +192,7 @@ const pages = {
     upContentsMobile: true,
     boxMobile: true,
     globalMenu: true,
+    footerMenu: true,
     meta: {
       title: '採用情報',
       description: 'freamapの採用情報ページです。',
@@ -198,8 +207,24 @@ const pages = {
     upContentsMobile: true,
     boxMobile: true,
     globalMenu: false,
+    footerMenu: false,
     meta: {
       title: '採用情報詳細',
+      type: 'article'
+    }
+  },
+  privacyPolicy: {
+    url: '/privacy-policy',
+    title: 'プライバシーポリシー',
+    subTitle: 'privacy policy',
+    upContents: true,
+    box: true,
+    upContentsMobile: true,
+    boxMobile: true,
+    globalMenu: false,
+    footerMenu: true,
+    meta: {
+      title: 'プライバシーポリシー',
       type: 'article'
     }
   },
@@ -212,6 +237,7 @@ const pages = {
     upContentsMobile: true,
     boxMobile: true,
     globalMenu: true,
+    footerMenu: true,
     meta: {
       title: 'お問い合わせ',
       description: 'freamapのお問い合わせページです。',
@@ -226,6 +252,7 @@ const pages = {
     upContentsMobile: true,
     boxMobile: true,
     globalMenu: false,
+    footerMenu: false,
     meta: {
       title: 'お問い合わせ',
       type: 'article'
