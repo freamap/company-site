@@ -91,7 +91,8 @@ export default {
       }
 
       if (this.currentWork.thumbnail) {
-        meta = { ...meta, image: this.currentWork.thumbnail }
+        let image = $store.app.getStaticImage('/works/' + this.currentWork.work_id + '/' + this.currentWork.thumbnail)
+        meta = { ...meta, image: image }
       }
 
       return this.$store.app.getMetaData('worksDetail', meta)
