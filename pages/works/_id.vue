@@ -90,8 +90,8 @@ export default {
         meta = { ...meta, description: this.currentWork.og_description }
       }
 
-      if (this.currentWork.thumbnail) {
-        meta = { ...meta, image: this.currentWork.thumbnail }
+      if (this.currentWork.image) {
+        meta = { ...meta, image: this.currentWork.image }
       }
 
       return this.$store.app.getMetaData('worksDetail', meta)
