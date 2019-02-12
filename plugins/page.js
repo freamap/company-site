@@ -216,6 +216,7 @@ const pages = {
   privacyPolicy: {
     url: '/privacy-policy',
     title: 'プライバシーポリシー',
+    htmlTitle: '<nobr>プライバシー<wbr>ポリシー</nobr>',
     subTitle: 'privacy policy',
     upContents: true,
     box: true,
