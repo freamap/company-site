@@ -22,7 +22,7 @@ module.exports = {
       { hid: 'og:title', property: 'og:title', content: 'freamap' },
       { hid: 'og:description', property: 'og:description', content: 'freamapの企業サイトです。わたしたちは、”個人の時代”に生きる人々のワーク & ライフに貢献するデジタルテクノロジーが得意な会社です。' },
       { hid: 'og:image', property: 'og:image', content: 'https://freamap.co.jp/images/freamap-color.png' },
-      { property: 'fb:app_id', content: '1233456789' },
+      { property: 'fb:app_id', content: '396065207617241' },
       { property: 'article:publisher', content: 'https://www.facebook.com/freamap' },
       { name: 'twitter:card', content: 'summary' },
       { name: 'twitter:site', content: '@freamap' }
