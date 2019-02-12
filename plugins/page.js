@@ -40,7 +40,7 @@ const getMetaData = function(pageName, metaData = {}) {
     })
     meta.push({
       hid: 'og:description',
-      name: 'og:description',
+      property: 'og:description',
       content: metaData.description
         ? metaData.description
         : page.meta.description
@@ -50,7 +50,7 @@ const getMetaData = function(pageName, metaData = {}) {
   if (page.meta.image || metaData.image) {
     meta.push({
       hid: 'og:image',
-      name: 'og:image',
+      property: 'og:image',
       content: metaData.image ? metaData.image : page.meta.image
     })
   }
@@ -58,7 +58,7 @@ const getMetaData = function(pageName, metaData = {}) {
   if (page.meta.type || metaData.type) {
     meta.push({
       hid: 'og:type',
-      name: 'og:type',
+      property: 'og:type',
       content: metaData.type ? metaData.type : page.meta.type
     })
   }
