@@ -87,7 +87,7 @@ const pages = {
     footerMenu: true,
     meta: {
       title: '企業理念',
-      description: 'freamapの企業理念ページです。',
+      description: '株式会社freamapの企業理念ページです。',
       type: 'article'
     }
   },
@@ -103,7 +103,7 @@ const pages = {
     footerMenu: true,
     meta: {
       title: '開発実績',
-      description: 'freamapの開発実績ページです。',
+      description: '株式会社freamapの開発実績ページです。',
       type: 'article'
     }
   },
@@ -133,7 +133,7 @@ const pages = {
     footerMenu: true,
     meta: {
       title: 'ブログ',
-      description: 'freamapのブログ一覧ページです。',
+      description: '株式会社freamapのブログ一覧ページです。',
       type: 'article'
     }
   },
@@ -149,7 +149,7 @@ const pages = {
     footerMenu: true,
     meta: {
       title: '企業情報',
-      description: 'freamapの企業情報ページです。',
+      description: '株式会社freamapの企業情報ページです。',
       type: 'article'
     }
   },
@@ -165,7 +165,7 @@ const pages = {
     footerMenu: false,
     meta: {
       title: 'ニュース',
-      description: 'freamapのニュースページです。',
+      description: '株式会社freamapのニュースページです。',
       type: 'article'
     }
   },
@@ -195,7 +195,7 @@ const pages = {
     footerMenu: true,
     meta: {
       title: '採用情報',
-      description: 'freamapの採用情報ページです。',
+      description: '株式会社freamapの採用情報ページです。',
       type: 'article'
     }
   },
@@ -225,6 +225,7 @@ const pages = {
     footerMenu: true,
     meta: {
       title: 'プライバシーポリシー',
+      description: '株式会社freamapホームページにおけるプライバシーポリシーページです。',
       type: 'article'
     }
   },
@@ -240,7 +241,7 @@ const pages = {
     footerMenu: true,
     meta: {
       title: 'お問い合わせ',
-      description: 'freamapのお問い合わせページです。',
+      description: '株式会社freamapのお問い合わせページです。',
       type: 'article'
     }
   },
