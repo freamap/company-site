@@ -216,6 +216,7 @@ const pages = {
   privacyPolicy: {
     url: '/privacy-policy',
     title: 'プライバシーポリシー',
+    htmlTitle: '<nobr>プライバシー<wbr>ポリシー</nobr>',
     subTitle: 'privacy policy',
     upContents: true,
     box: true,
@@ -225,7 +226,8 @@ const pages = {
     footerMenu: true,
     meta: {
       title: 'プライバシーポリシー',
-      description: '株式会社freamapホームページにおけるプライバシーポリシーページです。',
+      description:
+        '株式会社freamapホームページにおけるプライバシーポリシーページです。',
       type: 'article'
     }
   },
