@@ -262,7 +262,8 @@ export default {
             border-right: 1px solid #e8e9ea;
             display: flex;
             align-items: center;
-            flex-basis: 130px;
+            flex-basis: 100px;
+            flex-shrink: 0;
             padding-right: 15px;
 
             @include mq(md) {
@@ -274,10 +275,7 @@ export default {
           > .body {
             display: flex;
             align-items: center;
-
-            @include mq(md) {
-              flex: 1;
-            }
+            flex: 1;
           }
         }
       }
