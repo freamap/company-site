@@ -259,17 +259,23 @@ export default {
           }
 
           > .title {
-            flex-basis: 230px;
-            flex-grow: 0;
             border-right: 1px solid #e8e9ea;
             display: flex;
             align-items: center;
+            flex-basis: 100px;
+            flex-shrink: 0;
+            padding-right: 15px;
+
+            @include mq(md) {
+              flex-basis: 230px;
+              flex-grow: 0;
+            }
           }
 
           > .body {
-            flex: 1;
             display: flex;
             align-items: center;
+            flex: 1;
           }
         }
       }

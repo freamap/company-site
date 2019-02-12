@@ -24,7 +24,15 @@
         <div class="icon">
           <img src="~/assets/images/icon-freamap.svg">
         </div>
-        <h1 class="title">
+        <h1
+          v-if="originPage.htmlTitle"
+          class="title"
+          v-html="originPage.htmlTitle"
+        />
+        <h1
+          v-else
+          class="title"
+        >
           {{ originPage.title }}
         </h1>
         <div class="sub-title">
@@ -222,12 +230,18 @@ export default {
       }
     }
 
-    .title {
+    .title /deep/ {
       margin-top: 5px;
-      height: 64px;
+      min-height: 64px;
       font-weight: bold;
       font-size: 3.5rem;
       text-align: center;
+
+      > * {
+        font-weight: inherit;
+        font-size: inherit;
+        color: inherit;
+      }
 
       @include mq(md) {
         font-size: 4.3rem;
