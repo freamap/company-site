@@ -225,7 +225,8 @@ const pages = {
     footerMenu: true,
     meta: {
       title: 'プライバシーポリシー',
-      description: '株式会社freamapホームページにおけるプライバシーポリシーページです。',
+      description:
+        '株式会社freamapホームページにおけるプライバシーポリシーページです。',
       type: 'article'
     }
   },

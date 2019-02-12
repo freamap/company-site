@@ -224,7 +224,7 @@ export default {
 
     .title {
       margin-top: 5px;
-      height: 64px;
+      min-height: 64px;
       font-weight: bold;
       font-size: 3.5rem;
       text-align: center;
