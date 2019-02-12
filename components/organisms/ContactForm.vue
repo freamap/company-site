@@ -16,6 +16,14 @@
         </option>
       </InputSelect>
     </div>
+    <div class="name">
+      <InputText
+        :error="errorNameMessage"
+        v-model="name"
+        label="名前*"
+        placeholder="名前を入力"
+      />
+    </div>
     <div class="mail-address">
       <InputText
         :error="errorMailAddressMessage"
@@ -66,6 +74,7 @@ export default {
   data() {
     return {
       title: this.selectTitle,
+      name: '',
       mailAddress: '',
       options: [
         {
@@ -87,6 +96,7 @@ export default {
       ],
       body: '',
       errorTitleMessage: '',
+      errorNameMessage: '',
       errorMailAddressMessage: '',
       errorBodyMessage: ''
     }
@@ -100,6 +110,13 @@ export default {
         error = true
       } else {
         this.errorTitleMessage = ''
+      }
+
+      if (!this.name) {
+        this.errorNameMessage = '名前を入力してください。'
+        error = true
+      } else {
+        this.errorNameMessage = ''
       }
 
       if (!this.mailAddress) {
@@ -121,6 +138,7 @@ export default {
           title: this.options.filter(option => {
             return option.value === this.title
           })[0].text,
+          name: this.name,
           mailAddress: this.mailAddress,
           body: this.body
         }
@@ -141,7 +159,8 @@ export default {
     }
   }
 
-  .mail-address {
+  .mail-address,
+  .name {
     margin-bottom: 20px;
 
     @include mq(md) {
