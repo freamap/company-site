@@ -8,15 +8,17 @@
     >
       <template slot="thumbnail">
         <div class="thumbnail">
-          <img
-            :src="thumbnailUrl"
-            :style="thumbnailStyle"
-          >
-          <div
-            v-if="blog.category"
-            class="category"
-          >
-            {{ blog.category }}
+          <div>
+            <img
+              :src="thumbnailUrl"
+              :style="thumbnailStyle"
+            >
+            <div
+              v-if="blog.category"
+              class="category"
+            >
+              {{ blog.category }}
+            </div>
           </div>
         </div>
       </template>
@@ -92,30 +94,35 @@ export default {
   height: 100%;
 
   .thumbnail {
-    flex-basis: 230px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-basis: auto;
     position: relative;
+    padding-top: 75%;
 
-    @include mq(md) {
-      flex-basis: 300px;
-    }
-
-    img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-    }
-
-    .category {
+    > div {
       position: absolute;
-      bottom: 0;
-      right: 0;
-      font-size: 1.3rem;
-      background-color: #236af7;
-      padding: 5px 9px;
-      color: #ffffff;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+
+      img {
+        max-height: 100%;
+        object-fit: contain;
+      }
+
+      .category {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        font-size: 1.3rem;
+        background-color: #236af7;
+        padding: 5px 9px;
+        color: #ffffff;
+      }
     }
   }
 
