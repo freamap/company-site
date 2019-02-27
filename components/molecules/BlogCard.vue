@@ -96,7 +96,7 @@ export default {
   .thumbnail {
     flex-basis: auto;
     position: relative;
-    padding-top: 70%;
+    padding-top: 75%;
 
     > div {
       position: absolute;
