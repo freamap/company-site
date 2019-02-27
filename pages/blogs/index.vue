@@ -6,7 +6,7 @@
 
 <script>
 import Blogs from '~/components/organisms/Blogs'
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import axios from 'axios'
 
 export default {
@@ -18,11 +18,6 @@ export default {
     }
   },
   async fetch({ app, store, route }) {
-    let { data } = await axios.get(
-      'https://blog.freamap.co.jp/wp-json/wp/v2/posts/?context=embed'
-    )
-    await store.dispatch('blogs/setBlogs', data)
-
     let page = app.getPage('blogs')
     let topicPath = [
       {
@@ -44,6 +39,16 @@ export default {
     metaData() {
       return this.$store.app.getMetaData('blogs')
     }
+  },
+  mounted() {
+    axios
+      .get('https://blog.freamap.co.jp/wp-json/wp/v2/posts/?context=embed')
+      .then(response => {
+        this.setBlogs(response.data)
+      })
+  },
+  methods: {
+    ...mapActions('blogs', ['setBlogs'])
   }
 }
 </script>
