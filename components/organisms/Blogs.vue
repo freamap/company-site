@@ -41,7 +41,7 @@ export default {
   justify-content: center;
   margin: -10px 0;
 
-  @include mq(sm) {
+  @include mqb(sm) {
     justify-content: start;
   }
 
@@ -50,7 +50,7 @@ export default {
     margin-bottom: 20px;
     align-self: stretch;
 
-    @include mq(sm) {
+    @include mqb(sm) {
       flex-basis: calc((100% - 20px) / 2);
 
       &:nth-of-type(2n) {
@@ -58,7 +58,7 @@ export default {
       }
     }
 
-    @include mq(md) {
+    @include mqb(md) {
       flex-basis: calc((100% - 40px) / 3);
 
       &:nth-of-type(2n) {
@@ -71,7 +71,7 @@ export default {
       }
     }
 
-    @include mq(lg) {
+    @include mqb(lg) {
       flex-basis: calc((100% - 60px) / 4);
 
       &:nth-of-type(3n + 2) {
