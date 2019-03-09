@@ -7,8 +7,21 @@ $breakpoints: (
   'xl': 'screen and (min-width: 1920px)',
 ) !default;
 
+$blogBreakpoints: (
+  'sm': 'screen and (min-width: 600px)',
+  'md': 'screen and (min-width: 1180px)',
+  'lg': 'screen and (min-width: 1440px)',
+  'xl': 'screen and (min-width: 1920px)',
+) !default;
+
 @mixin mq($breakpoint: md) {
   @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+@mixin mqb($breakpoint: md) {
+  @media #{map-get($blogBreakpoints, $breakpoint)} {
     @content;
   }
 }
