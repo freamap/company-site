@@ -58,7 +58,7 @@ module.exports = {
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios',
-    ['nuxt-sass-resources-loader', '@/assets/sass/variable.scss'],
+    '@nuxtjs/style-resources',
   ],
   /*
   ** Axios module configuration
@@ -70,6 +70,12 @@ module.exports = {
   env: {
     apiBaseURLLocal: 'http://localhost:3000',
     apiBaseURL: process.env.BASE_URL || 'http://localhost:3000'
+  },
+
+  styleResources: {
+    sass: [
+      '@/assets/sass/variable.scss'
+    ],
   },
 
   serverMiddleware: ['~/server/api'],
